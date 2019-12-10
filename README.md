@@ -1,2 +1,3 @@
 # legends
-un jeu video de rpg en cours de construction (titre provisoir)
+
+petit à petit il y aura des versions bêta ici : https://leonlenclos.github.io/legends/game/
