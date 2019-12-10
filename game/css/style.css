@@ -1,0 +1,57 @@
+
+
+html, body {
+   width: 100%;
+   height: 100%;
+   margin: 0;
+}    
+* {
+    box-sizing: border-box;
+}
+body {
+    font-family: sans-serif;
+    background: #ddd;
+}
+
+div {
+}
+
+#game{
+ height: 100%;
+  padding: 10px;
+
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+}
+
+#game > *{
+   border: 1px dotted red;
+
+}
+
+#title-bar {
+    width:auto;
+  padding: 10px;
+    
+}
+
+#map {
+    border: 2px solid black;
+    background: pink;
+}
+
+#main-interface {
+  padding: 10px;
+    height: 100%;
+    
+}
+
+#interface-interaction{
+    display: none;
+}
+#interface-map{
+    border: solid green 1px;
+    height: 100%;
+    text-align: center;
+}

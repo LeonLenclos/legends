@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="8" tileheight="8" nextobjectid="21">
+ <tileset firstgid="1" name="tileset" tilewidth="8" tileheight="8" tilecount="1369" columns="21">
+  <image source="img/tileset.png" width="168" height="176"/>
+ </tileset>
+ <layer name="base" width="10" height="10">
+  <data encoding="csv">
+212,212,212,212,212,212,212,212,212,212,
+212,212,23,24,25,212,212,212,212,212,
+212,212,44,45,46,212,212,212,212,212,
+212,212,65,66,67,212,212,212,212,212,
+212,212,86,87,88,212,212,212,212,212,
+212,212,107,108,109,212,212,212,212,212,
+212,212,212,212,212,212,212,212,212,212,
+212,212,212,212,212,212,212,212,212,212,
+212,212,212,212,212,212,212,212,212,212,
+212,212,212,212,212,212,212,212,212,212
+</data>
+ </layer>
+ <layer name="details" width="10" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,26,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,47,0,5,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+ <objectgroup name="interactive_objects">
+  <object id="14" type="porte" gid="68" x="24" y="48" width="8" height="8"/>
+ </objectgroup>
+</map>
