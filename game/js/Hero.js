@@ -12,4 +12,16 @@ class Hero extends Obj{
         // // this.inventory=[];
         // // this.secrets={}
     }
+
+    setup(){
+        // To be overrided
+    }
+    
+    update(){
+        // To be overrided
+    }
+
+    render(){
+        // To be overrided
+    }
 }

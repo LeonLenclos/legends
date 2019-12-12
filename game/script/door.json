@@ -1,0 +1,19 @@
+{
+    "title":"La maison de tes parents.",
+    "script" : {
+        "start":{
+            "txt" : "C'est chalereux et familier. Il y a un frigo.",
+            "actions":[
+                {"txt":"Sortir.", "do":["EXIT"]},
+                {"txt":"Regarder dans le frigo.", "do":["GOTO frigo"]}
+            ]
+        },
+        "frigo":{
+            "txt" : "Le frigo est vide...",
+            "actions":[
+                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]}
+            ]
+        }
+    }
+
+}

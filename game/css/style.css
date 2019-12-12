@@ -10,35 +10,41 @@ html, body {
 }
 body {
     font-family: sans-serif;
-    background: #ddd;
+    color:white;
+    background: #000000;
 }
 
 div {
 }
 
 #game{
- height: 100%;
+  height: 100%;
   padding: 10px;
-
  display: flex;
  flex-direction: column;
  justify-content: space-between;
 }
 
-#game > *{
-   border: 1px dotted red;
 
-}
 
 #title-bar {
     width:auto;
   padding: 10px;
-    
+    text-align: center;
+    font-weight: bold;
+    color: #004058;
+}
+
+/********** MAP ************/
+
+#interface-map{
+    height: 100%;
+    text-align: center;
 }
 
 #map {
-    border: 2px solid black;
-    background: pink;
+    border: 5px solid #004058;
+    background: #004058;
 }
 
 #main-interface {
@@ -47,11 +53,56 @@ div {
     
 }
 
+/********** INTERACTION ************/
+
 #interface-interaction{
-    display: none;
+    padding: 50px;
+   text-align: center;
+        width: 50%;
+    min-width: 400px;
+        margin:auto;
 }
-#interface-map{
-    border: solid green 1px;
-    height: 100%;
-    text-align: center;
+
+#interaction-title {
+    font-weight: bold;
+    
+}
+
+#interaction-text {
+    border: 5px solid #004058;
+    padding: 20px;
+    background: #ffffff;
+    color:#000000;
+        margin:  10px;
+
+}
+.button {
+    padding: 10px;
+    margin:  10px;
+    border: 5px solid #004058;
+    min-width: 300px;
+}
+
+.button:hover, .button.selected:hover {
+    background: #004058;
+    border-color: #004058;
+    
+}
+
+.button.selected {
+    background: #004058;
+    border-color:white;
+}
+#interaction-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;    
+}
+
+
+/*******************/
+
+#status-bar{
+    padding: 5px;
+    background:  #004058;
 }

@@ -1,26 +1,22 @@
 class Obj {
 
-    constructor(url){
+    constructor(data, resources){
         // Position and direction of the Hero in the map
-        this.load(url)
-    }
 
-    setup(json){
-        // Load the tileset then call render_layers
-        this.data = json;
-        this.x=json.x;
-        this.y=json.y;
-        this.name=json.name;
-        this.img = $("<img />", {src:'img/interactive_objects/'+this.name+'.png'})[0]
-        this.img.onload = $.proxy(()=>this.ready=true, this);
+        this.x = data.x;
+        this.y = data.y;
+        this.type = data.type;
+
+        this.data = resources.json[this.type]
+        this.img = resources.png['obj/'+this.type]
 
     }
 
-    load(url){
-        // Load the json map then call load_tileset
-        return $.ajax({url:url})
-        .done($.proxy(this.setup, this))
-        .fail((e)=>console.log(e));
+    get_interaction_state(){
+        return this.interaction_state || 'start';
     }
 
+    read_script(){
+        return this.data.script[this.get_interaction_state()];
+    }
 }

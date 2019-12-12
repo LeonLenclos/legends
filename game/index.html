@@ -9,34 +9,32 @@
 
     <script type="text/javascript" src="js/constants.js"></script>
 
-    <script type="text/javascript" src="js/Game.js"></script>
+    <script type="text/javascript" src="js/Resources.js"></script>
+    <script type="text/javascript" src="js/Interface.js"></script>
     <script type="text/javascript" src="js/MapInterface.js"></script>
+    <script type="text/javascript" src="js/InteractionInterface.js"></script>
+
     <script type="text/javascript" src="js/Obj.js"></script>
-    <script type="text/javascript" src="js/Hero.js"></script>
     <script type="text/javascript" src="js/World.js"></script>
+    <script type="text/javascript" src="js/Game.js"></script>
+
 
     <script type="text/javascript" src="js/main.js"></script>
 </head>
 <body>
 <div id="game">
     <div id="title-bar">
-        Le titre du moment
+        LEGENDS
     </div>
     <div id="main-interface">
         <div id="interface-map">
             <canvas id="map"></canvas>
         </div>
         <div id="interface-interaction">
+            <div id="interaction-title"></div>
             <img id="interaction-img">
-            <div id="interaction-text">Du texte</div>
-            <div id="interaction-menu">
-                <div class="button">
-                    Action
-                </div>
-                <div class="button">
-                    Action
-                </div>
-            </div>
+            <div id="interaction-text"></div>
+            <div id="interaction-actions"></div>
         </div>
     </div>
     <div id="status-bar">Vie : <3 <3 <3</div>

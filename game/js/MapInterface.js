@@ -1,98 +1,84 @@
+// c.f. https://hashrocket.com/blog/posts/using-tiled-and-canvas-to-render-game-screens
 
-// TRES INSPIRÉ DE https://hashrocket.com/blog/posts/using-tiled-and-canvas-to-render-game-screens
+class MapInterface extends Interface {
 
-
-class MapInterface {
-
-    constructor(game){
-        console.log('Init Map Interface');
-        this.game = game;
-
+    on_setup(){
         this.layers = [];
 
         this.canvas = $('#map').get(0);
-        this.container = $('#interface-map');
         this.ctx = this.canvas.getContext("2d");
-
-        this.width = 40;
-        this.height = 20;
-        this.tile_size = 8
-        this.resize_canvas();
-
-        this.load('/script/world.json');
-
+        this.data = this.resources.json.map
+        this.tileset = this.resources.png.tileset;
+        this.ready=true;
     }
 
-    render(){
+    on_resize(){
+        this.scale = 1;
+        while(MAP_WIDTH*TILE_SIZE*(this.scale+1) < this.container.innerWidth()
+            && MAP_HEIGHT*TILE_SIZE*(this.scale+1) < this.container.innerHeight()){
+            this.scale ++;
+        }
+        this.canvas.width = MAP_WIDTH*TILE_SIZE*this.scale;
+        this.canvas.height = MAP_HEIGHT*TILE_SIZE*this.scale;
+    }
+
+    render(turn_moment){
+        this.offset_x = - this.world.objects.hero.x + MAP_WIDTH/2
+        this.offset_y = - this.world.objects.hero.y + MAP_HEIGHT/2
+
+
         let ctx_cache = this.ctx.canvas.cloneNode().getContext("2d");
         ctx_cache.imageSmoothingEnabled = false;
-
         this.render_layers(ctx_cache);
-        this.render_objects(ctx_cache)
-
+        this.render_objects(Object.values(this.world.objects), ctx_cache)
         this.ctx.drawImage(ctx_cache.canvas, 0, 0);
     }
 
-    resize_canvas(){
-        this.scale = 1;
-        while(this.width*this.tile_size*(this.scale+1) < this.container.innerWidth()
-            && this.height*this.tile_size*(this.scale+1) < this.container.innerHeight()){
-            this.scale ++;
-        }
-        this.canvas.width = this.width*this.tile_size*this.scale;
-        this.canvas.height = this.height*this.tile_size*this.scale;
-    }
-
-
- 
 
     render_object(obj, ctx){
-        let canvas_x = obj.x * this.tile_size;
-        let canvas_y = obj.y * this.tile_size;
+        let pos_x = obj.x +this.offset_x;
+        let pos_y = obj.y +this.offset_y;
+
+        let canvas_x = pos_x * TILE_SIZE + TILE_SIZE/2;
+        canvas_x -= obj.img.width /2;
+        let canvas_y = pos_y * TILE_SIZE + TILE_SIZE/2;
+        canvas_y += TILE_SIZE/2 -obj.img.height;
 
 
         ctx.drawImage(obj.img,
             canvas_x*this.scale, canvas_y*this.scale, obj.img.width*this.scale, obj.img.height*this.scale
         );
-
     }
 
-    render_objects(ctx){
-        let player_rendered = false;
-        for (var i = this.game.objects.length - 1; i >= 0; i--) {
-            if (!player_rendered && this.game.objects[i].y > this.hero.y) {
-                this.render_object(this.game.hero, ctx);
-                player_rendered = true;
-            }
-            this.render_object(this.game.objects[i], ctx)
-        }
-        if (!player_rendered) {
-            this.render_object(this.game.hero, ctx);
+    render_objects(objects, ctx){
+        objects.sort((o)=>o.y);
+        for (let key in objects) {
+            this.render_object(objects[key], ctx)
         }
     }
 
     render_tile(tile_idx, x, y, ctx){
         if (!tile_idx) {return;}
 
-        let canvas_x = x * this.tile_size;
-        let canvas_y = y * this.tile_size;
+        let canvas_x = x * TILE_SIZE;
+        let canvas_y = y * TILE_SIZE;
 
         let tile = this.data.tilesets[0];
 
-        let tileset_x = ((tile_idx-1) % (tile.imagewidth / this.tile_size)) * this.tile_size;
-        let tileset_y = ~~((tile_idx-1) / (tile.imagewidth / this.tile_size)) * this.tile_size;
+        let tileset_x = ((tile_idx-1) % (tile.imagewidth / TILE_SIZE)) * TILE_SIZE;
+        let tileset_y = ~~((tile_idx-1) / (tile.imagewidth / TILE_SIZE)) * TILE_SIZE;
 
         ctx.drawImage(this.tileset,
-            tileset_x, tileset_y, this.tile_size, this.tile_size,
-            canvas_x*this.scale, canvas_y*this.scale, this.tile_size*this.scale, this.tile_size*this.scale
+            tileset_x, tileset_y, TILE_SIZE, TILE_SIZE,
+            canvas_x*this.scale, canvas_y*this.scale, TILE_SIZE*this.scale, TILE_SIZE*this.scale
         );
     }
 
     render_layer(layer, ctx){
         // call render_tile for each tile
         layer.data.forEach((tile_idx, i)=>{
-            let pos_x = (i % layer.width);
-            let pos_y = ~~(i / layer.width); 
+            let pos_x = (i % layer.width) + this.offset_x;
+            let pos_y = ~~(i / layer.width) + this.offset_y;
             this.render_tile(tile_idx, pos_x, pos_y, ctx)
         }, this);
     }
@@ -100,22 +86,12 @@ class MapInterface {
     render_layers(ctx){
         // call render_layer for each layers
         this.data.layers.forEach(
-            (layer)=>this.render_layer(layer, ctx),
-            this);
+            (layer)=> {if(layer.visible){
+                this.render_layer(layer, ctx)
+        }},this);
     }
 
 
-    load_tileset(json){
-        // Load the tileset then call render_layers
-        this.data = json;
-        this.tileset = $("<img />", {src:json.tilesets[0].image})[0]
-        this.tileset.onload = $.proxy(()=>this.ready=true, this);
-    }
 
-    load(url){
-        // Load the json map then call load_tileset
-        return $.ajax({url:url})
-        .done($.proxy(this.load_tileset, this))
-        .fail((e)=>console.log(e));
-    }
 }
+

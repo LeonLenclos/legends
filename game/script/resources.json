@@ -1,0 +1,15 @@
+{
+    "json":[
+        "world",
+        "map",
+        "hero",
+        "door"
+    ],
+    "png":[
+        "tileset",
+        "obj/hero",
+        "obj/statue",
+        "obj/door"
+    ]
+
+}

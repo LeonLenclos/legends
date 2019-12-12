@@ -1,20 +1,97 @@
 class Game {
 
     constructor(){
-        console.log('init game');
-        this.hero = new Hero();
-        this.objects = [];
-        this.map = new MapInterface(this);
-        this.turn = 0;
+        this.resources = new Resources(()=>{this.setup()});
+        this.world = new World(this.resources);
+        this.map_interface = new MapInterface(this.world, this.resources, 'interface-map');
+        this.interaction_interface = new InteractionInterface(this.world, this.resources, 'interface-interaction');
+    }
 
-        
-        setInterval(this.main_loop, 20);
+    setup(){
+        this.world.setup();
+        this.map_interface.setup();
+        this.interaction_interface.setup();
+
+        this.action_was_played = false;
+        this.key_is_down = false;
+        this.key_was_down = false;
+        this.last_key_pressed = undefined;
+        $(document).keydown((e)=>{this.on_key_down(e)})
+        $(document).keyup((e)=>{this.on_key_up(e)})
+
+        this.open_map();
+    }
+
+    on_key_down(event){
+        if (event.key in KEYS){
+            this.key_is_down = true;
+            this.key_was_down = true;
+            this.last_key_pressed = KEYS[event.key];
+            event.preventDefault();
+        }
+    }
+    
+    on_key_up(event){
+        this.key_is_down = false;
     }
 
 
-    main_loop(){
-        if (this.hero.ready && this.map.ready) {
-            this.map.render();
+    on_tick(){
+        let now = Date.now();
+        if(now - this.last_turn > 1000/TURN_PER_SEC){
+            this.last_turn = now;
+            let action = undefined;
+            this.action_was_played = this.key_is_down
+                || (this.key_was_down && !this.action_was_played);
+            if(this.action_was_played){
+                action = this.last_key_pressed;
+            }
+            this.key_was_down = false;
+
+            this.on_turn(action);
         }
+        this.map_interface.render();
+    }
+
+    on_turn(action){
+
+        if([NORTH,EAST,SOUTH,WEST].includes(action)){
+            let hero_move_on = this.world.move_hero(action)
+            if(hero_move_on){
+                this.open_interaction(hero_move_on)
+            }
+        }
+    }
+
+    open_interaction(obj){
+        clearInterval(this.tick_interval);
+        this.map_interface.hide();
+        this.interaction_interface.show();
+        this.interaction_interface.open_interaction(obj, (todos)=>this.on_action(todos, obj));
+    }
+
+    open_map(){
+        this.map_interface.show();
+        this.interaction_interface.hide();
+        this.tick_interval = setInterval(()=>this.on_tick(), 1000/TICK_PER_SEC);
+        this.last_turn = Date.now();
+    }
+
+    on_action(todos, obj){
+        todos.forEach((todo)=>{
+            let splited = todo.split(" ");
+            let command = splited[0];
+            let args = splited.slice(1);
+
+            switch (command){
+                case 'EXIT':
+                    this.open_map();
+                    break;
+                case 'GOTO':
+                    obj.interaction_state = args[0];
+                    break;
+            }
+        })
+        this.interaction_interface.update()
     }
 }
