@@ -2,14 +2,14 @@ class Obj {
 
     constructor(data, resources){
         // Position and direction of the Hero in the map
-
-        this.x = data.x;
-        this.y = data.y;
-        this.type = data.type;
-
-        this.data = resources.json[this.type]
-        this.img = resources.png['obj/'+this.type]
-
+        let extra_data = resources.json[data.extra_data];
+        for(let attr in extra_data){
+            this[attr] = extra_data[attr];
+        }
+        for(let attr in data){
+            this[attr] = data[attr];
+        }
+        this.img = resources.png[this.img]
     }
 
     get_interaction_state(){
@@ -17,6 +17,6 @@ class Obj {
     }
 
     read_script(){
-        return this.data.script[this.get_interaction_state()];
+        return this.script[this.get_interaction_state()];
     }
 }

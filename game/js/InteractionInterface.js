@@ -12,7 +12,7 @@ class InteractionInterface extends Interface {
     }
 
     update(){
-        this.set_title(this.obj.data.title);
+        this.set_title(this.obj.title);
         this.set_text(this.obj.read_script().txt)
         this.set_actions(this.obj.read_script().actions)
     }

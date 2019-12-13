@@ -1,4 +1,6 @@
 {
+    "id":"maison_parents",
+    "img":"obj/porte",
     "title":"La maison de tes parents.",
     "script" : {
         "start":{

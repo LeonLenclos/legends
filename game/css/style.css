@@ -100,9 +100,20 @@ div {
 }
 
 
-/*******************/
+/********* STATUS BAR **********/
 
 #status-bar{
     padding: 5px;
     background:  #004058;
+    display: flex;
+}
+
+.status-info-title {
+    font-weight: bold;
+}
+.status-info{
+    margin: 3px;
+    padding: 2px;
+    background: #fff;
+    color:#000;
 }

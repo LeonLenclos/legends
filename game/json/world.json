@@ -1,0 +1,36 @@
+{
+"objects":[
+        {
+            "x":50,
+            "y":33,
+            "extra_data":"hero"
+        },
+        {
+            "x":48,
+            "y":30,
+            "extra_data":"obj/maison_parents"
+        },
+        {
+            "x":54,
+            "y":25,
+            "img":"obj/arbre2",
+            "extra_data":"obj/arbre"
+        },
+        {
+            "x":58,
+            "y":25,
+            "extra_data":"obj/arbre"
+        },
+        {
+            "x":55,
+            "y":27,
+            "img":"obj/arbre2",
+            "extra_data":"obj/arbre"
+        },
+        {
+            "x":55,
+            "y":23,
+            "extra_data":"obj/arbre"
+        }
+    ]
+}

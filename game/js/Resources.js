@@ -17,7 +17,7 @@ class Resources {
         this.when_finished(call_back);
     }
     add_json(name){
-        let url = 'script/'+name+'.json';
+        let url = 'json/'+name+'.json';
         let async = $.ajax({
             url:url,
             dataType: "json",
@@ -26,6 +26,7 @@ class Resources {
         })
         .done((data)=>{
             this.json[name] = data
+            console.log('loaded json : ' + name)
         })
         .fail((jqXHR, textStatus, errorThrown)=>console.log(textStatus, errorThrown, "loading : " + name));
         this.asyncs.push(async);
@@ -48,6 +49,8 @@ class Resources {
         for(let key in this.png){
             this.png[key].onload = ()=>{
                 images_loaded++;
+                console.log('loaded png : ' + key)
+
                 if(images_loaded == image_count){
                     call_back();
                 }

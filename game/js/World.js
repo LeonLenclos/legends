@@ -13,10 +13,10 @@ class World {
         let world_data = this.resources.json.world;
         let map_data = this.resources.json.map;
 
-        this.objects = {};
-        for (var key in world_data.objects) {
-            this.objects[key] = new Obj(world_data.objects[key], this.resources)
-        }
+        world_data.objects.forEach((obj_data)=>{
+            this.objects.push(new Obj(obj_data, this.resources));
+        });
+        this.hero = this.get_obj('hero');
         this.width = map_data.width;
         this.height = map_data.height;
         for (var i = 0; i < map_data.layers.length; i++) {
@@ -27,10 +27,17 @@ class World {
         }
     }
 
+    get_obj(id){
+        for (var i = 0; i < this.objects.length; i++) {
+            if(this.objects[i].id == id){
+                return this.objects[i];
+            }
+        }
+    }
  
     move_hero(action) {
-        let dest_x = this.objects.hero.x;
-        let dest_y = this.objects.hero.y;
+        let dest_x = this.hero.x;
+        let dest_y = this.hero.y;
         // set destination
         if (action === NORTH) dest_y --;
         else if (action === SOUTH) dest_y ++;
@@ -49,8 +56,8 @@ class World {
             return;
         }
         // move hero
-        this.objects.hero.x = dest_x;
-        this.objects.hero.y = dest_y;
-        this.objects.hero.direction = action;
+        this.hero.x = dest_x;
+        this.hero.y = dest_y;
+        this.hero.direction = action;
     }
 }

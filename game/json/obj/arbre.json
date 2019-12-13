@@ -1,0 +1,37 @@
+{
+    "id":"maison_parents",
+    "img":"obj/arbre1",
+    "title":"Un arbre.",
+    "script" : {
+        "start":{
+            "txt" : "C'est un vrai arbre.",
+            "actions":[
+                {"txt":"Ramasser du bois.", "do":["GOTO ramasser", "GIVE +1 bois hero"]},
+                {"txt":"Faire un bisou à l'arbre.", "do":["GOTO bisou"]},
+                {"txt":"Partir.", "do":["EXIT"]}
+
+            ]
+        },
+        "ramasser":{
+            "txt" : "Tu ramasses un peu de bois...",
+            "actions":[
+                {"txt":"Encore !", "do":["GOTO ramasser_bis", "GIVE +1 bois hero"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        },
+        "ramasser_bis":{
+            "txt" : "Tu ramasses un peu plus de bois...",
+            "actions":[
+                {"txt":"Encore !", "do":["GOTO ramasser", "GIVE +1 bois hero"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        },
+        "bisou":{
+            "txt" : "Tu entends les feuilles frémir...",
+            "actions":[
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        }
+    }
+
+}

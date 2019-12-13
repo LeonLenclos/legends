@@ -3,13 +3,16 @@
         "world",
         "map",
         "hero",
-        "door"
+        "status_bar_infos",
+        "obj/maison_parents",
+        "obj/arbre"
     ],
     "png":[
         "tileset",
         "obj/hero",
+        "obj/arbre1",
+        "obj/arbre2",
         "obj/statue",
-        "obj/door"
+        "obj/porte"
     ]
-
 }

@@ -5,21 +5,25 @@ class Game {
         this.world = new World(this.resources);
         this.map_interface = new MapInterface(this.world, this.resources, 'interface-map');
         this.interaction_interface = new InteractionInterface(this.world, this.resources, 'interface-interaction');
+        this.status_bar_interface = new StatusBarInterface(this.world, this.resources, 'status-bar');
     }
 
     setup(){
         this.world.setup();
         this.map_interface.setup();
         this.interaction_interface.setup();
+        this.status_bar_interface.setup();
+        this.setup_keys();
+        this.open_map();
+    }
 
+    setup_keys(){
         this.action_was_played = false;
         this.key_is_down = false;
         this.key_was_down = false;
         this.last_key_pressed = undefined;
         $(document).keydown((e)=>{this.on_key_down(e)})
         $(document).keyup((e)=>{this.on_key_up(e)})
-
-        this.open_map();
     }
 
     on_key_down(event){
@@ -38,29 +42,24 @@ class Game {
 
     on_tick(){
         let now = Date.now();
-        if(now - this.last_turn > 1000/TURN_PER_SEC){
+        if(now - this.last_turn > 1000 / TURN_PER_SEC){
             this.last_turn = now;
-            let action = undefined;
-            this.action_was_played = this.key_is_down
-                || (this.key_was_down && !this.action_was_played);
-            if(this.action_was_played){
-                action = this.last_key_pressed;
-            }
+            this.action_was_played = this.key_is_down || (this.key_was_down && !this.action_was_played);
             this.key_was_down = false;
-
+            let action = this.action_was_played ? this.last_key_pressed : undefined;
             this.on_turn(action);
         }
-        this.map_interface.render();
+        this.map_interface.update();
     }
 
     on_turn(action){
-
         if([NORTH,EAST,SOUTH,WEST].includes(action)){
-            let hero_move_on = this.world.move_hero(action)
+            let hero_move_on = this.world.move_hero(action);
             if(hero_move_on){
-                this.open_interaction(hero_move_on)
+                this.open_interaction(hero_move_on);
             }
         }
+        this.status_bar_interface.update();
     }
 
     open_interaction(obj){
@@ -90,8 +89,16 @@ class Game {
                 case 'GOTO':
                     obj.interaction_state = args[0];
                     break;
+                case 'GIVE':
+                    let amount = Number(args[0]);
+                    let attr = args[1];
+                    let target = args[2] ? this.world.get_obj(args[2]) : obj;
+                    target[attr] = target[attr] ? target[attr] + amount : amount;
+                    console.log('target : ', target)
+                    break;
             }
         })
         this.interaction_interface.update()
+        this.status_bar_interface.update();
     }
 }

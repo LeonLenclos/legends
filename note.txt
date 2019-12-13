@@ -8,11 +8,8 @@ L'essentiel se fait sur Tiled car l'essentiel du jeu consiste à explorer une ma
 Sur tiled :
     - on dessine la map (à partir des tileset)
     - On trace les zones infranchissables (murs) 
-    - On place les objets (interactifs)
 
-https://doc.mapeditor.org/en/stable/
-
-## Le dossier script
+## Le dossier json
 
 Le dossier script contient toute l'histoire du jeu sous formes de fichiers json
 
@@ -37,22 +34,10 @@ Le joueur se déplace sur une map. Sur la map il ne peut rien faire d'autre que 
 
 La map contient des cases 'wall' sur lesquelles le joueur ne peut pas aller
 
-Sur la map sont placés des objets 'interactive-object'. Si le joueur se déplace sur un interactive object le jeu passe en mode interaction
+Sur la map sont placés des objets. Si le joueur se déplace sur un objet le jeu passe en mode interaction
 
 ## Mode interaction
 
-Le joueur lis un texte, il peut choisir des actions dans un menu ces actions peuvent avoir une influence sur :
-- l'état de l'objet interactif
-- l'état du personnage
+Le joueur lis un texte, il peut choisir des actions dans un menu ces actions peuvent avoir une influence sur l'état d'objets.
+
 enfin ces actions peuvent faire basculer le jeu en mode map (quitter l'interaction)
-
-# POO
-
-## Personnage ('hero')
-Attributs
-position
-
-
-##############
-
-Idée : les objets interactifs sont les seuls animés ??

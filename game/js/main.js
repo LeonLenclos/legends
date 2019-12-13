@@ -1,7 +1,3 @@
-function main() {
-
-    let game = new Game();
-    
-}
-$.ajaxSetup({ cache: false });
-$(document).ready(main);
+"use strict";
+$.ajaxSetup({cache: false});
+$(document).ready(()=>{new Game();});

@@ -22,43 +22,50 @@ class MapInterface extends Interface {
         this.canvas.height = MAP_HEIGHT*TILE_SIZE*this.scale;
     }
 
-    render(turn_moment){
-        this.offset_x = - this.world.objects.hero.x + MAP_WIDTH/2
-        this.offset_y = - this.world.objects.hero.y + MAP_HEIGHT/2
+    is_visible(x, y){
+        return x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT;
+    }
 
+    update(turn_moment){
+        this.offset_x = - this.world.hero.x + MAP_WIDTH/2
+        this.offset_y = - this.world.hero.y + MAP_HEIGHT/2
 
         let ctx_cache = this.ctx.canvas.cloneNode().getContext("2d");
         ctx_cache.imageSmoothingEnabled = false;
         this.render_layers(ctx_cache);
-        this.render_objects(Object.values(this.world.objects), ctx_cache)
+        this.render_objects(this.world.objects, ctx_cache)
         this.ctx.drawImage(ctx_cache.canvas, 0, 0);
     }
 
 
-    render_object(obj, ctx){
-        let pos_x = obj.x +this.offset_x;
-        let pos_y = obj.y +this.offset_y;
+    render_object(img, x, y, ctx){
 
-        let canvas_x = pos_x * TILE_SIZE + TILE_SIZE/2;
-        canvas_x -= obj.img.width /2;
-        let canvas_y = pos_y * TILE_SIZE + TILE_SIZE/2;
-        canvas_y += TILE_SIZE/2 -obj.img.height;
+        let canvas_x = x * TILE_SIZE + TILE_SIZE/2;
+        canvas_x -= img.width /2;
+        let canvas_y = y * TILE_SIZE + TILE_SIZE/2;
+        canvas_y += TILE_SIZE/2 -img.height;
 
 
-        ctx.drawImage(obj.img,
-            canvas_x*this.scale, canvas_y*this.scale, obj.img.width*this.scale, obj.img.height*this.scale
+        ctx.drawImage(img,
+            canvas_x*this.scale, canvas_y*this.scale,
+            img.width*this.scale, img.height*this.scale
         );
     }
 
     render_objects(objects, ctx){
-        objects.sort((o)=>o.y);
-        for (let key in objects) {
-            this.render_object(objects[key], ctx)
-        }
+        objects.sort((a,b)=>a.y-b.y);
+        objects.forEach((o)=>{
+            let pos_x = o.x + this.offset_x;
+            let pos_y = o.y + this.offset_y;
+            if(this.is_visible(pos_x, pos_y)){
+                this.render_object(o.img, pos_x, pos_y, ctx)
+            }
+        }, this);
     }
 
     render_tile(tile_idx, x, y, ctx){
         if (!tile_idx) {return;}
+
 
         let canvas_x = x * TILE_SIZE;
         let canvas_y = y * TILE_SIZE;
@@ -76,10 +83,15 @@ class MapInterface extends Interface {
 
     render_layer(layer, ctx){
         // call render_tile for each tile
+
         layer.data.forEach((tile_idx, i)=>{
             let pos_x = (i % layer.width) + this.offset_x;
             let pos_y = ~~(i / layer.width) + this.offset_y;
-            this.render_tile(tile_idx, pos_x, pos_y, ctx)
+
+            if(this.is_visible(pos_x, pos_y)){
+
+                this.render_tile(tile_idx, pos_x, pos_y, ctx)
+            }
         }, this);
     }
 
