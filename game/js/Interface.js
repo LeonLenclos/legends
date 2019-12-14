@@ -1,7 +1,7 @@
 class Interface {
-    constructor(world, resources, container_id){
+    constructor(world, assets, container_id){
         this.world = world;
-        this.resources = resources;
+        this.assets = assets;
         this.container = $('#' + container_id);
 
     }

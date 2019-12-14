@@ -7,8 +7,8 @@ class MapInterface extends Interface {
 
         this.canvas = $('#map').get(0);
         this.ctx = this.canvas.getContext("2d");
-        this.data = this.resources.json.map
-        this.tileset = this.resources.png.tileset;
+        this.data = this.assets.json.map
+        this.tileset = this.assets.png.tileset;
         this.ready=true;
     }
 
@@ -33,12 +33,12 @@ class MapInterface extends Interface {
         let ctx_cache = this.ctx.canvas.cloneNode().getContext("2d");
         ctx_cache.imageSmoothingEnabled = false;
         this.render_layers(ctx_cache);
-        this.render_objects(this.world.objects, ctx_cache)
+        this.render_entities(this.world.entities, ctx_cache)
         this.ctx.drawImage(ctx_cache.canvas, 0, 0);
     }
 
 
-    render_object(img, x, y, ctx){
+    render_entity(img, x, y, ctx){
 
         let canvas_x = x * TILE_SIZE + TILE_SIZE/2;
         canvas_x -= img.width /2;
@@ -52,13 +52,13 @@ class MapInterface extends Interface {
         );
     }
 
-    render_objects(objects, ctx){
-        objects.sort((a,b)=>a.y-b.y);
-        objects.forEach((o)=>{
+    render_entities(entities, ctx){
+        entities.sort((a,b)=>a.y-b.y);
+        entities.forEach((o)=>{
             let pos_x = o.x + this.offset_x;
             let pos_y = o.y + this.offset_y;
             if(this.is_visible(pos_x, pos_y)){
-                this.render_object(o.img, pos_x, pos_y, ctx)
+                this.render_entity(o.img, pos_x, pos_y, ctx)
             }
         }, this);
     }

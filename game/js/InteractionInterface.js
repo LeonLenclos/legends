@@ -5,16 +5,16 @@ class InteractionInterface extends Interface {
         this.text_div = $("#interaction-text")
         this.actions_div = $("#interaction-actions")
     }
-    open_interaction(obj, action_call_back){
-        this.obj = obj
+    open_interaction(entity, action_call_back){
+        this.entity = entity
         this.action_call_back = action_call_back
         this.update();
     }
 
     update(){
-        this.set_title(this.obj.title);
-        this.set_text(this.obj.read_script().txt)
-        this.set_actions(this.obj.read_script().actions)
+        this.set_title(this.entity.title);
+        this.set_text(this.entity.read_script().txt)
+        this.set_actions(this.entity.read_script().actions)
     }
 
     set_text(txt){

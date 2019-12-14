@@ -1,11 +1,11 @@
 class Game {
 
     constructor(){
-        this.resources = new Resources(()=>{this.setup()});
-        this.world = new World(this.resources);
-        this.map_interface = new MapInterface(this.world, this.resources, 'interface-map');
-        this.interaction_interface = new InteractionInterface(this.world, this.resources, 'interface-interaction');
-        this.status_bar_interface = new StatusBarInterface(this.world, this.resources, 'status-bar');
+        this.assets = new Assets(()=>{this.setup()});
+        this.world = new World(this.assets);
+        this.map_interface = new MapInterface(this.world, this.assets, 'interface-map');
+        this.interaction_interface = new InteractionInterface(this.world, this.assets, 'interface-interaction');
+        this.status_bar_interface = new StatusBarInterface(this.world, this.assets, 'status-bar');
     }
 
     setup(){
@@ -62,11 +62,11 @@ class Game {
         this.status_bar_interface.update();
     }
 
-    open_interaction(obj){
+    open_interaction(entity){
         clearInterval(this.tick_interval);
         this.map_interface.hide();
         this.interaction_interface.show();
-        this.interaction_interface.open_interaction(obj, (todos)=>this.on_action(todos, obj));
+        this.interaction_interface.open_interaction(entity, (todos)=>this.on_action(todos, entity));
     }
 
     open_map(){
@@ -76,7 +76,7 @@ class Game {
         this.last_turn = Date.now();
     }
 
-    on_action(todos, obj){
+    on_action(todos, entity){
         todos.forEach((todo)=>{
             let splited = todo.split(" ");
             let command = splited[0];
@@ -87,12 +87,12 @@ class Game {
                     this.open_map();
                     break;
                 case 'GOTO':
-                    obj.interaction_state = args[0];
+                    entity.interaction_state = args[0];
                     break;
                 case 'GIVE':
                     let amount = Number(args[0]);
                     let attr = args[1];
-                    let target = args[2] ? this.world.get_obj(args[2]) : obj;
+                    let target = args[2] ? this.world.get_entity(args[2]) : entity;
                     target[attr] = target[attr] ? target[attr] + amount : amount;
                     console.log('target : ', target)
                     break;

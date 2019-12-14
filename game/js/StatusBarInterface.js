@@ -1,7 +1,7 @@
 class StatusBarInterface extends Interface {
 
     on_setup(){
-        this.status_bar_infos = this.resources.json.status_bar_infos;
+        this.status_bar_infos = this.assets.json.status_bar_infos;
     }
 
     update(){

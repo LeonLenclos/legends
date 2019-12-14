@@ -1,0 +1,18 @@
+{
+    "json":[
+        "world",
+        "map",
+        "hero",
+        "status_bar_infos",
+        "entities/maison_parents",
+        "entities/arbre"
+    ],
+    "png":[
+        "tileset",
+        "entities/hero",
+        "entities/arbre1",
+        "entities/arbre2",
+        "entities/statue",
+        "entities/porte"
+    ]
+}

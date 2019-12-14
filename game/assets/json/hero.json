@@ -1,6 +1,6 @@
 {
     "id":"hero",
-    "img":"obj/hero",
+    "img":"entities/hero",
 
     "vies":3
 }

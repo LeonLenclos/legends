@@ -1,15 +1,18 @@
-class Obj {
+class Entity {
 
-    constructor(data, resources){
+    constructor(data, assets){
         // Position and direction of the Hero in the map
-        let extra_data = resources.json[data.extra_data];
+        let extra_data = assets.json[data.extra_data];
         for(let attr in extra_data){
             this[attr] = extra_data[attr];
         }
         for(let attr in data){
             this[attr] = data[attr];
         }
-        this.img = resources.png[this.img]
+        console.log(this.img)
+        this.img = assets.png[this.img]
+        console.log(this.img)
+        
     }
 
     get_interaction_state(){

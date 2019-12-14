@@ -1,6 +1,6 @@
 {
     "id":"maison_parents",
-    "img":"obj/arbre1",
+    "img":"entities/arbre1",
     "title":"Un arbre.",
     "script" : {
         "start":{

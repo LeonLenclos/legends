@@ -1,22 +1,22 @@
 
 class World {
 
-    constructor(resources){
-        this.resources = resources;
+    constructor(assets){
+        this.assets = assets;
         this.walls = [];
-        this.objects = [];
+        this.entities = [];
         this.player = undefined;
     }
 
 
     setup(){
-        let world_data = this.resources.json.world;
-        let map_data = this.resources.json.map;
+        let world_data = this.assets.json.world;
+        let map_data = this.assets.json.map;
 
-        world_data.objects.forEach((obj_data)=>{
-            this.objects.push(new Obj(obj_data, this.resources));
+        world_data.entities.forEach((entity_data)=>{
+            this.entities.push(new Entity(entity_data, this.assets));
         });
-        this.hero = this.get_obj('hero');
+        this.hero = this.get_entity('hero');
         this.width = map_data.width;
         this.height = map_data.height;
         for (var i = 0; i < map_data.layers.length; i++) {
@@ -27,10 +27,10 @@ class World {
         }
     }
 
-    get_obj(id){
-        for (var i = 0; i < this.objects.length; i++) {
-            if(this.objects[i].id == id){
-                return this.objects[i];
+    get_entity(id){
+        for (var i = 0; i < this.entities.length; i++) {
+            if(this.entities[i].id == id){
+                return this.entities[i];
             }
         }
     }
@@ -44,11 +44,11 @@ class World {
         else if (action === EAST) dest_x ++;
         else if (action === WEST) dest_x --;
         else return;
-        // look for an object at dest and return it
-        for(let key in this.objects){
-            let obj = this.objects[key]
-            if(obj.x == dest_x && obj.y == dest_y){
-                return obj;
+        // look for an entity at dest and return it
+        for(let key in this.entities){
+            let entity = this.entities[key]
+            if(entity.x == dest_x && entity.y == dest_y){
+                return entity;
             }
         }
         // look for wall at dest

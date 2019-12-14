@@ -4,7 +4,7 @@ const PATH = {
     'world' : 'script/world.json',
     'script' : 'script/',
     'tiled_map' : 'script/map.json',
-    'objects' : 'script/objects/',
+    'entities' : 'script/entities/',
 }
 
 // Utils
