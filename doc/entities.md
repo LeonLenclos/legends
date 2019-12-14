@@ -17,7 +17,7 @@ On peut créer l'attribut qu'on veut. On peut par exemple décider qu'un personn
 
 Certains attributs ont un rôle particulier :
 
-### "id"
+### "id"
 
 C'est l'identifiant de l'entité. ça permet de l'identifier.
 
@@ -74,7 +74,7 @@ Pour chaque action on indique le texte du bouton `"txt":""` et la liste de ce qu
 
 Le moteur du jeu lira le moment du script indiqué par l'attribut `interaction_state`. Si aucun `interaction_state` n'est renseigné, il lira le moment qui s'appelle "start"
 
-#### Les commandes
+#### Les commandes
 
 La syntaxe d'une commande c'est le nom de la commande en MAJUSCULE et les arguments séparés par un espace.
 

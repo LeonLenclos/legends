@@ -119,7 +119,7 @@ On y renseigne les attributs de l'entité.
 
 Un de ces atributs, le `script` défini le scénario de l'interaction qui sera ouverte si on va à la rencontre de l'entité.
 
-**Doc détaillée : (entities)[entities.md]**
+**Doc détaillée : [entities](entities.md)**
 
 ## Barre d'état
 
