@@ -2,8 +2,8 @@
     "json":[
         "world",
         "map",
-        "hero",
         "status_bar_infos",
+        "entities/hero",
         "entities/maison_parents",
         "entities/arbre"
     ],

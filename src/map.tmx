@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="100" height="100" tilewidth="8" tileheight="8" nextobjectid="21">
  <tileset firstgid="1" name="tileset" tilewidth="8" tileheight="8" tilecount="462" columns="21">
-  <image source="game/img/tileset.png" width="168" height="176"/>
+  <image source="../game/assets/img/tileset.png" width="168" height="176"/>
  </tileset>
  <tileset firstgid="463" name="walltileset" tilewidth="8" tileheight="8" tilecount="1" columns="1">
-  <image source="game/img/walltileset.png" width="8" height="8"/>
+  <image source="../game/assets/img/walltileset.png" width="8" height="8"/>
  </tileset>
  <layer name="base" width="100" height="100">
   <data encoding="csv">

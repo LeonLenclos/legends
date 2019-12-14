@@ -3,7 +3,7 @@
         {
             "x":50,
             "y":33,
-            "extra_data":"hero"
+            "extra_data":"entities/hero"
         },
         {
             "x":48,
