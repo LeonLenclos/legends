@@ -17,7 +17,7 @@ On peut créer l'attribut qu'on veut. On peut par exemple décider qu'un personn
 
 Certains attributs ont un rôle particulier :
 
-### "id"
+### "id"
 
 C'est l'identifiant de l'entité. ça permet de l'identifier.
 
