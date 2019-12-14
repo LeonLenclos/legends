@@ -62,6 +62,8 @@ Principaux dossiers et fichiers du projet et rapide résumé de leur rôle.
 
 # Level design
 
+**Attention** : lorsqu'on modifie ou cree des fichiers à respecter les simples mais importantes [conventions d'écriture](conventions.md) !
+
 ## Map
 
 **Rappel** : La map ne contient pas les entitées, uniquement le décors en arrière plan et l'emplacement des murs.
