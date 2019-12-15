@@ -8,7 +8,7 @@ Le jeu contient deux interfaces principales :
 
 ## Interface map
 
-Le joueur se déplace sur une map. Sur la map il ne peut rien faire d'autre que déplacer le `hero` dans 4 directions.
+Sur la map le joueur ne peut rien faire d'autre que déplacer le `hero` dans 4 directions.
 
 ### Murs
 
