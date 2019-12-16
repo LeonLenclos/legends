@@ -8,27 +8,26 @@
             "actions":[
                 {"txt":"Secouer l'arbre", "do":["GOTO secousse", "GIVE +1 or hero"]},
                 {"txt":"Partir.", "do":["EXIT"]}
-
             ]
         },
         "secousse":{
             "txt" : "L'arbre dit qu'il a mal et vous donne une pièce d'or",
             "actions":[
-                {"txt":"Encore !", "do":["GOTO souffrance", "GIVE +1 or hero"]},
+                {"txt":"Secouer encore l'arbre.", "do":["GOTO souffrance", "GIVE +1 or hero"]},
                 {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
             ]
         },
         "souffrance":{
             "txt" : "L'arbre souffre, il vous donne une autre pièce d'or",
             "actions":[
-                {"txt":"Encore !", "do":["GOTO supplication", "GIVE +1 or hero"]},
+                {"txt":"Secouer l'arbre encore plus fort.", "do":["GOTO supplication", "GIVE +1 or hero"]},
                 {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
             ]
         },
         "supplication":{
             "txt" : "L'arbre vous supplie d'arrêter... et vous donne une pièce d'or",
             "actions":[
-                {"txt":"Ne pas tenir compte de sa requête et le secouer encore.", "do":["GOTO aïe", "GIVE +1 or hero"]},
+                {"txt":"Ne pas tenir compte de sa requête et le secouer encore et encore.", "do":["GOTO aïe", "GIVE +1 or hero"]},
                 {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
             ]
           },
