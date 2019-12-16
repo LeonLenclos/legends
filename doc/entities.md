@@ -83,3 +83,4 @@ Voici les commandes disponnibles :
 - `EXIT` : Quitter le mode interaction
 - `GOTO *un_nouveau_state*` : changer l'`interaction_state`, c'est à dire continuer la lecture du script au moment indiqué par `*nouveau_state*`
 - `GIVE *une_quantite un_attrinut une_entite*` : ajouter la quantité indiqué à l'attribut indiqué de l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
+- `SET *une_valeur un_attrinut une_entite*` : donne la valeur indiquée à l'attribut indiqué de l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.

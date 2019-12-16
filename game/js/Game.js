@@ -75,25 +75,7 @@ class Game {
 
     on_action(todos, entity){
         todos.forEach((todo)=>{
-            let splited = todo.split(" ");
-            let command = splited[0];
-            let args = splited.slice(1);
-
-            switch (command){
-                case 'EXIT':
-                    this.open_map();
-                    break;
-                case 'GOTO':
-                    entity.interaction_state = args[0];
-                    break;
-                case 'GIVE':
-                    let amount = Number(args[0]);
-                    let attr = args[1];
-                    let target = args[2] ? this.world.get_entity(args[2]) : entity;
-                    target[attr] = target[attr] ? target[attr] + amount : amount;
-                    console.log('target : ', target)
-                    break;
-            }
+            do_command(this, entity, todo)
         })
         this.interaction_interface.update()
         this.status_bar_interface.update();
