@@ -14,6 +14,7 @@
             "txt" : "L'arbre dit qu'il a mal et vous donne une pièce d'or",
             "actions":[
                 {"txt":"Secouer encore l'arbre.", "do":["GOTO souffrance", "GIVE +1 or hero"]},
+                {"txt":"Rendre la pièce, s'excuser et partir.", "do":["GIVE -1 or hero", "EXIT", "GOTO start"]},
                 {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
             ]
         },
