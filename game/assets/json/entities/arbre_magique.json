@@ -6,7 +6,7 @@
         "start":{
             "txt" : "C'est un arbre magique.",
             "actions":[
-                {"txt":"Secouer l'arbre", "do":["GOTO secousse", "GIVE +1 or hero"]},
+                {"txt":"Secouer l'arbre.", "do":["GOTO secousse", "GIVE +1 or hero"]},
                 {"txt":"Partir.", "do":["EXIT"]}
             ]
         },
