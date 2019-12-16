@@ -9,9 +9,7 @@ class Entity {
         for(let attr in data){
             this[attr] = data[attr];
         }
-        console.log(this.img)
         this.img = assets.png[this.img]
-        console.log(this.img)
         
     }
 
