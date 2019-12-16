@@ -1,0 +1,51 @@
+{
+    "id":"arbre_magique",
+    "img":"entities/arbre2",
+    "title":"Un arbre magique",
+    "script" : {
+        "start":{
+            "txt" : "C'est un arbre magique.",
+            "actions":[
+                {"txt":"Secouer l'arbre", "do":["GOTO secousse", "GIVE +1 or hero"]},
+                {"txt":"Partir.", "do":["EXIT"]}
+
+            ]
+        },
+        "secousse":{
+            "txt" : "L'arbre dit qu'il a mal et vous donne une pièce d'or",
+            "actions":[
+                {"txt":"Encore !", "do":["GOTO souffrance", "GIVE +1 or hero"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        },
+        "souffrance":{
+            "txt" : "L'arbre souffre, il vous donne une autre pièce d'or",
+            "actions":[
+                {"txt":"Encore !", "do":["GOTO supplication", "GIVE +1 or hero"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        },
+        "supplication":{
+            "txt" : "L'arbre vous supplie d'arrêter... et vous donne une pièce d'or",
+            "actions":[
+                {"txt":"Ne pas tenir compte de sa requête et le secouer encore.", "do":["GOTO aïe", "GIVE +1 or hero"]},
+                {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
+            ]
+          },
+          "aïe":{
+              "txt" : "L'arbre ne dit plus rien et vous donne une pièce d'or",
+              "actions":[
+                  {"txt":"Secouer l'arbre.", "do":["GOTO aïe2", "GIVE +1 or hero"]},
+                  {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
+            ]
+          },
+          "aïe2":{
+              "txt" : "L'arbre ne dit plus rien et vous donne une pièce d'or supplémentaire",
+              "actions":[
+                  {"txt":"Secouer encore l'arbre.", "do":["GOTO aïe", "GIVE +1 or hero"]},
+                  {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
+            ]
+        }
+    }
+
+}

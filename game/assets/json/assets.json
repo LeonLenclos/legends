@@ -6,6 +6,7 @@
         "entities/hero",
         "entities/maison_parents",
         "entities/arbre"
+        "entities/arbre_magique"
     ],
     "png":[
         "tileset",
