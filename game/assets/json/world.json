@@ -33,10 +33,16 @@
             "extra_data":"entities/arbre"
         },
         {
-            "x":56,
-            "y":30,
+            "x":58,
+            "y":37,
             "img":"entities/arbre2",
             "extra_data":"entities/arbre_magique"
+        },
+        {
+            "x":57,
+            "y":42,
+            "img":"entities/bateau",
+            "extra_data":"entities/bateau"
         }
     ]
 }

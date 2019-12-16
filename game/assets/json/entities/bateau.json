@@ -1,0 +1,43 @@
+{
+    "img":"entities/bateau",
+    "title":"Un pêcheur sur son bateau.",
+    "script" : {
+        "start":{
+            "txt" : "Salut petit, tu veux aller où?",
+            "actions":[
+                {"txt":"Euh je sais pas... ailleurs?", "do":["GOTO ailleurs"]},
+                {"txt":"Nulle part, je suis très bien ici sur mon île, merci.", "do":["GOTO nulle_part"]},
+                {"txt":"Partir.", "do":["EXIT"]}
+
+            ]
+        },
+        "ailleurs":{
+            "txt" : "Je t'avouerais que de toute façon, y'a qu'un endroit où je vais: la mer.",
+            "actions":[
+                {"txt":"J'aimerais aller voir ce qu'il a après la mer.", "do":["GOTO ailleurs2"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        },
+        "ailleurs2":{
+            "txt" : "Oula, il est ambicieux le petit gars! Ben si tu as 1 pièce d'or, ça peut se négocier.",
+            "actions":[
+                {"txt":"J'ai ça, tiens !", "do":["GOTO voyage", "GIVE -1 or hero"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+        },
+        "nulle_part":{
+            "txt" : "C'est vrai qu'on est bien ici.",
+            "actions":[
+                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+          },
+          "voyage":{
+              "txt" : "Le compte y est petit, c'est parti.",
+              "actions":[
+                  {"txt":"Cool.", "do":["SET 22 x hero", "SET 38 y hero", "SET 22 x", "SET 39 y", "EXIT"]},
+                  {"txt":"Finalement, je préfère rester ici.", "do":["EXIT", "GOTO start"]}
+              ]
+        }
+    }
+
+}

@@ -6,7 +6,8 @@
         "entities/hero",
         "entities/maison_parents",
         "entities/arbre",
-        "entities/arbre_magique"
+        "entities/arbre_magique",
+        "entities/bateau"
     ],
     "png":[
         "tileset",
@@ -14,6 +15,7 @@
         "entities/arbre1",
         "entities/arbre2",
         "entities/statue",
-        "entities/porte"
+        "entities/porte",
+        "entities/bateau"
     ]
 }
