@@ -40,7 +40,7 @@
             ]
           },
           "aïe2":{
-              "txt" : "L'arbre ne dit plus rien et vous donne une pièce d'or supplémentaire",
+              "txt" : "L'arbre ne dit plus rien et vous donne encore une pièce.",
               "actions":[
                   {"txt":"Secouer encore l'arbre.", "do":["GOTO aïe", "GIVE +1 or hero"]},
                   {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
