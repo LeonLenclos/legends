@@ -18,36 +18,33 @@ class Game {
     }
 
     setup_keys(){
-        this.action_was_played = false;
-        this.key_is_down = false;
-        this.key_was_down = false;
-        this.last_key_pressed = undefined;
-        $(document).keydown((e)=>{this.on_key_down(e)})
-        $(document).keyup((e)=>{this.on_key_up(e)})
+        this.input = {};
+        for(let k in KEYS) this.input[KEYS[k]] = false;
+        $(document).keydown((e)=>{this.onkey(e, true)});
+        $(document).keyup((e)=>{this.onkey(e, false)});
     }
 
-    on_key_down(event){
-        if (event.key in KEYS){
-            this.key_is_down = true;
-            this.key_was_down = true;
-            this.last_key_pressed = KEYS[event.key];
-            event.preventDefault();
+    onkey(ev, pressed) {
+        if (ev.key in KEYS){
+            this.input[KEYS[ev.key]] = pressed
+            ev.preventDefault();
         }
     }
-    
-    on_key_up(event){
-        this.key_is_down = false;
-    }
-
 
     on_tick(){
         let now = Date.now();
+        this.action = undefined;
+        for(let act in this.input){
+            if (this.input[act]) this.last_input_action = this.action = Number(act);
+        }
         if(now - this.last_turn > 1000 / TURN_PER_SEC){
             this.last_turn = now;
-            this.action_was_played = this.key_is_down || (this.key_was_down && !this.action_was_played);
-            this.key_was_down = false;
-            let action = this.action_was_played ? this.last_key_pressed : undefined;
-            this.on_turn(action);
+            if (this.action === undefined && this.last_action_played !== this.last_input_action){
+                this.action = this.last_input_action;
+            }
+            this.on_turn(this.action);
+            this.last_action_played = this.action;
+            this.last_input_action = undefined;
         }
         this.map_interface.update();
     }
@@ -63,9 +60,9 @@ class Game {
     }
 
     open_interaction(entity){
-        clearInterval(this.tick_interval);
         this.map_interface.hide();
         this.interaction_interface.show();
+        clearInterval(this.tick_interval);
         this.interaction_interface.open_interaction(entity, (todos)=>this.on_action(todos, entity));
     }
 
