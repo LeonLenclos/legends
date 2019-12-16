@@ -77,6 +77,8 @@ div {
 
 }
 .button {
+    background: #000;
+    color: #fff;
     padding: 10px;
     margin:  10px;
     border: 5px solid #004058;
@@ -87,6 +89,10 @@ div {
     background: #004058;
     border-color: #004058;
     
+}
+.button:disabled, .button:disabled:hover {
+    color: #004058;
+    background: #000;
 }
 
 .button.selected {

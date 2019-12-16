@@ -3,9 +3,9 @@ class Game {
     constructor(){
         this.assets = new Assets(()=>{this.setup()});
         this.world = new World(this.assets);
-        this.map_interface = new MapInterface(this.world, this.assets, 'interface-map');
-        this.interaction_interface = new InteractionInterface(this.world, this.assets, 'interface-interaction');
-        this.status_bar_interface = new StatusBarInterface(this.world, this.assets, 'status-bar');
+        this.map_interface = new MapInterface(this, 'interface-map');
+        this.interaction_interface = new InteractionInterface(this, 'interface-interaction');
+        this.status_bar_interface = new StatusBarInterface(this, 'status-bar');
     }
 
     setup(){
@@ -32,6 +32,7 @@ class Game {
     }
 
     on_tick(){
+
         let now = Date.now();
         this.action = undefined;
         for(let act in this.input){
@@ -50,6 +51,7 @@ class Game {
     }
 
     on_turn(action){
+        
         if([NORTH,EAST,SOUTH,WEST].includes(action)){
             let hero_move_on = this.world.move_hero(action);
             if(hero_move_on){

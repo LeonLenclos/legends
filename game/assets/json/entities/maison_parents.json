@@ -13,7 +13,15 @@
         "frigo":{
             "txt" : "Le frigo est vide...",
             "actions":[
-                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]}
+                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]},
+                {"txt":"Mettre du bois dans le frigo et sortir.", "do":["EXIT", "GOTO bois", "GIVE -1 bois hero"]}
+
+            ]
+        },
+        "bois":{
+            "txt" : "Il y a un mot de ta maman sur la table \"Chéri, est-ce que tu pourrai arrêter de mettre du bois dans le frigo stp ? Bisous.\"",
+            "actions":[
+                {"txt":"Ok.", "do":["GOTO start"]}
             ]
         }
     }

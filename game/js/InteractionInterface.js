@@ -28,11 +28,11 @@ class InteractionInterface extends Interface {
         actions.forEach((action)=>this.create_action(action))
     }
     create_action(action){
-        console.log(action);
-        $('<div/>',{
+        $('<button/>',{
             class:'button'
         })
         .text(action.txt)
+        .attr("disabled", !action.do.every((c)=>doable_command(this.game, this.entity, c)))
         .click(()=>this.action_call_back(action.do))
         .appendTo(this.actions_div);
     }
