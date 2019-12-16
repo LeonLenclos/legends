@@ -5,7 +5,7 @@
         "status_bar_infos",
         "entities/hero",
         "entities/maison_parents",
-        "entities/arbre"
+        "entities/arbre",
         "entities/arbre_magique"
     ],
     "png":[
