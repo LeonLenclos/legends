@@ -12,16 +12,9 @@
             ]
         },
         "ramasser":{
-            "txt" : "Tu ramasses un peu de bois...",
+            "txt" : ["Tu ramasses un peu de bois...","Tu ramasses un peu plus de bois...","Encore du bois"],
             "actions":[
-                {"txt":"Encore !", "do":["GOTO ramasser_bis", "GIVE +1 bois hero"]},
-                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
-            ]
-        },
-        "ramasser_bis":{
-            "txt" : "Tu ramasses un peu plus de bois...",
-            "actions":[
-                {"txt":"Encore !", "do":["GOTO ramasser", "GIVE +1 bois hero"]},
+                {"txt":"Encore !", "do":["GIVE +1 bois hero"]},
                 {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
             ]
         },

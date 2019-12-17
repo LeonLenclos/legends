@@ -76,10 +76,14 @@ class Game {
     }
 
     on_action(todos, entity){
+        let exit = false;
         todos.forEach((todo)=>{
+            if(todo.startsWith('EXIT')){
+                exit=true;
+            }
             do_command(this, entity, todo)
         })
-        this.interaction_interface.update()
+        if(!exit) this.interaction_interface.update();
         this.status_bar_interface.update();
     }
 }

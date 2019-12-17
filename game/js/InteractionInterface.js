@@ -6,8 +6,8 @@ class InteractionInterface extends Interface {
         this.actions_div = $("#interaction-actions")
     }
     open_interaction(entity, action_call_back){
-        this.entity = entity
-        this.action_call_back = action_call_back
+        this.entity = entity;
+        this.action_call_back = action_call_back;
         this.update();
     }
 
@@ -18,7 +18,7 @@ class InteractionInterface extends Interface {
     }
 
     set_text(txt){
-        this.text_div.text(txt);
+        this.text_div.text(txt.read());
     }
     set_title(txt){
         this.title_div.text(txt);
@@ -31,7 +31,7 @@ class InteractionInterface extends Interface {
         $('<button/>',{
             class:'button'
         })
-        .text(action.txt)
+        .text(action.txt.read())
         .attr("disabled", !action.do.every((c)=>doable_command(this.game, this.entity, c)))
         .click(()=>this.action_call_back(action.do))
         .appendTo(this.actions_div);
