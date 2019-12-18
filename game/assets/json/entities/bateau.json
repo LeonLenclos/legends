@@ -34,9 +34,23 @@
           "voyage":{
               "txt" : "Le compte y est petit, c'est parti.",
               "actions":[
-                  {"txt":"Cool.", "do":["SET 22 x hero", "SET 38 y hero", "SET 22 x", "SET 39 y", "EXIT"]},
+                  {"txt":"Cool.", "do":["SET 22 x hero", "SET 38 y hero", "SET 22 x", "SET 39 y", "EXIT", "GOTO mini_ile"]},
                   {"txt":"Finalement, je préfère rester ici.", "do":["EXIT", "GOTO start"]}
               ]
+            },
+            "mini_ile":{
+                "txt" : "\"Voilà, on y est.\"",
+                "actions":[
+                    {"txt":"\"Euh... y'a pas un autre endroit plus sympa?\"", "do":["GOTO endroit_sympa"]},
+                    {"txt":"\"Je veux bien rentrer chez moi s'il vous plaît, je m'ennuie ici.\"", "do":["SET 56 x hero", "SET 42 y hero", "SET 57 x", "SET 42 y", "EXIT","GOTO start"]}
+                ]
+              },
+              "endroit_sympa":{
+                  "txt" : "\"Et bien oui, mais là ça va vous coûter 2 pièces d'or.\"",
+                  "actions":[
+                      {"txt":"\"J'ai ça!! On y va.\"", "do":["GIVE -2 or hero","SET 89 x hero", "SET 40 y hero", "SET 88 x", "SET 39 y", "EXIT"]},
+                      {"txt":"\"Je n'ai pas autant d'argent.. Ramenez moi chez moi s'il vous plaît..\"", "do":["SET 56 x hero", "SET 42 y hero", "SET 57 x", "SET 42 y", "EXIT","GOTO start"]}
+                  ]
         }
     }
 
