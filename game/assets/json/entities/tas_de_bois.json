@@ -1,0 +1,13 @@
+{
+    "img":"entities/tas_de_bois",
+    "title":"Un tas de bois.",
+    "script" : {
+        "start":{
+            "txt" : "C'est le tas de bois du bucheron.",
+            "actions":[
+                {"txt":["Voler quelques bûches.", "Voler encore quelques bûches."], "do":["GOTO", "GIVE +10 bois hero"]},
+                {"txt":"Partir.", "do":["EXIT"]}
+            ]
+        }
+    }
+}

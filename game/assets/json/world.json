@@ -29,7 +29,7 @@
         },
         {
             "x":55,
-            "y":23,
+            "y":24,
             "extra_data":"entities/arbre"
         },
         {
@@ -43,6 +43,11 @@
             "y":42,
             "img":"entities/bateau",
             "extra_data":"entities/bateau"
+        },
+        {
+            "x":57,
+            "y":31,
+            "extra_data":"entities/tas_de_bois"
         }
     ]
 }
