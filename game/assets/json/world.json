@@ -48,6 +48,26 @@
             "x":57,
             "y":31,
             "extra_data":"entities/tas_de_bois"
+        },
+        {
+            "x":104,
+            "y":23,
+            "extra_data":"entities/agri_p1"
+        },
+        {
+            "x":107,
+            "y":23,
+            "extra_data":"entities/agri_p2"
+        },
+        {
+            "x":110,
+            "y":23,
+            "extra_data":"entities/agri_p3"
+        },
+        {
+            "x":113,
+            "y":23,
+            "extra_data":"entities/agri_p4"
         }
     ]
 }

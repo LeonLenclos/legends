@@ -1,0 +1,21 @@
+{
+    "id":"agri_p2",
+    "img":"entities/porte",
+    "title":"Maison d'un agriculteur.",
+    "script" : {
+        "start":{
+            "txt" : "La porte est fermée.",
+            "actions":[
+                {"txt":"Sortir.", "do":["EXIT"]},
+                {"txt":"Forcer la porte.", "do":["GOTO forcer","GIVE +1 voyou hero"]}
+            ]
+        },
+        "forcer":{
+            "txt" : "La porte ne s'ouvre pas",
+            "actions":[
+                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]}
+            ]
+            }
+    }
+
+}

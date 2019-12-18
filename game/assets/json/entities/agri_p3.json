@@ -1,0 +1,41 @@
+{
+    "id":"agri_p3",
+    "img":"entities/porte",
+    "title":"Maison d'un agriculteur.",
+    "script" : {
+        "start":{
+            "txt" : "La porte est entre-ouverte, la lumière est allumée.",
+            "actions":[
+                {"txt":"Rentrer.", "do":["GOTO rentrer","GIVE +1 voyou hero"]},
+                {"txt":"Sortir.", "do":["EXIT"]}
+            ]
+        },
+        "rentrer":{
+            "txt" : "Un paysan dit: \"Mais! Que faites vous chez moi??\"",
+            "actions":[
+              {"txt":"\"Ah pardon je croyais que c'était une auberge\".", "do":["EXIT"]},
+              {"txt":"\"Bonjour, je suis le fils de Brandembourg.\"", "do":["GOTO filsde"]}
+            ]
+          },
+          "filsde":{
+              "txt" : "\"Je ne vois pas le rapport avec ma question! Sortez immédiatement d'ici!\" ",
+              "actions":[
+                {"txt":"\"Excusez moi, je m'en vais de ce pas... Une dernière question, qu'elle est cette plante que vous cultivez devant la maison?\".", "do":["GOTO plante"]},
+                {"txt":"Sortir.", "do":["EXIT"]}
+            ]
+          },
+          "plante":{
+              "txt" : "\"Ça ne vous regarde pas, sortez!\"",
+              "actions":[
+                  {"txt":"Sortir.", "do":["EXIT","GOTO sortez"]}
+                  ]
+                },
+                "sortez":{
+                    "txt" : "\"Sortez!\"",
+                    "actions":[
+                        {"txt":"Sortir.", "do":["EXIT","GOTO sortez"]}
+                  ]
+          }
+    }
+
+}
