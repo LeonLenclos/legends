@@ -11,7 +11,7 @@
             ]
         },
         "secousse":{
-            "txt" : "L'arbre dit qu'il a mal et vous donne une pièce d'or",
+            "txt" : "L'arbre dit qu'il a mal et donne une pièce d'or.",
             "actions":[
                 {"txt":"Secouer encore l'arbre.", "do":["GOTO souffrance", "GIVE +1 or hero"]},
                 {"txt":"Rendre la pièce, s'excuser et partir.", "do":["GIVE -1 or hero", "EXIT", "GOTO start"]},
@@ -19,31 +19,24 @@
             ]
         },
         "souffrance":{
-            "txt" : "L'arbre souffre, il vous donne une autre pièce d'or",
+            "txt" : "L'arbre souffre, il donne une autre pièce d'or.",
             "actions":[
                 {"txt":"Secouer l'arbre encore plus fort.", "do":["GOTO supplication", "GIVE +1 or hero"]},
                 {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
             ]
         },
         "supplication":{
-            "txt" : "L'arbre vous supplie d'arrêter... et vous donne une pièce d'or",
+            "txt" : "L'arbre vous supplie d'arrêter... et donne une pièce d'or.",
             "actions":[
                 {"txt":"Ne pas tenir compte de sa requête et le secouer encore et encore.", "do":["GOTO aïe", "GIVE +1 or hero"]},
-                {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
+                {"txt":"Laisser l'arbre tranquille.", "do":["EXIT", "GOTO start"]}
             ]
           },
           "aïe":{
-              "txt" : "L'arbre ne dit plus rien et vous donne une pièce d'or",
+              "txt" : ["L'arbre ne dit rien et donne une pièce d'or.","L'arbre est silencieux et donne encore une pièce.","L'arbre donne une pièce d'or sans rien dire.","L'arbre fait le mort et donne une pièce.","L'arbre reste inexpressif et donne une pièce."],
               "actions":[
-                  {"txt":"Secouer l'arbre.", "do":["GOTO aïe2", "GIVE +1 or hero"]},
-                  {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
-            ]
-          },
-          "aïe2":{
-              "txt" : "L'arbre ne dit plus rien et vous donne encore une pièce.",
-              "actions":[
-                  {"txt":"Secouer encore l'arbre.", "do":["GOTO aïe", "GIVE +1 or hero"]},
-                  {"txt":"Laisser l'arbre tranquile.", "do":["EXIT", "GOTO start"]}
+                  {"txt":["Secouer l'arbre.","Secouer encore l'arbre."], "do":["GIVE +1 or hero"]},
+                  {"txt":["Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","N'avez vous donc pas peur des représailles???"],"do":["EXIT", "GOTO start"]}
             ]
         }
     }

@@ -12,7 +12,8 @@
         "entities/agri_p1",
         "entities/agri_p2",
         "entities/agri_p3",
-        "entities/agri_p4"
+        "entities/agri_p4",
+        "entities/cabanon_bucheron"
     ],
     "png":[
         "tileset",
