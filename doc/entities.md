@@ -57,6 +57,9 @@ exemple de script :
             ]
         },
         "coucou":{
+            "auto_actions" : [
+                {"do":["COMMAND"]}
+            ]
             "txt" : "blablablabla",
             "actions":[
                 {"txt":"blabla.", "do":["COMMANDE"]}
@@ -66,9 +69,9 @@ exemple de script :
 
 Donc en gros on a differents moments qui ont chacun un nom (dans l'exemple les noms sont "start" et "coucou").
 
-Pour chaque moment on indique le texte à afficher `"txt":""` et la liste des actions que l'on propose `"actions":[]`
+Pour chaque moment on peut indiquer le texte à afficher `"txt":""` la liste des actions que l'on propose `"actions":[]`. et la liste des actions automatiques `"auto_actions":[]`
 
-Pour chaque action on indique le texte du bouton `"txt":""` et la liste de ce qu'il faut faire `"do":[]`
+Pour chaque action on indique le texte du bouton `"txt":""` et la liste de ce qu'il faut faire `"do":[]`. Si une seule des commandes de `do` est invalide, aucune ne sera executés.
 
 #### Lecture du script
 
@@ -84,3 +87,4 @@ Voici les commandes disponnibles :
 - `GOTO *un_nouveau_state*` : changer l'`interaction_state`, c'est à dire continuer la lecture du script au moment indiqué par `*nouveau_state*`
 - `GIVE *une_quantite un_attrinut une_entite*` : ajouter la quantité indiqué à l'attribut indiqué de l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
 - `SET *une_valeur un_attrinut une_entite*` : donne la valeur indiquée à l'attribut indiqué de l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
+- `COMPARE` *valeur_a opérateur_de_comparaison valeur_b* : n'est valide que si la comparaison est vrai. valeur_a et valeur_b peuvent être un nombre (ex: `50`), un attribut de l'entité en cours (ex: `or`), ou en deux mots l'attribut et l'id d'une entité (ex: `or hero`). L'opérateur peut être `<` inferieur,  `>` supérieur, `=` égal, `>=` supérieur ou égal,  `<=` inférieur ou égal  , `!=` non-égal.
