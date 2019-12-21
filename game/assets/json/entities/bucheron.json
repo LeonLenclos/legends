@@ -1,0 +1,30 @@
+{
+    "id":"bucheron",
+    "img":"entities/humain4",
+    "title":"Bûcheron.",
+    "script" : {
+        "start":{
+            "auto_actions" : [
+              {"do":["COMPARE bois hero > 0", "GOTO bois"]}
+            ],
+            "txt" : "Bonjour bonhomme ! Tu veux de l'or ?",
+            "actions":[
+                {"txt":"Oh oui !", "do":["GOTO travail"]},
+                {"txt":"Non merci.", "do":["EXIT"]}            ]
+          },
+          "travail":{
+            "txt" : "Va me chercher du bois et je te donnerai de l'or en échange !",
+            "actions":[
+                {"txt":"D'accord !", "do":["EXIT", "GOTO start"]}
+            ]
+          },
+           "bois":{
+            "txt" : "Alors bonhomme, je vois que tu as du bois ! Je t'échange 10 bûches contre une pièce d'or.",
+            "actions":[
+                {"txt":"Marché conclu !", "do":["GIVE -10 bois hero", "GIVE +1 or hero"]},
+                {"txt":"Non merci !", "do":["EXIT", "GOTO start"]}
+            ]
+          }
+    }
+
+}

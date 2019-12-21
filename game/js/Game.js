@@ -48,6 +48,7 @@ class Game {
             this.last_input_action = undefined;
         }
         this.map_interface.update();
+        // console.log(Date.now()-now);
     }
 
     on_turn(action){
@@ -65,6 +66,10 @@ class Game {
         this.map_interface.hide();
         this.interaction_interface.show();
         clearInterval(this.tick_interval);
+
+        if(entity.read_script().auto_actions){
+            entity.read_script().auto_actions.forEach((a)=>{this.on_action(a.do, entity)})
+        }
         this.interaction_interface.open_interaction(entity, (todos)=>this.on_action(todos, entity));
     }
 
@@ -77,6 +82,9 @@ class Game {
 
     on_action(todos, entity){
         let exit = false;
+        if(!todos.every((c)=>doable_command(this, entity, c))){
+            return;
+        }
         todos.forEach((todo)=>{
             if(todo.startsWith('EXIT')){
                 exit=true;

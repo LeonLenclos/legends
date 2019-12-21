@@ -39,7 +39,52 @@ const commands = {
             target[attr] = value;
         },
         doable:(g, e, a)=>true
+    },
+    COMPARE:{
+    do:(g, e, a)=>{return;},
+    doable:(g, e, a)=>{
+        let operators = ['<', '>', '=', '<=', '>=', '!=']
+        let i = 0;
+        let value_a, value_b;
+        //value a
+        if(!isNaN(Number(a[i]))){
+            value_a = Number(a[i]);
+            i++;
+        } else {
+            let attr = a[i];
+            i++;
+            let target = e;
+            if(!operators.includes(a[i])){
+                target = g.world.get_entity(a[i])
+                i++;
+            }
+            value_a = target[attr];
+        }
+        // op
+        let operator = a[i];
+        i++;
+        // value b
+        if(!isNaN(Number(a[i]))){
+        value_b = Number(a[i]);
+        i++;
+        } else {
+            let attr = a[i];
+            i++;
+            let target = a[i] ? g.world.get_entity(a[i]) : e;
+            value_b = target[attr];
+        }
+        // compare
+        console.log(value_a, operator, value_b);
+        if (operator == '<') return value_a < value_b;
+        if (operator == '<=') return value_a <= value_b;
+        if (operator == '>') return value_a > value_b;
+        if (operator == '>=') return value_a >= value_b;
+        if (operator == '=') return value_a == value_b;
+        if (operator == '!=') return value_a != value_b;
+
+
     }
+}
 }
 
 function split_command(c) {

@@ -66,7 +66,6 @@ class MapInterface extends Interface {
     render_tile(tile_idx, x, y, ctx){
         if (!tile_idx) {return;}
 
-
         let canvas_x = x * TILE_SIZE;
         let canvas_y = y * TILE_SIZE;
 
@@ -83,16 +82,12 @@ class MapInterface extends Interface {
 
     render_layer(layer, ctx){
         // call render_tile for each tile
-
-        layer.data.forEach((tile_idx, i)=>{
-            let pos_x = (i % layer.width) + this.offset_x;
-            let pos_y = ~~(i / layer.width) + this.offset_y;
-
-            if(this.is_visible(pos_x, pos_y)){
-
-                this.render_tile(tile_idx, pos_x, pos_y, ctx)
+        for (let x = 0-this.offset_x; x < MAP_WIDTH-this.offset_x; x++) {
+            for (let y = 0-this.offset_y; y < MAP_HEIGHT-this.offset_y; y++) {
+                let i = y*layer.width + x;
+                this.render_tile(layer.data[i], x+this.offset_x, y+this.offset_y, ctx)
             }
-        }, this);
+        }   
     }
 
     render_layers(ctx){

@@ -5,6 +5,12 @@
             "y":32,
             "extra_data":"entities/hero"
         },
+
+        {
+            "x":57,
+            "y":35,
+            "extra_data":"entities/bucheron"
+        },
         {
             "x":48,
             "y":30,

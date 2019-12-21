@@ -13,11 +13,16 @@
         "entities/agri_p2",
         "entities/agri_p3",
         "entities/agri_p4",
-        "entities/cabanon_bucheron"
+        "entities/cabanon_bucheron",
+        "entities/bucheron"
     ],
     "png":[
         "tileset",
         "entities/hero",
+        "entities/humain1",
+        "entities/humain2",
+        "entities/humain3",
+        "entities/humain4",
         "entities/arbre1",
         "entities/arbre2",
         "entities/statue",
