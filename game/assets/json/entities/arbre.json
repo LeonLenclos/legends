@@ -3,6 +3,9 @@
     "title":"Un arbre.",
     "script" : {
         "start":{
+          "auto_actions": [
+            {"do":["COMPARE hache hero > 0", "GOTO bois"]}
+          ],
             "txt" : "C'est un vrai arbre.",
             "actions":[
                 {"txt":"Ramasser du bois.", "do":["GOTO ramasser", "GIVE +1 bois hero"]},
@@ -23,6 +26,21 @@
             "actions":[
                 {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
             ]
+          },
+          "bois":{
+              "txt" : "C'est un vrai arbre.",
+              "actions":[
+                {"txt":"Couper du bois à la hache.", "do":["GOTO hache", "GIVE +4 bois hero"]},
+                {"txt":"Ramasser du bois à la main.", "do":["GOTO ramasser", "GIVE +1 bois hero"]},
+                  {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+            ]
+          },
+          "hache":{
+              "txt" : ["Tu coupes du bois.","Tu coupes toujours du bois.","Encore du bois."],
+              "actions":[
+                  {"txt":"Couper du bois.", "do":["GIVE +4 bois hero"]},
+                  {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+              ]
         }
     }
 
