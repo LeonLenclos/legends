@@ -10,6 +10,12 @@ class S(BaseHTTPRequestHandler):
         self.path = self.path.split('?')[0]
         if self.path == '/':
             self.path = '/editor/index.html'
+        if self.path.split('.')[1] == 'html':
+            content_type = 'text/html'
+        elif self.path.split('.')[1] == 'json':
+            content_type = 'text/json'
+        else :
+            content_type = None
         try:
             with open('.' + self.path, "r") as f:
                 page = f.read()
@@ -18,6 +24,8 @@ class S(BaseHTTPRequestHandler):
         except IOError:
             self.send_response(404)
             page = ""; 
+        self.send_header('Content-type', content_type)
+
         self.end_headers()
 
         self.wfile.write(page)
