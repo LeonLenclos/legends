@@ -10,12 +10,13 @@ class S(BaseHTTPRequestHandler):
         self.path = self.path.split('?')[0]
         if self.path == '/':
             self.path = '/editor/index.html'
-        if self.path.split('.')[1] == 'html':
-            content_type = 'text/html'
-        elif self.path.split('.')[1] == 'json':
-            content_type = 'text/json'
-        else :
-            content_type = None
+
+        ext = self.path.split('.')[1]
+        if ext == 'html': content_type = 'text/html'
+        elif ext == 'json': content_type = 'text/json'
+        elif ext == 'js': content_type = 'application/javascript'
+        elif ext == 'png': content_type = 'image/png'
+        else : content_type = None
         try:
             with open('.' + self.path, "r") as f:
                 page = f.read()
