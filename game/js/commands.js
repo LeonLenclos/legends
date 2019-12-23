@@ -12,7 +12,15 @@ const commands = {
         doable:(g, e, a)=>true
     },
     GOTO:{
-        do:(g, e, a)=>{e.interaction_state = a[0];},
+        do:(g, e, a)=>{
+            let target = a[1] ? g.world.get_entity(a[1]) : e;
+            target.interaction_state = a[0];
+            if(!a[1] && target.read_script().auto_actions){
+                target.read_script().auto_actions.forEach((a)=>{
+                    g.on_action(a.do, target)
+                })
+            }
+        },
         doable:(g, e, a)=>true
     },
     GIVE:{
@@ -37,6 +45,15 @@ const commands = {
             let attr = a[1];
             let target = a[2] ? g.world.get_entity(a[2]) : e;
             target[attr] = value;
+        },
+        doable:(g, e, a)=>true
+    },
+    SETIMAGE:{
+        do:(g, e, a)=>{
+            let value =  a[0];
+            let target = a[1] ? g.world.get_entity(a[1]) : e;
+            target.set_image(value);
+            target
         },
         doable:(g, e, a)=>true
     },
@@ -74,7 +91,7 @@ const commands = {
             value_b = target[attr];
         }
         // compare
-        console.log(value_a, operator, value_b);
+        console.log('compare : ', value_a, operator, value_b, '?');
         if (operator == '<') return value_a < value_b;
         if (operator == '<=') return value_a <= value_b;
         if (operator == '>') return value_a > value_b;
@@ -95,6 +112,7 @@ function split_command(c) {
 }
 
 function do_command(g, e, c) {
+    console.log('do : ' + c)
     let command = commands[split_command(c).name];
     let args = split_command(c).args;
     if(command.doable(g, e, args)){

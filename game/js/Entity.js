@@ -2,6 +2,7 @@ class Entity {
 
     constructor(data, assets){
         // Position and direction of the Hero in the map
+        this.assets = assets;
         let extra_data = assets.json[data.extra_data];
         for(let attr in extra_data){
             this[attr] = extra_data[attr];
@@ -9,7 +10,7 @@ class Entity {
         for(let attr in data){
             this[attr] = data[attr];
         }
-        this.img = assets.png[this.img]
+        this.set_image(this.img)
         if(this.script){
             for(let moment in this.script){
                 this.script[moment].txt = new ScriptText(this.script[moment].txt)
@@ -20,6 +21,13 @@ class Entity {
         }
     }
 
+    set_image(img){
+        if(img){
+            this.img = this.assets.png[img]
+        } else {
+            this.img = undefined;
+        }
+    }
     get_interaction_state(){
         return this.interaction_state || 'start';
     }

@@ -57,7 +57,7 @@ class MapInterface extends Interface {
         entities.forEach((o)=>{
             let pos_x = o.x + this.offset_x;
             let pos_y = o.y + this.offset_y;
-            if(this.is_visible(pos_x, pos_y)){
+            if(this.is_visible(pos_x, pos_y) && o.img && !o.invisible){
                 this.render_entity(o.img, pos_x, pos_y, ctx)
             }
         }, this);

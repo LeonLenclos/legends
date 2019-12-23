@@ -12,11 +12,13 @@
     "entities/hero", 
     "entities/arbre_magique", 
     "entities/maison_parents", 
+    "entities/carotte", 
     "entities/bateau", 
     "entities/agri_p4", 
     "entities/agri_p1", 
     "entities/tas_de_bois", 
-    "entities/agri_p3"
+    "entities/agri_p3", 
+    "entities/lola"
   ], 
   "png": [
     "walltileset", 
@@ -24,8 +26,10 @@
     "entities/bateau", 
     "entities/hero-e", 
     "entities/tas_de_bois", 
+    "entities/carottes2", 
     "entities/statue", 
     "entities/hero-n", 
+    "entities/carottes1", 
     "entities/humain1", 
     "entities/hero", 
     "entities/hero-w", 

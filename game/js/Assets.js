@@ -1,6 +1,7 @@
 // cf https://stackoverflow.com/questions/14465177/multiple-ajax-calls-wait-for-last-one-to-load-then-execute
 
 class Assets {
+
     constructor(call_back){
         this.asyncs = [];
         this.png = {};
@@ -12,6 +13,8 @@ class Assets {
     }
 
     load(list, call_back){
+        console.log('START LOADING ASSETS')
+
         list.png.forEach((png_name)=>{this.add_png(png_name)});
         list.json.forEach((json_name)=>{this.add_json(json_name)});
         this.when_finished(call_back);
@@ -28,7 +31,10 @@ class Assets {
             this.json[name] = data
             console.log('loaded json : ' + name)
         })
-        .fail((jqXHR, textStatus, errorThrown)=>console.log(textStatus, errorThrown, "loading : " + name));
+        .fail((jqXHR, textStatus, errorThrown)=>{
+            console.log('ERROR !! (loading : '+name+')')
+            console.log(textStatus, errorThrown)
+        });
         this.asyncs.push(async);
         return async;
     }

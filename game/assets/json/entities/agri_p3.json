@@ -35,7 +35,76 @@
                     "actions":[
                         {"txt":"Sortir.", "do":["EXIT","GOTO sortez"]}
                   ]
-          }
+          },
+          "embauche":{
+          "txt" : "La porte est entre-ouverte, la lumière est allumée.",
+            "actions":[
+                {"txt":"Sonner.", "do":["GOTO sonner"]},
+                {"txt":"Partir.", "do":["EXIT"]}
+            ]
+          },
+          "sonner":{
+          "txt" : "Le paysan : \"Qu'est-ce qu'il y a encore ?\"",
+            "actions":[
+                {"txt":"Lola m'a dit que vous cherchiez un travailleur.", "do":["GOTO aroser"]}
+            ]
+        },
+        "aroser":{
+          "txt" : "\"Prend cet arosoir et va aroser les pousses de carottes à l'est de la ferme !\"",
+            "actions":[
+                {"txt":"Euh... D'accord monsieur", "do":["EXIT", "GIVE +1 arosoir hero", "GOTO aroser2", "SET 1 invisible lola"]}
+            ]
+        },
+        "aroser2":{
+          "auto_actions":[
+            {"do":["COMPARE arosage hero = 6", "GOTO ramasser"]}
+          ],
+          "txt" : "\"Va aroser toutes les pousses de carottes à l'est de la ferme !\"",
+            "actions":[
+                {"txt":"Oui monsieur.", "do":["EXIT"]}
+            ]
+        },
+        "ramasser":{
+          "txt" : "\"Prend cette bêche et va ramasser les carottes.\"",
+            "actions":[
+                {"txt":"Oui monsieur.", "do":["EXIT", "GIVE -1 arosoir hero","GIVE +1 beche hero", "GOTO ramasser2"]}
+            ]
+        },
+        "ramasser2":{
+          "auto_actions":[
+            {"do":["COMPARE carottes hero = 24", "GOTO planter"]}
+          ],
+          "txt" : "\"Va ramasser les carottes !\"",
+            "actions":[
+                {"txt":"Oui monsieur.", "do":["EXIT"]}
+            ]
+        },
+        "planter":{
+          "txt" : "\"Prend ces graines et va planter des carottes.\"",
+            "actions":[
+                {"txt":"Oui monsieur.", "do":["EXIT", "GIVE +24 graines_carottes hero", "GIVE -24 carottes hero","GIVE -1 beche hero", "GOTO planter2"]}
+            ]
+        },
+        "planter2":{
+          "auto_actions":[
+            {"do":["COMPARE graines_carottes hero = 0", "GOTO payer"]}
+          ],
+          "txt" : "\"Va planter les carottes !\"",
+            "actions":[
+                {"txt":"Oui monsieur.", "do":["EXIT"]}
+            ]
+          },
+        "payer":{
+          "auto_actions":[
+            {"do":["GIVE 50 or hero"]}
+          ],
+
+          "txt" : "\"Voilà ta paie ! 50 pièces d'or.\"",
+            "actions":[
+                {"txt":"Merci monsieur.", "do":["GOTO aroser"]}
+            ]
+        }
+
     }
 
 }

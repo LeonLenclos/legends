@@ -22,8 +22,11 @@ class Interface {
 
     show(){
         this.container.show()
+        this.visible = true;
     }
     hide(){
         this.container.hide()
+        this.visible = false;
+
     }
 }

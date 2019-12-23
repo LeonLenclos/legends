@@ -8,7 +8,23 @@ class Game {
         this.status_bar_interface = new StatusBarInterface(this, 'status-bar');
     }
 
+    debug(command){
+        let hero = this.world.get_entity('hero');
+        if(command){
+            this.on_action([command], hero);
+        }
+        else{
+            console.log('DEBUG !');
+            console.log('-------');
+            console.log('The hero : ', hero);
+            console.log('The world : ', this.world)
+            console.log('type `debug("COMMAND")` to run a command (default entity is the hero)')    
+        }
+        
+    }
     setup(){
+        console.log('ASSETS LOADED !')
+
         this.world.setup();
         this.map_interface.setup();
         this.interaction_interface.setup();
@@ -91,7 +107,7 @@ class Game {
             }
             do_command(this, entity, todo)
         })
-        if(!exit) this.interaction_interface.update();
+        if(!exit && this.interaction_interface.visible) this.interaction_interface.update();
         this.status_bar_interface.update();
     }
 }

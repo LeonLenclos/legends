@@ -47,7 +47,7 @@ class World {
         // look for an entity at dest and return it
         for(let key in this.entities){
             let entity = this.entities[key]
-            if(entity.x == dest_x && entity.y == dest_y){
+            if(entity.x == dest_x && entity.y == dest_y && !entity.invisible){
                 return entity;
             }
         }
