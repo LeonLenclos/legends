@@ -1,0 +1,38 @@
+{
+    "id":"lola",
+    "img":"entities/humain1",
+    "title":"Une jeune fille.",
+    "script" : {
+        "start":{
+            "txt" : "Bonjour, je suis Lola et je travail à la ferme",
+            "actions":[
+                {"txt":"Je cherche du travail.", "do":["GOTO travailler"]},
+                {"txt":"Ok, à plus Lola !", "do":["EXIT"]}
+            ]
+        },
+        "travailler":{
+            "txt" : "Ah ! Ça tombe bien. Je vais quitter la ferme, ils cherchent donc quelqu'un pour me remplacer !",
+            "actions":[
+              {"txt":"Super ! Que dois-je faire ?", "do":["GOTO embauche"]},
+              {"txt":"Ok... Mais pourquoi tu quitte la ferme ?", "do":["GOTO pourquoi"]}
+            ]
+          },
+          "pourquoi":{
+              "txt" : "C'est un travail est dûr, répétitif, peu gratifiant et mal payé.",
+              "actions":[
+                {"txt":"Tant que c'est payé ça me va.", "do":["GOTO embauche"]},
+                {"txt":"Bon... je vais réfléchir.", "do":["EXIT", "GOTO start"]}
+            ]
+          },
+          "embauche":{
+              "auto_actions":[
+                {"do":["GOTO embauche agri_p3"]}
+              ],
+              "txt" : "Va voir le fermier de ma part, c'est la troisième porte !",
+              "actions":[
+                  {"txt":"Merci Lola !", "do":["EXIT"]}
+                ]
+          }
+        }
+    }
+

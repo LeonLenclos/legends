@@ -1,0 +1,45 @@
+{
+    "img":"entities/carottes1",
+    "title":"Plantation de carotte.",
+    "script" : {
+        "start":{
+            "txt" : "Quatre pousses de carottes poussent",
+            "actions":[
+                {"txt":"Aroser.", "do":[
+                  "COMPARE arosoir hero > 0",
+                  "SETIMAGE entities/carottes2",
+                  "GIVE +1 arosage hero",
+                  "GOTO ramasser",
+                  "EXIT"
+                ]},
+                {"txt":"Partir.", "do":["EXIT"]}
+            ]
+        },
+        "ramasser":{
+            "txt" : "Quatre belles carottes prêtent à être ramassées.",
+            "actions":[
+                {"txt":"Ramasser.", "do":[
+                  "COMPARE beche hero > 0",
+                  "SETIMAGE 0",
+                  "GIVE +4 carottes hero",
+                  "GOTO planter",
+                  "EXIT"
+                ]},
+                {"txt":"Partir.", "do":["EXIT"]}
+            ]
+          },
+        "planter":{
+            "txt" : "De la terre.",
+            "actions":[
+                {"txt":"Planter des carottes.", "do":[
+                  "SETIMAGE entities/carottes1",
+                  "GIVE -4 graines_carottes hero",
+                  "GOTO start",
+                  "EXIT"
+                ]},
+                {"txt":"Partir.", "do":["EXIT"]}
+            ]
+          }        
+        }
+    }
+
