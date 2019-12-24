@@ -1,70 +1,194 @@
 {
-    "img":"entities/bateau",
-    "title":"Un pêcheur sur son bateau.",
-    "script" : {
-        "start":{
-            "txt" : "Salut petit, tu veux aller où?",
-            "actions":[
-                {"txt":"Ailleurs qu'ici.", "do":["GOTO ailleurs"]},
-                {"txt":"Nulle part, je suis très bien ici sur mon île, merci.", "do":["GOTO nulle_part"]},
-                {"txt":"Sortir.", "do":["EXIT"]}
-
-            ]
+  "img": "entities/bateau",
+  "title": "Un pêcheur sur son bateau.",
+  "script": {
+    "start": {
+      "txt": "Salut petit, tu veux aller où?",
+      "actions": [
+        {
+          "txt": "Ailleurs qu'ici.",
+          "do": [
+            "GOTO ailleurs"
+          ]
         },
-        "ailleurs":{
-            "txt" : "Y'a qu'un endroit où je vais: la mer.",
-            "actions":[
-                {"txt":"J'aimerais aller voir ce qu'il a après la mer.", "do":["GOTO ailleurs2"]},
-                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]}
-            ]
+        {
+          "txt": "Nulle part, je suis très bien ici sur mon île, merci.",
+          "do": [
+            "GOTO nulle_part"
+          ]
         },
-        "ailleurs2":{
-            "txt" : "Il est ambicieux le petit gars! Ben si t'as 1 pièce d'or, ça peut se négocier.",
-            "actions":[
-                {"txt":"Je les ai! On peux y aller.", "do":["GIVE -1 or hero","SET 22 x hero", "SET 38 y hero", "SET 22 x", "SET 39 y", "EXIT", "GOTO mini_ile"]},
-                {"txt":"Je reviendrais plus tard peut être.", "do":["EXIT", "GOTO start"]}
-            ]
-        },
-        "nulle_part":{
-            "txt" : "C'est vrai qu'on est bien ici.",
-            "actions":[
-                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]}
-              ]
-            },
-            "mini_ile":{
-                "txt" : "\"Voilà, on y est.\"",
-                "actions":[
-                    {"txt":"\"Y'a pas un autre endroit plus sympa?...\"", "do":["GOTO endroit_sympa"]},
-                    {"txt":"\"Je veux rentrer chez moi, je m'ennuie ici.\"", "do":["SET 56 x hero", "SET 42 y hero", "SET 57 x", "SET 42 y", "EXIT","GOTO start"]}
-                ]
-              },
-              "endroit_sympa":{
-                  "txt" : "\"Si mais là ça va coûter 2 pièces d'or.\"",
-                  "actions":[
-                      {"txt":"\"J'ai ça! On y va.\"", "do":["GIVE -2 or hero","SET 87 x hero", "SET 40 y hero", "SET 87 x", "SET 39 y", "EXIT","GOTO ilededepart"]},
-                      {"txt":"\"Je n'ai pas autant d'argent! Ramenez moi chez moi svp.\"", "do":["SET 56 x hero", "SET 42 y hero", "SET 57 x", "SET 42 y", "EXIT","GOTO ilededepart"]}
-                      ]
-                    },
-                "ilededepart":{
-                    "txt" : "\"Tu veux rentrer chez toi? 2 pièce d'or.\"",
-                    "actions":[
-                        {"txt":"\"Oui!\"", "do":["GIVE -2 or hero","SET 56 x hero", "SET 42 y hero", "SET 57 x", "SET 42 y", "EXIT","GOTO continent"]},
-                        {"txt":"\"Fais chier...\"", "do":["EXIT"]}
-                    ]
-                  },
-                "continent":{
-                    "txt" : ["\"J'imagine que tu veux aller au continent? Bon tu connais le prix.\"","\"Tu veux aller au continent? 2 pièce d'or.\""],
-                    "actions":[
-                      {"txt":"\"Oui, c'est parti!\"", "do":["GIVE -2 or hero","SET 87 x hero", "SET 40 y hero", "SET 87 x", "SET 39 y", "EXIT","GOTO ilededepart"]},
-                      {"txt":"\"Non je venais juste pour discuter.\"", "do":["GOTO discussion"]}
-                  ]
-                },
-               "discussion":{
-                  "txt" : "\"Ça ne se voit peut ête pas, mais je travaille là.\"",
-                  "actions":[
-                    {"txt":"\"Ah pardon, je vous laisse alors.\"", "do":["EXIT","GOTO continent"]}
-                ]
+        {
+          "txt": "Sortir.",
+          "do": [
+            "EXIT"
+          ]
         }
+      ]
+    },
+    "ailleurs": {
+      "txt": "Y'a qu'un endroit où je vais: la mer.",
+      "actions": [
+        {
+          "txt": "J'aimerais aller voir ce qu'il a après la mer.",
+          "do": [
+            "GOTO ailleurs2"
+          ]
+        },
+        {
+          "txt": "Sortir.",
+          "do": [
+            "EXIT",
+            "GOTO start"
+          ]
+        }
+      ]
+    },
+    "ailleurs2": {
+      "txt": "Il est ambicieux le petit gars! Ben si t'as 1 pièce d'or, ça peut se négocier.",
+      "actions": [
+        {
+          "txt": "Je les ai! On peux y aller.",
+          "do": [
+            "GIVE -1 or hero",
+            "SET 22 x hero",
+            "SET 38 y hero",
+            "SET 22 x",
+            "SET 39 y",
+            "EXIT",
+            "GOTO mini_ile"
+          ]
+        },
+        {
+          "txt": "Je reviendrais plus tard peut être.",
+          "do": [
+            "EXIT",
+            "GOTO start"
+          ]
+        }
+      ]
+    },
+    "nulle_part": {
+      "txt": "C'est vrai qu'on est bien ici.",
+      "actions": [
+        {
+          "txt": "Sortir.",
+          "do": [
+            "EXIT",
+            "GOTO start"
+          ]
+        }
+      ]
+    },
+    "mini_ile": {
+      "txt": "\"Voilà, on y est.\"",
+      "actions": [
+        {
+          "txt": "\"Y'a pas un autre endroit plus sympa?...\"",
+          "do": [
+            "GOTO endroit_sympa"
+          ]
+        },
+        {
+          "txt": "\"Je veux rentrer chez moi, je m'ennuie ici.\"",
+          "do": [
+            "SET 56 x hero",
+            "SET 42 y hero",
+            "SET 57 x",
+            "SET 42 y",
+            "EXIT",
+            "GOTO start"
+          ]
+        }
+      ]
+    },
+    "endroit_sympa": {
+      "txt": "\"Si mais là ça va coûter 2 pièces d'or.\"",
+      "actions": [
+        {
+          "txt": "\"J'ai ça! On y va.\"",
+          "do": [
+            "GIVE -2 or hero",
+            "SET 87 x hero",
+            "SET 40 y hero",
+            "SET 87 x",
+            "SET 39 y",
+            "EXIT",
+            "GOTO ilededepart"
+          ]
+        },
+        {
+          "txt": "\"Je n'ai pas autant d'argent! Ramenez moi chez moi svp.\"",
+          "do": [
+            "SET 56 x hero",
+            "SET 42 y hero",
+            "SET 57 x",
+            "SET 42 y",
+            "EXIT",
+            "GOTO continent"
+          ]
+        }
+      ]
+    },
+    "ilededepart": {
+      "txt": "\"Tu veux rentrer chez toi? 2 pièce d'or.\"",
+      "actions": [
+        {
+          "txt": "\"Oui!\"",
+          "do": [
+            "GIVE -2 or hero",
+            "SET 56 x hero",
+            "SET 42 y hero",
+            "SET 57 x",
+            "SET 42 y",
+            "EXIT",
+            "GOTO continent"
+          ]
+        },
+        {
+          "txt": "\"Fais chier...\"",
+          "do": [
+            "EXIT"
+          ]
+        }
+      ]
+    },
+    "continent": {
+      "txt": [
+        "\"J'imagine que tu veux aller au continent? Bon tu connais le prix.\"",
+        "\"Tu veux aller au continent? 2 pièce d'or.\""
+      ],
+      "actions": [
+        {
+          "txt": "\"Oui, c'est parti!\"",
+          "do": [
+            "GIVE -2 or hero",
+            "SET 87 x hero",
+            "SET 40 y hero",
+            "SET 87 x",
+            "SET 39 y",
+            "EXIT",
+            "GOTO ilededepart"
+          ]
+        },
+        {
+          "txt": "\"Non je venais juste pour discuter.\"",
+          "do": [
+            "GOTO discussion"
+          ]
+        }
+      ]
+    },
+    "discussion": {
+      "txt": "\"Ça ne se voit peut ête pas, mais je travaille là.\"",
+      "actions": [
+        {
+          "txt": "\"Ah pardon, je vous laisse alors.\"",
+          "do": [
+            "EXIT",
+            "GOTO continent"
+          ]
+        }
+      ]
     }
-
+  }
 }
