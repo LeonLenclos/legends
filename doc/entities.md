@@ -87,4 +87,6 @@ Voici les commandes disponnibles :
 - `GOTO *un_nouveau_state*` : changer l'`interaction_state`, c'est à dire continuer la lecture du script au moment indiqué par `*nouveau_state*`
 - `GIVE *une_quantite un_attrinut une_entite*` : ajouter la quantité indiqué à l'attribut indiqué de l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
 - `SET *une_valeur un_attrinut une_entite*` : donne la valeur indiquée à l'attribut indiqué de l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
+- `SETIMAGE *une_image une_entite*` : charge l'image indiquée à l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
+- `SETPOSITION *x y une_entite*` : donne la position indiquée à l'entité indiquée. Si aucune entité n'est indiqué. L'ajouter à l'entité actuelle.
 - `COMPARE` *valeur_a opérateur_de_comparaison valeur_b* : n'est valide que si la comparaison est vrai. valeur_a et valeur_b peuvent être un nombre (ex: `50`), un attribut de l'entité en cours (ex: `or`), ou en deux mots l'attribut et l'id d'une entité (ex: `or hero`). L'opérateur peut être `<` inferieur,  `>` supérieur, `=` égal, `>=` supérieur ou égal,  `<=` inférieur ou égal  , `!=` non-égal.

@@ -57,6 +57,16 @@ const commands = {
         },
         doable:(g, e, a)=>true
     },
+    SETPOSITION:{
+        do:(g, e, a)=>{
+            let value_x =  a[0];
+            let value_y =  a[1];
+            let target = a[2] ? g.world.get_entity(a[1]) : e;
+            target.x = value_x;
+            target.y = value_y;
+        },
+        doable:(g, e, a)=>true
+    },
     COMPARE:{
     do:(g, e, a)=>{return;},
     doable:(g, e, a)=>{
