@@ -1,12 +1,10 @@
 {
   "json": [
-    "", 
     "test", 
     "world", 
     "status_bar_infos", 
     "assets", 
     "map", 
-    "entities/", 
     "entities/arbre_magique", 
     "entities/agri_p1", 
     "entities/arbre", 
@@ -25,7 +23,6 @@
     "entities/hero"
   ], 
   "png": [
-    "", 
     "tileset", 
     "walltileset", 
     "entities/arbre_mort", 
