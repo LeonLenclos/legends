@@ -114,6 +114,16 @@
             "x":117,
             "y":22,
             "extra_data":"entities/carotte"
+        },
+        {
+              "x":80,
+              "y":86,
+              "extra_data":"entities/hotel"
+        },
+        {
+              "x":84,
+              "y":77,
+              "extra_data":"entities/hotel_de_luxe"
         }
     ]
 }

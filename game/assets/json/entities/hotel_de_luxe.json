@@ -1,0 +1,13 @@
+{
+    "id":"hotel_de_luxe",
+    "img":"entities/porte",
+    "title":"L'Hôtel de luxe du bord de mer.",
+    "script" : {
+        "start":{
+            "txt" : "C'est un hôtel luxueux.",
+            "actions":[
+                {"txt":"Se reposer une nuit à l'hôtel: 45 pièces d'or", "do":["GIVE +1 vies hero","GIVE -45 or hero"]}
+            ]
+        }
+    }
+}
