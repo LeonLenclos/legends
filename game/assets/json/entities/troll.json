@@ -1,0 +1,13 @@
+{
+    "id":"troll",
+    "img":"entities/troll2",
+    "title":"Un Troll.",
+    "script" : {
+        "start":{
+           "txt" : "\"Bork beur bar dork garb!\"",
+            "actions":[
+                {"txt":"Partir.", "do":["EXIT"]}
+            ]
+          }
+        }
+    }

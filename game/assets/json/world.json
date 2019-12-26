@@ -124,6 +124,11 @@
               "x":84,
               "y":77,
               "extra_data":"entities/hotel_de_luxe"
+        },
+        {
+              "x":150,
+              "y":96,
+              "extra_data":"entities/troll"
         }
     ]
 }
