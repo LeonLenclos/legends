@@ -2,5 +2,7 @@
     "id":"hero",
     "img":"entities/hero",
 
-    "vies":3
+    "vies":3,
+    "cigarette":0,
+    "drogue":0
 }

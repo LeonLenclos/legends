@@ -134,6 +134,16 @@
               "x":116,
               "y":59,
               "extra_data":"entities/diablo"
+        },
+        {
+              "x":147,
+              "y":65,
+              "extra_data":"entities/policier"
+        },
+        {
+              "x":50,
+              "y":39,
+              "extra_data":"entities/portail_D"
         }
     ]
 }
