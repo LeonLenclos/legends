@@ -127,8 +127,13 @@
         },
         {
               "x":150,
-              "y":96,
+              "y":94,
               "extra_data":"entities/troll"
+        },
+        {
+              "x":116,
+              "y":59,
+              "extra_data":"entities/diablo"
         }
     ]
 }

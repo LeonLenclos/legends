@@ -21,7 +21,8 @@
     "entities/hero",
     "entities/hotel",
     "entities/hotel_de_luxe",
-    "entities/troll"
+    "entities/troll",
+    "entities/diablo"
   ],
   "png": [
     "tileset",
@@ -43,6 +44,7 @@
     "entities/hero-w",
     "entities/humain1",
     "entities/tas_de_bois",
-    "entities/troll2"
+    "entities/troll2",
+    "entities/diablo2"
   ]
 }
