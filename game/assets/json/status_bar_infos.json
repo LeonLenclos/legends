@@ -30,5 +30,17 @@
     {
         "title":"Bêche",
         "name":"beche"
+    },
+    {
+        "title":"Cigarette",
+        "name":"cigarette"
+    },
+    {
+        "title":"Drogue",
+        "name":"drogue"
+    },
+    {
+        "title":"Livre de la langue Troll",
+        "name":"livre_troll"
     }
 ]

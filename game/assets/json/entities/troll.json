@@ -1,0 +1,25 @@
+{
+    "id":"troll",
+    "img":"entities/troll2",
+    "title":"Un Troll.",
+    "script" : {
+        "start":{
+          "auto_actions" : [
+            {"do":["COMPARE livre_troll hero > 0", "GOTO help"]}
+          ],
+           "txt" : "\"Bork beur bar dork garb!\"",
+            "actions":[
+              {"txt":"Attaquer le Troll.", "do":["EXIT"]},
+              {"txt":"Partir.", "do":["EXIT"]}
+            ]
+          },
+        "help":{
+                 "txt" : "\"Un humain! S'il vous plaît ne me faites pas de mal, je vous laisse passer si vous voulez.\"",
+                  "actions":[
+                    {"txt":"\"Oui je veux bien merci.\"", "do":["SET 149 x","SET 94 y","EXIT"]},
+                    {"txt":"Attaquer le Troll.", "do":["EXIT"]},
+                    {"txt":"Partir.", "do":["EXIT"]}
+            ]
+          }
+        }
+    }

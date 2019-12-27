@@ -1,0 +1,15 @@
+{
+    "img":"entities/porte",
+    "title":"Portail dimensionnel.",
+    "script" : {
+        "start":{
+                 "txt" : "Cette porte mène au continent, voulez vous vraiment y aller?",
+                  "actions":[
+                    {"txt":"Oui, et avec 10000 pièce d'or svp.", "do":["EXIT","GIVE +10000 or hero","SET 110 x hero","SET 65 y hero"]},
+                    {"txt":"Oui.", "do":["SET 110 x hero","SET 65 y hero"]},
+                    {"txt":"Non", "do":["EXIT"]}
+                  ]
+                  }
+
+                           }
+          }

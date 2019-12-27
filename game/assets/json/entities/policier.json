@@ -1,0 +1,52 @@
+{
+    "id":"policier",
+    "img":"entities/humain3",
+    "title":"Un policier.",
+    "script" : {
+        "start":{
+          "auto_actions": [
+              {"do": ["COMPARE drogue hero > 0", "COMPARE cigarette hero = 0", "GOTO controle"]},
+              {"do": ["COMPARE drogue hero = 0", "COMPARE cigarette hero > 0", "GOTO controle"]},
+              {"do": ["COMPARE drogue hero > 0", "COMPARE cigarette hero > 0", "GOTO controle"]}
+  ],
+          "txt" : "\"Quelle belle journée.\"",
+          "actions":[
+            {"txt":"Oh oui il fait beau.", "do":["EXIT"]},
+            {"txt":"Bof.", "do":["EXIT"]}
+          ]
+        },
+        "controle":{
+                   "txt" : "\"Contrôle de police, je vais devoir procéder à une fouille!\"",
+                  "actions":[
+                    {"txt":"Attaquer le policier.", "do":["EXIT"]},
+                    {"txt":"Se laisser fouiller.", "do":["GOTO fouille"]}
+                  ]
+                  },
+        "fouille":{
+          "auto_actions": [
+              {"do": ["COMPARE drogue hero > 0","COMPARE cigarette hero = 0","GOTO controle_drogue"]},
+              {"do": ["COMPARE drogue hero > 0","COMPARE cigarette hero > 0","GOTO controle_drogue_cigarette"]}
+            ],
+               "txt" : ["Des cigarettes de contrebande!! Vous vous exposez monsieur à une amande de 2700 pièces d'or."],
+               "actions":[
+                 {"txt":"Attaquer le policier.", "do":["EXIT"]},
+                 {"txt":"Payer l'amande.", "do":["GIVE -2700 or hero","SET 0 cigarette hero","SET 0 drogue hero","EXIT","GOTO start"]}
+               ]
+             },
+        "controle_drogue":{
+              "txt" : ["\"De la drogue! Monsieur, vous vous exposez monsieur à une amande de 2000 pièces d'or.\""],
+              "actions":[
+                 {"txt":"Attaquer le policier.", "do":["EXIT"]},
+                 {"txt":"Payer l'amande.", "do":["GIVE -2000 or hero","SET 0 drogue hero","EXIT","GOTO start"]}
+                      ],
+          "controle_drogue_cigarette":{
+              "txt" : ["\"De la drogue et des cigarettes de contrebande! Monsieur, vous vous exposez monsieur à une amande de 3000 pièces d'or.\""],
+              "actions":[
+                 {"txt":"Attaquer le policier.", "do":["EXIT"]},
+                 {"txt":"Payer l'amande.", "do":["GIVE -3000 or hero","SET 0 drogue hero","SET 0 cigarette hero","EXIT","GOTO start"]}
+                                    ]
+
+                           }
+          }
+        }
+        }
