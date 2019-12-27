@@ -2,5 +2,34 @@
     "id":"hero",
     "img":"entities/hero",
 
-    "vies":3
+    "pv":25,
+    "pv_max":25,
+
+    "attacks":[
+        {
+            "txt":"Fuir",
+            "prob":1,
+            "damage_min":0,
+            "damage_max":0,
+            "types":[],
+            "do":["SET 1 flee hero"]
+        },
+        {
+            "txt":"Donner un coup de hache",
+            "prob":0.7,
+            "damage_min":5,
+            "damage_max":10,
+            "types":["tranchant","bucheron"],
+            "do":["COMPARE hache hero > 0"]
+        },
+
+        {
+            "txt":"Donner un coup de poing",
+            "prob":0.5,
+            "damage_min":1,
+            "damage_max":3,
+            "types":[],
+            "do":[]
+        }
+    ]
 }

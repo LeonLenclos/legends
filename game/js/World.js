@@ -1,8 +1,9 @@
 
 class World {
 
-    constructor(assets){
-        this.assets = assets;
+    constructor(game){
+        this.game = game;
+        this.assets = game.assets;
         this.walls = [];
         this.entities = [];
         this.player = undefined;
@@ -14,7 +15,7 @@ class World {
         let map_data = this.assets.json.map;
 
         world_data.entities.forEach((entity_data)=>{
-            this.entities.push(new Entity(entity_data, this.assets));
+            this.entities.push(new Entity(entity_data, this.game));
         });
         this.hero = this.get_entity('hero');
         this.width = map_data.width;
@@ -34,7 +35,11 @@ class World {
             }
         }
     }
- 
+    
+    get_hero(){
+        return this.get_entity('hero')
+    }
+
     move_hero(action) {
         let dest_x = this.hero.x;
         let dest_y = this.hero.y;

@@ -1,0 +1,13 @@
+{
+    "fight":{
+        "title": "Combat contre %(target)s (PV:%(pv)s)",
+        "start": "Le combat commence...",
+        "enemy_success": "%(target)s parviens à vous %(target_attack)s. Vous perdez %(target_damage)s PV.",
+        "enemy_fail": "%(target)s tente de vous %(target_attack)s et échoue.",
+        "hero_success": "Vous parvenez à %(attack)s. %(target)s perd %(damage)s PV.",
+        "hero_fail": "Vous échouez à %(attack)s.",
+        "enemy_dead": "%(target)s est mort.",
+        "hero_dead": "Vous êtes mort."
+
+    }
+}

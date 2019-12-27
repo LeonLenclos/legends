@@ -1,9 +1,12 @@
 class Entity {
 
-    constructor(data, assets){
+    constructor(data, game){
         // Position and direction of the Hero in the map
-        this.assets = assets;
-        let extra_data = assets.json[data.extra_data];
+        this.game = game;
+        this.world = game.world;
+        this.assets = game.assets;
+
+        let extra_data = this.assets.json[data.extra_data];
         for(let attr in extra_data){
             this[attr] = extra_data[attr];
         }
@@ -28,15 +31,45 @@ class Entity {
             this.img = undefined;
         }
     }
+
     get_interaction_state(){
         return this.interaction_state || 'start';
     }
 
 
+    start_fight(target){
+        this.fighting = true;
+        this.next_attack = undefined;
+    }
+
+    choose_attack(){
+        if(this.pv > 0){
+            this.next_attack = this.attacks[random(0,this.attacks.length-1)]
+        }
+        else this.next_attack = undefined;
+    }
+
+    execute_attack(target){
+        let damage = 0
+        if(this.next_attack && Math.random()<this.next_attack.prob){
+            damage = random(this.next_attack.damage_min,  this.next_attack.damage_max);
+        }
+        target.pv = damage<target.pv ? target.pv-damage : 0;
+        return damage;
+    }
+
+
     read_script(){
-        return this.script[this.get_interaction_state()];
+        let state = this.get_interaction_state();
+        return {
+            title : this.title,
+            txt : this.script[state].txt,
+            actions : this.script[state].actions,
+        }
     }
 }
+
+
 
 class ScriptText {
     constructor(txt){

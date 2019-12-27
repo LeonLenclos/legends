@@ -8,7 +8,13 @@
 
 const commands = {
     EXIT:{
-        do:(g, e, a)=>{g.open_map();},
+        do:(g, e, a)=>{
+            g.open_map();
+        },
+        doable:(g, e, a)=>true
+    },
+    GAMEOVER:{
+        do:(g, e, a)=>{g.game_over();},
         doable:(g, e, a)=>true
     },
     GOTO:{
@@ -67,6 +73,13 @@ const commands = {
         },
         doable:(g, e, a)=>true
     },
+    FIGHT:{
+        do:(g, e, a)=>{
+            g.world.get_entity('hero').start_fight();
+            e.start_fight();
+        },
+        doable:(g, e, a)=>true
+    },
     COMPARE:{
     do:(g, e, a)=>{return;},
     doable:(g, e, a)=>{
@@ -108,8 +121,6 @@ const commands = {
         if (operator == '>=') return value_a >= value_b;
         if (operator == '=') return value_a == value_b;
         if (operator == '!=') return value_a != value_b;
-
-
     }
 }
 }

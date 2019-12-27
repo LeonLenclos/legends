@@ -1,16 +1,24 @@
 {
     "id":"bucheron",
     "img":"entities/humain4",
-    "title":"Bûcheron.",
+    "title":"Bûcheron",
+    "pv":50,
     "script" : {
         "start":{
             "auto_actions" : [
-              {"do":["COMPARE bois hero > 0", "GOTO bois"]}
+              {"do":["COMPARE bois hero >= 10", "GOTO bois"]}
             ],
             "txt" : "Bonjour bonhomme ! Tu veux de l'or ?",
             "actions":[
                 {"txt":"Oh oui !", "do":["GOTO travail"]},
-                {"txt":"Non merci.", "do":["EXIT"]}            ]
+                {"txt":"Non merci.", "do":["GOTO non"]}            ]
+          },
+          "non":{
+            "txt" : "Tu veux te battre ?",
+            "actions":[
+                {"txt":"Ouais !", "do":["FIGHT"]},
+                {"txt":"Non merci.", "do":["EXIT", "GOTO start"]}
+            ]
           },
           "travail":{
             "txt" : "Va me chercher du bois et je te donnerai de l'or en échange !",
@@ -25,6 +33,23 @@
                 {"txt":"Non merci !", "do":["EXIT", "GOTO start"]}
             ]
           }
-    }
-
+    },
+    "attacks":[
+        {
+            "txt":"Donner un coup de hache",
+            "prob":0.7,
+            "damage_min":5,
+            "damage_max":10,
+            "types":["tranchant","bucheron"],
+            "do":["COMPARE hache > 0"]
+        },
+        {
+            "txt":"Étrangler",
+            "prob":0.3,
+            "damage_min":2,
+            "damage_max":9,
+            "types":[],
+            "do":[]
+        }
+    ]
 }
