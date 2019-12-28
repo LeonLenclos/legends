@@ -16,7 +16,7 @@
         "help":{
                  "txt" : "\"Un humain! S'il vous plaît ne me faites pas de mal, je vous laisse passer si vous voulez.\"",
                   "actions":[
-                    {"txt":"\"Oui je veux bien merci.\"", "do":["SET 149 x","SET 94 y","EXIT"]},
+                    {"txt":"\"Oui je veux bien merci.\"", "do":["SET 148 x","SET 92 y","EXIT"]},
                     {"txt":"Attaquer le Troll.", "do":["EXIT"]},
                     {"txt":"Partir.", "do":["EXIT"]}
             ]
