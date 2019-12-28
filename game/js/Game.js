@@ -80,10 +80,14 @@ class Game {
     }
 
     open_interaction(entity){
+                console.log('OPEN INTERACTION');
+
         this.map_interface.hide();
         this.interaction_interface.show();
         clearInterval(this.tick_interval);
         this.interaction_interface.open_interaction(entity, (action)=>{
+                console.log('ACTIONS');
+
             this.on_action(action, entity);
             this.on_interaction_turn(entity);
         });
@@ -182,8 +186,11 @@ class Game {
             moment = entity.read_script();
             // Do auto actions
             if(moment.auto_actions){
+                console.log('AUTO ACTIONS');
                moment.auto_actions.forEach((a)=>{this.on_action(a, entity)});
             }
+            moment = entity.read_script();
+
         }
         // Update interface
         this.interaction_interface.update(moment);
@@ -207,10 +214,12 @@ class Game {
         }
         let exit = false;
         if(action.do.every((c)=>doable_command(this, entity, c))){
+            console.log('doable : TRUE')
             action.do.forEach((todo)=>{
                 // if(todo.startsWith('EXIT')) this.open_map;
                 do_command(this, entity, todo);
             });
         }
+        else console.log('doable : FALSE')
     }
 }

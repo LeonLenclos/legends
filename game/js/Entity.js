@@ -74,6 +74,7 @@ class Entity {
         return {
             title : this.title,
             illu : this.illu,
+            auto_actions : this.script[state].auto_actions,
             txt : this.script[state].txt,
             actions : this.script[state].actions,
         }

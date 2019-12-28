@@ -19,9 +19,6 @@ class InteractionInterface extends Interface {
     }
 
     set_illu(illu){
-        console.log(this.illu_div);
-        console.log(illu);
-
         this.illu_div.empty();
         $(illu).appendTo(this.illu_div);
 
