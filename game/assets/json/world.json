@@ -149,6 +149,11 @@
               "x":112,
               "y":65,
               "extra_data":"entities/tas_d_or"
+        },
+        {
+              "x":97,
+              "y":66,
+              "extra_data":"entities/piece_or"
         }
     ]
 }

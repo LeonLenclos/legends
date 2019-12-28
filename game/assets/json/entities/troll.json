@@ -5,7 +5,7 @@
     "script" : {
         "start":{
           "auto_actions" : [
-            {"do":["COMPARE livre_troll hero > 0", "GOTO help"]}
+            {"do":["COMPARE livre_troll hero > 0","GOTO help"]}
           ],
            "txt" : "\"Bork beur bar dork garb!\"",
             "actions":[
