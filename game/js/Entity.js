@@ -14,6 +14,8 @@ class Entity {
             this[attr] = data[attr];
         }
         this.set_image(this.img)
+        this.set_illu(this.illu)
+
         if(this.script){
             for(let moment in this.script){
                 this.script[moment].txt = new ScriptText(this.script[moment].txt)
@@ -26,9 +28,17 @@ class Entity {
 
     set_image(img){
         if(img){
-            this.img = this.assets.png[img]
+            this.img = this.assets.png[img];
         } else {
             this.img = undefined;
+        }
+    }
+
+    set_illu(illu){
+        if(illu){
+            this.illu = this.assets.png[illu];
+        } else {
+            this.illu = undefined;
         }
     }
 
@@ -63,6 +73,7 @@ class Entity {
         let state = this.get_interaction_state();
         return {
             title : this.title,
+            illu : this.illu,
             txt : this.script[state].txt,
             actions : this.script[state].actions,
         }

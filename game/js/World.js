@@ -64,7 +64,6 @@ class World {
         this.hero.x = dest_x;
         this.hero.y = dest_y;
         this.hero.set_image('entities/hero/'+action);
-        console.log('entiries/hero/'+action);
         this.hero.direction = action;
     }
 }

@@ -1,6 +1,7 @@
 class InteractionInterface extends Interface {
 
     on_setup(){
+        this.illu_div = $("#interaction-illu")
         this.title_div = $("#interaction-title")
         this.text_div = $("#interaction-text")
         this.actions_div = $("#interaction-actions")
@@ -11,11 +12,21 @@ class InteractionInterface extends Interface {
     }
 
     update(script){
+        this.set_illu(script.illu);
         this.set_title(script.title);
         this.set_text(script.txt);
         this.set_actions(script.actions);
     }
 
+    set_illu(illu){
+        console.log(this.illu_div);
+        console.log(illu);
+
+        this.illu_div.empty();
+        $(illu).appendTo(this.illu_div);
+
+        // !!!!!!!!!!!!!!!!!!!!!!!
+    }
     set_text(txt){
         if(txt instanceof ScriptText) txt = txt.read();
 
