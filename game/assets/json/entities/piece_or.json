@@ -1,0 +1,14 @@
+{
+    "id":"piece",
+    "title":"Une pièce d'or",
+    "script" : {
+        "start":{
+
+           "txt" : "Une pièce d'or par terre.",
+            "actions":[
+              {"txt":"Ramasser la pièce.", "do":["GIVE +1 or hero","SET 1 invisible","EXIT"]},
+              {"txt":"Laisser la pièce par terre.", "do":["EXIT"]}
+            ]
+          }
+        }
+    }

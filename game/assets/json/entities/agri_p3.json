@@ -20,14 +20,7 @@
           "filsde":{
               "txt" : "\"Je ne vois pas le rapport avec ma question! Sortez immédiatement d'ici!\" ",
               "actions":[
-                {"txt":"\"Excusez moi, je m'en vais de ce pas... Une dernière question, qu'elle est cette plante que vous cultivez devant la maison?\".", "do":["GOTO plante"]},
-                {"txt":"Sortir.", "do":["EXIT"]}
-            ]
-          },
-          "plante":{
-              "txt" : "\"Ça ne vous regarde pas, sortez!\"",
-              "actions":[
-                  {"txt":"Sortir.", "do":["EXIT","GOTO sortez"]}
+                {"txt":"\"Excusez moi, je m'en vais de ce pas...\".", "do":["EXIT"]}
                   ]
                 },
                 "sortez":{

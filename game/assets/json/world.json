@@ -126,8 +126,8 @@
               "extra_data":"entities/hotel_de_luxe"
         },
         {
-              "x":150,
-              "y":94,
+              "x":149,
+              "y":92,
               "extra_data":"entities/troll"
         },
         {
@@ -149,6 +149,36 @@
               "x":112,
               "y":65,
               "extra_data":"entities/tas_d_or"
+        },
+        {
+              "x":97,
+              "y":66,
+              "extra_data":"entities/piece_or"
+        },
+        {
+              "x":107,
+              "y":55,
+              "extra_data":"entities/cochon"
+        },
+        {
+              "x":101,
+              "y":54,
+              "extra_data":"entities/cochon2"
+        },
+        {
+              "x":105,
+              "y":50,
+              "extra_data":"entities/cochon"
+        },
+        {
+              "x":106,
+              "y":60,
+              "extra_data":"entities/enclos_cochon"
+        },
+        {
+              "x":134,
+              "y":72,
+              "extra_data":"entities/panneau_entree_foret"
         }
     ]
 }

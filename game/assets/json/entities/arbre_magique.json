@@ -2,6 +2,7 @@
     "id":"arbre_magique",
     "img":"entities/arbre2",
     "title":"Un arbre magique",
+    "or":15,
     "script" : {
         "start":{
             "txt" : "C'est un arbre magique.",
@@ -35,8 +36,22 @@
           "aïe":{
               "txt" : ["L'arbre ne dit rien et donne une pièce d'or.","L'arbre est silencieux et donne encore une pièce.","L'arbre donne une pièce d'or sans rien dire.","L'arbre fait le mort et donne une pièce.","L'arbre reste inexpressif et donne une pièce."],
               "actions":[
-                  {"txt":["Secouer l'arbre.","Secouer encore l'arbre."], "do":["GIVE +1 or hero"]},
-                  {"txt":["Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","N'avez vous donc pas peur des représailles???"],"do":["EXIT", "GOTO start"]}
+                  {"txt":["Secouer l'arbre.","Secouer encore l'arbre."], "do":[
+                  "GIVE +1 or hero",
+                  "GIVE -1 or",
+                  "COMPARE or = 0",
+                  "GOTO mort"
+                  ]},
+                  {"txt":["Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","N'avez vous donc pas peur des représailles???"],"do":["EXIT"]}
+            ]
+        },
+        "mort":{
+          "auto_actions":[
+            {"do":["SETIMAGE arbre_mort"]}
+          ],
+            "txt" : "L'arbre est mort.",
+            "actions":[
+                {"txt":"Partir.", "do":["EXIT"]}
             ]
         }
     }
