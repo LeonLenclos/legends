@@ -1,0 +1,14 @@
+{
+    "img":"entities/tas_or",
+    "title":"Tas de pièces d'or.",
+    "script" : {
+        "start":{
+                 "txt" : "Environ 10000 piècees d'or gisent au sol...",
+                  "actions":[
+                    {"txt":"Les ramasser.", "do":["EXIT","GIVE +10000 or hero","SET 1 invisible"]},
+                    {"txt":"Les laisser là.", "do":["EXIT"]}
+                  ]
+            }
+
+       }
+}

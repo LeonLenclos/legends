@@ -39,7 +39,7 @@ class MapInterface extends Interface {
 
 
     render_entity(img, x, y, ctx){
-
+        
         let canvas_x = x * TILE_SIZE + TILE_SIZE/2;
         canvas_x -= img.width /2;
         let canvas_y = y * TILE_SIZE + TILE_SIZE/2;

@@ -144,6 +144,11 @@
               "x":50,
               "y":39,
               "extra_data":"entities/portail_D"
+        },
+        {
+              "x":112,
+              "y":65,
+              "extra_data":"entities/tas_d_or"
         }
     ]
 }

@@ -50,11 +50,12 @@ class Game {
     on_tick(){
 
         let now = Date.now();
+        let turn_moment = (now-this.last_turn)/(1000/TURN_PER_SEC)
         this.action = undefined;
         for(let act in this.input){
             if (this.input[act]) this.last_input_action = this.action = Number(act);
         }
-        if(now - this.last_turn > 1000 / TURN_PER_SEC){
+        if(turn_moment>1){
             this.last_turn = now;
             if (this.action === undefined && this.last_action_played !== this.last_input_action){
                 this.action = this.last_input_action;
@@ -63,7 +64,7 @@ class Game {
             this.last_action_played = this.action;
             this.last_input_action = undefined;
         }
-        this.map_interface.update();
+        this.map_interface.update(turn_moment);
         // console.log(Date.now()-now);
     }
 

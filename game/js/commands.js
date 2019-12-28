@@ -65,9 +65,9 @@ const commands = {
     },
     SETPOSITION:{
         do:(g, e, a)=>{
-            let value_x =  a[0];
-            let value_y =  a[1];
-            let target = a[2] ? g.world.get_entity(a[1]) : e;
+            let value_x =  Number(a[0]);
+            let value_y =  Number(a[1]);
+            let target = a[2] ? g.world.get_entity(a[2]) : e;
             target.x = value_x;
             target.y = value_y;
         },
