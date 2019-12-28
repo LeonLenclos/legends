@@ -1,0 +1,20 @@
+{
+    "id":"panneau_entree_foret",
+    "img":"entities/pancarte",
+    "title":"Une pancarte.",
+    "script" : {
+        "start":{
+           "txt" : "FORET INTERDITE. <br> Attention aux Trolls.",
+            "actions":[
+              {"txt":"\"Des Trolls???\".", "do":["GOTO bien_lu"]},
+              {"txt":"Partir", "do":["EXIT"]}
+            ]
+          },
+          "bien_lu":{
+             "txt" : "Oui oui des Trolls.",
+              "actions":[
+                {"txt":"Partir.", "do":["EXIT"]}
+              ]
+            }
+        }
+    }

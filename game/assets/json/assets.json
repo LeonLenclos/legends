@@ -30,7 +30,8 @@
     "entities/piece_or",
     "entities/cochon",
     "entities/cochon2",
-    "entities/enclos_cochon"
+    "entities/enclos_cochon",
+    "entities/panneau_entree_foret"
   ],
   "png": [
     "walltileset",
@@ -67,6 +68,7 @@
     "entities/hero/3",
     "entities/hero/1",
     "entities/cochon",
-    "entities/cochon2"
+    "entities/cochon2",
+    "entities/pancarte"
   ]
 }
