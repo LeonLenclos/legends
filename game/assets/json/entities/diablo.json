@@ -13,8 +13,7 @@
         "vente":{
                  "txt" : "\"J'ai quelques trucs sous le manteau.\"",
                   "actions":[
-                    {"txt":"Cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +1 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
-                    {"txt":"Drogue: 666 pièce d'or.", "do":["GIVE +1 drogue hero","GIVE -666 or hero","GOTO autre_chose"]},
+                    {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO cigarette"]},
                     {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
                     {"txt":"Vous n'avez pas ce que je recherche.", "do":["EXIT"]}
                   ]
@@ -23,10 +22,37 @@
                "txt" : ["\"Très bon choix. Autre chose?\"","\"Excellent choix, je ne pouvais que vous le recommander. Autre chose?\"","\"Vous êtes un bon client. Autre chose?\"","\"Je vous remercie de votre fidélité. Autre chose?\""],
                "actions":[
                  {"txt":"Cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +1 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
-                 {"txt":"Drogue: 666 pièce d'or.", "do":["GIVE +1 drogue hero","GIVE -666 or hero","GOTO autre_chose"]},
                  {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
-                 {"txt":"C'est bon merci, bonne journée monsieur.", "do":["EXIT"]}
+                 {"txt":"C'est bon merci, bonne journée monsieur.", "do":["EXIT","GOTO start"]}
             ]
-          }
+          },
+          "cigarette":{
+                 "txt" : ["\"Très bon choix. D'ailleurs t'aurais pas une cigarette à dépanner?\""],
+                 "actions":[
+                   {"txt":"Si bien sûr avec plaisir.", "do":["GIVE -1 cigarette hero","GOTO cigarette2"]},
+                   {"txt":"Non désolé c'est ma dernière.", "do":["GOTO menteur"]}
+              ]
+            },
+            "cigarette2":{
+                   "txt" : ["\"Ah super, trop cool, merci! Tu cherches autre chose d'ailleurs?\""],
+                   "actions":[
+                     {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
+                     {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
+                     {"txt":"Non c'est bon merci, bonne journée.", "do":["EXIT","GOTO start"]}
+                   ]
+                 },
+            "menteur":{
+                    "txt" : ["\"Je crois me souvenir que je viens de t'en vendre 10.\""],
+                    "actions":[
+                      {"txt":"Euh... oui enfait c'est que je les fume 10 par 10...", "do":["GOTO menteur2"]},
+                      {"txt":"Je dois y aller on m'attends, bonne journée.", "do":["EXIT","GOTO start"]}
+                    ]
+                  },
+             "menteur2":{
+                     "txt" : ["\"Ouais bien sûr, c'est ce qu'ils disent tous.\""],
+                     "actions":[
+                       {"txt":"Euh ok.. Bon je dois y aller, bonne journée.", "do":["EXIT","GOTO start"]}
+                ]
+              }
         }
     }
