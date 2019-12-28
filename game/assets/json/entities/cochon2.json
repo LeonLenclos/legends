@@ -1,0 +1,22 @@
+{
+    "id":"cochon",
+    "img":"entities/cochon2",
+    "title":"Un cochon.",
+    "script" : {
+        "start":{
+                   "txt" : "\"groin-groin.\"",
+                  "actions":[
+                    {"txt":"Donner un coup de pied.", "do":["GOTO coup_de_pied"]},
+                    {"txt":"Partir.", "do":["EXIT"]}
+                    ]
+
+                  },
+    "coup_de_pied":{
+               "txt" : ["\"gruîîîîî!!!!!\"","\"Roîîîîrk!\""],
+              "actions":[
+                {"txt":["Donner un autre coup de pied.","Frapper encore l'animal."], "do":["GOTO coup_de_pied"]},
+                {"txt":"Partir.", "do":["EXIT","GOTO start"]}
+                ]
+              }
+              }
+              }

@@ -1,0 +1,13 @@
+{
+    "id":"enclos_cochon",
+    "title":"Un enclos à cochon.",
+    "script" : {
+        "start":{
+                   "txt" : "L'enclos n'est pas vérouillé.",
+                  "actions":[
+                    {"txt":"Entrer dans l'enclos.", "do":["SET 106 x hero","SET 59 y hero","EXIT"]},
+                    {"txt":"Sortir de l'enclos.", "do":["SET 106 x hero","SET 61 y hero","EXIT"]}
+                ]
+              }
+              }
+              }

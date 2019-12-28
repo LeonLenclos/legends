@@ -27,7 +27,10 @@
     "entities/agri_p3",
     "entities/lola",
     "entities/hotel",
-    "entities/piece_or"
+    "entities/piece_or",
+    "entities/cochon",
+    "entities/cochon2",
+    "entities/enclos_cochon"
   ],
   "png": [
     "walltileset",
@@ -62,6 +65,8 @@
     "entities/hero/0",
     "entities/hero/2",
     "entities/hero/3",
-    "entities/hero/1"
+    "entities/hero/1",
+    "entities/cochon",
+    "entities/cochon2"
   ]
 }

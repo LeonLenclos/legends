@@ -154,6 +154,27 @@
               "x":97,
               "y":66,
               "extra_data":"entities/piece_or"
+        },
+        {
+              "x":107,
+              "y":55,
+              "extra_data":"entities/cochon"
+        },
+        {
+              "x":101,
+              "y":54,
+              "extra_data":"entities/cochon2"
+        },
+        {
+              "x":105,
+              "y":50,
+              "extra_data":"entities/cochon"
+        },
+        {
+              "x":106,
+              "y":60,
+              "extra_data":"entities/enclos_cochon"
         }
+
     ]
 }
