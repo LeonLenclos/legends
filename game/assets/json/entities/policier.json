@@ -5,9 +5,7 @@
     "script" : {
         "start":{
           "auto_actions": [
-              {"do": ["COMPARE drogue hero > 0", "COMPARE cigarette hero = 0", "GOTO controle"]},
-              {"do": ["COMPARE drogue hero = 0", "COMPARE cigarette hero > 0", "GOTO controle"]},
-              {"do": ["COMPARE drogue hero > 0", "COMPARE cigarette hero > 0", "GOTO controle"]}
+              {"do": ["COMPARE cigarette hero > 0", "GOTO controle"]}
   ],
           "txt" : "\"Quelle belle journée.\"",
           "actions":[
@@ -23,30 +21,17 @@
                   ]
                   },
         "fouille":{
-          "auto_actions": [
-              {"do": ["COMPARE drogue hero > 0","COMPARE cigarette hero = 0","GOTO controle_drogue"]},
-              {"do": ["COMPARE drogue hero > 0","COMPARE cigarette hero > 0","GOTO controle_drogue_cigarette"]}
-            ],
-               "txt" : ["Des cigarettes de contrebande!! Vous vous exposez monsieur à une amande de 2700 pièces d'or."],
+               "txt" : ["Des cigarettes de contrebande! Vous vous exposez monsieur à une amande de 100 pièces d'or."],
                "actions":[
                  {"txt":"Attaquer le policier.", "do":["EXIT"]},
-                 {"txt":"Payer l'amande.", "do":["GIVE -2700 or hero","SET 0 cigarette hero","SET 0 drogue hero","EXIT","GOTO start"]}
+                 {"txt":"Payer l'amande.", "do":["GIVE -300 or hero","SET 0 cigarette hero","GOTO derniere_fois"]}
                ]
-             },
-        "controle_drogue":{
-              "txt" : ["\"De la drogue! Monsieur, vous vous exposez monsieur à une amande de 2000 pièces d'or.\""],
-              "actions":[
-                 {"txt":"Attaquer le policier.", "do":["EXIT"]},
-                 {"txt":"Payer l'amande.", "do":["GIVE -2000 or hero","SET 0 drogue hero","EXIT","GOTO start"]}
-                      ],
-          "controle_drogue_cigarette":{
-              "txt" : ["\"De la drogue et des cigarettes de contrebande! Monsieur, vous vous exposez monsieur à une amande de 3000 pièces d'or.\""],
-              "actions":[
-                 {"txt":"Attaquer le policier.", "do":["EXIT"]},
-                 {"txt":"Payer l'amande.", "do":["GIVE -3000 or hero","SET 0 drogue hero","SET 0 cigarette hero","EXIT","GOTO start"]}
-                                    ]
-
+               },
+       "derniere_fois":{
+            "txt" : ["J'espère que ça vous aura servi de leçon, garnement. Allez, du balais!"],
+            "actions":[
+              {"txt":"Oui oui...", "do":["EXIT","GOTO start"]}
+               ]
+             }
                            }
           }
-        }
-        }
