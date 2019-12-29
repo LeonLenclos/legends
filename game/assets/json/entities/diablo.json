@@ -4,6 +4,9 @@
     "title":"Un diablo.",
     "script" : {
         "start":{
+          "auto_actions":[
+            {"do":["COMPARE info_enlevement hero > 0","GOTO soupcons"]}
+          ],
            "txt" : "\"Tu cherches quelque chose petit?\"",
             "actions":[
               {"txt":"Oui.", "do":["GOTO vente"]},
@@ -11,11 +14,11 @@
             ]
           },
         "vente":{
-                 "txt" : "\"J'ai quelques trucs sous le manteau.\"",
+                 "txt" : "\"J'ai quelques trucs sous le manteau si ça t'intéresse.\"",
                   "actions":[
                     {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO cigarette"]},
                     {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
-                    {"txt":"Vous n'avez pas ce que je recherche.", "do":["EXIT"]}
+                    {"txt":"Vous n'avez pas ce que je cherche.", "do":["EXIT"]}
                   ]
                   },
         "autre_chose":{
@@ -52,6 +55,20 @@
                      "txt" : ["\"Ouais bien sûr, c'est ce qu'ils disent tous.\""],
                      "actions":[
                        {"txt":"Euh ok.. Bon je dois y aller, bonne journée.", "do":["EXIT","GOTO start"]}
+                     ]
+                   },
+              "soupcons":{
+                      "txt" : ["\"Tu cherches à acheter quelque chose petit?\""],
+                      "actions":[
+                        {"txt":"Oui exactement.", "do":["GOTO vente"]},
+                        {"txt":"Non, je voudrais savoir si tu connais la fille des Richelieu.", "do":["GOTO soupçons2"]}
+                      ]
+                    },
+               "soupçons2":{
+                       "txt" : ["\"Pas du tout désolé. <br> Tu veux toujours pas acheter quelque chose petit?\""],
+                       "actions":[
+                         {"txt":"Euh oui je veux bien voir ce que tu as.", "do":["GOTO vente"]},
+                         {"txt":"Non ça va le diablo.", "do":["EXIT"]}
                 ]
               }
         }

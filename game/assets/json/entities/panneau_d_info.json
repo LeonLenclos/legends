@@ -1,0 +1,13 @@
+{
+    "id":"panneau_d_info",
+    "img":"entities/pancarte",
+    "title":"Panneau d'information du village.",
+    "script" : {
+        "start":{
+           "txt" : "AVIS A LA POPULATION : <br>La fille des Richelieu a été enlevée par un diablo! <br> 300 pièce d'or pour celui qui la ramènera aux Richelieu.",
+            "actions":[
+              {"txt":"Partir", "do":["GIVE +1 info_enlevement hero","EXIT"]}
+              ]
+            }
+        }
+    }
