@@ -1,0 +1,15 @@
+{
+	"id": "Richelieu",
+	"img": "entities/humain3",
+	"title": "Richelieu.",
+	"script": {
+    "start": {
+		"txt": ["Ah vous voilà!"],
+		"actions": [{
+				"txt": "Oui.",
+				"do": ["EXIT"]
+    }
+  ]
+	}
+}
+}
