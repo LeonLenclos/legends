@@ -14,42 +14,66 @@
         "secousse":{
             "txt" : "L'arbre dit qu'il a mal et donne une pièce d'or.",
             "actions":[
-                {"txt":"Secouer encore l'arbre.", "do":["GOTO souffrance", "GIVE +1 or hero"]},
+                {"txt":"Secouer encore l'arbre.", "do":["GOTO souffrance", "GIVE +3 or hero"]},
                 {"txt":"Rendre la pièce, s'excuser et partir.", "do":["GIVE -1 or hero", "EXIT", "GOTO start"]},
-                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+                {"txt":"Partir.", "do":["EXIT", "GOTO secousse2"]}
+            ]
+        },
+        "secousses2":{
+            "txt" : "C'est un arbre magique qui a mal.",
+            "actions":[
+                {"txt":"Secouer l'arbre assez fort.", "do":["GOTO supplication", "GIVE +6 or hero"]},
+                {"txt":"Partir.", "do":["EXIT"]}
             ]
         },
         "souffrance":{
-            "txt" : "L'arbre souffre, il donne une autre pièce d'or.",
+            "txt" : "L'arbre souffre, il donne trois autre pièces d'or.",
             "actions":[
-                {"txt":"Secouer l'arbre encore plus fort.", "do":["GOTO supplication", "GIVE +1 or hero"]},
-                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
+                {"txt":"Secouer l'arbre encore plus fort.", "do":["GOTO supplication", "GIVE +6 or hero"]},
+                {"txt":"Partir.", "do":["EXIT", "GOTO souffrance2"]}
+            ]
+        },
+        "souffrance2":{
+          "txt" : "C'est un arbre magique qui souffre.",
+          "actions":[
+              {"txt":"Secouer l'arbre très fort.", "do":["GOTO supplication", "GIVE +6 or hero"]},
+              {"txt":"Laisser l'arbre tranquille.", "do":["EXIT"]}
             ]
         },
         "supplication":{
-            "txt" : "L'arbre vous supplie d'arrêter... et donne une pièce d'or.",
+            "txt" : "L'arbre vous supplie d'arrêter... et donne six pièces d'or.",
             "actions":[
-                {"txt":"Ne pas tenir compte de sa requête et le secouer encore et encore.", "do":["GOTO aïe", "GIVE +1 or hero"]},
-                {"txt":"Laisser l'arbre tranquille.", "do":["EXIT", "GOTO start"]}
+                {"txt":"Ne pas tenir compte de sa requête et le secouer encore et encore.", "do":["GOTO aïe", "GIVE +10 or hero"]},
+                {"txt":"Laisser l'arbre tranquille.", "do":["EXIT", "GOTO supplication2"]}
             ]
           },
-          "aïe":{
-              "txt" : ["L'arbre ne dit rien et donne une pièce d'or.","L'arbre est silencieux et donne encore une pièce.","L'arbre donne une pièce d'or sans rien dire.","L'arbre fait le mort et donne une pièce.","L'arbre reste inexpressif et donne une pièce."],
+          "supplication2":{
+              "txt" : "C'est un arbre magique qui a trèès mal.",
               "actions":[
-                  {"txt":["Secouer l'arbre.","Secouer encore l'arbre."], "do":[
-                  "GIVE +1 or hero",
-                  "GIVE -1 or",
-                  "COMPARE or = 0",
-                  "GOTO mort"
+                  {"txt":"Le secouer trèès fort.", "do":["GOTO aïe", "GIVE +10 or hero"]},
+                  {"txt":"Laisser l'arbre tranquille.", "do":["EXIT"]}
+              ]
+            },
+          "aïe":{
+              "txt" : ["L'arbre hurle de douleur et donne dix pièces d'or."],
+              "actions":[
+                  {"txt":["Secouer l'arbre trèèèès fort."], "do":[
+                "SETIMAGE entities/arbre_mort", "GOTO mort"
                   ]},
-                  {"txt":["Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille.","Laisser l'arbre tranquille!","N'avez vous donc pas peur des représailles???"],"do":["EXIT"]}
+                  {"txt":["Laisser l'arbre tranquille."],"do":["EXIT","GOTO aïe2"]}
             ]
         },
+        "aïe2":{
+            "txt" : ["C'est un arbre magique qui a trèèèès mal."],
+            "actions":[
+                {"txt":["Secouer l'arbre trèèèès fort."], "do":[
+              "SETIMAGE entities/arbre_mort", "GOTO mort"
+                ]},
+                {"txt":["Laisser l'arbre tranquille."],"do":["EXIT"]}
+          ]
+      },
         "mort":{
-          "auto_actions":[
-            {"do":["SETIMAGE arbre_mort"]}
-          ],
-            "txt" : "L'arbre est mort.",
+            "txt" : "L'arbre magique est mort.",
             "actions":[
                 {"txt":"Partir.", "do":["EXIT"]}
             ]
