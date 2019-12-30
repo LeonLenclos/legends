@@ -86,8 +86,7 @@ class Game {
         this.interaction_interface.show();
         clearInterval(this.tick_interval);
         this.interaction_interface.open_interaction(entity, (action)=>{
-                console.log('ACTIONS');
-
+            console.log('ACTIONS');
             this.on_action(action, entity);
             this.on_interaction_turn(entity);
         });
@@ -101,96 +100,95 @@ class Game {
         this.last_turn = Date.now();
     }
 
-    on_interaction_turn(entity){
-        let moment;
-        if(entity.fighting){
-            let hero = this.world.get_hero();
 
+    on_interaction_turn_fight(entity){
+        let hero = this.world.hero;
 
-            let story = this.assets.json.txt.fight;
-            let txt = "";
+        let txt = "";
+        if (!hero.next_attack) {
+            hero.start_fight();
+            entity.start_fight();
+            txt = this.assets.json.txt.fight.start;
+        }
 
-            if (!hero.next_attack) {
-                txt = story.start;
-            }
-            else {
-                let target_damage, damage
-                entity.choose_attack();
-                damage = hero.execute_attack(entity);
-                if(entity.pv == 0) entity.dead = true;
-                else {
-                    target_damage = entity.execute_attack(hero);
-                    if(hero.pv == 0) hero.dead = true;
-                }
+        else {
+            txt += hero.execute_attack(entity);
+            txt += '<br/>' 
+            txt += entity.execute_attack(hero) || "";
+        }
 
-                let fight = {
-                    target: entity.title,
-                    attack: hero.next_attack.txt,
-                    damage: damage,
-                    target_attack: entity.next_attack.txt,
-                    target_damage: target_damage,
-                };
-                txt += damage ? story.hero_success : story.hero_fail;
-                txt += '<br/>' 
-                txt += target_damage ? story.enemy_success : story.enemy_fail;
-                if(entity.dead){
-                    txt+= '<br/>' + story.enemy_dead;
-                }
-                if(hero.dead){
-                    txt+= '<br/>' + story.hero_dead;
-                }
-                txt = sprintf(txt, fight)
-            }
+        let title = sprintf(this.assets.json.txt.fight.title,{target:entity.title, pv:entity.pv});
 
-            let title = sprintf(story.title,{target:entity.title, pv:entity.pv});
+        let actions = []
 
-            let actions = []
-
-            if(hero.dead){
-                actions.push({
-                    "txt":"Ok.",
-                    "do":["GAMEOVER"]
-                });
-                hero.fighting = false;
-                hero.next_attack = undefined;
-                entity.fighting = false;
-                entity.next_attack = undefined;
-
-            }
-            else if(hero.flee || entity.dead){
-                actions.push({
-                    "txt":"Ok.",
-                    "do":["EXIT"]
-                });
-                hero.flee = 0;
-                hero.fighting = false;
-                hero.next_attack = undefined;
-                entity.fighting = false;
-                entity.next_attack = undefined;
-            }
-            else {
-                hero.attacks.forEach((a)=>{
-                    if(a.do.every((c)=>doable_command(this, entity, c))){
-                        actions.push(a);
-                    }
-                })                
-            }
-
-            moment = {
-                title: title,
-                txt: txt,
-                actions: actions
-            };
+        if(hero.dead){
+            actions.push({
+                "txt":"Ok.",
+                "do":["GAMEOVER"]
+            });
+        }
+        else if(entity.dead){
+            actions.push({
+                "txt":"Ok.",
+                "do":["GOTO dead"]
+            });
+            hero.stop_fight();
+        }
+        else if(hero.flee){
+            actions.push({
+                "txt":"Ok.",
+                "do":["EXIT"]
+            });
+            hero.stop_fight();
         }
         else {
-            moment = entity.read_script();
-            // Do auto actions
-            if(moment.auto_actions){
-                console.log('AUTO ACTIONS');
-               moment.auto_actions.forEach((a)=>{this.on_action(a, entity)});
-            }
-            moment = entity.read_script();
+            hero.attacks.forEach((a)=>{
+                if(a.do.every((c)=>doable_command(this, entity, c))){
+                    actions.push(a);
+                }
+            })                
+        }
 
+        return {
+            title: title,
+            txt: txt,
+            actions: actions
+        };
+
+    }
+
+    on_interaction_turn_normal(entity){
+        let moment = entity.read_script();
+        // Do auto actions
+        if(moment.auto_actions){
+            console.log('AUTO ACTIONS');
+           moment.auto_actions.forEach((a)=>{this.on_action(a, entity)});
+        }
+        return entity.read_script();
+
+    }
+
+    on_interaction_turn_gameover(entity){
+        return {
+                title:'Game over..',
+                txt:'Vous avez perdu !',
+                actions:[]
+            }
+    }
+
+
+    on_interaction_turn(entity){
+        if(!this.interaction_interface.visible) return;
+        let moment;
+
+        if(this.game_is_over){
+            moment = this.on_interaction_turn_gameover(entity);
+        }
+        else if(entity.fighting){
+            moment = this.on_interaction_turn_fight(entity);
+        }
+        else {
+            moment = this.on_interaction_turn_normal(entity);
         }
         // Update interface
         this.interaction_interface.update(moment);
@@ -198,19 +196,16 @@ class Game {
     }
 
     game_over(){
+        this.game_is_over = true;
         console.log("game_over")
         this.map_interface.hide();
         this.interaction_interface.show();
         clearInterval(this.tick_interval);
-        this.interaction_interface.update({
-            title:'Game over..',
-            txt:'Vous avez perdu !',
-            actions:[]
-        });
     }
     on_action(action, entity){
-        if(entity.fighting){
-            this.world.get_hero().next_attack=action;
+        console.log('action:', action);
+        if(this.world.hero.fighting){
+            this.world.hero.next_attack=action;
         }
         let exit = false;
         if(action.do.every((c)=>doable_command(this, entity, c))){

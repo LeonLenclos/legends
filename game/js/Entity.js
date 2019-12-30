@@ -50,24 +50,39 @@ class Entity {
     start_fight(target){
         this.fighting = true;
         this.next_attack = undefined;
+        this.flee = false;
+    }
+
+    stop_fight(target){
+        this.fighting = false;
+        this.next_attack = undefined;
+        this.flee = false;
     }
 
     choose_attack(){
-        if(this.pv > 0){
-            this.next_attack = this.attacks[random(0,this.attacks.length-1)]
-        }
-        else this.next_attack = undefined;
+        this.next_attack = this.attacks[random(0,this.attacks.length)]
     }
 
     execute_attack(target){
-        let damage = 0
-        if(this.next_attack && Math.random()<this.next_attack.prob){
-            damage = random(this.next_attack.damage_min,  this.next_attack.damage_max);
+        this.target = target;
+        if(this.dead) return;
+        if(!this.next_attack) this.choose_attack();
+        for (var i = 0; i < this.next_attack.effect.length; i++) {
+            let effect = this.next_attack.effect[i]
+            let dice = Math.random() 
+            if (dice < effect.prob) {
+                effect.do.forEach((c)=>do_command(this.game, this, c))
+                this.next_attack = undefined;
+                return effect.txt;
+            }
         }
-        target.pv = damage<target.pv ? target.pv-damage : 0;
-        return damage;
     }
 
+    kill(){
+        this.pv = 0;
+        this.dead = true;
+        this.fighting = false;
+    }
 
     read_script(){
         let state = this.get_interaction_state();

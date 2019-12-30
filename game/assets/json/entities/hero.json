@@ -8,28 +8,57 @@
     "attacks":[
         {
             "txt":"Fuir",
-            "prob":1,
-            "damage_min":0,
-            "damage_max":0,
             "types":[],
-            "do":["SET 1 flee hero"]
-        },
-        {
-            "txt":"Donner un coup de hache",
-            "prob":0.7,
-            "damage_min":5,
-            "damage_max":10,
-            "types":["tranchant","bucheron"],
-            "do":["COMPARE hache hero > 0"]
-        },
+            "do":[],
+            "effect":[
+                {
+                    "prob":0.5,
+                    "txt":"Vous prenez la fuite.",
+                    "do":["FLEE"]
 
+                },
+                {
+                    "prob":1,
+                    "txt":"Vous ne parvenez pas à fuir.",
+                    "do":[]
+
+                }
+            ]
+        },
         {
             "txt":"Donner un coup de poing",
-            "prob":0.5,
-            "damage_min":1,
-            "damage_max":3,
             "types":[],
-            "do":[]
+            "do":[],
+            "effect":[
+                {
+                    "prob":0.1,
+                    "txt":"Vous donnez un super coup de point : -8pv",
+                    "do":["HIT 8"]
+                },
+                {
+                    "prob":0.8,
+                    "txt":"Vous donnez un coup de point : -5pv",
+                    "do":["HIT 5"]
+                },
+                {
+                    "prob":1,
+                    "txt":"Vous ratez votre coup de point.",
+                    "do":[]
+                }
+
+            ]
+        },
+        {
+            "txt":"Tricher",
+            "types":[],
+            "do":[],
+            "effect":[
+                {
+                    "prob":1,
+                    "txt":"Vous utilisez une attaque spéciale reservée au développeurs du jeu : -10000pv",
+                    "do":["HIT 10000"]
+                }
+            ]
         }
     ],
 

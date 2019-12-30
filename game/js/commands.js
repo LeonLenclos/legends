@@ -21,11 +21,11 @@ const commands = {
         do:(g, e, a)=>{
             let target = a[1] ? g.world.get_entity(a[1]) : e;
             target.interaction_state = a[0];
-            if(!a[1] && target.read_script().auto_actions){
-                target.read_script().auto_actions.forEach((a)=>{
-                    g.on_action(a.do, target)
-                })
-            }
+            // if(!a[1] && target.read_script().auto_actions){
+            //     target.read_script().auto_actions.forEach((a)=>{
+            //         g.on_action(a.do, target)
+            //     })
+            // }
         },
         doable:(g, e, a)=>true
     },
@@ -77,6 +77,22 @@ const commands = {
         do:(g, e, a)=>{
             g.world.get_entity('hero').start_fight();
             e.start_fight();
+        },
+        doable:(g, e, a)=>true
+    },
+    FLEE:{
+    do:(g, e, a)=>{
+        e.flee = true;
+    },
+    doable:(g, e, a)=>true
+    },
+    HIT:{
+        do:(g, e, a)=>{
+            let hit = Number(a[0]); 
+            e.target.pv -= hit;
+            if(e.target.pv <= 0){
+                e.target.kill();
+            }
         },
         doable:(g, e, a)=>true
     },
