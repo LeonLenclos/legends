@@ -35,16 +35,25 @@ class Game {
 
     setup_keys(){
         this.input = {};
-        for(let k in KEYS) this.input[KEYS[k]] = false;
+        for(let k in MAP_KEYS) this.input[MAP_KEYS[k]] = false;
         $(document).keydown((e)=>{this.onkey(e, true)});
         $(document).keyup((e)=>{this.onkey(e, false)});
     }
 
     onkey(ev, pressed) {
-        if (ev.key in KEYS){
-            this.input[KEYS[ev.key]] = pressed
+        if (ev.key in MAP_KEYS){
+            this.input[MAP_KEYS[ev.key]] = pressed
             ev.preventDefault();
         }
+        if(this.interaction_interface.visible && pressed){
+            if(INTERACTION_KEYS[ev.key] == NEXT){
+                this.interaction_interface.on_next();
+            } else if(INTERACTION_KEYS[ev.key] == PREV){
+                this.interaction_interface.on_prev();
+            } else if(INTERACTION_KEYS[ev.key] == SUBMIT){
+                this.interaction_interface.on_submit();
+            }
+       }
     }
 
     on_tick(){
@@ -119,33 +128,22 @@ class Game {
 
         let title = sprintf(this.assets.json.txt.fight.title,{target:entity.title, pv:entity.pv});
 
-        let actions = []
+        let actions = [];
 
         if(hero.dead){
-            actions.push({
-                "txt":"Ok.",
-                "do":["GAMEOVER"]
-            });
+            actions.push({"txt":"Ok.", "do":["GAMEOVER"]});
         }
         else if(entity.dead){
-            actions.push({
-                "txt":"Ok.",
-                "do":["GOTO dead"]
-            });
+            actions.push({"txt":"Ok.", "do":["GOTO dead"]});
             hero.stop_fight();
         }
         else if(hero.flee){
-            actions.push({
-                "txt":"Ok.",
-                "do":["EXIT"]
-            });
+            actions.push({"txt":"Ok.", "do":["EXIT"]});
             hero.stop_fight();
         }
         else {
             hero.attacks.forEach((a)=>{
-                if(a.do.every((c)=>doable_command(this, entity, c))){
-                    actions.push(a);
-                }
+                if(a.do.every((c)=>doable_command(this, entity, c))){actions.push(a)}
             })                
         }
 

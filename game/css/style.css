@@ -64,18 +64,21 @@ div {
 }
 
 #interaction-title {
-    font-weight: bold;
+    font-weight: bsqold;
     
 }
 
 #interaction-text {
     border: 5px solid #004058;
+    border: 5px solid #fff;
     padding: 20px;
     background: #ffffff;
     color:#000000;
         margin:  10px;
-
+    vertical-align: middle;
+    
 }
+
 .button {
     background: #000;
     color: #fff;
@@ -102,7 +105,8 @@ div {
 #interaction-actions {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;    
+    justify-content: center;
+    flex-direction: column;
 }
 
 
