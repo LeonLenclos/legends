@@ -189,6 +189,21 @@
               "x":122,
               "y":67,
               "extra_data":"entities/panneau_d_info"
+        },
+        {
+              "x":109,
+              "y":110,
+              "extra_data":"entities/diablo2"
+        },
+        {
+              "x":105,
+              "y":108,
+              "extra_data":"entities/fille_de_richelieu"
+        },
+        {
+              "x":104,
+              "y":109,
+              "extra_data":"entities/diablo3"
         }
     ]
 }
