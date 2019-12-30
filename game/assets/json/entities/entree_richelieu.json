@@ -1,0 +1,27 @@
+{
+    "id":"entree_richelieu",
+    "title":"Porte d'entrée du domaine des Richelieu.",
+    "script" : {
+        "start":{
+          "auto_actions":[
+             {
+                "do":[
+                   "COMPARE recompense hero > 0",
+                   "GOTO invitation"
+                ]
+             }
+          ],
+            "txt" : "Porte fermée.",
+            "actions":[
+                {"txt":"Partir", "do":["EXIT"]}
+            ]
+        }
+    },
+    "invitation":{
+    "txt" : "Le portier s'adresse à vous: \"Vous venez pour la récompense? Entrez!\"",
+    "actions":[
+        {"txt":"Entrer", "do":["SET 132 x hero","SET 56 y hero"]},
+        {"txt":"Non pardon je me suis trompé de porte.", "do":["EXIT"]}
+    ]
+  }
+  }

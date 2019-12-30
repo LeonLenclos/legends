@@ -1,37 +1,148 @@
 {
-    "id":"policier",
-    "img":"entities/humain3",
-    "title":"Un policier.",
-    "script" : {
-        "start":{
-          "auto_actions": [
-              {"do": ["COMPARE cigarette hero > 0", "GOTO controle"]}
-  ],
-          "txt" : "\"Quelle belle journée.\"",
-          "actions":[
-            {"txt":"Oh oui il fait beau.", "do":["EXIT"]},
-            {"txt":"Bof.", "do":["EXIT"]}
-          ]
-        },
-        "controle":{
-                   "txt" : "\"Contrôle de police, je vais devoir procéder à une fouille!\"",
-                  "actions":[
-                    {"txt":"Attaquer le policier.", "do":["EXIT"]},
-                    {"txt":"Se laisser fouiller.", "do":["GOTO fouille"]}
-                  ]
-                  },
-        "fouille":{
-               "txt" : ["Des cigarettes de contrebande! Vous vous exposez monsieur à une amande de 100 pièces d'or."],
-               "actions":[
-                 {"txt":"Attaquer le policier.", "do":["EXIT"]},
-                 {"txt":"Payer l'amande.", "do":["GIVE -300 or hero","SET 0 cigarette hero","GOTO derniere_fois"]}
+   "id":"policier",
+   "img":"entities/humain3",
+   "title":"Un policier.",
+   "script":{
+      "start":{
+         "auto_actions":[
+            {
+               "do":[
+                  "COMPARE cigarette hero > 0",
+                  "GOTO controle"
                ]
-               },
-       "derniere_fois":{
-            "txt" : ["J'espère que ça vous aura servi de leçon, garnement. Allez, du balais!"],
-            "actions":[
-              {"txt":"Oui oui...", "do":["EXIT","GOTO start"]}
+            }
+         ],
+         "auto_actions":[
+            {
+               "do":[
+                  "COMPARE info_enlevement hero > 0",
+                  "GOTO enlevement"
                ]
-             }
-                           }
-          }
+            }
+         ],
+         "txt":"\"Quelle belle journée.\"",
+         "actions":[
+            {
+               "txt":"Oh oui il fait beau.",
+               "do":[
+                  "EXIT"
+               ]
+            },
+            {
+               "txt":"Bof.",
+               "do":[
+                  "EXIT"
+               ]
+            }
+         ]
+      },
+      "controle":{
+         "txt":"\"Contrôle de police, je vais devoir procéder à une fouille!\"",
+         "actions":[
+            {
+               "txt":"Attaquer le policier.",
+               "do":[
+                  "EXIT"
+               ]
+            },
+            {
+               "txt":"Se laisser fouiller.",
+               "do":[
+                  "GOTO fouille"
+               ]
+            }
+         ]
+      },
+      "fouille":{
+         "txt":[
+            "Des cigarettes de contrebande! Vous vous exposez monsieur à une amande de 100 pièces d'or."
+         ],
+         "actions":[
+            {
+               "txt":"Attaquer le policier.",
+               "do":[
+                  "EXIT"
+               ]
+            },
+            {
+               "txt":"Payer l'amande.",
+               "do":[
+                  "GIVE -100 or hero",
+                  "SET 0 cigarette hero",
+                  "GOTO derniere_fois"
+               ]
+            }
+         ]
+      },
+      "derniere_fois":{
+         "txt":[
+            "J'espère que ça vous aura servi de leçon, garnement. Allez, du balais!"
+         ],
+         "actions":[
+            {
+               "txt":"Oui oui...",
+               "do":[
+                  "EXIT",
+                  "GOTO start"]}
+         ]
+      },
+      "enlevement":{
+         "txt":[
+            "Salut bonhomme, je peux t'aider?"
+         ],
+         "actions":[
+            {"txt":"Oui j'ai trouvé la fille des Richelieu!","do":["GOTO enlevement2"]},
+               {"txt":"Non, non rien enfait.",
+               "do":[
+                  "EXIT",
+                  "GOTO start"]}
+         ]
+      },
+      "enlevement2":{
+         "txt":[
+            "Elle est où?"
+         ],
+         "actions":[
+            {
+               "txt":"Là bas!",
+               "do":[
+                  "GOTO enlevement3"
+               ]},
+               {"txt":"Vers ici!",
+               "do":[
+                  "GOTO enlevement3"]}
+         ]
+      },
+      "enlevement3":{
+        "auto_actions":[
+           {
+              "do":[
+                 "SET 1 invisible fille_de_richelieu","SET 1 invisible diablo2","SET 1 invisible diablo3"
+              ]
+           }
+        ],
+         "txt":[
+            "C'est bon je l'ai trouvée! Et emprisonné ces deux malfrats de diablos... <br> Allez voir la famille Richelieu pour la récompense."
+         ],
+         "actions":[
+            {
+               "txt":"Super bravo monsieur le policier!",
+               "do":[
+                  "EXIT",
+                  "GOTO start",
+                  "GIVE -1 info_enlevement hero",
+                  "GIVE +1 recompense hero"
+
+               ],
+               "txt":"Ok",
+               "do":[
+                  "EXIT",
+                  "GOTO start",
+                  "GIVE -1 info_enlevement hero",
+                  "GIVE +1 recompense hero"
+               ]
+            }
+         ]
+      }
+   }
+}

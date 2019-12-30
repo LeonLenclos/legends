@@ -36,7 +36,10 @@
     "entities/panneau_d_info",
     "entities/diablo2",
     "entities/fille_de_richelieu",
-    "entities/diablo3"
+    "entities/diablo3",
+    "entities/commissariat",
+    "entities/entree_richelieu",
+    "entities/richelieu"
   ],
   "png": [
     "walltileset",

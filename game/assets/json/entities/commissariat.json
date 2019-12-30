@@ -1,0 +1,12 @@
+{
+    "id":"commissariat",
+    "title":"Entrée du commissariat.",
+    "script" : {
+        "start":{
+            "txt" : "Un papier sur la porte: \"Le commissariat est fermé aujourd'hui, merci de s'adresser au policier à côté de la porte\".",
+            "actions":[
+                {"txt":"Partir", "do":["EXIT"]}
+            ]
+        }
+    }
+}

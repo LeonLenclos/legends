@@ -136,8 +136,8 @@
               "extra_data":"entities/diablo"
         },
         {
-              "x":147,
-              "y":65,
+              "x":146,
+              "y":72,
               "extra_data":"entities/policier"
         },
         {
@@ -204,6 +204,21 @@
               "x":104,
               "y":109,
               "extra_data":"entities/diablo3"
+        },
+        {
+              "x":145,
+              "y":71,
+              "extra_data":"entities/commissariat"
+        },
+        {
+              "x":132,
+              "y":61,
+              "extra_data":"entities/entree_richelieu"
+        },
+        {
+              "x":136,
+              "y":53,
+              "extra_data":"entities/richelieu"
         }
     ]
 }
