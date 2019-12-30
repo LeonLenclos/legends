@@ -94,7 +94,7 @@
 
           "txt" : "\"Voilà ta paie ! 50 pièces d'or.\"",
             "actions":[
-                {"txt":"Merci monsieur.", "do":["GOTO aroser"]}
+                {"txt":"Merci monsieur.", "do":["GIVE +50 or hero","GOTO aroser"]}
             ]
         }
 

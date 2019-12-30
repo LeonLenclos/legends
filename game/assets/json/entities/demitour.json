@@ -1,0 +1,14 @@
+{
+    "id":"demitour",
+    "title":"Des arbres.",
+    "script" : {
+        "start":{
+            "txt" : "Cul de sac.",
+            "actions":[
+                {"txt":["\"Putain merde fait chier y'a rien.\""], "do":["EXIT"]},
+                {"txt":["\"Ah, il n'y a rien.\""], "do":["EXIT"]}
+            ]
+        }
+    }
+
+}

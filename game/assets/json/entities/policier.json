@@ -133,8 +133,8 @@
                   "GIVE -1 info_enlevement hero",
                   "GIVE +1 recompense hero"
 
-               ],
-               "txt":"Ok",
+               ]},
+               {"txt":"Ok",
                "do":[
                   "EXIT",
                   "GOTO start",

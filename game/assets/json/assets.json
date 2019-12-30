@@ -39,7 +39,8 @@
     "entities/diablo3",
     "entities/commissariat",
     "entities/entree_richelieu",
-    "entities/richelieu"
+    "entities/richelieu",
+    "entities/demitour"
   ],
   "png": [
     "walltileset",

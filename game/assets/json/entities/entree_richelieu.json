@@ -14,9 +14,11 @@
             "txt" : "Porte fermée.",
             "actions":[
                 {"txt":"Partir", "do":["EXIT"]}
+
             ]
         }
     },
+
     "invitation":{
     "txt" : "Le portier s'adresse à vous: \"Vous venez pour la récompense? Entrez!\"",
     "actions":[

@@ -6,7 +6,7 @@
         "start":{
             "txt" : "C'est un hôtel sympa.",
             "actions":[
-                {"txt":"Se reposer une nuit à l'hôtel: 5 pièces d'or", "do":["GIVE +1 vies hero","GIVE -5 or hero"]},
+                {"txt":"Se reposer une nuit à l'hôtel: 5 pièces d'or", "do":["GIVE +10 pv hero","GIVE -5 or hero"]},
                 {"txt":"Sortir", "do":["EXIT"]}
             ]
         }

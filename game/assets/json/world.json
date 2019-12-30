@@ -219,6 +219,11 @@
               "x":136,
               "y":53,
               "extra_data":"entities/richelieu"
+        },
+        {
+              "x":146,
+              "y":117,
+              "extra_data":"entities/demitour"
         }
     ]
 }
