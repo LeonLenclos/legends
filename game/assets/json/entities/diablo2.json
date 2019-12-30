@@ -1,0 +1,77 @@
+{
+	"id": "diablo2",
+	"img": "entities/diablo3",
+	"title": "Un diablo.",
+	"script": {
+    "start": {
+		"txt": ["\"Qu'est ce tu veux?\"","\"Qu'est ce tu veux encore?\""],
+		"actions": [{
+				"txt": "\"J'ai cru voir la fille de Richelieu là bas.\"",
+				"do": ["GOTO fille"]
+			},
+			{
+				"txt": "\"Non rien je me promène tranquillement...\"",
+				"do": ["GOTO passer"]
+			}
+		]
+	},
+	"fille": {
+		"txt": "\"Ben ouais c'est elle, et alors?.\"",
+		"actions": [{
+			"txt": "\"Non c'était juste pour savoir.\"",
+			"do": ["GOTO start","EXIT"]
+		}]
+	},
+	"passer": {
+		"txt": "\"J'men fou.\"",
+		"actions": [{
+				"txt": "\"Ah euh désolé du dérangement.\"",
+				"do": ["EXIT"]
+			},
+			{
+				"txt": "\"Alors enfait j'aimerais juste passer.\"",
+				"do": ["GOTO passer2"]
+			}
+		]
+	},
+	"passer2": {
+		"txt": "\"Si t'as une cigarette on peut s'arranger.\"",
+		"actions": [{
+				"txt": "\"Oui oui bien sûr tiens!\"",
+				"do": ["GIVE -1 cigarette hero", "GOTO cigarette"]
+			},
+			{
+				"txt": "\"Non mais je suis libre de circuler librement quand même!\"",
+				"do": ["GOTO circuler"]
+			}
+		]
+	},
+	"circuler": {
+		"txt": "\"Ben vas y circules si t'es pas content.\"",
+		"actions": [{
+				"txt": "Se battre.",
+				"do": ["EXIT"]
+			},
+			{
+				"txt": "\"Ok.\"",
+				"do": ["EXIT","GOTO start"]
+			}
+		]
+	},
+	"cigarette": {
+		"txt": "\"Cimer. Vas y je te laisse passer.\"",
+		"actions": [{
+			"txt": "\"Cool super.\"",
+			"do": ["SET 109 x", "SET 111 y", "EXIT","GOTO cava"]
+    }
+  ]  },
+  "cava": {
+		"txt": ["\"ça va mon frère?\""],
+		"actions": [{
+			"txt": ["\"Oui oui très bien merci.\""],
+			"do": ["EXIT"]
+    }
+  ]
+	}
+}
+}

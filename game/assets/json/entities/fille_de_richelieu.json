@@ -1,0 +1,86 @@
+{
+	"id": "fille_de_richelieu",
+	"img": "entities/humain1",
+	"title": "La fille de Richelieu",
+	"script": {
+    "start": {
+		"txt": ["Elle est en train de fumer une cigarette bizarre."],
+		"actions": [{
+				"txt": "\"Je viens vous sauver, fille de Richelieu!\"",
+				"do": ["GOTO sauver"]
+			},
+			{
+				"txt": "\"Euh salut tout le monde.\"",
+				"do": ["GOTO passer"]
+    }
+  ]},
+	"sauver": {
+	"txt": ["\"C'est gentil ça, mais me sauver de quoi?\""],
+	"actions": [{
+			"txt": "\"Ben de... des diablos quoi!\"",
+			"do": ["GOTO rigolade"]
+		}
+	]},
+	"rigolade": {
+	"txt": ["\"Ahahah, t'es trop mignon toi. Tu veux tirer sur le joint?\""],
+	"actions": [{
+			"txt": "\"Ben pourquoi pas, j'ai jamais essayé... merci.\"",
+			"do": ["GOTO joint"]
+		},
+		{
+			"txt": "\"Non non ça va, viens je te racompagne chez tes parents.\"",
+			"do": ["GOTO racompagne"]
+}
+	]},
+	"racompagne": {
+	"txt": ["\"Hein? Tu me racompagnes nulle part, je bouge pas d'ici moi.\""],
+	"actions": [{
+			"txt": "\"Ne m'oblige pas a appeler les flics\"",
+			"do": ["GOTO flics"]
+		},
+		{
+			"txt": "\"OK ok ça marche..\"",
+			"do": ["EXIT"]
+}
+	]},
+	"flics": {
+	"txt": ["\"T'es sérieux là? Vas y va voir les flics j'm'en fou.\""],
+	"actions": [{
+			"txt": "\"Tu l'aura voulue.\"",
+			"do": ["GIVE +1 balance hero","GOTO quoi","EXIT"]
+		},
+		{
+			"txt": "\"Non non c'était pour rire! Je peux fumer sur ton joint?.\"",
+			"do": ["GOTO joint3"]
+}
+	]},
+"joint": {
+"txt": ["\"Faut que tu tires plus fort si tu veux vraiment ressentir les effets.\""],
+"actions": [{
+		"txt": "\"D'accord ça marche.\"",
+		"do": ["GOTO joint2"]
+	}
+		]},
+	"joint2": {
+	"txt": ["\"Ça va? T'es tout pâle!\""],
+	"actions": [{
+			"txt": "\"Euh, oui je, enfin, ça tourne un peu là, je, je, je....\"",
+			"do": ["EXIT"]
+		}
+			]},
+		"joint3": {
+		"txt": ["\"Bizarre ton humour.. Oui tiens prend le joint.\""],
+		"actions": [{
+				"txt": "\"Merci.\"",
+				"do": ["joint2"]
+			}
+				]},
+			"quoi": {
+			"txt": ["\"Quoi, qu'est ce que tu veux encore?.\""],
+			"actions": [{
+					"txt": "\"Non non rien.\"",
+					"do": ["EXIT"]
+}
+]}
+}
+}
