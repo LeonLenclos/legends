@@ -26,7 +26,7 @@
 		"txt": "\"J'men fou.\"",
 		"actions": [{
 				"txt": "\"Ah euh désolé du dérangement.\"",
-				"do": ["EXIT"]
+				"do": ["EXIT","GOTO start"]
 			},
 			{
 				"txt": "\"Alors enfait j'aimerais juste passer.\"",

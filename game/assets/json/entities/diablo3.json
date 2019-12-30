@@ -1,0 +1,15 @@
+{
+	"id": "diablo3",
+	"img": "entities/diablo1",
+	"title": "Un diablo.",
+	"script": {
+    "start": {
+		"txt": ["\"Ouais?\""],
+		"actions": [{
+				"txt": "\"Non rien..\"",
+				"do": ["EXIT"]
+    }
+  ]
+	}
+}
+}

@@ -4,14 +4,14 @@
 	"title": "La fille de Richelieu",
 	"script": {
     "start": {
-		"txt": ["Elle est en train de fumer une cigarette bizarre."],
+		"txt": ["Elle fume une cigarette bizarre."],
 		"actions": [{
 				"txt": "\"Je viens vous sauver, fille de Richelieu!\"",
 				"do": ["GOTO sauver"]
 			},
 			{
-				"txt": "\"Euh salut tout le monde.\"",
-				"do": ["GOTO passer"]
+				"txt": "\"C'est bien vous la fille de Richelieu? Je viens vous racompagner chez vous.\"",
+				"do": ["GOTO racompagne"]
     }
   ]},
 	"sauver": {
@@ -72,7 +72,7 @@
 		"txt": ["\"Bizarre ton humour.. Oui tiens prend le joint.\""],
 		"actions": [{
 				"txt": "\"Merci.\"",
-				"do": ["joint2"]
+				"do": ["GOTO joint2"]
 			}
 				]},
 			"quoi": {
