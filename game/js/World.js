@@ -43,6 +43,9 @@ class World {
     move_hero(action) {
         let dest_x = this.hero.x;
         let dest_y = this.hero.y;
+        this.hero.set_image('entities/hero/'+action);
+        this.hero.direction = action;
+
         // set destination
         if (action === NORTH) dest_y --;
         else if (action === SOUTH) dest_y ++;
@@ -63,7 +66,5 @@ class World {
         // move hero
         this.hero.x = dest_x;
         this.hero.y = dest_y;
-        this.hero.set_image('entities/hero/'+action);
-        this.hero.direction = action;
     }
 }
