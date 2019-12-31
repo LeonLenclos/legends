@@ -1,0 +1,30 @@
+{
+	"img": "entities/canap",
+	"title": "Un canapé",
+	"script": {
+    "start": {
+		"txt": ["C'est un très beau canapé. Il vient certainement de chez les Richelieu."],
+		"actions": [{
+				"txt": "Faire une sieste",
+				"do": ["GOTO sieste"]
+			},
+			{
+				"txt": "Partir.",
+				"do": ["EXIT"]
+    }
+  ]},
+	"sieste": {
+	"txt": ["Une heure plus tard...", "Trois heures plus tard...", "Deux heures plus tard..."],
+	"actions": [{
+			"txt": ["Se lever", "Prendre son courage à deux mains et repartir à l'aventure."],
+			"do": ["EXIT", "GOTO start", "SETPOSITION 104 109 hero", "GOTO sieste fille_de_richelieu"]
+		},
+		{
+			"txt": ["Dormir encore un peu.", "Faire une autre sieste", "Dormir encore une petite heure."],
+			"do": []
+		}
+	]}
+
+}
+
+}

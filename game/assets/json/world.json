@@ -205,6 +205,24 @@
               "y":109,
               "extra_data":"entities/diablo3"
         },
+                {
+              "x":104,
+              "y":107,
+              "extra_data":"entities/canap"
+        },
+        {
+              "x":23,
+              "y":70,
+              "extra_data":"entities/fille_de_richelieu",
+              "id":"fille_de_richelieu_bad_trip",
+              "interaction_state":"bad_trip"
+        },
+        {
+              "x":22,
+              "y":69,
+              "extra_data":"entities/canap"
+        },
+
         {
               "x":145,
               "y":71,

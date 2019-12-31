@@ -65,7 +65,7 @@
 	"txt": ["\"Ça va? T'es tout pâle!\""],
 	"actions": [{
 			"txt": "\"Euh, oui je, enfin, ça tourne un peu là, je, je, je....\"",
-			"do": ["EXIT"]
+			"do": ["EXIT", "SETPOSITION 24 70 hero"]
 		}
 			]},
 		"joint3": {
@@ -80,6 +80,20 @@
 			"actions": [{
 					"txt": "\"Non non rien.\"",
 					"do": ["EXIT"]
+}
+]},
+			"bad_trip": {
+			"txt": ["\"Ça va ?\"","\"Tu devrai t'allonger deux secondes sur le canap.\""],
+			"actions": [{
+					"txt": ["\"Je...\"","\"Le...\"","\"Que...\""],
+					"do": ["EXIT"]
+}
+]},
+			"sieste": {
+			"txt": ["\"Bien dormi ?\""],
+			"actions": [{
+					"txt": ["\"Oui, merci.\""],
+					"do": ["EXIT", "GOTO start"]
 }
 ]}
 }
