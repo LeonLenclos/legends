@@ -1,6 +1,8 @@
 {
     "id":"bucheron",
     "img":"entities/humain4",
+        "illu":"illu/bucheron",
+
     "title":"Bûcheron",
     "pv":50,
     "script" : {

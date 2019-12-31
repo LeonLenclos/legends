@@ -1,5 +1,7 @@
 {
     "img":"entities/portail",
+        "illu":"illu/portail",
+
     "title":"Portail dimensionnel.",
     "script" : {
         "start":{

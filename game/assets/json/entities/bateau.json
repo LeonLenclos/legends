@@ -1,6 +1,8 @@
 {
   "img": "entities/bateau",
   "title": "Un pêcheur sur son bateau.",
+      "illu":"illu/pecheur",
+
   "script": {
     "start": {
       "txt": "Salut petit, tu veux aller où?",

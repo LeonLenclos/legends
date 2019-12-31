@@ -1,6 +1,7 @@
 {
     "img":"entities/tas_de_bois",
     "title":"Un tas de bois.",
+    "illu":"illu/bois",
     "script" : {
         "start":{
             "txt" : "C'est le tas de bois du bucheron.",

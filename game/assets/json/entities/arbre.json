@@ -1,6 +1,8 @@
 {
     "img":"entities/arbre1",
     "title":"Un arbre.",
+        "illu":"illu/arbre",
+
     "script" : {
         "start":{
           "auto_actions": [

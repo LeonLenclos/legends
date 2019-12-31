@@ -1,7 +1,7 @@
 {
     "id":"maison_parents",
     "img":"entities/porte",
-    "illu":"illu/maison1",
+    "illu":"illu/maison",
     "title":"La maison de tes parents.",
     "script" : {
         "start":{

@@ -11,22 +11,39 @@ class InteractionInterface extends Interface {
         this.action_call_back = action_call_back;
         this.actions = [];
         this.selected_action = 0;
+        clearTimeout(this.anim_interval);
+        this.anim_interval = undefined;
 
     }
 
     update(script){
-        this.set_illu(script.illu);
+        console.log('illu', script.illu);
+        if(script.illu){
+            this.set_illu(script.illu);
+        } else {
+            this.illu_div.empty();
+            // clearTimeout(this.anim_interval);
+        }
         this.set_title(script.title);
         this.set_text(script.txt);
         this.set_actions(script.actions);
     }
 
     set_illu(illu){
-        this.illu_div.empty();
-        $(illu).appendTo(this.illu_div);
+        if(!this.anim_interval) {
+            this.animate_illu(illu[0], illu[1])
+        }
 
         // !!!!!!!!!!!!!!!!!!!!!!!
     }
+
+    animate_illu(illu1, illu2){
+        console.log('C')
+        this.illu_div.empty();
+        $(illu1).appendTo(this.illu_div);
+        this.anim_interval = setTimeout(()=>{this.animate_illu(illu2, illu1)},400)
+    }
+
     set_text(txt){
         if(txt instanceof ScriptText) txt = txt.read();
 

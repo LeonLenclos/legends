@@ -1,6 +1,8 @@
 {
     "id":"agri_p4",
     "img":"entities/porte",
+        "illu":"illu/porte",
+    
     "title":"Maison d'un agriculteur.",
     "script" : {
         "start":{
