@@ -45,7 +45,7 @@ class Game {
             this.input[MAP_KEYS[ev.key]] = pressed
             ev.preventDefault();
         }
-        if(this.interaction_interface.visible && pressed){
+            if(this.interaction_interface.visible && pressed){
             if(INTERACTION_KEYS[ev.key] == NEXT){
                 this.interaction_interface.on_next();
             } else if(INTERACTION_KEYS[ev.key] == PREV){

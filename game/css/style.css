@@ -11,7 +11,7 @@ html, body {
 body {
     font-family: sans-serif;
     color:white;
-    background: #000000;
+    background: black;
 }
 
 div {
@@ -32,7 +32,7 @@ div {
   padding: 10px;
     text-align: center;
     font-weight: bold;
-    color: #004058;
+    color: gray;
 }
 
 /********** MAP ************/
@@ -43,8 +43,8 @@ div {
 }
 
 #map {
-    border: 5px solid #004058;
-    background: #004058;
+    border: 2px solid white;
+    background: gray;
 }
 
 #main-interface {
@@ -62,67 +62,93 @@ div {
     min-width: 400px;
         margin:auto;
 }
+#interaction-illu-text {
+    display: flex;
+}
+#interaction-illu img {
+    image-rendering: crisp-edges;
+        width: 256px;
+}
+#interaction-illu  {
+    display: flex; 
+        margin:  5px;
+        padding: 0;
 
-#interaction-title {
-    font-weight: bsqold;
-    
 }
 
+#interaction-title {
+    font-weight: bold;
+    color:#fff;
+    margin:5px;
+    padding: 5px;
+    text-align: 
+    
+}
+#interaction-text-container{
+            margin:  5px;
+
+    display: flex;
+  flex-direction: column;
+  justify-content: center;    width: 100%; 
+        background: white;
+
+    
+}
 #interaction-text {
-    border: 5px solid #004058;
-    border: 5px solid #fff;
-    padding: 20px;
-    background: #ffffff;
-    color:#000000;
-        margin:  10px;
-    vertical-align: middle;
+    padding: 10px;
+    color:black;
+        margin:  5px;
     
 }
 
 .button {
-    background: #000;
-    color: #fff;
-    padding: 10px;
-    margin:  10px;
-    border: 5px solid #004058;
+    background: black;
+    color: white;
+    padding: 5px;
+    margin:  5px;
+    border: 2px solid gray;
     min-width: 300px;
 }
 
 .button:hover, .button.selected:hover {
-    background: #004058;
-    border-color: #004058;
+    background: gray;
+    border-color: gray;
+    color:black;
     
 }
-.button:disabled, .button:disabled:hover {
-    color: #004058;
-    background: #000;
+.button:disabled, .button:disabled:hover, .button.selected:disabled {
+    color: gray;
+    background: black;
 }
 
 .button.selected {
-    background: #004058;
+    background: gray;
     border-color:white;
+    color:black;
+
 }
 #interaction-actions {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;
+    flex-direction: column;s
 }
 
 
 /********* STATUS BAR **********/
 
 #status-bar{
-    padding: 5px;
-    background:  #004058;
+    background:  gray;
     display: flex;
+        border: 2px solid gray;
+
 }
 
 .status-info-title {
     font-weight: bold;
 }
 .status-info{
-    margin: 3px;
+    margin-right: 2px;
     padding: 2px;
     background: #fff;
     color:#000;

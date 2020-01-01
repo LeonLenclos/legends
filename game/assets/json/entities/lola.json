@@ -1,6 +1,8 @@
 {
     "id":"lola",
     "img":"entities/humain1",
+        "illu":"illu/lola",
+
     "title":"Une jeune fille.",
     "script" : {
         "start":{

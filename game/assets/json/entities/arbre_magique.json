@@ -1,6 +1,8 @@
 {
     "id":"arbre_magique",
     "img":"entities/arbre2",
+        "illu":"illu/arbre_magique",
+
     "title":"Un arbre magique",
     "or":15,
     "script" : {

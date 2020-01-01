@@ -8,15 +8,28 @@ class S(BaseHTTPRequestHandler):
 
     def do_GET(self):
         self.path = self.path.split('?')[0]
-        if self.path == '/':
-            self.path = '/editor/index.html'
+        if self.path == '/': self.path = '/editor/'
+        if self.path.endswith('/') or self.path == '':
+            self.path += 'index.html'
 
+        ext_map={
+            'manifest': 'text/cache-manifest',
+            'html': 'text/html',
+            'png': 'image/png',
+            'jpg': 'image/jpg',
+            'svg': 'image/svg+xml',
+            'css': 'text/css',
+            'js':  'application/x-javascript',
+            'json': 'application/json',
+            'xml': 'application/xml',
+            '': 'application/octet-stream', # Default
+        }
         ext = self.path.split('.')[1]
-        if ext == 'html': content_type = 'text/html'
-        elif ext == 'json': content_type = 'text/json'
-        elif ext == 'js': content_type = 'application/javascript'
-        elif ext == 'png': content_type = 'image/png'
-        else : content_type = None
+        try:
+            content_type = ext_map[ext]
+        except KeyError:
+            content_type = ext_map['']
+
         try:
             with open('.' + self.path, "r") as f:
                 page = f.read()

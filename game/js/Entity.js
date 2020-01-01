@@ -36,7 +36,10 @@ class Entity {
 
     set_illu(illu){
         if(illu){
-            this.illu = this.assets.png[illu];
+            this.illu = [
+                this.assets.png[illu+1],
+                this.assets.png[illu+2],
+            ];
         } else {
             this.illu = undefined;
         }
