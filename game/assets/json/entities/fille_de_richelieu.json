@@ -47,7 +47,7 @@
 	"txt": ["\"T'es sérieux là? Vas y va voir les flics j'm'en fou.\""],
 	"actions": [{
 			"txt": "\"Tu l'aura voulue.\"",
-			"do": ["GIVE +1 info_enlevement hero","GOTO quoi","EXIT"]
+			"do": ["GIVE +1 localisation_fille hero","GOTO quoi","EXIT"]
 		},
 		{
 			"txt": "\"Non non c'était pour rire! Je peux fumer sur ton joint?.\"",

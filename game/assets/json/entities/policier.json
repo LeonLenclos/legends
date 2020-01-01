@@ -12,7 +12,7 @@
                ]  },
 
                {"do":[
-                  "COMPARE info_enlevement hero > 0",
+                  "COMPARE localisation_fille hero > 0",
                   "GOTO enlevement"
                ]
             }
