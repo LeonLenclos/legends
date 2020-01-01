@@ -1,6 +1,6 @@
 {
    "id":"policier",
-   "img":"entities/humain3",
+   "img":"entities/flic",
    "title":"Un policier.",
    "script":{
       "start":{
@@ -9,12 +9,9 @@
                "do":[
                   "COMPARE cigarette hero > 0",
                   "GOTO controle"
-               ]
-            }
-         ],
-         "auto_actions":[
-            {
-               "do":[
+               ]  },
+
+               {"do":[
                   "COMPARE info_enlevement hero > 0",
                   "GOTO enlevement"
                ]
@@ -23,13 +20,7 @@
          "txt":"\"Quelle belle journée.\"",
          "actions":[
             {
-               "txt":"Oh oui il fait beau.",
-               "do":[
-                  "EXIT"
-               ]
-            },
-            {
-               "txt":"Bof.",
+               "txt":"Partir.",
                "do":[
                   "EXIT"
                ]

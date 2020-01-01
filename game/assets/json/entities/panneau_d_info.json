@@ -4,10 +4,24 @@
     "title":"Panneau d'information du village.",
     "script" : {
         "start":{
+          "auto_actions":[{
+              "do": [
+              "COMPARE recompense hero > 0",
+              "GOTO news" ]
+
+            }],
            "txt" : "AVIS A LA POPULATION : <br>La fille des Richelieu a été enlevée par un diablo! <br> 300 pièce d'or pour celui qui la ramènera aux Richelieu.<br> ps: elle est brune avec une T shirt rose",
             "actions":[
               {"txt":"Partir", "do":["GIVE +1 info_enlevement hero","EXIT"]}
               ]
-            }
+            },
+            "news": {
+          		"txt": "NOUVELLES.<br>La fille des Richelieu a été retrouvée saine et sauve. <br><br> PUB: Allez faire un tour à la nouvelle boutique d'armement de Fred!",
+          		"actions": [{
+          			"txt": "Partir",
+          			"do": ["EXIT","GIVE +1 ouverture_fred hero"]
+
+          		}]
         }
     }
+      }

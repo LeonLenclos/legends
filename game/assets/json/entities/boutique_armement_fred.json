@@ -1,0 +1,29 @@
+{
+    "id":"boutique_armement_fred",
+    "title":"Boutique d'armement de Fred.",
+    "script" : {
+        "start":{
+          "auto_actions":[
+             {
+                "do":[
+                   "COMPARE ouverture_fred hero > 0",
+                   "GOTO ouverture"
+                ]
+             }
+          ],
+          "txt" : "\"La boutique de Fred et ses chocolats CHOKOZ a fermée. <br>Reconversion très prochaine en boutique d'armement.\".",
+          "actions":[
+              {"txt":"Partir", "do":["EXIT"]}
+          ],
+          "ouverture":{
+            "txt" : "\"Bienvenue dans mon nouveau magasin! Je vous laisse regarder.\".",
+            "actions":[
+              {"txt":"Epée: 200 pièces d'or", "do":["GIVE -200 or hero","GIVE +1 epee hero","EXIT"]},
+              {"txt":"Hache: 30 pièces d'or", "do":["GIVE -30 or hero","GIVE +1 hache hero","EXIT"]},
+              {"txt":"Dague: 40 pièces d'or", "do":["GIVE -40 or hero","GIVE +1 dague hero","EXIT"]},
+                {"txt":"Partir", "do":["EXIT"]}
+            ]
+        }
+    }
+}
+}

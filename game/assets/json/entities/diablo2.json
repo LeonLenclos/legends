@@ -4,16 +4,28 @@
 	"title": "Un diablo.",
 	"script": {
     "start": {
+			"auto_actions":[
+				 {
+						"do":[
+							 "COMPARE info_enlevement hero > 0",
+							 "GOTO richelieu"
+						]
+				 }
+			],
 		"txt": ["\"Qu'est ce tu veux?\"","\"Qu'est ce tu veux encore?\""],
 		"actions": [{
-				"txt": "\"J'ai cru voir la fille de Richelieu là bas.\"",
-				"do": ["GOTO fille"]
-			},
-			{
 				"txt": "\"Non rien je me promène tranquillement...\"",
 				"do": ["GOTO passer"]
 			}
 		]
+	},
+	"richelieu": {
+		"txt": ["\"Qu'est ce tu veux?\"","\"Qu'est ce tu veux encore?\""],
+		"actions": [{
+			"txt": "\"Non rien je me promène tranquillement...\"",
+			"do": ["GOTO passer"]
+		}
+	]
 	},
 	"fille": {
 		"txt": "\"Ben ouais c'est elle, et alors?.\"",
