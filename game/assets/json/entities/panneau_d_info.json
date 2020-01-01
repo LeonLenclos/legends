@@ -4,7 +4,7 @@
     "title":"Panneau d'information du village.",
     "script" : {
         "start":{
-           "txt" : "AVIS A LA POPULATION : <br>La fille des Richelieu a été enlevée par un diablo! <br> 300 pièce d'or pour celui qui la ramènera aux Richelieu.",
+           "txt" : "AVIS A LA POPULATION : <br>La fille des Richelieu a été enlevée par un diablo! <br> 300 pièce d'or pour celui qui la ramènera aux Richelieu.<br> ps: elle est brune avec une T shirt rose",
             "actions":[
               {"txt":"Partir", "do":["GIVE +1 info_enlevement hero","EXIT"]}
               ]

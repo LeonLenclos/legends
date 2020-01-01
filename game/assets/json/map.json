@@ -40,7 +40,7 @@
          "name":"walls",
          "opacity":1,
          "type":"tilelayer",
-         "visible":true,
+         "visible":false,
          "width":500,
          "x":0,
          "y":0
