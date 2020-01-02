@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Legends editor</title>
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+        <script type="text/javascript" src="/game/js/lib/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="/editor/js/editor.js"></script>
+
+    <script type="text/javascript" src="/game/js/constants.js"></script>
+    <script type="text/javascript" src="/game/js/commands.js"></script>
+
+    <script type="text/javascript" src="/game/js/Assets.js"></script>
+    <script type="text/javascript" src="/game/js/Interface.js"></script>
+    <script type="text/javascript" src="/game/js/MapInterface.js"></script>
+    <script type="text/javascript" src="/game/js/InteractionInterface.js"></script>
+    <script type="text/javascript" src="/game/js/StatusBarInterface.js"></script>
+    <script type="text/javascript" src="/game/js/Entity.js"></script>
+    <script type="text/javascript" src="/game/js/World.js"></script>
+    <script type="text/javascript" src="/game/js/Game.js"></script>
+    <script type="text/javascript" src="/editor/js/MapEditorInterface.js"></script>
+
+</head>
+<script type="text/javascript">
+    
+
+"use strict";
+$.ajaxSetup({cache: false});
+$(document).ready(()=>{
+    class MapEditor{
+        constructor(){
+            this.assets = new Assets(()=>{this.setup()});
+            this.world = new World(this);
+            this.map_interface = new MapEditorInterface(this, 'interface-map');
+            this.map_interface.on_select = (x,y)=>{this.on_select(x,y)};
+            $('.zoom-button').click((e)=>{this.map_interface.resize(Number(e.target.dataset.zoom))});
+        
+
+            this.selected_entity = undefined;
+        }
+
+        on_select(x,y){
+            if(y === undefined){
+                this.selected_entity = x;
+                x = this.assets.json.world.entities[this.selected_entity].x;
+                y = this.assets.json.world.entities[this.selected_entity].y;
+            } else {
+                this.assets.json.world.entities.forEach((e, i)=>{
+                    if(e.x == x && e.y == y){
+                        this.selected_entity = i
+                    }
+                })
+            }
+            this.map_interface.select(x,y);
+            $('#selected-square').text(x + ',' + y);
+            $('#selected-entity').text(this.assets.json.world.entities[this.selected_entity].extra_data);
+            this.map_interface.select(x,y);
+        }
+
+        setup(){
+            this.world.setup();
+            this.map_interface.setup();
+            this.map_interface.show();
+            this.map_interface.update();
+
+            this.update_list();
+        }
+        update_list(){
+            let world_data = this.assets.json.world;
+            world_data.entities.forEach((entity_data, i)=>{
+                $('#entities-list').append(
+                    $('<li>')
+                    .text(entity_data.extra_data)
+                    .click(()=>{this.on_select(i)})
+                )
+            });
+
+            this.assets.world
+        }
+    }
+
+    new MapEditor();
+});
+
+</script>
+<body>
+<div id="nav">
+    <p>Zoom :
+        <button class="zoom-button" data-zoom="1">x1</button>
+        <button class="zoom-button" data-zoom="2">x2</button>
+    </p>
+    <p>Selected square : <span id="selected-square"></span></p>
+    <p>Selected entity : <span id="selected-entity"></span></p>
+    <p>World:
+        <ul id="entities-list">
+            
+        </ul>
+    </p>
+
+</div>
+<div id="interface-map">
+<canvas id="map"></canvas>
+</div>
+</body>
+</html>

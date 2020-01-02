@@ -10,25 +10,27 @@ class MapInterface extends Interface {
         this.data = this.assets.json.map
         this.tileset = this.assets.png.tileset;
         this.ready=true;
+        this.display_width=MAP_WIDTH;
+         this.display_height=MAP_HEIGHT;
     }
 
     on_resize(){
         this.scale = 1;
-        while(MAP_WIDTH*TILE_SIZE*(this.scale+1) < this.container.innerWidth()
-            && MAP_HEIGHT*TILE_SIZE*(this.scale+1) < this.container.innerHeight()){
+        while(this.display_width*TILE_SIZE*(this.scale+1) < this.container.innerWidth()
+            && this.display_height*TILE_SIZE*(this.scale+1) < this.container.innerHeight()){
             this.scale ++;
         }
-        this.canvas.width = MAP_WIDTH*TILE_SIZE*this.scale;
-        this.canvas.height = MAP_HEIGHT*TILE_SIZE*this.scale;
+        this.canvas.width = this.display_width*TILE_SIZE*this.scale;
+        this.canvas.height = this.display_height*TILE_SIZE*this.scale;
     }
 
     is_visible(x, y){
-        return x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT;
+        return x >= 0 && x < this.display_width && y >= 0 && y < this.display_height;
     }
 
     update(turn_moment){
-        this.offset_x = - this.world.hero.x + MAP_WIDTH/2
-        this.offset_y = - this.world.hero.y + MAP_HEIGHT/2
+        this.offset_x = - this.world.hero.x + this.display_width/2
+        this.offset_y = - this.world.hero.y + this.display_height/2
 
         let ctx_cache = this.ctx.canvas.cloneNode().getContext("2d");
         ctx_cache.imageSmoothingEnabled = false;
@@ -82,8 +84,8 @@ class MapInterface extends Interface {
 
     render_layer(layer, ctx){
         // call render_tile for each tile
-        for (let x = 0-this.offset_x; x < MAP_WIDTH-this.offset_x; x++) {
-            for (let y = 0-this.offset_y; y < MAP_HEIGHT-this.offset_y; y++) {
+        for (let x = 0-this.offset_x; x < this.display_width-this.offset_x; x++) {
+            for (let y = 0-this.offset_y; y < this.display_height-this.offset_y; y++) {
                 let i = y*layer.width + x;
                 this.render_tile(layer.data[i], x+this.offset_x, y+this.offset_y, ctx)
             }

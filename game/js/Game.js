@@ -23,8 +23,6 @@ class Game {
         
     }
     setup(){
-        console.log('ASSETS LOADED !')
-
         this.world.setup();
         this.map_interface.setup();
         this.interaction_interface.setup();

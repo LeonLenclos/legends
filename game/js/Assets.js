@@ -17,10 +17,13 @@ class Assets {
 
         list.png.forEach((png_name)=>{this.add_png(png_name)});
         list.json.forEach((json_name)=>{this.add_json(json_name)});
-        this.when_finished(call_back);
+        this.when_finished(()=>{
+            console.log('ASSETS LOADED !')
+            call_back();
+        });
     }
     add_json(name){
-        let url = 'assets/json/'+name+'.json';
+        let url = '/game/assets/json/'+name+'.json';
         let async = $.ajax({
             url:url,
             dataType: "json",
@@ -41,7 +44,7 @@ class Assets {
 
 
     add_png(name) {
-        let url = 'assets/img/'+name+'.png';
+        let url = '/game/assets/img/'+name+'.png';
         this.png[name] = $("<img />", {src:url})[0];
     }
 
