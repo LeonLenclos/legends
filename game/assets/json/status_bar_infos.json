@@ -42,5 +42,13 @@
     {
         "title":"Livre Troll",
         "name":"livre_troll"
+    },
+    {
+        "title":"Épée",
+        "name":"epee"
+    },
+    {
+        "title":"Dague",
+        "name":"dague"
     }
 ]

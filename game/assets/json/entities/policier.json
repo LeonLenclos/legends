@@ -121,7 +121,6 @@
                "do":[
                   "EXIT",
                   "GOTO start",
-                  "GIVE -1 info_enlevement hero",
                   "GIVE +1 recompense hero"
 
                ]},
@@ -129,7 +128,6 @@
                "do":[
                   "EXIT",
                   "GOTO start",
-                  "GIVE -1 info_enlevement hero",
                   "GIVE +1 recompense hero"
                ]
             }
