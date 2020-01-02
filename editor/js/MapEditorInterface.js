@@ -28,7 +28,6 @@ class MapEditorInterface extends MapInterface {
         let s = TILE_SIZE*this.scale;
         let x = Math.floor((e.pageX-$("#map").offset().left) / s);
         let y = Math.floor((e.pageY-$("#map").offset().top) / s);
-        console.log(this.on_select)
         this.on_select(x,y);
     }
 

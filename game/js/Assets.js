@@ -23,7 +23,7 @@ class Assets {
         });
     }
     add_json(name){
-        let url = '/game/assets/json/'+name+'.json';
+        let url = '../game/assets/json/'+name+'.json';
         let async = $.ajax({
             url:url,
             dataType: "json",
@@ -44,7 +44,7 @@ class Assets {
 
 
     add_png(name) {
-        let url = '/game/assets/img/'+name+'.png';
+        let url = '../game/assets/img/'+name+'.png';
         this.png[name] = $("<img />", {src:url})[0];
     }
 
