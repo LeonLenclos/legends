@@ -247,6 +247,11 @@
               "x":129,
               "y":67,
               "extra_data":"entities/boutique_armement_fred"
+        },
+        {
+              "x":52,
+              "y":28,
+              "extra_data":"ne_pas_marcher_dessus"
         }
     ]
 }

@@ -74,7 +74,7 @@
 		"txt": "\"Cimer. Vas y je te laisse passer.\"",
 		"actions": [{
 			"txt": "\"Cool super.\"",
-			"do": ["SET 109 x", "SET 111 y", "EXIT","GOTO cava"]
+			"do": ["SET 109 x", "SET 111 y","SET 109 x hero","SET 110 y hero", "EXIT","GOTO cava"]
     }
   ]  },
   "cava": {
