@@ -242,6 +242,11 @@
               "x":146,
               "y":117,
               "extra_data":"entities/demitour"
+        },
+        {
+              "x":129,
+              "y":67,
+              "extra_data":"entities/boutique_armement_fred"
         }
     ]
 }

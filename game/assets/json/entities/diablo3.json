@@ -4,12 +4,28 @@
 	"title": "Un diablo.",
 	"script": {
     "start": {
+			"auto_actions":[
+			 {
+					"do":[
+						 "COMPARE info_enlevement hero > 0",
+						 "GOTO balance"
+					]
+			 }
+		],
 		"txt": ["\"Ouais?\""],
 		"actions": [{
 				"txt": "\"Non rien..\"",
 				"do": ["EXIT"]
-    }
+    }],
+		"balance": {
+		"txt": ["\"Balance..\""],
+		"actions": [{
+				"txt": "Partir.",
+				"do": ["EXIT"]
+		}
+
   ]
 	}
+}
 }
 }
