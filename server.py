@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
 import json
@@ -66,6 +67,11 @@ class S(BaseHTTPRequestHandler):
 
             with open('game/assets/json/assets.json', "w") as outfile:
                 json.dump(assets, outfile, indent=2)
+            self.send_response(200)
+            self.send_header('Content-type', "text/plain")
+            self.end_headers()
+            self.wfile.write("game/assets/json/assets.json sucessfully updated")
+
 
         if self.path == '/set_json':
             print "creation/mise a jour d'un fichier json"
@@ -77,7 +83,9 @@ class S(BaseHTTPRequestHandler):
             with open(data["path"], "w") as outfile:
                 json.dump(data["data"], outfile, indent=2)
             self.send_response(200)
+            self.send_header('Content-type', "text/plain")
             self.end_headers()
+            self.wfile.write("%s sucessfully updated" % data["path"])
 
         return
 

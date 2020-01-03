@@ -5,7 +5,7 @@
     <meta charset="utf-8">
 
 
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="/editor/style.css">
         <script type="text/javascript" src="/game/js/lib/jquery-3.4.1.js"></script>
         <script type="text/javascript" src="/editor/js/editor.js"></script>
 
@@ -31,9 +31,7 @@ $.ajaxSetup({cache: false});
 $(document).ready(()=>{
     class MapEditor{
         constructor(){
-            this.assets = new Assets(()=>{this.setup()});
-            this.world = new World(this);
-            this.map_interface = new MapEditorInterface(this, 'interface-map');
+            this.load()
             this.map_interface.on_select = (x,y)=>{this.on_select(x,y)};
             $('.zoom-button').click((e)=>{this.map_interface.resize(Number(e.target.dataset.zoom))});
         
@@ -41,21 +39,28 @@ $(document).ready(()=>{
             this.selected_entity = undefined;
         }
 
+        load(){
+            this.assets = new Assets(()=>{this.setup()});
+            this.world = new World(this);
+            this.map_interface = new MapEditorInterface(this, 'interface-map');
+        }
+
         on_select(x,y){
             if(y === undefined){
                 this.selected_entity = x;
-                x = this.assets.json.world.entities[this.selected_entity].x;
-                y = this.assets.json.world.entities[this.selected_entity].y;
+                x = this.world_data[this.selected_entity].x;
+                y = this.world_data[this.selected_entity].y;
             } else {
-                this.assets.json.world.entities.forEach((e, i)=>{
+                this.selected_entity = undefined;
+                this.world_data.forEach((e, i)=>{
                     if(e.x == x && e.y == y){
                         this.selected_entity = i
                     }
                 })
             }
-            this.map_interface.select(x,y);
             $('#selected-square').text(x + ',' + y);
-            $('#selected-entity').text(this.assets.json.world.entities[this.selected_entity].extra_data);
+
+            this.update_entity()
             this.map_interface.select(x,y);
         }
 
@@ -64,9 +69,170 @@ $(document).ready(()=>{
             this.map_interface.setup();
             this.map_interface.show();
             this.map_interface.update();
-
+            this.world_data = this.assets.json.world.entities;
             this.update_list();
         }
+
+        select_pos_on_map(callback){
+            this.map_interface.container.css('cursor', 'crosshair');
+            let old_on_select = this.on_select;
+            this.on_select = (x, y)=>{
+                if(y !== undefined){
+                    this.map_interface.container.css('cursor', 'default');
+                    callback(x,y);
+                    this.map_interface.select(x,y);
+
+                    this.on_select = old_on_select;
+                }
+            }
+        }
+
+        update_entity(){
+
+            if(this.selected_entity == undefined){
+                $('#selected-entity').html('<i>EMPTY</i>');
+                $('#world-entity-edit').hide();
+
+            } else {
+                $('#selected-entity').html('');
+
+                $('#world-entity-edit').show();
+                let entity = this.world_data[this.selected_entity]
+                this.update_extra_data_choice('#extra_data', entity.extra_data, this.assets.json);
+                this.update_pos('#posx', '#posy', entity.x, entity.y, '#select-on-map');
+                let other_attributes = {}
+                $.each(entity, (k, v)=>{
+                    if(k != 'extra_data' &&  k != 'x' &&  k != 'y'){
+                        other_attributes[k] = v;
+                    }
+                });
+                this.update_other_attr('#other_attributes', '#add-attribute', other_attributes)
+
+                $('#reload').click(()=>{this.update_entity()});
+                $('#copy').click(()=>{this.copy()});
+                $('#save').click(()=>{this.save()});
+                $('#delete').click(()=>{this.delete()});
+
+            }
+        }
+
+        submit(){
+            let entity = {}
+            entity.x = Number($('#posx').val());
+            entity.y = Number($('#posy').val());
+            entity.extra_data = $('#extra_data').val();
+            $('.attr').each((index, element)=>{
+                let k = $(element).children('.key').val();
+                let v = $(element).children('.val').val();
+                entity[k]=v;
+            })
+            return entity
+        }
+        save(){
+            let i = this.selected_entity;
+            this.world_data[i] = this.submit();
+            this.write();
+        }
+        copy(){
+            let i = this.selected_entity;
+            this.world_data.splice(i, 0, this.submit());
+            this.write();
+
+        }
+
+        delete(){
+            let i = this.selected_entity;
+            this.world_data.splice(i, 1);
+            this.write();
+
+        }
+
+        write(){
+            $.ajax({
+            type: "POST",
+            url: "/set_json",
+            data: JSON.stringify({
+                path:"game/assets/json/world.json",
+                data:{entities:this.world_data}
+            })  ,
+            // contentType: "application/json; charset=utf-8",
+            // dataType: "json",
+            success: (data)=>{
+                this.load();
+                alert(data);},
+            error: function(errMsg) {
+                console.log('error!', errMsg)
+                alert('Error!   ');
+            }
+            });
+        }
+
+
+        update_other_attr(id, add_id, attributes){
+            $(id).empty();
+            $(add_id).click(()=>
+                this.add_other_attr(id, 'key', 'value')
+                )
+            $.each(attributes, (k,v)=>{
+                this.add_other_attr(id, k, v)
+            });
+        }
+        add_other_attr(id,k,v){
+            let div = $('<div>').addClass('attr')
+            .append($('<input>').addClass('key').val(k).attr('size', 15))
+            .append(':')
+            .append($('<input>').addClass('val').val(v).attr('size', 15))
+            .append($('<button>').text('-').click(()=>{div.remove()}));
+            $(id).append(div)
+            console.log(div)
+        }
+        update_pos(idx, idy, x, y, button){
+            $(idx).val(x);
+            $(idy).val(y);
+            $(button).click(()=>{this.select_pos_on_map((sel_x,sel_y)=>{
+                $(idx).val(sel_x);
+                $(idy).val(sel_y);
+            })})
+
+        }
+        update_extra_data_choice(id, value, choice){
+            $(id).val(value);
+
+            let select = $(id+' + select')
+            if (!select.length) {
+                select = $('<select>').insertAfter($(id))
+            }
+
+            select.empty()
+            select.append($('<option>').attr('value', "?").text('?'))
+            for(let c in choice){
+                if(c.startsWith('entities/')){
+                    let option = $('<option>')
+                    .attr('value', c)
+                    .text(c)
+                    if(value == c){
+                        option.attr('selected', true)
+                    }
+                    select.append(option)
+                }
+            }
+            select.change(()=>{
+                $(id).val(select.val());
+            });
+            $(id).on('input',()=>{
+                if ($(id).val() in choice){
+                    select.children('[value="'+$(id).val()+'"]').attr('selected', true);
+                    select.val($(id).val());
+
+                }
+                else{
+                    select.children(":selected").removeAttr("selected");
+                    select.val('??');
+                }
+            });
+
+        }
+
         update_list(){
             let world_data = this.assets.json.world;
             world_data.entities.forEach((entity_data, i)=>{
@@ -76,7 +242,6 @@ $(document).ready(()=>{
                     .click(()=>{this.on_select(i)})
                 )
             });
-
             this.assets.world
         }
     }
@@ -92,12 +257,26 @@ $(document).ready(()=>{
         <button class="zoom-button" data-zoom="2">x2</button>
     </p>
     <p>Selected square : <span id="selected-square"></span></p>
-    <p>Selected entity : <span id="selected-entity"></span></p>
+
     <p>World:
         <ul id="entities-list">
             
         </ul>
     </p>
+
+    <p>Selected entity : <span id="selected-entity"></span></p>
+    <div id="world-entity-edit" style="display: none;">
+        <p>Extra data : <input id="extra_data"></input></p>
+        <p>Position : <input id="posx" size=3/>, <input id="posy" size=3/>  <button id="select-on-map" data-zoom="2">Select position on the map</button>    </p>
+        <p>Other attributes : <button id="add-attribute">+</button>
+            <div id="other_attributes"></div>
+        </p>
+        <hr>
+        <button id="reload">Reload</button>
+        <button id="copy">Save as copy</button>
+        <button id="save">Save /!\</button>
+        <button id="delete">Delete /!\</button>
+    </div>
 
 </div>
 <div id="interface-map">

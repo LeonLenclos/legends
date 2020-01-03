@@ -11,15 +11,22 @@ p{
   margin:0;
   margin-top:15px;
 }
-button{
-    font-size: 12px;
+button, select, input, #nav a{
+  background: white;
+  font-size: 12px;
   border:1px solid;
   margin:1px;
+  padding: 2px;
+  text-decoration: none;
+}
+
+button:hover, select:hover, input:hover, #nav a:hover{
+  background: #ddd;
 }
 #nav{
   padding:5px;
   background: pink;
-  width:200px;
+  width:400px;
 }
 
 span {
@@ -43,5 +50,11 @@ span {
 
 #entities-list li:hover{
     font-weight: bold;
+
+}
+
+#nav div{
+    border:1px solid;
+  padding: 1px;
 
 }

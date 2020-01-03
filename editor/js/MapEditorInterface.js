@@ -11,7 +11,7 @@ class MapEditorInterface extends MapInterface {
         this.ready=true;
         this.display_width=this.data.layers[0].width
         this.display_height = this.data.layers[0].height
-        this.map_ctx = {};
+        this.map_ctx;
         this.resize(1);
         $('#map').click((e)=>{this.on_click(e)});
 
@@ -57,11 +57,11 @@ class MapEditorInterface extends MapInterface {
         let ctx_cache = this.ctx.canvas.cloneNode().getContext("2d");
         ctx_cache.imageSmoothingEnabled = false;
 
-        if(!this.map_ctx[this.scale]){
-            this.map_ctx[this.scale] = this.ctx.canvas.cloneNode().getContext("2d");
-            this.render_layers(this.map_ctx[this.scale]);
+        if(!this.map_ctx){
+            this.map_ctx = this.ctx.canvas.cloneNode().getContext("2d");
+            this.render_layers(this.map_ctx);
         }
-        ctx_cache.drawImage(this.map_ctx[this.scale].canvas, 0, 0);
+        ctx_cache.drawImage(this.map_ctx.canvas, 0, 0, this.canvas.width, this.canvas.height);
 
         this.render_entities(this.world.entities, ctx_cache)
         ctx_cache.strokeStyle = "red";

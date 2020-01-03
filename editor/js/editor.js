@@ -9,11 +9,12 @@ function main(argument) {
             type: "POST",
             url: "/auto_assets",
             data: "",
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data){alert('ok');},
-            failure: function(errMsg) {
-                alert(errMsg);
+            success: (data)=>{
+                alert(data);
+            },
+            error: (errMsg)=>{
+                console.log('erreur!', errMsg)
+                alert('Erreur!');
             }
             });
     })

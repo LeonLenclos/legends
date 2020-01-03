@@ -1,257 +1,255 @@
 {
-"entities":[
-        {
-            "x":50,
-            "y":32,
-            "extra_data":"entities/hero"
-        },
-
-        {
-            "x":57,
-            "y":35,
-            "extra_data":"entities/bucheron"
-        },
-        {
-            "x":48,
-            "y":30,
-            "extra_data":"entities/maison_parents"
-        },
-        {
-            "x":54,
-            "y":25,
-            "img":"entities/arbre2",
-            "extra_data":"entities/arbre"
-        },
-        {
-            "x":58,
-            "y":25,
-            "extra_data":"entities/arbre"
-        },
-        {
-            "x":55,
-            "y":27,
-            "img":"entities/arbre2",
-            "extra_data":"entities/arbre"
-        },
-        {
-            "x":55,
-            "y":24,
-            "extra_data":"entities/arbre"
-        },
-        {
-            "x":58,
-            "y":37,
-            "img":"entities/arbre2",
-            "extra_data":"entities/arbre_magique"
-        },
-        {
-            "x":57,
-            "y":42,
-            "img":"entities/bateau",
-            "extra_data":"entities/bateau"
-        },
-        {
-            "x":57,
-            "y":31,
-            "extra_data":"entities/tas_de_bois"
-        },
-        {
-            "x":104,
-            "y":23,
-            "extra_data":"entities/agri_p1"
-        },
-        {
-            "x":107,
-            "y":23,
-            "extra_data":"entities/agri_p2"
-        },
-        {
-            "x":110,
-            "y":23,
-            "extra_data":"entities/agri_p3"
-        },
-        {
-            "x":113,
-            "y":23,
-            "extra_data":"entities/agri_p4"
-        },
-        {
-            "x":100,
-            "y":23,
-            "extra_data":"entities/lola"
-        },
-        {
-            "x":120,
-            "y":92,
-            "extra_data":"entities/cabanon_bucheron"
-        },
-        {
-            "x":116,
-            "y":20,
-            "extra_data":"entities/carotte"
-        },
-        {
-            "x":117,
-            "y":20,
-            "extra_data":"entities/carotte"
-        },
-        {
-            "x":116,
-            "y":21,
-            "extra_data":"entities/carotte"
-        },
-        {
-            "x":117,
-            "y":21,
-            "extra_data":"entities/carotte"
-        },
-        {
-            "x":116,
-            "y":22,
-            "extra_data":"entities/carotte"
-        },
-        {
-            "x":117,
-            "y":22,
-            "extra_data":"entities/carotte"
-        },
-        {
-            "x":104,
-            "y":25,
-            "extra_data":"entities/ne_pas_pietiner"
-        },
-        {
-              "x":80,
-              "y":86,
-              "extra_data":"entities/hotel"
-        },
-        {
-              "x":84,
-              "y":77,
-              "extra_data":"entities/hotel_de_luxe"
-        },
-        {
-              "x":149,
-              "y":92,
-              "extra_data":"entities/troll"
-        },
-        {
-              "x":116,
-              "y":59,
-              "extra_data":"entities/diablo"
-        },
-        {
-              "x":146,
-              "y":72,
-              "extra_data":"entities/policier"
-        },
-        {
-              "x":50,
-              "y":39,
-              "extra_data":"entities/portail_D"
-        },
-        {
-              "x":112,
-              "y":65,
-              "extra_data":"entities/tas_d_or"
-        },
-        {
-              "x":97,
-              "y":66,
-              "extra_data":"entities/piece_or"
-        },
-        {
-              "x":107,
-              "y":55,
-              "extra_data":"entities/cochon"
-        },
-        {
-              "x":101,
-              "y":54,
-              "extra_data":"entities/cochon2"
-        },
-        {
-              "x":105,
-              "y":50,
-              "extra_data":"entities/cochon"
-        },
-        {
-              "x":106,
-              "y":60,
-              "extra_data":"entities/enclos_cochon"
-        },
-        {
-              "x":134,
-              "y":72,
-              "extra_data":"entities/panneau_entree_foret"
-        },
-        {
-              "x":134,
-              "y":61,
-              "extra_data":"entities/panneau_domaine"
-        },
-        {
-              "x":122,
-              "y":67,
-              "extra_data":"entities/panneau_d_info"
-        },
-        {
-              "x":109,
-              "y":110,
-              "extra_data":"entities/diablo2"
-        },
-        {
-              "x":105,
-              "y":108,
-              "extra_data":"entities/fille_de_richelieu"
-        },
-        {
-              "x":104,
-              "y":109,
-              "extra_data":"entities/diablo3"
-        },
-                {
-              "x":104,
-              "y":107,
-              "extra_data":"entities/canap"
-        },
-        {
-              "x":23,
-              "y":70,
-              "extra_data":"entities/fille_de_richelieu",
-              "id":"fille_de_richelieu_bad_trip",
-              "interaction_state":"bad_trip"
-        },
-        {
-              "x":22,
-              "y":69,
-              "extra_data":"entities/canap"
-        },
-
-        {
-              "x":145,
-              "y":71,
-              "extra_data":"entities/commissariat"
-        },
-        {
-              "x":132,
-              "y":61,
-              "extra_data":"entities/entree_richelieu"
-        },
-        {
-              "x":136,
-              "y":53,
-              "extra_data":"entities/richelieu"
-        },
-        {
-              "x":146,
-              "y":117,
-              "extra_data":"entities/demitour"
-        },
-        {
-              "x":129,
-              "y":67,
-              "extra_data":"entities/boutique_armement_fred"
-        }
-    ]
+  "entities": [
+    {
+      "y": 32, 
+      "x": 50, 
+      "extra_data": "entities/hero"
+    }, 
+    {
+      "y": 35, 
+      "x": 57, 
+      "extra_data": "entities/bucheron"
+    }, 
+    {
+      "y": 30, 
+      "x": 48, 
+      "extra_data": "entities/maison_parents"
+    }, 
+    {
+      "y": 25, 
+      "x": 54, 
+      "extra_data": "entities/arbre", 
+      "img": "entities/arbre2"
+    }, 
+    {
+      "y": 25, 
+      "x": 58, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 27, 
+      "x": 55, 
+      "extra_data": "entities/arbre", 
+      "img": "entities/arbre2"
+    }, 
+    {
+      "y": 24, 
+      "x": 55, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 37, 
+      "x": 58, 
+      "extra_data": "entities/arbre_magique", 
+      "img": "entities/arbre2"
+    }, 
+    {
+      "y": 42, 
+      "x": 57, 
+      "extra_data": "entities/bateau", 
+      "img": "entities/bateau"
+    }, 
+    {
+      "y": 31, 
+      "x": 57, 
+      "extra_data": "entities/tas_de_bois"
+    }, 
+    {
+      "y": 23, 
+      "x": 104, 
+      "extra_data": "entities/agri_p1"
+    }, 
+    {
+      "y": 23, 
+      "x": 107, 
+      "extra_data": "entities/agri_p2"
+    }, 
+    {
+      "y": 23, 
+      "x": 110, 
+      "extra_data": "entities/agri_p3"
+    }, 
+    {
+      "y": 23, 
+      "x": 113, 
+      "extra_data": "entities/agri_p4"
+    }, 
+    {
+      "y": 23, 
+      "x": 100, 
+      "extra_data": "entities/lola"
+    }, 
+    {
+      "y": 92, 
+      "x": 120, 
+      "extra_data": "entities/cabanon_bucheron"
+    }, 
+    {
+      "y": 20, 
+      "x": 116, 
+      "extra_data": "entities/carotte"
+    }, 
+    {
+      "y": 20, 
+      "x": 117, 
+      "extra_data": "entities/carotte"
+    }, 
+    {
+      "y": 21, 
+      "x": 116, 
+      "extra_data": "entities/carotte"
+    }, 
+    {
+      "y": 21, 
+      "x": 117, 
+      "extra_data": "entities/carotte"
+    }, 
+    {
+      "y": 22, 
+      "x": 116, 
+      "extra_data": "entities/carotte"
+    }, 
+    {
+      "y": 22, 
+      "x": 117, 
+      "extra_data": "entities/carotte"
+    }, 
+    {
+      "y": 25, 
+      "x": 104, 
+      "extra_data": "entities/ne_pas_pietiner"
+    }, 
+    {
+      "y": 86, 
+      "x": 80, 
+      "extra_data": "entities/hotel"
+    }, 
+    {
+      "y": 77, 
+      "x": 84, 
+      "extra_data": "entities/hotel_de_luxe"
+    }, 
+    {
+      "y": 92, 
+      "x": 149, 
+      "extra_data": "entities/troll"
+    }, 
+    {
+      "y": 59, 
+      "x": 116, 
+      "extra_data": "entities/diablo"
+    }, 
+    {
+      "y": 72, 
+      "x": 146, 
+      "extra_data": "entities/policier"
+    }, 
+    {
+      "y": 39, 
+      "x": 50, 
+      "extra_data": "entities/portail_D"
+    }, 
+    {
+      "y": 65, 
+      "x": 112, 
+      "extra_data": "entities/tas_d_or"
+    }, 
+    {
+      "y": 66, 
+      "x": 97, 
+      "extra_data": "entities/piece_or"
+    }, 
+    {
+      "y": 55, 
+      "x": 107, 
+      "extra_data": "entities/cochon"
+    }, 
+    {
+      "y": 54, 
+      "x": 101, 
+      "extra_data": "entities/cochon2"
+    }, 
+    {
+      "y": 50, 
+      "x": 105, 
+      "extra_data": "entities/cochon"
+    }, 
+    {
+      "y": 60, 
+      "x": 106, 
+      "extra_data": "entities/enclos_cochon"
+    }, 
+    {
+      "y": 72, 
+      "x": 134, 
+      "extra_data": "entities/panneau_entree_foret"
+    }, 
+    {
+      "y": 61, 
+      "x": 134, 
+      "extra_data": "entities/panneau_domaine"
+    }, 
+    {
+      "y": 67, 
+      "x": 122, 
+      "extra_data": "entities/panneau_d_info"
+    }, 
+    {
+      "y": 110, 
+      "x": 109, 
+      "extra_data": "entities/diablo2"
+    }, 
+    {
+      "y": 108, 
+      "x": 105, 
+      "extra_data": "entities/fille_de_richelieu"
+    }, 
+    {
+      "y": 109, 
+      "x": 104, 
+      "extra_data": "entities/diablo3"
+    }, 
+    {
+      "y": 107, 
+      "x": 104, 
+      "extra_data": "entities/canap"
+    }, 
+    {
+      "y": 70, 
+      "x": 23, 
+      "extra_data": "entities/fille_de_richelieu", 
+      "id": "fille_de_richelieu_bad_trip", 
+      "interaction_state": "bad_trip"
+    }, 
+    {
+      "y": 69, 
+      "x": 22, 
+      "extra_data": "entities/canap"
+    }, 
+    {
+      "y": 71, 
+      "x": 145, 
+      "extra_data": "entities/commissariat"
+    }, 
+    {
+      "y": 61, 
+      "x": 132, 
+      "extra_data": "entities/entree_richelieu"
+    }, 
+    {
+      "y": 53, 
+      "x": 136, 
+      "extra_data": "entities/richelieu"
+    }, 
+    {
+      "y": 117, 
+      "x": 146, 
+      "extra_data": "entities/demitour"
+    }, 
+    {
+      "y": 67, 
+      "x": 129, 
+      "extra_data": "entities/boutique_armement_fred"
+    }
+  ]
 }

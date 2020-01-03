@@ -32,7 +32,6 @@ class Assets {
         })
         .done((data)=>{
             this.json[name] = data
-            console.log('loaded json : ' + name)
         })
         .fail((jqXHR, textStatus, errorThrown)=>{
             console.log('ERROR !! (loading : '+name+')')
@@ -58,7 +57,6 @@ class Assets {
         for(let key in this.png){
             this.png[key].onload = ()=>{
                 images_loaded++;
-                console.log('loaded png : ' + key)
 
                 if(images_loaded == image_count){
                     call_back();
