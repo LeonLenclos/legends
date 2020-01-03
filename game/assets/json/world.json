@@ -255,6 +255,11 @@
       "y": 28, 
       "x": 52, 
       "extra_data": "ne_pas_marcher_dessus"
+    }, 
+    {
+      "y": 25, 
+      "x": 104, 
+      "extra_data": "entities/ne_pas_pietiner"
     }
   ]
 }
