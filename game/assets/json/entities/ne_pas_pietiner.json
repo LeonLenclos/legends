@@ -1,0 +1,10 @@
+{
+    "id":"nepas!!!!!!",
+    "script" : {
+        "start":{
+            "auto_actions":[{"do":["EXIT","GIVE +5 or hero","COPYPOSITION"]}],
+            "txt" : "",
+            "actions":[]
+        }
+    }
+}

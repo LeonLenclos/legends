@@ -76,6 +76,7 @@ class InteractionInterface extends Interface {
     }
 
     move_selection(n){
+        if (this.actions.length == 0) {return;}
         this.selected_action += n;
         if(this.selected_action >= this.actions.length){
             this.selected_action = 0;

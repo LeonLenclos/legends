@@ -42,7 +42,8 @@
     "entities/lola",
     "entities/hotel",
     "entities/panneau_d_info",
-    "entities/boutique_armement_fred"
+    "entities/boutique_armement_fred",
+    "entities/ne_pas_pietiner"
   ],
   "png": [
     "walltileset",

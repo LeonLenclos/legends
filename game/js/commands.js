@@ -73,6 +73,13 @@ const commands = {
         },
         doable:(g, e, a)=>true
     },
+    COPYPOSITION:{
+        do:(g, e, a)=>{
+            g.world.hero.x = e.x;
+            g.world.hero.y = e.y;
+        },
+        doable:(g, e, a)=>true
+    },
     FIGHT:{
         do:(g, e, a)=>{
             g.world.get_entity('hero').start_fight();
