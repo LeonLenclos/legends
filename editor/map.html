@@ -32,17 +32,17 @@ $(document).ready(()=>{
     class MapEditor{
         constructor(){
             this.load()
-            this.map_interface.on_select = (x,y)=>{this.on_select(x,y)};
-            $('.zoom-button').click((e)=>{this.map_interface.resize(Number(e.target.dataset.zoom))});
-        
-
             this.selected_entity = undefined;
         }
 
         load(){
+            this.loading = true;
             this.assets = new Assets(()=>{this.setup()});
             this.world = new World(this);
             this.map_interface = new MapEditorInterface(this, 'interface-map');
+            this.map_interface.on_select = (x,y)=>{this.on_select(x,y)};
+            $('.zoom-button').click((e)=>{this.map_interface.resize(Number(e.target.dataset.zoom))});
+
         }
 
         on_select(x,y){
@@ -60,7 +60,7 @@ $(document).ready(()=>{
             }
             $('#selected-square').text(x + ',' + y);
 
-            this.update_entity()
+            this.update_entity(x,y)
             this.map_interface.select(x,y);
         }
 
@@ -71,6 +71,8 @@ $(document).ready(()=>{
             this.map_interface.update();
             this.world_data = this.assets.json.world.entities;
             this.update_list();
+            this.loading = false;
+
         }
 
         select_pos_on_map(callback){
@@ -87,10 +89,25 @@ $(document).ready(()=>{
             }
         }
 
-        update_entity(){
+        update_entity(x,y){
 
             if(this.selected_entity == undefined){
                 $('#selected-entity').html('<i>EMPTY</i>');
+                if(y !== undefined){
+                    $('#selected-entity').append($('<button>')
+                        .text('new')
+                        .click(()=>{
+                            this.selected_entity = this.world_data.length;
+                            this.world_data[this.selected_entity]={
+                                'extra_data':'',
+                                'x':x,
+                                'y':y
+                            }
+                            this.update_entity()
+
+                        })
+                    )
+                }
                 $('#world-entity-edit').hide();
 
             } else {
@@ -129,20 +146,30 @@ $(document).ready(()=>{
             return entity
         }
         save(){
+            if(this.loading) return;
+            this.loading = true;
             let i = this.selected_entity;
             this.world_data[i] = this.submit();
+            console.log("SAVE ", i, this.world_data[i])
             this.write();
         }
         copy(){
+            if(this.loading) return;
+            this.loading = true;
             let i = this.selected_entity;
             this.world_data.splice(i, 0, this.submit());
+            console.log("COPY ", i, this.world_data[i])
+
             this.write();
 
         }
 
         delete(){
+            if(this.loading) return;
+            this.loading = true;
             let i = this.selected_entity;
             this.world_data.splice(i, 1);
+            console.log("DELETE ", i, this.world_data[i])
             this.write();
 
         }
