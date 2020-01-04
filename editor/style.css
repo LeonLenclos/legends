@@ -23,12 +23,20 @@ button, select, input, #nav a{
 button:hover, select:hover, input:hover, #nav a:hover{
   background: #ddd;
 }
-#nav{
-  padding:5px;
-  background: pink;
-  width:400px;
+#nav, #other_attributes, #special_attributes, #attacks, #script{
+  padding:10px;
+  background: #fdd;
+  border-right:10px solid #f99;
 }
 
+h1 {
+  color: #f55;
+  font-size: 14px; 
+}
+#nav {
+   /* width:400px;
+*/
+}
 span {
   font-weight: bold;
 }

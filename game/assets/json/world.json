@@ -28,7 +28,7 @@
     }, 
     {
       "y": 25, 
-      "x": 43, 
+      "x": 45, 
       "extra_data": "entities/arbre"
     }, 
     {
@@ -276,6 +276,11 @@
       "y": 25, 
       "x": 104, 
       "extra_data": "entities/ne_pas_pietiner"
+    }, 
+    {
+      "y": 32, 
+      "x": 42, 
+      "extra_data": ""
     }
   ]
 }
