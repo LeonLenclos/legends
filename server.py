@@ -1,4 +1,6 @@
+#!/usr/bin/env python2
 # -*- coding: utf-8 -*-
+
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 import SocketServer
 import json

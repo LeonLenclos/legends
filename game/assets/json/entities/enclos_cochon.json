@@ -1,13 +1,19 @@
 {
-    "id":"enclos_cochon",
     "title":"Un enclos à cochon.",
     "script" : {
         "start":{
+                    "auto_actions" :[{"do": ["COMPARE interieur_enclos hero = 1", "GOTO interieur"]}],
                    "txt" : "L'enclos n'est pas vérouillé.",
                   "actions":[
-                    {"txt":"Entrer dans l'enclos.", "do":["SET 106 x hero","SET 59 y hero","EXIT"]},
-                    {"txt":"Sortir de l'enclos.", "do":["SET 106 x hero","SET 61 y hero","EXIT"]}
+                    {"txt":"Entrer dans l'enclos.", "do":["GIVE -2 y hero", "SET 1 interieur_enclos hero", "EXIT"]}
+                ]
+              },
+
+        "interieur":{
+                   "txt" : "L'enclos n'est pas vérouillé.",
+                  "actions":[
+                    {"txt":"Sortir de l'enclos.", "do":["GIVE 2 y hero", "GOTO start", "SET 0 interieur_enclos hero","EXIT"]}
                 ]
               }
-              }
-              }
+    }
+}

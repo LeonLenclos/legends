@@ -175,6 +175,21 @@
       "extra_data": "entities/cochon"
     }, 
     {
+      "y": 58, 
+      "x": 91, 
+      "extra_data": "entities/enclos_cochon"
+    }, 
+    {
+      "y": 58, 
+      "x": 92, 
+      "extra_data": "entities/enclos_cochon"
+    }, 
+    {
+      "y": 60, 
+      "x": 105, 
+      "extra_data": "entities/enclos_cochon"
+    }, 
+    {
       "y": 60, 
       "x": 106, 
       "extra_data": "entities/enclos_cochon"
