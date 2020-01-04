@@ -1,8 +1,8 @@
 {
   "entities": [
     {
-      "y": 32, 
-      "x": 50, 
+      "y": 31, 
+      "x": 175, 
       "extra_data": "entities/hero"
     }, 
     {
