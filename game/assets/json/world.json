@@ -32,6 +32,12 @@
       "extra_data": "entities/arbre"
     }, 
     {
+      "y": 29, 
+      "x": 60, 
+      "extra_data": "entities/arbre", 
+      "img": "entities/arbre2"
+    }, 
+    {
       "y": 27, 
       "x": 57, 
       "extra_data": "entities/arbre", 
@@ -195,13 +201,13 @@
       "extra_data": "entities/enclos_cochon"
     }, 
     {
-      "y": 72, 
-      "x": 134, 
+      "y": 74, 
+      "x": 135, 
       "extra_data": "entities/panneau_entree_foret"
     }, 
     {
       "y": 61, 
-      "x": 134, 
+      "x": 133, 
       "extra_data": "entities/panneau_domaine"
     }, 
     {
@@ -265,11 +271,6 @@
       "y": 67, 
       "x": 129, 
       "extra_data": "entities/boutique_armement_fred"
-    }, 
-    {
-      "y": 28, 
-      "x": 52, 
-      "extra_data": "ne_pas_marcher_dessus"
     }, 
     {
       "y": 25, 

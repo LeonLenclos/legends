@@ -1,6 +1,6 @@
 {
     "id":"panneau_d_info",
-    "img":"entities/pancarte",
+    "img":"entities/pancarte4",
     "title":"Panneau d'information du village.",
     "script" : {
         "start":{
