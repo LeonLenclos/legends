@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Legends | Entity editor</title>
+    <meta charset="utf-8">
+
+
+    <link rel="stylesheet" type="text/css" href="/editor/style.css">
+        <script type="text/javascript" src="/game/js/lib/jquery-3.4.1.js"></script>
+        <script type="text/javascript" src="/editor/js/editor.js"></script>
+
+    <script type="text/javascript" src="/game/js/constants.js"></script>
+    <script type="text/javascript" src="/game/js/commands.js"></script>
+
+    <script type="text/javascript" src="/game/js/Assets.js"></script>
+    <script type="text/javascript" src="/game/js/Interface.js"></script>
+    <script type="text/javascript" src="/game/js/MapInterface.js"></script>
+    <script type="text/javascript" src="/game/js/InteractionInterface.js"></script>
+    <script type="text/javascript" src="/game/js/StatusBarInterface.js"></script>
+    <script type="text/javascript" src="/game/js/Entity.js"></script>
+    <script type="text/javascript" src="/game/js/World.js"></script>
+    <script type="text/javascript" src="/game/js/Game.js"></script>
+    <script type="text/javascript" src="/editor/js/MapEditorInterface.js"></script>
+
+</head>
+<script type="text/javascript">
+    
+
+"use strict";
+$.ajaxSetup({cache: false});
+$(document).ready(()=>{
+    class EntityEditor{
+        constructor(){
+
+
+            $('#add_moment').click(()=>{
+                this.add_moment('#script_moments', 'moment_id')
+            });
+
+            $('#add_attack').click(()=>{
+                this.add_attack('#attacks_list')
+            });
+
+            $('#add_attribute').click(()=>{
+                console.log('cliccc')
+                this.add_other_attr('#other_attr_list', 'key', 'value')
+            });
+
+
+            this.load()
+            this.selected_entity = undefined;
+        }
+
+        load(){
+            this.loading = true;
+            this.assets = new Assets(()=>{this.setup()});
+
+        }
+
+        setup(){
+            this.entities = {}
+            $.each(this.assets.json, (k,v)=>{
+                if(k.startsWith('entities')) this.entities[k] = v;
+            })
+            this.update_list();
+            this.loading = false;
+
+        }
+
+
+        on_select(k){
+            this.selected_entity = k;
+            this.update_entity()
+        }
+
+
+
+        update_list(){
+            $('#entities-list').empty()
+            $.each(this.entities, (k, v)=>{
+                $('#entities-list').append(
+                    $('<li>')
+                    .text(k)
+                    .click(()=>{this.on_select(k)})
+                )
+            });
+        }
+
+        update_entity(){
+
+            if(this.selected_entity == undefined){
+                $('#entity-edit').hide();
+                $('#selected-entity').html('<i>NO ENTITY SELECTED</i>');
+
+                $('#selected-entity').append($('<button>').text('new')
+                    .click(()=>{alert('bouton NEW pas encore implémenté :(')}));
+
+            } else {
+                $('#entity-edit').show();
+                $('#selected-entity').html(this.selected_entity);
+
+                let entity = this.entities[this.selected_entity]
+
+                this.update_script();
+                this.update_attacks();
+                this.update_special_attr();
+                this.update_other_attr();
+
+                $('#reload').click(()=>{this.update_entity()});
+                $('#copy').click(()=>{this.copy()});
+                $('#save').click(()=>{this.save()});
+                $('#delete').click(()=>{this.delete()});
+
+            }
+        }
+
+
+
+        update_script(){
+            if(!this.selected_entity) return;
+
+            let moments = this.entities[this.selected_entity].script || {};
+
+            $('#script_moments').empty();
+
+            $.each(moments, (k,v)=>{
+                this.add_moment('#script_moments', k, v)
+            });
+        }
+
+        add_moment(id, moment_id, moment){
+            let div = $('<div>').addClass('moment')
+            .append($('<input>').addClass('moment_id').val(moment_id).attr('size', 15))
+            .append(': ........')
+            $(id).append(div)
+        }
+
+
+
+        update_attacks(){
+            if(!this.selected_entity) return;
+
+            let attacks = this.entities[this.selected_entity].attacks || [];
+
+            $('#attacks_list').empty();
+
+            $.each(attacks, (i,v)=>{
+                this.add_attack('#attacks_list', v)
+            });
+        }
+
+        add_attack(id, attack){
+            let div = $('<div>').addClass('attack')
+            .append('........')
+            $(id).append(div)
+        }
+
+
+
+        update_special_attr(){
+            if(!this.selected_entity) return;
+            let special_attr_keys = [
+                'id',
+                'title',
+                'img',
+                'illu',
+                'pv'
+            ]
+            let attributes = this.entities[this.selected_entity]
+
+            $.each(special_attr_keys,(i, k)=>{
+                $('#special_attr_list')
+                .children('#'+k)
+                .children('.val')
+                .val(attributes[k])
+            });
+        }
+
+        update_other_attr(){
+            if(!this.selected_entity) return;
+
+            let attributes = {}
+            $.each(this.entities[this.selected_entity],(k,v)=>{
+                if(![
+                        'script',
+                        'attacks',
+                        'id',
+                        'title',
+                        'img',
+                        'illu',
+                        'pv'
+                        ].includes(k)){
+                    attributes[k]=v;
+                }
+            });
+
+            $('#other_attr_list').empty();
+                console.log('update')
+
+
+            $.each(attributes, (k,v)=>{
+                this.add_other_attr('#other_attr_list', k, v)
+            });
+        }
+        add_other_attr(id,k,v){
+                console.log('addd')
+
+            let div = $('<div>').addClass('attr')
+            .append($('<input>').addClass('key').val(k).attr('size', 15))
+            .append(':')
+            .append($('<input>').addClass('val').val(v).attr('size', 15))
+            .append($('<button>').text('-').click(()=>{div.remove()}));
+            $(id).append(div)
+        }
+
+
+        update_extra_data_choice(id, value, choice){
+            $(id).val(value);
+
+            let select = $(id+' + select')
+            if (!select.length) {
+                select = $('<select>').insertAfter($(id))
+            }
+
+            select.empty()
+            select.append($('<option>').attr('value', "?").text('?'))
+            for(let c in choice){
+                if(c.startsWith('entities/')){
+                    let option = $('<option>')
+                    .attr('value', c)
+                    .text(c)
+                    if(value == c){
+                        option.attr('selected', true)
+                    }
+                    select.append(option)
+                }
+            }
+            select.change(()=>{
+                $(id).val(select.val());
+            });
+            $(id).on('input',()=>{
+                if ($(id).val() in choice){
+                    select.children('[value="'+$(id).val()+'"]').attr('selected', true);
+                    select.val($(id).val());
+
+                }
+                else{
+                    select.children(":selected").removeAttr("selected");
+                    select.val('??');
+                }
+            });
+
+        }
+
+
+
+
+        submit(){
+            let entity = {}
+            return entity
+        }
+
+        save(){
+            if(this.loading) return;
+            this.loading = true;
+            let entity = this.submit();
+            console.log("SAVE ", this.selected_entity, entity);
+            // this.write(entity);
+        }
+        copy(){
+            if(this.loading) return;
+            this.loading = true;
+            let entity = this.submit();
+            console.log("COPY ", this.selected_entity, entity);
+
+            // this.write();
+
+        }
+
+        delete(){
+            if(this.loading) return;
+            this.loading = true;
+            let entity = this.submit();
+            console.log("DELETE ", this.selected_entity, entity);
+            // this.write();
+
+        }
+
+        write(path, data){
+            $.ajax({
+            type: "POST",
+            url: "/set_json",
+            data: JSON.stringify({
+                path:path,
+                data:data
+            })  ,
+            // contentType: "application/json; charset=utf-8",
+            // dataType: "json",
+            success: (data)=>{
+                this.load();
+                alert(data);},
+            error: function(errMsg) {
+                console.log('error!', errMsg)
+                alert('Error!');
+            }
+            });
+        }
+
+
+
+    }
+
+    new EntityEditor();
+});
+
+</script>
+<body>
+<div id="nav">
+
+    <p>Selected entity : <span id="selected-entity"></span></p>
+
+    <p>Entities :
+        <ul id="entities-list">
+            
+        </ul>
+    </p>
+
+    <div id="world-entity-edit" style="display: none;">
+        <p>Extra data : <input id="extra_data"></input></p>
+        <p>Other attributes : <button id="add-attribute">+</button>
+            <div id="other_attributes"></div>
+        </p>
+        <hr>
+        <button id="reload">Reload</button>
+        <button id="copy">Save as copy</button>
+        <button id="save">Save /!\</button>
+        <button id="delete">Delete /!\</button>
+    </div>
+
+</div>
+<div id="script">
+    <h1>Script</h1>
+     <button id="add_moment">+ moment</button>
+     <div id="script_moments"></div>
+
+</div>
+
+<div id="attacks">
+    <h1>Attacks</h1>
+     <button id="add_moment">+ attack</button>
+     <div id="attacks_list"></div>
+
+
+</div>
+
+<div id="special_attributes">
+    <h1>Special attributes</h1>
+     <div id="special_attr_list">
+         <div class="attr" id="id">
+            id:<input class="val" size="15">
+        </div>
+        <div class="attr" id="title">
+            title:<input class="val" size="15">
+        </div>
+        <div class="attr" id="pv">
+            pv:<input class="val" size="15">
+        </div>
+        <div class="attr" id="img">
+            img:<input class="val" size="15">
+        </div>
+        <div class="attr" id="illu">
+            illu:<input class="val" size="15">
+        </div>
+     </div>
+</div>
+
+<div id="other_attributes">
+    <h1>Other attributes</h1>
+     <button id="add_attribute">+ attribute</button>
+     <div id="other_attr_list">
+         
+     </div>
+</div>
+
+</body>
+</html>

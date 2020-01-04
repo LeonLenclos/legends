@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Legends editor</title>
+    <title>Legends | Map editor</title>
     <meta charset="utf-8">
 
 
@@ -31,6 +31,15 @@ $.ajaxSetup({cache: false});
 $(document).ready(()=>{
     class MapEditor{
         constructor(){
+
+            $('#add_other_attr').click(()=>{
+                this.add_other_attr('#other_attributes', 'key', 'value')
+            });
+            $('#reload').click(()=>{this.update_entity()});
+            $('#copy').click(()=>{this.copy()});
+            $('#save').click(()=>{this.save()});
+            $('#delete').click(()=>{this.delete()});
+
             this.load()
             this.selected_entity = undefined;
         }
@@ -125,10 +134,6 @@ $(document).ready(()=>{
                 });
                 this.update_other_attr('#other_attributes', '#add-attribute', other_attributes)
 
-                $('#reload').click(()=>{this.update_entity()});
-                $('#copy').click(()=>{this.copy()});
-                $('#save').click(()=>{this.save()});
-                $('#delete').click(()=>{this.delete()});
 
             }
         }
@@ -197,9 +202,6 @@ $(document).ready(()=>{
 
         update_other_attr(id, add_id, attributes){
             $(id).empty();
-            $(add_id).click(()=>
-                this.add_other_attr(id, 'key', 'value')
-                )
             $.each(attributes, (k,v)=>{
                 this.add_other_attr(id, k, v)
             });
@@ -261,6 +263,7 @@ $(document).ready(()=>{
         }
 
         update_list(){
+            $('#entities-list').empty();
             let world_data = this.assets.json.world;
             world_data.entities.forEach((entity_data, i)=>{
                 $('#entities-list').append(
