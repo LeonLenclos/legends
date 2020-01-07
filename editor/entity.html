@@ -28,13 +28,42 @@
 
 "use strict";
 $.ajaxSetup({cache: false});
+
+jQuery.fn.selectText = function(){
+    this.find('input').each(function() {
+        if($(this).prev().length == 0 || !$(this).prev().hasClass('p_copy')) { 
+            $('<p class="p_copy" style="position: absolute; z-index: -1;"></p>').insertBefore($(this));
+        }
+        $(this).prev().html($(this).val());
+    });
+    var doc = document;
+    var element = this[0];
+    console.log(this, element);
+    if (doc.body.createTextRange) {
+        var range = document.body.createTextRange();
+        range.moveToElementText(element);
+        range.select();
+    } else if (window.getSelection) {
+        var selection = window.getSelection();        
+        var range = document.createRange();
+        range.selectNodeContents(element);
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+};
+
 $(document).ready(()=>{
     class EntityEditor{
-        constructor(){
+        constructor(entity){
+
+
+                $('#reload').click(()=>{this.reload()});
+                $('#save').click(()=>{this.save()});
+
 
 
             $('#add_moment').click(()=>{
-                this.add_moment('#script_moments', 'moment_id')
+                this.add_moment('#script_moments', 'moment_id', {txt:[], actions:[], auto_actions:[]})
             });
 
             $('#add_attack').click(()=>{
@@ -48,9 +77,16 @@ $(document).ready(()=>{
 
 
             this.load()
-            this.selected_entity = undefined;
+
+
+
+            this.selected_entity = entity;
         }
 
+        reload(){
+            this.selected_entity = 'entities/' + $('#entity_file').val();
+            this.load()
+        }
         load(){
             this.loading = true;
             this.assets = new Assets(()=>{this.setup()});
@@ -63,7 +99,11 @@ $(document).ready(()=>{
                 if(k.startsWith('entities')) this.entities[k] = v;
             })
             this.update_list();
+            this.update_help();
+            this.update_entity();
             this.loading = false;
+
+
 
         }
 
@@ -86,40 +126,64 @@ $(document).ready(()=>{
             });
         }
 
+        update_help(){
+
+            $('#galery_entities').empty();
+            $('#galery_illu').empty();
+            $('#commands_doc').empty();
+
+            $.each(this.assets.png, (k,v)=>{
+                if(k.startsWith('entities')){
+                    let code = $('<code>').text(k);
+                    $('#galery_entities').append($('<li>')
+                        .append(v)
+                        .append(code)
+                        .click(()=>{code.selectText();})
+                    )
+                }
+                else if(k.startsWith('illu') && k.endsWith('1')){
+                    let code = $('<code>').text(k.slice(0, -1));
+                    $('#galery_illu').append($('<li>')
+                        .append(v)
+                        .append(code)
+                        .click(()=>{code.selectText();})
+                    )
+                }
+
+            })
+            $.each(commands, (k, v)=>{
+
+                    let code = $('<code>').text(v.usage);
+                    $('#commands_doc').append($('<li>')
+                        .append($('<b>').text(k))
+                        .append(code)
+                        .append($('<i>').text(v.doc))
+                        .click(()=>{code.selectText();})
+                    )
+
+            })
+        }
         update_entity(){
+            this.selected_entity = this.selected_entity || "";  
+            $('#entity_file').val(this.selected_entity.slice('entities/'.length));
 
-            if(this.selected_entity == undefined){
-                $('#entity-edit').hide();
-                $('#selected-entity').html('<i>NO ENTITY SELECTED</i>');
+            this.update_script();
+            this.update_attacks();
+            this.update_special_attr();
+            this.update_other_attr();
 
-                $('#selected-entity').append($('<button>').text('new')
-                    .click(()=>{alert('bouton NEW pas encore implémenté :(')}));
-
-            } else {
-                $('#entity-edit').show();
-                $('#selected-entity').html(this.selected_entity);
-
-                let entity = this.entities[this.selected_entity]
-
-                this.update_script();
-                this.update_attacks();
-                this.update_special_attr();
-                this.update_other_attr();
-
-                $('#reload').click(()=>{this.update_entity()});
-                $('#copy').click(()=>{this.copy()});
-                $('#save').click(()=>{this.save()});
-                $('#delete').click(()=>{this.delete()});
-
-            }
         }
 
 
 
-        update_script(){
-            if(!this.selected_entity) return;
 
-            let moments = this.entities[this.selected_entity].script || {};
+        update_script(){
+            let entity = this.entities[this.selected_entity]
+            let moments = {};
+
+            if(entity && entity.script){
+                moments = entity.script;
+            }
 
             $('#script_moments').empty();
 
@@ -128,19 +192,107 @@ $(document).ready(()=>{
             });
         }
 
+
         add_moment(id, moment_id, moment){
-            let div = $('<div>').addClass('moment')
-            .append($('<input>').addClass('moment_id').val(moment_id).attr('size', 15))
-            .append(': ........')
+            let txt = this.new_txt_box(moment.txt);
+
+            let actions = $('<div>').addClass('actions');
+            actions.append($('<button>').addClass('plus').text('+').click(()=>{actions.append(this.new_action_box())}))
+            $.each(moment.actions, (i, a)=>{
+                actions.append(this.new_action_box(a.txt, a.do))
+            });
+            
+            let auto_actions = $('<div>').addClass('auto_actions');
+            auto_actions.append($('<button>').addClass('plus').text('+').click(()=>{auto_actions.append(this.new_action_box())}))
+            $.each(moment.auto_actions, (i, a)=>{
+                auto_actions.append(this.new_action_box(a.txt, a.do))
+            });
+
+            let div = $('<div>').addClass('moment').addClass('blackbloc')
+            .append($('<input>').addClass('moment_id').val(moment_id))
+            .append($('<button>').text('()').click(()=>{div.children('p, div').toggle()}))
+            .append($('<button>').text('-').click(()=>{div.remove()}))
+            .append('<p>txt:</p>').append(txt)
+            .append('<p>actions:</p>').append(actions)
+            .append('<p>auto_actions:</p>').append(auto_actions);
+
+
             $(id).append(div)
         }
 
 
+        new_action_box(txt, todo){
+
+            
+            let div = $('<div>').addClass('action_box')
+            .append($('<button>').text('-').click(()=>{div.remove()}))
+            .append('<p>txt:</p>').append(this.new_txt_box(txt))
+            .append('<p>do:</p>').append(this.new_do_box(todo))
+
+            return div;
+        }
+
+
+
+        new_do_box(todo){
+
+            const new_do_field = (d) => {
+
+                let div = $('<div>').addClass('do_field')
+                .append($('<input>').addClass('do').val(d))
+
+                let commands_select = $('<select>').addClass('commands_select');
+
+                $.each(commands, (k, v)=>{
+                    commands_select.append($('<option>').text(k).val(v.usage))
+                })
+                commands_select.change(()=>{
+                    div.children('.do').val(commands_select.val())
+                })
+                div.append(commands_select)
+                .append($('<button>').text('-').click(()=>{div.remove()}));
+
+                return div;
+
+            }
+
+            let div = $('<div>').addClass('do_box')
+            .append($('<button>').addClass('plus').text('+').click(()=>{div.append(new_do_field(''))}))
+
+            $.each(todo, (i, d)=>{div.append(new_do_field(d))});
+
+            return div;
+        }
+
+        new_txt_box(txt){
+
+            const new_txt_field = (t) => {
+                let div = $('<div>').addClass('txt_field')
+                .append($('<textarea>').addClass('txt').text(t).attr('cols', 30).attr('rows', 1))
+                .append($('<button>').text('-').click(()=>{div.remove()}))
+                return div;
+            }
+            if (txt === "" || txt === undefined) {txt = [];}
+            else if (! (txt instanceof Array)){txt = [txt];}
+
+            let div = $('<div>').addClass('txt_box')
+            .append($('<button>').addClass('plus').text('+').click(()=>{div.append(new_txt_field(''))}))
+
+            $.each(txt, (i, t)=>{
+                div.append(new_txt_field(t))
+            });
+
+            return div;
+        }
+
 
         update_attacks(){
-            if(!this.selected_entity) return;
+            let entity = this.entities[this.selected_entity]
+            let attacks = [];
 
-            let attacks = this.entities[this.selected_entity].attacks || [];
+            if(entity && entity.attacks){
+                attacks = entity.attacks;
+            }
 
             $('#attacks_list').empty();
 
@@ -150,15 +302,44 @@ $(document).ready(()=>{
         }
 
         add_attack(id, attack){
-            let div = $('<div>').addClass('attack')
-            .append('........')
+            let txt = this.new_txt_box(attack.txt);
+
+            let todo = this.new_do_box(attack.do);
+
+            let effect = $('<div>').addClass('effect');
+            effect.append($('<button>').addClass('plus').text('+').click(()=>{effect.append(this.new_effect_box())}))
+            $.each(attack.effect, (i, e)=>{
+                effect.append(this.new_effect_box(e.prob, e.txt, e.do))
+            });
+
+            let div = $('<div>').addClass('attack').addClass('blackbloc')
+            .append($('<button>').text('()').click(()=>{div.children('p, div').toggle()}))
+            .append($('<button>').text('-').click(()=>{div.remove()}))
+            .append('<p>txt:</p>').append(txt)
+            .append('<p>do:</p>').append(todo)
+            .append('<p>effect:</p>').append(effect);
+
+
             $(id).append(div)
         }
 
 
+        new_effect_box(prob, txt, todo){
+
+            
+            let div = $('<div>').addClass('action_box')
+            .append($('<button>').text('-').click(()=>{div.remove()}))
+            .append('<p>prob:</p>').append($('<input>').attr({type:'number', step:0.05, min:0, max:1, value:prob}))
+            .append('<p>txt:</p>').append(this.new_txt_box(txt))
+            .append('<p>do:</p>').append(this.new_do_box(todo))
+
+            return div;
+        }
+
 
         update_special_attr(){
-            if(!this.selected_entity) return;
+            let entity = this.entities[this.selected_entity] || {};
+
             let special_attr_keys = [
                 'id',
                 'title',
@@ -166,21 +347,20 @@ $(document).ready(()=>{
                 'illu',
                 'pv'
             ]
-            let attributes = this.entities[this.selected_entity]
 
             $.each(special_attr_keys,(i, k)=>{
                 $('#special_attr_list')
                 .children('#'+k)
                 .children('.val')
-                .val(attributes[k])
+                .val(entity[k])
             });
         }
 
         update_other_attr(){
-            if(!this.selected_entity) return;
-
+            let entity = this.entities[this.selected_entity] || {};
             let attributes = {}
-            $.each(this.entities[this.selected_entity],(k,v)=>{
+
+            $.each(entity,(k,v)=>{
                 if(![
                         'script',
                         'attacks',
@@ -195,8 +375,6 @@ $(document).ready(()=>{
             });
 
             $('#other_attr_list').empty();
-                console.log('update')
-
 
             $.each(attributes, (k,v)=>{
                 this.add_other_attr('#other_attr_list', k, v)
@@ -214,49 +392,21 @@ $(document).ready(()=>{
         }
 
 
-        update_extra_data_choice(id, value, choice){
-            $(id).val(value);
-
-            let select = $(id+' + select')
-            if (!select.length) {
-                select = $('<select>').insertAfter($(id))
-            }
-
-            select.empty()
-            select.append($('<option>').attr('value', "?").text('?'))
-            for(let c in choice){
-                if(c.startsWith('entities/')){
-                    let option = $('<option>')
-                    .attr('value', c)
-                    .text(c)
-                    if(value == c){
-                        option.attr('selected', true)
-                    }
-                    select.append(option)
-                }
-            }
-            select.change(()=>{
-                $(id).val(select.val());
-            });
-            $(id).on('input',()=>{
-                if ($(id).val() in choice){
-                    select.children('[value="'+$(id).val()+'"]').attr('selected', true);
-                    select.val($(id).val());
-
-                }
-                else{
-                    select.children(":selected").removeAttr("selected");
-                    select.val('??');
-                }
-            });
-
-        }
-
-
-
 
         submit(){
             let entity = {}
+            // get script
+            entity.script = {}
+            $('#script_moments').children('.moment').each((i, e)=>{
+                let moment_id = $(e).children('.moment_id').val()
+                let txt = [];
+
+
+                entity.script[moment_id] = {
+                }
+            })
+                        
+
             return entity
         }
 
@@ -310,14 +460,20 @@ $(document).ready(()=>{
 
     }
 
-    new EntityEditor();
+    let searchParams = new URLSearchParams(window.location.search)
+    new EntityEditor(searchParams.get('entity'));
 });
 
 </script>
 <body>
 <div id="nav">
 
-    <p>Selected entity : <span id="selected-entity"></span></p>
+    <p>Entity : <i>entities/<input id="entity_file"></input></i></p>
+
+        
+        <button id="reload">Reload</button>
+        <button id="save">Save /!\</button>
+
 
     <p>Entities :
         <ul id="entities-list">
@@ -325,17 +481,6 @@ $(document).ready(()=>{
         </ul>
     </p>
 
-    <div id="world-entity-edit" style="display: none;">
-        <p>Extra data : <input id="extra_data"></input></p>
-        <p>Other attributes : <button id="add-attribute">+</button>
-            <div id="other_attributes"></div>
-        </p>
-        <hr>
-        <button id="reload">Reload</button>
-        <button id="copy">Save as copy</button>
-        <button id="save">Save /!\</button>
-        <button id="delete">Delete /!\</button>
-    </div>
 
 </div>
 <div id="script">
@@ -380,6 +525,24 @@ $(document).ready(()=>{
      <div id="other_attr_list">
          
      </div>
+</div>
+
+<div id="help">
+    <h1>Help !</h1>
+    <h1>Commandes</h1>
+    <ul id="commands_doc">
+         
+     </ul>
+
+    <h1>Galery entities</h1>
+    <ul id="galery_entities">
+         
+     </ul>
+    <h1>Galery illu</h1>
+
+     <ul id="galery_illu">
+         
+     </ul>
 </div>
 
 </body>

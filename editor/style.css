@@ -11,21 +11,29 @@ p{
   margin:0;
   margin-top:15px;
 }
-button, select, input, #nav a{
+
+textarea {
+overflow: hidden;
+}
+
+button, select, input, #nav a, textarea{
   background: white;
   font-size: 12px;
+  min-width:18px;
   border:1px solid;
   margin:1px;
   padding: 2px;
   text-decoration: none;
 }
 
-button:hover, select:hover, input:hover, #nav a:hover{
+button:hover, select:hover, input:hover, #nav a:hover, textarea:hover{
   background: #ddd;
 }
-#nav, #other_attributes, #special_attributes, #attacks, #script{
+#nav, #other_attributes, #special_attributes, #attacks, #script, #help{
   padding:10px;
   background: #fdd;
+    overflow-y: scroll;
+
   border-right:10px solid #f99;
 }
 
@@ -61,8 +69,106 @@ span {
 
 }
 
+.blackbloc > * {
+  margin: 0;
+}
+.blackbloc p {
+    margin: 0;
+  padding:2px;
+  font-weight:bold;
+}
+.blackbloc > div {
+  border-bottom: 4px solid black;
+  border-top: 4px solid black;
+  padding: 5px;
+    min-width: 400px;
+  background: #faa;
+
+}
+
+
+.blackbloc > p {
+background: #000;
+color:white;
+}
+.blackbloc {
+  border: 4px solid black;
+  margin: 15px 0;
+  background: #000;
+
+}
+.moment_id {
+  font-weight: bold;
+  padding: 4px;
+  border: 4px solid black;
+}
+.blackbloc > button {
+  font-weight: bold;
+  padding: 4px;
+  border: 4px solid black;
+  border-left: 10px solid black;
+}
+.blackbloc div input, .blackbloc div textarea {
+  min-width : 350px;;
+}
+
 #nav div{
     border:1px solid;
   padding: 1px;
 
+}
+
+.action_box {
+  background: white;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #000;
+  
+}
+
+button.plus {
+  font-size: 8pt;
+}
+
+.commands_select{
+  width : 10px;
+  
+}
+
+#help img{
+  margin-right:10px;
+    image-rendering: crisp-edges;
+  
+}
+#help ul{
+  padding-left: 0;
+}
+#help li{
+
+    list-style: none;
+  display: flex;
+
+  width:100%;
+  align-items: center;
+  margin: 5px 0;
+}
+
+#commands_doc li{
+    flex-direction: column;
+  align-items: flex-start;
+    max-width: 400px;
+}
+
+#help code{
+  background: white;
+  padding: 2px;
+}
+
+#galery_entities li:hover img{
+  background: white;
+  transform: scale(4);
+}
+#galery_illu li:hover img{
+  background: white;
+  transform: scale(2);
 }

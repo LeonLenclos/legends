@@ -8,16 +8,22 @@
 
 const commands = {
     EXIT:{
+        doc:"Ferme l'interaction",
+        usage:'EXIT',
         do:(g, e, a)=>{
             g.open_map();
         },
         doable:(g, e, a)=>true
     },
     GAMEOVER:{
+        doc:"Game over...",
+        usage:'GAMEOVER',
         do:(g, e, a)=>{g.game_over();},
         doable:(g, e, a)=>true
     },
     GOTO:{
+        doc:"Aller à un autre moment de l'interaction",
+        usage:'GOTO moment [entity]',
         do:(g, e, a)=>{
             let target = a[1] ? g.world.get_entity(a[1]) : e;
             target.interaction_state = a[0];
@@ -30,6 +36,8 @@ const commands = {
         doable:(g, e, a)=>true
     },
     GIVE:{
+        doc:"Additionner une valeur à un attribut",
+        usage:'GIVE number attribute [entity]',
         do:(g, e, a)=>{
             let amount = Number(a[0]);
             let attr = a[1];
@@ -45,6 +53,8 @@ const commands = {
         }
     },
     SET:{
+        doc:"Changer la valeur d'un attribut",
+        usage:'SET value attribute [entity]',
         do:(g, e, a)=>{
             let value = Number(a[0]);
             if(isNaN(value)) value = a[0];
@@ -55,6 +65,8 @@ const commands = {
         doable:(g, e, a)=>true
     },
     SETIMAGE:{
+        doc:"Changer l'image qui s'affiche sur la map",
+        usage:'SETIMAGE entities/image [entity]',
         do:(g, e, a)=>{
             let value =  a[0];
             let target = a[1] ? g.world.get_entity(a[1]) : e;
@@ -63,7 +75,20 @@ const commands = {
         },
         doable:(g, e, a)=>true
     },
+    SETILLU:{
+        doc:"Changer l'image qui s'affiche dans l'interaction",
+        usage:'SETIMAGE entities/image [entity]',
+        do:(g, e, a)=>{
+            let value =  a[0];
+            let target = a[1] ? g.world.get_entity(a[1]) : e;
+            target.set_illu(value);
+            target
+        },
+        doable:(g, e, a)=>true
+    },
     SETPOSITION:{
+        doc:"Changer la position",
+        usage:'SETPOSITION x y [entity]',
         do:(g, e, a)=>{
             let value_x =  Number(a[0]);
             let value_y =  Number(a[1]);
@@ -74,6 +99,8 @@ const commands = {
         doable:(g, e, a)=>true
     },
     COPYPOSITION:{
+        doc:"Donner au hero la position de l'entité",
+        usage:'COPYPOSITION',
         do:(g, e, a)=>{
             g.world.hero.x = e.x;
             g.world.hero.y = e.y;
@@ -81,6 +108,8 @@ const commands = {
         doable:(g, e, a)=>true
     },
     FIGHT:{
+        doc:"Démarrer un combat",
+        usage:'FIGHT',
         do:(g, e, a)=>{
             g.world.get_entity('hero').start_fight();
             e.start_fight();
@@ -88,12 +117,16 @@ const commands = {
         doable:(g, e, a)=>true
     },
     FLEE:{
-    do:(g, e, a)=>{
-        e.flee = true;
-    },
-    doable:(g, e, a)=>true
-    },
+        doc:"(Combat uniquement) Fuir d'un combat.",
+        usage:'FLEE',
+        do:(g, e, a)=>{
+            e.flee = true;
+        },
+        doable:(g, e, a)=>true
+        },
     HIT:{
+        doc:"(Combat uniquement) Retirer des pv à l'adversaire",
+        usage:'HIT number',
         do:(g, e, a)=>{
             let hit = Number(a[0]); 
             e.target.pv -= hit;
@@ -104,48 +137,50 @@ const commands = {
         doable:(g, e, a)=>true
     },
     COMPARE:{
-    do:(g, e, a)=>{return;},
-    doable:(g, e, a)=>{
-        let operators = ['<', '>', '=', '<=', '>=', '!=']
-        let i = 0;
-        let value_a, value_b;
-        //value a
-        if(!isNaN(Number(a[i]))){
-            value_a = Number(a[i]);
-            i++;
-        } else {
-            let attr = a[i];
-            i++;
-            let target = e;
-            if(!operators.includes(a[i])){
-                target = g.world.get_entity(a[i])
+        doc:"Comparer les valeurs de deux attributs (opérateurs disponnibles : < > = <= >= != )",
+        usage:'COMPARE attribut [entity] operator attribut [entity]',
+        do:(g, e, a)=>{return;},
+        doable:(g, e, a)=>{
+            let operators = ['<', '>', '=', '<=', '>=', '!=']
+            let i = 0;
+            let value_a, value_b;
+            //value a
+            if(!isNaN(Number(a[i]))){
+                value_a = Number(a[i]);
                 i++;
+            } else {
+                let attr = a[i];
+                i++;
+                let target = e;
+                if(!operators.includes(a[i])){
+                    target = g.world.get_entity(a[i])
+                    i++;
+                }
+                value_a = target[attr];
             }
-            value_a = target[attr];
-        }
-        // op
-        let operator = a[i];
-        i++;
-        // value b
-        if(!isNaN(Number(a[i]))){
-        value_b = Number(a[i]);
-        i++;
-        } else {
-            let attr = a[i];
+            // op
+            let operator = a[i];
             i++;
-            let target = a[i] ? g.world.get_entity(a[i]) : e;
-            value_b = target[attr];
+            // value b
+            if(!isNaN(Number(a[i]))){
+            value_b = Number(a[i]);
+            i++;
+            } else {
+                let attr = a[i];
+                i++;
+                let target = a[i] ? g.world.get_entity(a[i]) : e;
+                value_b = target[attr];
+            }
+            // compare
+            console.log('compare : ', value_a, operator, value_b, '?');
+            if (operator == '<') return value_a < value_b;
+            if (operator == '<=') return value_a <= value_b;
+            if (operator == '>') return value_a > value_b;
+            if (operator == '>=') return value_a >= value_b;
+            if (operator == '=') return value_a == value_b;
+            if (operator == '!=') return value_a != value_b;
         }
-        // compare
-        console.log('compare : ', value_a, operator, value_b, '?');
-        if (operator == '<') return value_a < value_b;
-        if (operator == '<=') return value_a <= value_b;
-        if (operator == '>') return value_a > value_b;
-        if (operator == '>=') return value_a >= value_b;
-        if (operator == '=') return value_a == value_b;
-        if (operator == '!=') return value_a != value_b;
     }
-}
 }
 
 function split_command(c) {
