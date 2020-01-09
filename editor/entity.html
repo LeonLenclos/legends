@@ -38,7 +38,6 @@ jQuery.fn.selectText = function(){
     });
     var doc = document;
     var element = this[0];
-    console.log(this, element);
     if (doc.body.createTextRange) {
         var range = document.body.createTextRange();
         range.moveToElementText(element);
@@ -71,10 +70,12 @@ $(document).ready(()=>{
             });
 
             $('#add_attribute').click(()=>{
-                console.log('cliccc')
                 this.add_other_attr('#other_attr_list', 'key', 'value')
             });
 
+            $('.col').each((i, e)=>{
+                $(e).prepend($('<button>').addClass('toggle-hiden').text('()').click(()=>{$(e).toggleClass('hiden')}))
+            });
 
             this.load()
 
@@ -329,7 +330,7 @@ $(document).ready(()=>{
             
             let div = $('<div>').addClass('action_box')
             .append($('<button>').text('-').click(()=>{div.remove()}))
-            .append('<p>prob:</p>').append($('<input>').attr({type:'number', step:0.05, min:0, max:1, value:prob}))
+            .append('<p>prob:</p>').append($('<input>').attr({type:'number', step:0.05, min:0, max:1, value:prob, class:'prob'}))
             .append('<p>txt:</p>').append(this.new_txt_box(txt))
             .append('<p>do:</p>').append(this.new_do_box(todo))
 
@@ -381,7 +382,6 @@ $(document).ready(()=>{
             });
         }
         add_other_attr(id,k,v){
-                console.log('addd')
 
             let div = $('<div>').addClass('attr')
             .append($('<input>').addClass('key').val(k).attr('size', 15))
@@ -394,32 +394,108 @@ $(document).ready(()=>{
 
 
         submit(){
-            let entity = {}
+
+            let get_txt = (e) => {
+                let reply = [];
+                $(e).children('.txt_box').children('.txt_field').children('.txt').each((i, e)=>{
+                    reply.push($(e).text());
+                });
+                return reply;
+            };
+            let get_do = (e) => {
+                let reply = [];
+                $(e).children('.do_box').children('.do_field').children('.do').each((i, e)=>{
+                    reply.push($(e).val());
+                });
+                return reply;
+            };
+            let get_prob = (e) => Number($(e).children('.prob').val());
+
+            let get_action = (e, name='actions') => {
+                let reply = [];
+                $(e).children('.'+name).children('.action_box').each((i, e)=>{
+                     reply.push({
+                        do:get_do(e),
+                        txt:get_txt(e)
+                     });
+                });
+                return reply;
+            }
+            let get_effect = (e) => {
+                let reply = [];
+                $(e).children('.effect').children('.action_box').each((i, e)=>{
+                     reply.push({
+                        prob:get_prob(e),
+                        do:get_do(e),
+                        txt:get_txt(e)
+                     });
+                });
+                return reply;
+            }
+
+            let entity = {};
+
             // get script
             entity.script = {}
             $('#script_moments').children('.moment').each((i, e)=>{
-                let moment_id = $(e).children('.moment_id').val()
-                let txt = [];
-
+                let moment_id = $(e).children('.moment_id').val();
+                let txt = get_txt(e);
+                let auto_actions = get_action(e, 'auto_actions');
+                let actions = get_action(e);
 
                 entity.script[moment_id] = {
-                }
+                    txt:txt,
+                    auto_actions:auto_actions,
+                    actions:actions
+                };
             })
-                        
 
-            return entity
+
+
+            // get fight
+            entity.fight = []
+            $('#attacks_list').children('.attack').each((i, e)=>{
+                let txt = get_txt(e);
+                let todo = get_do(e);
+                let effect = get_effect(e);
+
+                entity.fight.push({
+                    txt:txt,
+                    do:todo,
+                    effect:effect
+                });
+            })
+
+            // get special attr
+
+            $('#special_attributes').children('#special_attr_list').children('.attr').each((i, e)=>{
+                let key = $(e).attr('id');
+                let val = $(e).children('.val').val()
+                if(val!='' && val!=undefined && !isNaN(Number(val))) val = Number(val);
+
+                entity[key] = val;
+            });
+
+
+            // get other attr
+
+            $('#other_attributes').children('#other_attr_list').children('.attr').each((i, e)=>{
+                let key = $(e).children('.key').val()
+                let val = $(e).children('.val').val()
+                if(val!='' && val!=undefined && !isNaN(Number(val))) val = Number(val);
+
+                entity[key] = val;
+            });
+
+            return entity;
         }
 
         save(){
-            if(this.loading) return;
-            this.loading = true;
             let entity = this.submit();
-            console.log("SAVE ", this.selected_entity, entity);
+            console.log("SAVE ", this.selected_entity, '\n', JSON.stringify(entity, null, 4));
             // this.write(entity);
         }
         copy(){
-            if(this.loading) return;
-            this.loading = true;
             let entity = this.submit();
             console.log("COPY ", this.selected_entity, entity);
 
@@ -428,8 +504,6 @@ $(document).ready(()=>{
         }
 
         delete(){
-            if(this.loading) return;
-            this.loading = true;
             let entity = this.submit();
             console.log("DELETE ", this.selected_entity, entity);
             // this.write();
@@ -466,7 +540,7 @@ $(document).ready(()=>{
 
 </script>
 <body>
-<div id="nav">
+<div id="nav" class="col">
 
     <p>Entity : <i>entities/<input id="entity_file"></input></i></p>
 
@@ -483,14 +557,14 @@ $(document).ready(()=>{
 
 
 </div>
-<div id="script">
+<div id="script" class="col">
     <h1>Script</h1>
      <button id="add_moment">+ moment</button>
      <div id="script_moments"></div>
 
 </div>
 
-<div id="attacks">
+<div id="attacks" class="col">
     <h1>Attacks</h1>
      <button id="add_moment">+ attack</button>
      <div id="attacks_list"></div>
@@ -498,7 +572,7 @@ $(document).ready(()=>{
 
 </div>
 
-<div id="special_attributes">
+<div id="special_attributes" class="col">
     <h1>Special attributes</h1>
      <div id="special_attr_list">
          <div class="attr" id="id">
@@ -519,7 +593,7 @@ $(document).ready(()=>{
      </div>
 </div>
 
-<div id="other_attributes">
+<div id="other_attributes" class="col">
     <h1>Other attributes</h1>
      <button id="add_attribute">+ attribute</button>
      <div id="other_attr_list">
@@ -527,18 +601,18 @@ $(document).ready(()=>{
      </div>
 </div>
 
-<div id="help">
+<div id="help" class="col">
     <h1>Help !</h1>
-    <h1>Commandes</h1>
+    <h2>Commandes</h2>
     <ul id="commands_doc">
          
      </ul>
 
-    <h1>Galery entities</h1>
+    <h2>Galery entities</h2>
     <ul id="galery_entities">
          
      </ul>
-    <h1>Galery illu</h1>
+    <h2>Galery illu</h2>
 
      <ul id="galery_illu">
          

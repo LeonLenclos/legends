@@ -29,7 +29,7 @@ button, select, input, #nav a, textarea{
 button:hover, select:hover, input:hover, #nav a:hover, textarea:hover{
   background: #ddd;
 }
-#nav, #other_attributes, #special_attributes, #attacks, #script, #help{
+.col {
   padding:10px;
   background: #fdd;
     overflow-y: scroll;
@@ -37,9 +37,23 @@ button:hover, select:hover, input:hover, #nav a:hover, textarea:hover{
   border-right:10px solid #f99;
 }
 
+.col.hiden h1{
+writing-mode: vertical-rl;
+text-orientation: mixed;
+}
+
+.col.hiden *:not(.toggle-hiden):not(h1) {
+  display: none;
+}
 h1 {
   color: #f55;
   font-size: 14px; 
+}
+h2 {
+  background: #f55;
+  color:white;
+  padding:1px;
+  font-size: 12px; 
 }
 #nav {
    /* width:400px;
