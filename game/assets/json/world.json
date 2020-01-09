@@ -1,8 +1,8 @@
 {
   "entities": [
     {
-      "y": 31, 
-      "x": 165, 
+      "y": 33, 
+      "x": 50, 
       "extra_data": "entities/hero"
     }, 
     {
@@ -281,6 +281,16 @@
       "y": 32, 
       "x": 42, 
       "extra_data": ""
+    }, 
+    {
+      "y": 46, 
+      "x": 102, 
+      "extra_data": "entities/enclos_cochon"
+    }, 
+    {
+      "y": 46, 
+      "x": 101, 
+      "extra_data": "entities/enclos_cochon"
     }
   ]
 }
