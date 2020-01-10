@@ -291,6 +291,11 @@
       "y": 46, 
       "x": 101, 
       "extra_data": "entities/enclos_cochon"
+    }, 
+    {
+      "y": 32, 
+      "x": 59, 
+      "extra_data": "entities/portail_D2"
     }
   ]
 }
