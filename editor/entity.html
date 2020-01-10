@@ -66,7 +66,7 @@ $(document).ready(()=>{
             });
 
             $('#add_attack').click(()=>{
-                this.add_attack('#attacks_list')
+                this.add_attack('#attacks_list', {txt:[], do:[], effect:[]})
             });
 
             $('#add_attribute').click(()=>{
@@ -472,6 +472,7 @@ $(document).ready(()=>{
                 let key = $(e).attr('id');
                 let val = $(e).children('.val').val()
                 if(val!='' && val!=undefined && !isNaN(Number(val))) val = Number(val);
+                else if(val=='') val = undefined;
 
                 entity[key] = val;
             });
@@ -483,6 +484,7 @@ $(document).ready(()=>{
                 let key = $(e).children('.key').val()
                 let val = $(e).children('.val').val()
                 if(val!='' && val!=undefined && !isNaN(Number(val))) val = Number(val);
+                else if(val=='') val = undefined;
 
                 entity[key] = val;
             });
@@ -491,9 +493,10 @@ $(document).ready(()=>{
         }
 
         save(){
+            this.selected_entity = 'entities/' + $('#entity_file').val();
             let entity = this.submit();
             console.log("SAVE ", this.selected_entity, '\n', JSON.stringify(entity, null, 4));
-            // this.write(entity);
+            this.write('game/assets/json/' + this.selected_entity + '.json', entity);
         }
         copy(){
             let entity = this.submit();
@@ -566,7 +569,7 @@ $(document).ready(()=>{
 
 <div id="attacks" class="col">
     <h1>Attacks</h1>
-     <button id="add_moment">+ attack</button>
+     <button id="add_attack">+ attack</button>
      <div id="attacks_list"></div>
 
 
