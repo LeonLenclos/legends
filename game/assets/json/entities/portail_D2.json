@@ -1,0 +1,16 @@
+{
+    "img":"entities/portail",
+        "illu":"illu/portail",
+
+    "title":"Portail dimensionnel.",
+    "script" : {
+        "start":{
+                 "txt" : "Cette porte mène au continent, derrière la montagne, voulez vous vraiment y aller?",
+                  "actions":[
+                    {"txt":"Oui.", "do":["SETPOSITION 227 23 hero", "EXIT"]},
+                    {"txt":"Non", "do":["EXIT"]}
+                  ]
+                  }
+
+                           }
+          }
