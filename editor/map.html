@@ -35,6 +35,9 @@ $(document).ready(()=>{
             $('#add_other_attr').click(()=>{
                 this.add_other_attr('#other_attributes', 'key', 'value')
             });
+            $('#extra_data').change(()=>{this.update_editor_link});
+
+
             $('#reload').click(()=>{this.update_entity()});
             $('#copy').click(()=>{this.copy()});
             $('#save').click(()=>{this.save()});
@@ -68,7 +71,6 @@ $(document).ready(()=>{
                 })
             }
             $('#selected-square').text(x + ',' + y);
-
             this.update_entity(x,y)
             this.map_interface.select(x,y);
         }
@@ -84,6 +86,10 @@ $(document).ready(()=>{
 
         }
 
+        update_editor_link(){
+            console.log('yo ')
+            $('#entity_editor_link').attr('href', 'entity.html?entity=' + $('#extra_data').val())
+        }
         select_pos_on_map(callback){
             this.map_interface.container.css('cursor', 'crosshair');
             let old_on_select = this.on_select;
@@ -136,6 +142,8 @@ $(document).ready(()=>{
 
 
             }
+                        this.update_editor_link()
+
         }
 
         submit(){
@@ -281,7 +289,7 @@ $(document).ready(()=>{
 
 </script>
 <body>
-<div id="nav">
+<div id="nav" class="col">
     <p>Zoom :
         <button class="zoom-button" data-zoom="1">x1</button>
         <button class="zoom-button" data-zoom="2">x2</button>
@@ -296,7 +304,7 @@ $(document).ready(()=>{
 
     <p>Selected entity : <span id="selected-entity"></span></p>
     <div id="world-entity-edit" style="display: none;">
-        <p>Extra data : <input id="extra_data"></input></p>
+        <p>Extra data : <input id="extra_data"></input> <a id="entity_editor_link" href="entity.html">entity editor</a> </p>
         <p>Position : <input id="posx" size=3/>, <input id="posy" size=3/>  <button id="select-on-map" data-zoom="2">Select position on the map</button>    </p>
         <p>Other attributes : <button id="add-attribute">+</button>
             <div id="other_attributes"></div>

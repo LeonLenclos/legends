@@ -77,11 +77,14 @@ $(document).ready(()=>{
                 $(e).prepend($('<button>').addClass('toggle-hiden').text('()').click(()=>{$(e).toggleClass('hiden')}))
             });
 
+
+
+            this.selected_entity = entity;
+
             this.load()
 
 
 
-            this.selected_entity = entity;
         }
 
         reload(){
