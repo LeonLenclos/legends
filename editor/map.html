@@ -35,8 +35,10 @@ $(document).ready(()=>{
             $('#add_other_attr').click(()=>{
                 this.add_other_attr('#other_attributes', 'key', 'value')
             });
-            $('#extra_data').change(()=>{this.update_editor_link});
-
+            $('#extra_data').on('input',()=>{this.update_editor_link()});
+            // $('#entity_editor_link').on('click', function(e) {
+            //     e.originalEvent.currentTarget.href = $(this).data('wpurl');
+            // });
 
             $('#reload').click(()=>{this.update_entity()});
             $('#copy').click(()=>{this.copy()});

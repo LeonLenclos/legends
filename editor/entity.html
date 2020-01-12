@@ -168,7 +168,9 @@ $(document).ready(()=>{
             })
         }
         update_entity(){
-            this.selected_entity = this.selected_entity || "";  
+            this.selected_entity = this.selected_entity || ""; 
+            console.log('UPDATE', this.selected_entity) 
+            console.log(this.entities[this.selected_entity])
             $('#entity_file').val(this.selected_entity.slice('entities/'.length));
 
             this.update_script();
@@ -455,14 +457,14 @@ $(document).ready(()=>{
 
 
 
-            // get fight
-            entity.fight = []
+            // get attacks
+            entity.attacks = []
             $('#attacks_list').children('.attack').each((i, e)=>{
                 let txt = get_txt(e);
                 let todo = get_do(e);
                 let effect = get_effect(e);
 
-                entity.fight.push({
+                entity.attacks.push({
                     txt:txt,
                     do:todo,
                     effect:effect
@@ -548,6 +550,7 @@ $(document).ready(()=>{
 <body>
 <div id="nav" class="col">
 
+    <p><a href="map.html">map editor</a></p>
     <p>Entity : <i>entities/<input id="entity_file"></input></i></p>
 
         

@@ -54,21 +54,7 @@ class S(BaseHTTPRequestHandler):
         if self.path == '/auto_assets':
             print "mise a jour de assets.json"
 
-            assets = {
-                'json':[],
-                'png':[]
-            }
-            for directory, _, files in os.walk('game/assets/json'):
-                for fi in files:
-                    p = directory+'/'+fi.split('.')[0]
-                    assets['json'].append(p[len('game/assets/json/'):])
-            for directory, _, files in os.walk('game/assets/img'):
-                for fi in files:
-                    p = directory+'/'+fi.split('.')[0]
-                    assets['png'].append(p[len('game/assets/img/'):])
-
-            with open('game/assets/json/assets.json', "w") as outfile:
-                json.dump(assets, outfile, indent=2)
+            self.update_assets()
             self.send_response(200)
             self.send_header('Content-type', "text/plain")
             self.end_headers()
@@ -84,13 +70,31 @@ class S(BaseHTTPRequestHandler):
 
             with open(data["path"], "w") as outfile:
                 json.dump(data["data"], outfile, indent=2)
+                
+            self.update_assets()
             self.send_response(200)
             self.send_header('Content-type', "text/plain")
             self.end_headers()
-            self.wfile.write("%s sucessfully updated" % data["path"])
+            self.wfile.write("%s sucessfully updated (+ auto_assets)" % data["path"])
 
         return
 
+    def update_assets(self):
+        assets = {
+            'json':[],
+            'png':[]
+        }
+        for directory, _, files in os.walk('game/assets/json'):
+            for fi in files:
+                p = directory+'/'+fi.split('.')[0]
+                assets['json'].append(p[len('game/assets/json/'):])
+        for directory, _, files in os.walk('game/assets/img'):
+            for fi in files:
+                p = directory+'/'+fi.split('.')[0]
+                assets['png'].append(p[len('game/assets/img/'):])
+
+        with open('game/assets/json/assets.json', "w") as outfile:
+            json.dump(assets, outfile, indent=2)
 
 def run(server_class=HTTPServer, handler_class=S, port=8000):
     server_address = ('', port)
