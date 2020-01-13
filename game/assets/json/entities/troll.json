@@ -1,8 +1,33 @@
 {
-  "attacks": [], 
-  "title": "Un Troll.", 
-  "id": "troll_blesse", 
+  "pv": 6, 
   "img": "entities/troll2", 
+  "title": "Un Troll", 
+  "attacks": [
+    {
+      "do": [], 
+      "txt": [
+        "Griffe"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 3"
+          ], 
+          "txt": [
+            "Le troll vous donne un coup de griffe. -3pv"
+          ], 
+          "prob": 0.5
+        }, 
+        {
+          "do": [], 
+          "txt": [
+            "Le troll rate son coup."
+          ], 
+          "prob": 1
+        }
+      ]
+    }
+  ], 
   "script": {
     "start": {
       "txt": [
@@ -20,7 +45,7 @@
       "actions": [
         {
           "do": [
-            "EXIT"
+            "FIGHT"
           ], 
           "txt": [
             "Attaquer le Troll."
@@ -38,23 +63,13 @@
     }, 
     "help": {
       "txt": [
-        "\"Un humain! S'il vous pla\u00eet ne me faites pas de mal, je vous laisse passer si vous voulez.\""
+        "\"Un humain! S'il vous pla\u00eet ne me faites pas de mal !\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "SET 148 x", 
-            "SET 92 y", 
-            "EXIT"
-          ], 
-          "txt": [
-            "\"Oui je veux bien merci.\""
-          ]
-        }, 
-        {
-          "do": [
-            "EXIT"
+            "FIGHT"
           ], 
           "txt": [
             "Attaquer le Troll."
@@ -69,6 +84,31 @@
           ]
         }
       ]
+    }, 
+    "dead": {
+      "txt": [
+        "Le troll est mort."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SET 1 invisible", 
+            "GOTO troll_mort z2_flic1"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
     }
-  }
+  }, 
+  "id": "troll_blesse"
 }

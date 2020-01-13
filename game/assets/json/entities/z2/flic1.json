@@ -1,4 +1,7 @@
 {
+  "pv": 5, 
+  "img": "entities/flic", 
+  "title": "Un policier", 
   "attacks": [
     {
       "do": [], 
@@ -23,9 +26,6 @@
       ]
     }
   ], 
-  "title": "Un policier", 
-  "pv": 5, 
-  "img": "entities/flic", 
   "script": {
     "passer": {
       "txt": [
@@ -91,6 +91,23 @@
         }
       ]
     }, 
+    "tueur_de_troll": {
+      "txt": [
+        "\"C'est vrai ? Mais c'est super \u00e7a ! Si ce troll est mort c'est que ma mission est termin\u00e9e. Je rentre chez moi.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "SET 1 invisible"
+          ], 
+          "txt": [
+            "\"Ciao.\""
+          ]
+        }
+      ]
+    }, 
     "non": {
       "txt": [
         "\"Hm... J'\u00e9tais pourtant s\u00fbr de l'avoir vu partir par l\u00e0...\""
@@ -148,6 +165,22 @@
         }
       ]
     }, 
+    "troll_mort": {
+      "txt": [
+        "\"Eh petit ! T'as pas vu un troll ?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO tueur_de_troll"
+          ], 
+          "txt": [
+            "\"Je l'ai tu\u00e9...\""
+          ]
+        }
+      ]
+    }, 
     "start": {
       "txt": [
         "\"Eh petit ! T'as pas vu un troll ?\""
@@ -172,5 +205,6 @@
         }
       ]
     }
-  }
+  }, 
+  "id": "z2_flic1"
 }
