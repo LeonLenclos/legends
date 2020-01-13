@@ -46,7 +46,8 @@
     "entities/demitour", 
     "entities/lola", 
     "entities/hotel", 
-    "entities/panneau_d_info"
+    "entities/panneau_d_info", 
+    "entities/z2/flic1"
   ], 
   "png": [
     "walltileset", 

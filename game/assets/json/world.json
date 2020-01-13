@@ -296,6 +296,11 @@
       "y": 32, 
       "x": 59, 
       "extra_data": "entities/portail_D2"
+    }, 
+    {
+      "y": 112, 
+      "x": 150, 
+      "extra_data": "entities/z2/flic1"
     }
   ]
 }
