@@ -23,11 +23,13 @@
       ]
     }
   ], 
+  "title": "Un policier", 
+  "pv": 5, 
   "img": "entities/flic", 
   "script": {
     "passer": {
       "txt": [
-        "\"C'est une for\u00eat interdite donc non tu ne peux pas passer.\""
+        "\"Non.\""
       ], 
       "auto_actions": [], 
       "actions": [
@@ -47,30 +49,6 @@
           ], 
           "txt": [
             "Se battre"
-          ]
-        }
-      ]
-    }, 
-    "start": {
-      "txt": [
-        "\"Eh petit ! T'as pas vu un troll ?\""
-      ], 
-      "auto_actions": [], 
-      "actions": [
-        {
-          "do": [
-            "GOTO oui"
-          ], 
-          "txt": [
-            "\"Oui, juste l\u00e0.\""
-          ]
-        }, 
-        {
-          "do": [
-            "GOTO non"
-          ], 
-          "txt": [
-            "\"Non.\""
           ]
         }
       ]
@@ -124,7 +102,7 @@
             "GOTO passer"
           ], 
           "txt": [
-            "\"Tu me laisse passer maintenant s'il vous plait ?\""
+            "\"Tu me laisse passer maintenant ?\""
           ]
         }, 
         {
@@ -134,6 +112,62 @@
           ], 
           "txt": [
             "Partir"
+          ]
+        }
+      ]
+    }, 
+    "dead": {
+      "txt": [
+        "Le policier est mort."
+      ], 
+      "auto_actions": [
+        {
+          "do": [], 
+          "txt": [
+            "SET invisible 1"
+          ]
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GIVE 10 or hero"
+          ], 
+          "txt": [
+            "Piller le cadavre et partir (10 pi\u00e8ces d'or)"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "\"Eh petit ! T'as pas vu un troll ?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO oui"
+          ], 
+          "txt": [
+            "\"Oui, juste l\u00e0.\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO non"
+          ], 
+          "txt": [
+            "\"Non.\""
           ]
         }
       ]
