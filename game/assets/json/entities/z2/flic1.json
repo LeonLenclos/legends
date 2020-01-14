@@ -1,210 +1,210 @@
 {
-  "pv": 5, 
-  "img": "entities/flic", 
-  "title": "Un policier", 
+  "pv": 10,
+  "img": "entities/flic",
+  "title": "Un policier",
   "attacks": [
     {
-      "do": [], 
+      "do": [],
       "txt": [
         "Coup de sabre"
-      ], 
+      ],
       "effect": [
         {
-          "do": [], 
+          "do": [],
           "txt": [
             "Il vous donne un m\u00e9ga coup de sabre."
-          ], 
+          ],
           "prob": 0.1
-        }, 
+        },
         {
-          "do": [], 
+          "do": [],
           "txt": [
             "Il rate son coup de sabre."
-          ], 
+          ],
           "prob": 1
         }
       ]
     }
-  ], 
+  ],
   "script": {
     "passer": {
       "txt": [
         "\"Non.\""
-      ], 
-      "auto_actions": [], 
+      ],
+      "auto_actions": [],
       "actions": [
         {
           "do": [
-            "EXIT", 
+            "EXIT",
             "GOTO start"
-          ], 
+          ],
           "txt": [
-            "Partir", 
+            "Partir",
             ""
           ]
-        }, 
+        },
         {
           "do": [
             "FIGHT"
-          ], 
+          ],
           "txt": [
             "Se battre"
           ]
         }
       ]
-    }, 
+    },
     "oui": {
       "txt": [
         "\"Merci petit ! Je m'en vais lui r\u00e9gler son compte. Et fait attention si tu t'aventure dans la for\u00eat, n'oublie pas que c'est une for\u00eat interdite !\""
-      ], 
-      "auto_actions": [], 
+      ],
+      "auto_actions": [],
       "actions": [
         {
           "do": [
-            "EXIT", 
-            "GOTO end", 
-            "SETPOSITION 150 92", 
+            "EXIT",
+            "GOTO end",
+            "SETPOSITION 150 92",
             "SET 1 invisible troll_blesse"
-          ], 
+          ],
           "txt": [
             "\"D'accord.\""
           ]
         }
       ]
-    }, 
+    },
     "end": {
       "txt": [
-        "\"Ce troll \u00e9tait \u00e0 deux doigts de quitter la for\u00eat.\"", 
-        "\"Les trolls sont vraiment m\u00e9chants.\"", 
-        "\"Une fois il parait qu'un troll a mang\u00e9 un enfant.\"", 
+        "\"Ce troll \u00e9tait \u00e0 deux doigts de quitter la for\u00eat.\"",
+        "\"Les trolls sont vraiment m\u00e9chants.\"",
+        "\"Une fois il parait qu'un troll a mang\u00e9 un enfant.\"",
         "\"Attention aux trolls si tu vas dans la for\u00eat.\""
-      ], 
-      "auto_actions": [], 
+      ],
+      "auto_actions": [],
       "actions": [
         {
           "do": [
             "EXIT"
-          ], 
+          ],
           "txt": [
             "\"Ok.\""
           ]
         }
       ]
-    }, 
-    "tueur_de_troll": {
-      "txt": [
-        "\"C'est vrai ? Mais c'est super \u00e7a ! Si ce troll est mort c'est que ma mission est termin\u00e9e. Je rentre chez moi.\""
-      ], 
-      "auto_actions": [], 
-      "actions": [
-        {
-          "do": [
-            "EXIT", 
-            "SET 1 invisible"
-          ], 
-          "txt": [
-            "\"Ciao.\""
-          ]
-        }
-      ]
-    }, 
-    "non": {
-      "txt": [
-        "\"Hm... J'\u00e9tais pourtant s\u00fbr de l'avoir vu partir par l\u00e0...\""
-      ], 
-      "auto_actions": [], 
-      "actions": [
-        {
-          "do": [
-            "GOTO passer"
-          ], 
-          "txt": [
-            "\"Tu me laisse passer maintenant ?\""
-          ]
-        }, 
-        {
-          "do": [
-            "GOTO start", 
-            "EXIT"
-          ], 
-          "txt": [
-            "Partir"
-          ]
-        }
-      ]
-    }, 
-    "dead": {
-      "txt": [
-        "Le policier est mort."
-      ], 
-      "auto_actions": [
-        {
-          "do": [], 
-          "txt": [
-            "SET invisible 1"
-          ]
-        }
-      ], 
-      "actions": [
-        {
-          "do": [
-            "EXIT", 
-            "GIVE 10 or hero"
-          ], 
-          "txt": [
-            "Piller le cadavre et partir (10 pi\u00e8ces d'or)"
-          ]
-        }, 
-        {
-          "do": [
-            "EXIT"
-          ], 
-          "txt": [
-            "Partir"
-          ]
-        }
-      ]
-    }, 
-    "troll_mort": {
-      "txt": [
-        "\"Eh petit ! T'as pas vu un troll ?\""
-      ], 
-      "auto_actions": [], 
-      "actions": [
-        {
-          "do": [
-            "GOTO tueur_de_troll"
-          ], 
-          "txt": [
-            "\"Je l'ai tu\u00e9...\""
-          ]
-        }
-      ]
-    }, 
+    },
     "start": {
       "txt": [
         "\"Eh petit ! T'as pas vu un troll ?\""
-      ], 
-      "auto_actions": [], 
+      ],
+      "auto_actions": [],
       "actions": [
         {
           "do": [
             "GOTO oui"
-          ], 
+          ],
           "txt": [
             "\"Oui, juste l\u00e0.\""
           ]
-        }, 
+        },
         {
           "do": [
             "GOTO non"
-          ], 
+          ],
           "txt": [
             "\"Non.\""
           ]
         }
       ]
+    },
+    "non": {
+      "txt": [
+        "\"Hm... J'\u00e9tais pourtant s\u00fbr de l'avoir vu partir par l\u00e0...\""
+      ],
+      "auto_actions": [],
+      "actions": [
+        {
+          "do": [
+            "GOTO passer"
+          ],
+          "txt": [
+            "\"Tu me laisse passer maintenant ?\""
+          ]
+        },
+        {
+          "do": [
+            "GOTO start",
+            "EXIT"
+          ],
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    },
+    "dead": {
+      "txt": [
+        "Le policier est mort."
+      ],
+      "auto_actions": [
+        {
+          "do": [
+            "SET 1 invisible"
+          ],
+          "txt": []
+        }
+      ],
+      "actions": [
+        {
+          "do": [
+            "EXIT",
+            "GIVE 10 or hero"
+          ],
+          "txt": [
+            "Piller le cadavre et partir (10 pi\u00e8ces d'or)"
+          ]
+        },
+        {
+          "do": [
+            "EXIT"
+          ],
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    },
+    "troll_mort": {
+      "txt": [
+        "\"Eh petit ! T'as pas vu un troll ?\""
+      ],
+      "auto_actions": [],
+      "actions": [
+        {
+          "do": [
+            "GOTO tueur_de_troll"
+          ],
+          "txt": [
+            "\"Je l'ai tu\u00e9...\""
+          ]
+        }
+      ]
+    },
+    "tueur_de_troll": {
+      "txt": [
+        "\"C'est vrai ? Mais c'est super \u00e7a ! Si ce troll est mort c'est que ma mission est termin\u00e9e. Je rentre chez moi.\""
+      ],
+      "auto_actions": [],
+      "actions": [
+        {
+          "do": [
+            "EXIT",
+            "SET 1 invisible"
+          ],
+          "txt": [
+            "\"Ciao.\""
+          ]
+        }
+      ]
     }
-  }, 
+  },
   "id": "z2_flic1"
 }

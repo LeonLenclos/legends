@@ -1,0 +1,23 @@
+{
+  "attacks": [],
+  "title": "Une sorcière",
+  "img": "entities/sorciere",
+  "script": {
+    "start": {
+      "txt": [
+        "\"chut!\""
+      ],
+      "auto_actions": [],
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ],
+          "txt": [
+            "\"Oups pardon.\""
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -301,6 +301,21 @@
       "y": 112, 
       "x": 150, 
       "extra_data": "entities/z2/flic1"
+    }, 
+    {
+      "y": 109, 
+      "x": 179, 
+      "extra_data": "entities/sorciere"
+    }, 
+    {
+      "y": 111, 
+      "x": 176, 
+      "extra_data": "entities/sorciere"
+    }, 
+    {
+      "y": 113, 
+      "x": 179, 
+      "extra_data": "entities/sorciere"
     }
   ]
 }
