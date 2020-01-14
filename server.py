@@ -9,6 +9,9 @@ import os
 
 class S(BaseHTTPRequestHandler):
 
+    def log_request(self, code): 
+        pass
+
     def do_GET(self):
         self.path = self.path.split('?')[0]
         if self.path == '/': self.path = '/editor/'
@@ -52,7 +55,6 @@ class S(BaseHTTPRequestHandler):
         self.data_string = self.rfile.read(int(self.headers['Content-Length']))
 
         if self.path == '/auto_assets':
-            print "mise a jour de assets.json"
 
             self.update_assets()
             self.send_response(200)
@@ -62,9 +64,7 @@ class S(BaseHTTPRequestHandler):
 
 
         if self.path == '/set_json':
-            print "creation/mise a jour d'un fichier json"
 
-            print self.data_string
 
             data = json.loads(self.data_string)
 
@@ -76,25 +76,35 @@ class S(BaseHTTPRequestHandler):
             self.send_header('Content-type', "text/plain")
             self.end_headers()
             self.wfile.write("%s sucessfully updated (+ auto_assets)" % data["path"])
+            print "Mise a jour / creation de %s" % data["path"]
+
 
         return
 
     def update_assets(self):
+
+
         assets = {
             'json':[],
             'png':[]
         }
         for directory, _, files in os.walk('game/assets/json'):
             for fi in files:
-                p = directory+'/'+fi.split('.')[0]
-                assets['json'].append(p[len('game/assets/json/'):])
+                if(fi):
+                    p = directory+'/'+fi.split('.')[0]
+                    assets['json'].append(p[len('game/assets/json/'):])
+
         for directory, _, files in os.walk('game/assets/img'):
             for fi in files:
-                p = directory+'/'+fi.split('.')[0]
-                assets['png'].append(p[len('game/assets/img/'):])
+                if(fi):
+                    p = directory+'/'+fi.split('.')[0]
+                    assets['png'].append(p[len('game/assets/img/'):])
 
         with open('game/assets/json/assets.json', "w") as outfile:
             json.dump(assets, outfile, indent=2)
+        
+        print "Mise a jour des assets (game/assets/json/assets.json)"
+
 
 def run(server_class=HTTPServer, handler_class=S, port=8000):
     server_address = ('', port)
