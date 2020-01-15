@@ -136,8 +136,8 @@
       "extra_data": "entities/hotel_de_luxe"
     },
     {
-      "y": 92,
-      "x": 149,
+      "y": 93,
+      "x": 148,
       "extra_data": "entities/troll"
     },
     {
@@ -298,8 +298,8 @@
       "extra_data": "entities/portail_D2"
     },
     {
-      "y": 112,
-      "x": 150,
+      "y": 113,
+      "x": 154,
       "extra_data": "entities/z2/flic1"
     },
     {
@@ -316,6 +316,11 @@
       "y": 125,
       "x": 131,
       "extra_data": "entities/sorciere"
+    },
+    {
+      "y": 148,
+      "x": 159,
+      "extra_data": "entities/arbre"
     }
   ]
 }
