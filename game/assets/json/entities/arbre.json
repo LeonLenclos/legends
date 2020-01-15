@@ -1,7 +1,7 @@
 {
     "img":"entities/arbre1",
     "title":"Un arbre.",
-    "bois": 10,
+    "bois": 100,
         "illu":"illu/arbre",
 
     "script" : {

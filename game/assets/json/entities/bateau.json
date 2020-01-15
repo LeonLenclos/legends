@@ -46,12 +46,12 @@
       ]
     },
     "ailleurs2": {
-      "txt": "Il est ambicieux le petit gars! Ben si t'as 1 pièce d'or, ça peut se négocier.",
+      "txt": "Il est ambicieux le petit gars! Ben si t'as 5 pièce d'or, ça peut se négocier.",
       "actions": [
         {
           "txt": "Je les ai! On peux y aller.",
           "do": [
-            "GIVE -1 or hero",
+            "GIVE -5 or hero",
             "SET 22 x hero",
             "SET 38 y hero",
             "SET 22 x",
@@ -104,12 +104,12 @@
       ]
     },
     "endroit_sympa": {
-      "txt": "\"Si mais là ça va coûter 2 pièces d'or.\"",
+      "txt": "\"Si mais là ça va coûter 70 pièces d'or.\"",
       "actions": [
         {
           "txt": "\"J'ai ça! On y va.\"",
           "do": [
-            "GIVE -2 or hero",
+            "GIVE -70 or hero",
             "SET 87 x hero",
             "SET 40 y hero",
             "SET 87 x",
@@ -132,12 +132,12 @@
       ]
     },
     "ilededepart": {
-      "txt": "\"Tu veux rentrer chez toi? 2 pièce d'or.\"",
+      "txt": "\"Tu veux rentrer chez toi? 70 pièce d'or.\"",
       "actions": [
         {
           "txt": "\"Oui!\"",
           "do": [
-            "GIVE -2 or hero",
+            "GIVE -70 or hero",
             "SET 56 x hero",
             "SET 42 y hero",
             "SET 57 x",
@@ -157,13 +157,13 @@
     "continent": {
       "txt": [
         "\"J'imagine que tu veux aller au continent? Bon tu connais le prix.\"",
-        "\"Tu veux aller au continent? 2 pièce d'or.\""
+        "\"Tu veux aller au continent? 70 pièce d'or.\""
       ],
       "actions": [
         {
           "txt": "\"Oui, c'est parti!\"",
           "do": [
-            "GIVE -2 or hero",
+            "GIVE -70 or hero",
             "SET 87 x hero",
             "SET 40 y hero",
             "SET 87 x",
