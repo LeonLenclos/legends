@@ -93,6 +93,7 @@ class S(BaseHTTPRequestHandler):
                 if(fi.endswith('.json')):
                     p = directory+'/'+fi.split('.')[0]
                     p = p[len('game/assets/json/'):]
+                    print p
                     if(p != "" and p != "entities/"):
                         assets['json'].append(p)
 
@@ -101,10 +102,10 @@ class S(BaseHTTPRequestHandler):
                 if(fi.endswith('.png')):
                     p = directory+'/'+fi.split('.')[0]
                     p = p[len('game/assets/img/'):]
+                    print p
                     if(p != "" and p != "entities/"):
                         assets['png'].append(p)
 
-            pass
         with open('game/assets/json/assets.json', "w") as outfile:
             json.dump(assets, outfile, indent=2)
         
