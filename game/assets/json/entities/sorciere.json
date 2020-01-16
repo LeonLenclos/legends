@@ -1,18 +1,18 @@
 {
-  "attacks": [],
-  "title": "Une sorcière",
-  "img": "entities/sorciere",
+  "attacks": [], 
+  "title": "Une sorci\u00e8re", 
+  "img": "entities/sorciere", 
   "script": {
     "start": {
       "txt": [
-        "\"chut!\""
-      ],
-      "auto_actions": [],
+        "\"Chut!\""
+      ], 
+      "auto_actions": [], 
       "actions": [
         {
           "do": [
             "EXIT"
-          ],
+          ], 
           "txt": [
             "\"Oups pardon.\""
           ]
