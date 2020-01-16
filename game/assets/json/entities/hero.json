@@ -1,70 +1,141 @@
 {
-    "id":"hero",
-    "img":"entities/hero",
-
-    "pv":25,
-    "pv_max":25,
-
-    "attacks":[
+  "pv_max": 20, 
+  "pv": 25, 
+  "img": "entities/hero", 
+  "script": {}, 
+  "attacks": [
+    {
+      "do": [], 
+      "txt": [
+        "Fuir"
+      ], 
+      "effect": [
         {
-            "txt":"Fuir",
-            "types":[],
-            "do":[],
-            "effect":[
-                {
-                    "prob":0.5,
-                    "txt":"Vous prenez la fuite.",
-                    "do":["FLEE"]
-
-                },
-                {
-                    "prob":1,
-                    "txt":"Vous ne parvenez pas à fuir.",
-                    "do":[]
-
-                }
-            ]
-        },
+          "do": [
+            "FLEE"
+          ], 
+          "txt": [
+            "Vous prenez la fuite."
+          ], 
+          "prob": 0.8
+        }, 
         {
-            "txt":"Donner un coup de poing",
-            "types":[],
-            "do":[],
-            "effect":[
-                {
-                    "prob":0.1,
-                    "txt":"Vous donnez un super coup de point : -8pv",
-                    "do":["HIT 8"]
-                },
-                {
-                    "prob":0.8,
-                    "txt":"Vous donnez un coup de point : -5pv",
-                    "do":["HIT 5"]
-                },
-                {
-                    "prob":1,
-                    "txt":"Vous ratez votre coup de point.",
-                    "do":[]
-                }
-
-            ]
-        },
-        {
-            "txt":"Tricher",
-            "types":[],
-            "do":[],
-            "effect":[
-                {
-                    "prob":1,
-                    "txt":"Vous utilisez une attaque spéciale reservée au développeurs du jeu : -10000pv",
-                    "do":["HIT 10000"]
-                }
-            ]
+          "do": [], 
+          "txt": [
+            "Vous ne parvenez pas \u00e0 fuir."
+          ], 
+          "prob": 1
         }
-    ],
-
-    "cigarette":0,
-    "drogue":0,
-    "info_enlevement":0,
-    "recompense":0,
-    "ouverture_fred":0
+      ]
+    }, 
+    {
+      "do": [], 
+      "txt": [
+        "Coup de poing"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 4"
+          ], 
+          "txt": [
+            "Vous donnez un MEGA coup de poing : -4pv"
+          ], 
+          "prob": 0.1
+        }, 
+        {
+          "do": [
+            "HIT 3"
+          ], 
+          "txt": [
+            "Vous donnez un super coup de poing : -3pv"
+          ], 
+          "prob": 0.2
+        }, 
+        {
+          "do": [
+            "HIT 1"
+          ], 
+          "txt": [
+            "Vous donnez un coup de poing : -1pv"
+          ], 
+          "prob": 0.8
+        }, 
+        {
+          "do": [], 
+          "txt": [
+            "Vous ratez votre coup de poing."
+          ], 
+          "prob": 1
+        }
+      ]
+    }, 
+    {
+      "do": [], 
+      "txt": [
+        "Tricher"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 10000"
+          ], 
+          "txt": [
+            "Vous utilisez une attaque sp\u00e9ciale reserv\u00e9e au d\u00e9veloppeurs du jeu : -10000pv"
+          ], 
+          "prob": 1
+        }
+      ]
+    }, 
+    {
+      "do": [
+        "COMPARE hache hero > 0"
+      ], 
+      "txt": [
+        "Coup de hache"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 7"
+          ], 
+          "txt": [
+            "Vous donnez un MEGA coup de hache. -7pv"
+          ], 
+          "prob": 0.1
+        }, 
+        {
+          "do": [
+            "HIT 5"
+          ], 
+          "txt": [
+            "Vous donnez un bon coup de hache. -5pv"
+          ], 
+          "prob": 0.2
+        }, 
+        {
+          "do": [
+            "HIT 3"
+          ], 
+          "txt": [
+            "Vous donnez un coup de hache. -3pv"
+          ], 
+          "prob": 0.8
+        }, 
+        {
+          "do": [
+            "Vous ratez votre coup de hache."
+          ], 
+          "txt": [], 
+          "prob": 1
+        }
+      ]
+    }
+  ], 
+  "info_enlevement": 0, 
+  "ouverture_fred": 0, 
+  "cigarette": 0, 
+  "drogue": 0, 
+  "recompense": 0, 
+  "id": "hero"
 }

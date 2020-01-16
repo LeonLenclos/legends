@@ -5,9 +5,9 @@
     "title":"Portail dimensionnel.",
     "script" : {
         "start":{
-                 "txt" : "Cette porte mène au continent, voulez vous vraiment y aller?",
+                 "txt" : "Cette porte mène au continent, voulez vous vraiment y aller? Et je vous donne 10 graines de carottes et un livre Troll",
                   "actions":[
-                    {"txt":"Oui.", "do":["SETPOSITION 110 65 hero", "EXIT"]},
+                    {"txt":"Oui.", "do":["SETPOSITION 110 65 hero", "EXIT","GIVE +10 graines_carottes hero","GIVE +1 livre_troll hero"]},
                     {"txt":"Non", "do":["EXIT"]}
                   ]
                   }

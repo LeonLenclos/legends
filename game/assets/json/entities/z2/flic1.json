@@ -14,15 +14,24 @@
             "HIT 4"
           ], 
           "txt": [
-            "Il vous donne un m\u00e9ga coup de sabre. -4pv"
+            "Il vous donne un MEGA coup de sabre. -8pv"
           ], 
           "prob": 0.1
         }, 
         {
-          "do": [], 
+          "do": [
+            "HIT 6"
+          ], 
           "txt": [
+            "Il vous donne un coup de sabre. -6pv"
+          ], 
+          "prob": 0.5
+        }, 
+        {
+          "do": [
             "Il rate son coup de sabre."
           ], 
+          "txt": [], 
           "prob": 1
         }
       ]
@@ -65,7 +74,7 @@
           "do": [
             "EXIT", 
             "GOTO end", 
-            "SETPOSITION 150 92", 
+            "SETPOSITION 150 94", 
             "SET 1 invisible troll_blesse"
           ], 
           "txt": [
@@ -76,7 +85,7 @@
     }, 
     "end": {
       "txt": [
-        "\"Ce troll \u00e9tait \u00e0 deux doigts de quitter la for\u00eat.\"", 
+        "\"J'ai perdu la trace du troll, il a d\u00fb s'enfuir par la for\u00eat.\"", 
         "\"Les trolls sont vraiment m\u00e9chants.\"", 
         "\"Une fois il parait qu'un troll a mang\u00e9 un enfant.\"", 
         "\"Attention aux trolls si tu vas dans la for\u00eat.\""
@@ -93,19 +102,26 @@
         }
       ]
     }, 
-    "tueur_de_troll": {
+    "start": {
       "txt": [
-        "\"C'est vrai ? Mais c'est super \u00e7a ! Si ce troll est mort c'est que ma mission est termin\u00e9e. Je rentre chez moi.\""
+        "\"Eh petit ! T'as pas vu un troll ?\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "EXIT", 
-            "SET 1 invisible"
+            "GOTO oui"
           ], 
           "txt": [
-            "\"Ciao.\""
+            "\"Oui, juste l\u00e0.\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO non"
+          ], 
+          "txt": [
+            "\"Non.\""
           ]
         }
       ]
@@ -183,26 +199,19 @@
         }
       ]
     }, 
-    "start": {
+    "tueur_de_troll": {
       "txt": [
-        "\"Eh petit ! T'as pas vu un troll ?\""
+        "\"C'est vrai ? Mais c'est super \u00e7a ! Si ce troll est mort c'est que ma mission est termin\u00e9e. Je rentre chez moi.\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "GOTO oui"
+            "EXIT", 
+            "SET 1 invisible"
           ], 
           "txt": [
-            "\"Oui, juste l\u00e0.\""
-          ]
-        }, 
-        {
-          "do": [
-            "GOTO non"
-          ], 
-          "txt": [
-            "\"Non.\""
+            "\"Ciao.\""
           ]
         }
       ]

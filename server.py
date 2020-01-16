@@ -9,7 +9,7 @@ import os
 
 class S(BaseHTTPRequestHandler):
 
-    def log_request(self, code): 
+    def log_request(self, code):
         pass
 
     def do_GET(self):
@@ -43,7 +43,7 @@ class S(BaseHTTPRequestHandler):
 
         except IOError:
             self.send_response(404)
-            page = ""; 
+            page = "";
         self.send_header('Content-type', content_type)
 
         self.end_headers()
@@ -70,7 +70,7 @@ class S(BaseHTTPRequestHandler):
 
             with open(data["path"], "w") as outfile:
                 json.dump(data["data"], outfile, indent=2)
-                
+
             self.update_assets()
             self.send_response(200)
             self.send_header('Content-type', "text/plain")
@@ -108,8 +108,9 @@ class S(BaseHTTPRequestHandler):
 
         with open('game/assets/json/assets.json', "w") as outfile:
             json.dump(assets, outfile, indent=2)
-        
+
         print "Mise a jour des assets (game/assets/json/assets.json)"
+        print "assets"
 
 
 def run(server_class=HTTPServer, handler_class=S, port=8000):
