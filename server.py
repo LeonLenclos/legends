@@ -92,14 +92,19 @@ class S(BaseHTTPRequestHandler):
             for fi in files:
                 if(fi.endswith('.json')):
                     p = directory+'/'+fi.split('.')[0]
-                    assets['json'].append(p[len('game/assets/json/'):])
+                    p = p[len('game/assets/json/'):]
+                    if(p != "" and p != "entities/"):
+                        assets['json'].append(p)
 
         for directory, _, files in os.walk('game/assets/img'):
             for fi in files:
                 if(fi.endswith('.png')):
                     p = directory+'/'+fi.split('.')[0]
-                    assets['png'].append(p[len('game/assets/img/'):])
+                    p = p[len('game/assets/img/'):]
+                    if(p != "" and p != "entities/"):
+                        assets['png'].append(p)
 
+            pass
         with open('game/assets/json/assets.json', "w") as outfile:
             json.dump(assets, outfile, indent=2)
         
