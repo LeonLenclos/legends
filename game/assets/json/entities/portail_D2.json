@@ -5,9 +5,9 @@
     "title":"Portail dimensionnel.",
     "script" : {
         "start":{
-                 "txt" : "Cette porte mène au continent, derrière la montagne, voulez vous vraiment y aller?",
+                 "txt" : "Cette porte mène au beau milieu de la forêt, devant l'entrée du village secret des trolls. <br>Prend cette hache, c'est plus rapide pour couper les arbres.",
                   "actions":[
-                    {"txt":"Oui.", "do":["SETPOSITION 227 23 hero", "EXIT"]},
+                    {"txt":"Oui.", "do":["SETPOSITION 151 148 hero", "EXIT","GIVE +1 hache hero"]},
                     {"txt":"Non", "do":["EXIT"]}
                   ]
                   }
