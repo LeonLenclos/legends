@@ -1,16 +1,33 @@
 {
-    "img":"entities/portail",
-        "illu":"illu/portail",
-
-    "title":"Portail dimensionnel.",
-    "script" : {
-        "start":{
-                 "txt" : "Cette porte mène au beau milieu de la forêt, devant l'entrée du village secret des trolls. <br>Prend cette hache, c'est plus rapide pour couper les arbres.",
-                  "actions":[
-                    {"txt":"Oui.", "do":["SETPOSITION 151 148 hero", "EXIT","GIVE +1 hache hero"]},
-                    {"txt":"Non", "do":["EXIT"]}
-                  ]
-                  }
-
-                           }
-          }
+  "attacks": [], 
+  "illu": "illu/portail", 
+  "title": "Portail dimensionnel.", 
+  "img": "entities/portail", 
+  "script": {
+    "start": {
+      "txt": [
+        "Cette porte m\u00e8ne \u00e0 la capitale, voulez vous vraiment y aller?"
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "SETPOSITION 138 225 hero", 
+            "EXIT"
+          ], 
+          "txt": [
+            "Oui."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Non"
+          ]
+        }
+      ]
+    }
+  }
+}

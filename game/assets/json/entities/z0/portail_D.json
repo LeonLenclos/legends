@@ -1,16 +1,33 @@
 {
-    "img":"entities/portail",
-        "illu":"illu/portail",
-
-    "title":"Portail dimensionnel.",
-    "script" : {
-        "start":{
-                 "txt" : "Cette porte mène au continent, voulez vous vraiment y aller? Et je vous donne 10 graines de carottes et un livre Troll",
-                  "actions":[
-                    {"txt":"Oui.", "do":["SETPOSITION 110 65 hero", "EXIT","GIVE +10 graines_carottes hero","GIVE +1 livre_troll hero"]},
-                    {"txt":"Non", "do":["EXIT"]}
-                  ]
-                  }
-
-                           }
-          }
+  "attacks": [], 
+  "illu": "illu/portail", 
+  "title": "Portail dimensionnel.", 
+  "img": "entities/portail", 
+  "script": {
+    "start": {
+      "txt": [
+        "Cette porte m\u00e8ne au continent, voulez vous vraiment y aller?"
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "SETPOSITION 111 64 hero", 
+            "EXIT"
+          ], 
+          "txt": [
+            "Oui."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Non"
+          ]
+        }
+      ]
+    }
+  }
+}

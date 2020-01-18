@@ -313,8 +313,8 @@
       "extra_data": "entities/z1/enclos_cochon"
     }, 
     {
-      "y": 32, 
-      "x": 59, 
+      "y": 39, 
+      "x": 52, 
       "extra_data": "entities/z0/portail_D2"
     }, 
     {
@@ -360,7 +360,7 @@
     {
       "y": 234, 
       "x": 92, 
-      "extra_data": ""
+      "extra_data": "entities/z0/bateau"
     }
   ]
 }
