@@ -22,6 +22,36 @@
       "img": "entities/arbre2"
     }, 
     {
+      "y": 227, 
+      "x": 107, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 232, 
+      "x": 107, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 238, 
+      "x": 94, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 238, 
+      "x": 92, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 238, 
+      "x": 90, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 236, 
+      "x": 90, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
       "y": 25, 
       "x": 58, 
       "extra_data": "entities/arbre"
