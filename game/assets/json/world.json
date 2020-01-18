@@ -321,6 +321,16 @@
       "y": 149, 
       "x": 160, 
       "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 234, 
+      "x": 92, 
+      "extra_data": "entities/z0/bateau"
+    }, 
+    {
+      "y": 234, 
+      "x": 92, 
+      "extra_data": ""
     }
   ]
 }
