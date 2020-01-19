@@ -1,0 +1,83 @@
+{
+  "pv": 12, 
+  "img": "entities/troll2", 
+  "title": "Un Troll bless\u00e9", 
+  "attacks": [
+    {
+      "do": [], 
+      "txt": [
+        "Griffe"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 3"
+          ], 
+          "txt": [
+            "Le troll vous donne un coup de griffe. -3pv"
+          ], 
+          "prob": 0.5
+        }, 
+        {
+          "do": [
+            "HIT 5"
+          ], 
+          "txt": [
+            "Le troll vous donne un bon gros coup de griffe. -5pv"
+          ], 
+          "prob": 0.2
+        }, 
+        {
+          "do": [], 
+          "txt": [
+            "Le troll rate son coup."
+          ], 
+          "prob": 1
+        }
+      ]
+    }
+  ], 
+  "script": {
+    "bonjour": {
+      "txt": [
+        "\"Que fais tu dans ma maison?"
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO bizarre"
+          ], 
+          "txt": [
+            "\"C'est une maison \u00e7a?\""
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Oups pardon monsieur le troll.\""
+          ]
+        }
+      ]
+    }, 
+    "bizarre": {
+      "txt": [
+        "\"Les humains sont tr\u00e8s bizarre. Vas voir le Grand Troll, il t'expliquera la vie.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"J'avais justement besoin qu'on me l'explique.\""
+          ]
+        }
+      ]
+    }
+  }, 
+  "id": "troll_blesse"
+}

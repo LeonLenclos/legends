@@ -1,0 +1,55 @@
+{
+  "attacks": [], 
+  "title": "Grand Sage", 
+  "img": "entities/grand_troll", 
+  "script": {
+    "start": {
+      "txt": [
+        "\"Bleurk blerg balabork brik.\""
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE livre_troll hero > 0", 
+            "GOTO grand"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"J'ai rien compris.\""
+          ]
+        }
+      ]
+    }, 
+    "grand": {
+      "txt": [
+        "\"On m'appelle le Grand Troll.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"En effet vous \u00eates grand.\""
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"\u00c7a prouve votre sagesse.\""
+          ]
+        }
+      ]
+    }
+  }
+}

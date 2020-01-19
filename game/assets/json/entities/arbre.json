@@ -1,65 +1,204 @@
 {
-    "img":"entities/arbre1",
-    "title":"Un arbre.",
-    "bois": 100,
-        "illu":"illu/arbre",
-
-    "script" : {
-        "start":{
-          "auto_actions": [
-            {"do":["COMPARE hache hero > 0", "GOTO bois"]}
-          ],
-            "txt" : "C'est un vrai arbre.",
-            "actions":[
-                {"txt":"Ramasser du bois.", "do":["GOTO ramasser","GIVE +1 bois hero","GIVE -1 bois"]},
-                {"txt":"Faire un bisou à l'arbre.", "do":["GOTO bisou"]},
-                {"txt":"Partir.", "do":["EXIT"]}
-
-            ]
-        },
-        "ramasser":{
-          "auto_actions": [
-          {"do":["COMPARE bois < 1", "SET 1 invisible","GOTO plus_de_bois"]}
-        ],
-            "txt" : ["Tu ramasses un peu de bois...","Tu ramasses un peu plus de bois...","Encore du bois"],
-            "actions":[
-                {"txt":"Encore !", "do":["GIVE +1 bois hero","GIVE -1 bois"]},
-                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
-            ]
-        },
-        "bisou":{
-            "txt" : "Tu entends les feuilles frémir...",
-            "actions":[
-                {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
-            ]
-          },
-          "bois":{
-            "auto_actions": [
-            {"do":["COMPARE bois < 1", "SET 1 invisible","GOTO plus_de_bois"]}
-          ],
-              "txt" : "C'est un vrai arbre.",
-              "actions":[
-                {"txt":"Couper du bois à la hache.", "do":["GOTO hache", "GIVE +5 bois hero","GIVE -5 bois"]},
-                {"txt":"Ramasser du bois à la main.", "do":["GOTO ramasser", "GIVE +1 bois hero","GIVE -1 bois"]},
-                  {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
-            ]
-          },
-          "hache":{
-            "auto_actions": [
-            {"do":["COMPARE bois < 1", "SET 1 invisible","GOTO plus_de_bois"]}
-          ],
-              "txt" : ["Tu coupes du bois.","Tu coupes toujours du bois.","Encore du bois."],
-              "actions":[
-                  {"txt":"Couper du bois.", "do":["GIVE +5 bois hero","GIVE -5 bois"]},
-                  {"txt":"Partir.", "do":["EXIT", "GOTO start"]}
-              ]
-        },
-        "plus_de_bois":{
-            "txt" : ["Il n'y a plus de bois à couper..."],
-            "actions":[
-                {"txt":"Partir.", "do":["EXIT"]}
-            ]
-      }
+  "bois": 100, 
+  "img": "entities/arbre2", 
+  "title": "Un arbre.", 
+  "attacks": [], 
+  "illu": "illu/arbre", 
+  "script": {
+    "bois": {
+      "txt": [
+        "C'est un vrai arbre."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE bois < 1", 
+            "SET 1 invisible", 
+            "GOTO plus_de_bois"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GOTO hache", 
+            "GIVE +5 bois hero", 
+            "GIVE -5 bois"
+          ], 
+          "txt": [
+            "Couper du bois \u00e0 la hache."
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO ramasser", 
+            "GIVE +1 bois hero", 
+            "GIVE -1 bois"
+          ], 
+          "txt": [
+            "Ramasser du bois \u00e0 la main."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "ramasser": {
+      "txt": [
+        "Tu ramasses un peu de bois...", 
+        "Tu ramasses un peu plus de bois...", 
+        "Encore du bois"
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE bois < 1", 
+            "SET 1 invisible", 
+            "GOTO plus_de_bois"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +1 bois hero", 
+            "GIVE -1 bois"
+          ], 
+          "txt": [
+            "Encore !"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "plus_de_bois": {
+      "txt": [
+        "Il n'y a plus de bois \u00e0 couper..."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "bisou": {
+      "txt": [
+        "Tu entends les feuilles fr\u00e9mir..."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "hache": {
+      "txt": [
+        "Tu coupes du bois.", 
+        "Tu coupes toujours du bois.", 
+        "Encore du bois."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE bois < 1", 
+            "SET 1 invisible", 
+            "GOTO plus_de_bois"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +5 bois hero", 
+            "GIVE -5 bois"
+          ], 
+          "txt": [
+            "Couper du bois."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "C'est un vrai arbre."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE hache hero > 0", 
+            "GOTO bois"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GOTO ramasser", 
+            "GIVE +1 bois hero", 
+            "GIVE -1 bois"
+          ], 
+          "txt": [
+            "Ramasser du bois."
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO bisou"
+          ], 
+          "txt": [
+            "Faire un bisou \u00e0 l'arbre."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
     }
-
+  }
 }
