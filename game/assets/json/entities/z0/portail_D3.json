@@ -6,14 +6,15 @@
   "script": {
     "start": {
       "txt": [
-        "Cette porte m\u00e8ne \u00e0 la CAPITALE, ok?"
+        "Cette porte m\u00e8ne au beau milieu de la for\u00eat, ok?"
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "SETPOSITION 132 229 hero", 
-            "EXIT"
+            "SETPOSITION 155 145 hero", 
+            "EXIT", 
+            "GIVE +1 hache hero"
           ], 
           "txt": [
             "Oui."

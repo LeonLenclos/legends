@@ -319,6 +319,11 @@
     }, 
     {
       "y": 39, 
+      "x": 54, 
+      "extra_data": "entities/z0/portail_D3"
+    }, 
+    {
+      "y": 39, 
       "x": 52, 
       "extra_data": "entities/z0/portail_D2"
     }, 
@@ -345,16 +350,6 @@
     {
       "y": 148, 
       "x": 159, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 148, 
-      "x": 160, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 149, 
-      "x": 160, 
       "extra_data": "entities/arbre"
     }, 
     {
