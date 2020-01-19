@@ -166,6 +166,11 @@
       "extra_data": "entities/z1/hotel_de_luxe"
     }, 
     {
+      "y": 119, 
+      "x": 190, 
+      "extra_data": "entities/z2/troll"
+    }, 
+    {
       "y": 93, 
       "x": 148, 
       "extra_data": "entities/z2/troll"
@@ -391,6 +396,11 @@
       "y": 114, 
       "x": 176, 
       "extra_data": "entities/z2/seau"
+    }, 
+    {
+      "y": 106, 
+      "x": 177, 
+      "extra_data": "entities/z2/grand_troll"
     }
   ]
 }

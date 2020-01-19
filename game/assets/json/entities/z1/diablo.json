@@ -17,7 +17,7 @@
                  "txt" : "\"J'ai quelques trucs sous le manteau si ça t'intéresse.\"",
                   "actions":[
                     {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO cigarette"]},
-                    {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
+                    {"txt":"Livre d'apprentissage de langue Trolle: 100 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -100 or hero","GOTO autre_chose"]},
                     {"txt":"Vous n'avez pas ce que je cherche.", "do":["EXIT"]}
                   ]
                   },
@@ -25,7 +25,7 @@
                "txt" : ["\"Très bon choix. <br> Autre chose?\"","\"Excellent choix, je ne pouvais que vous le recommander. Autre chose?\"","\"Vous êtes un bon client. Autre chose?\"","\"Je vous remercie de votre fidélité. Autre chose?\""],
                "actions":[
                  {"txt":"Cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +1 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
-                 {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
+                 {"txt":"Livre d'apprentissage de langue Trolle: 100 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -100 or hero","GOTO autre_chose"]},
                  {"txt":"C'est bon merci, bonne journée monsieur.", "do":["EXIT","GOTO start"]}
             ]
           },
@@ -40,7 +40,7 @@
                    "txt" : ["\"Ah super, merci! <br>Tu cherches autre chose d'ailleurs?\""],
                    "actions":[
                      {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
-                     {"txt":"Livre d'apprentissage de langue Trolle: 700 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -700 or hero","GOTO autre_chose"]},
+                     {"txt":"Livre d'apprentissage de langue Trolle: 100 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -100 or hero","GOTO autre_chose"]},
                      {"txt":"Non c'est bon merci, bonne journée.", "do":["EXIT","GOTO start"]}
                    ]
                  },

@@ -47,9 +47,11 @@
     "entities/z2/seau", 
     "entities/z2/sorciere", 
     "entities/z2/flic1", 
+    "entities/z2/troll2", 
     "entities/z2/troll", 
     "entities/z2/baies", 
-    "entities/z2/panneau_entree_foret"
+    "entities/z2/panneau_entree_foret", 
+    "entities/z2/grand_troll"
   ], 
   "png": [
     "walltileset", 
@@ -90,6 +92,7 @@
     "entities/chauveman", 
     "entities/carottes1", 
     "entities/sorciere", 
+    "entities/grand_troll", 
     "entities/humain1", 
     "entities/hero", 
     "entities/sblurg", 
