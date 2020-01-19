@@ -1,0 +1,48 @@
+{
+  "attacks": [], 
+  "title": "Un buisson de baies", 
+  "img": "entities/obj/baies/1", 
+  "script": {
+    "manger": {
+      "txt": [
+        "C'est un peu amer..."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO start", 
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "Ces baies ont l'air comestibles."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO manger"
+          ], 
+          "txt": [
+            "Go\u00fbter une baie"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }
+  }
+}

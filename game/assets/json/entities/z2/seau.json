@@ -1,0 +1,23 @@
+{
+  "attacks": [], 
+  "title": "Un seau", 
+  "img": "entities/obj/pot/rouge", 
+  "script": {
+    "start": {
+      "txt": [
+        "Le seau contient un liquide rouge."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }
+  }
+}
