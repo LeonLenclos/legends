@@ -1,0 +1,120 @@
+{
+  "attacks": [], 
+  "title": "Un enfant", 
+  "id": "enfant", 
+  "img": "entities/pnj/enfant", 
+  "script": {
+    "sucess1": {
+      "txt": [
+        "\"Chouette ! Merci Monsieur !\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO quete2", 
+            "SETPOSITION 113 71", 
+            "SETPOSITION 236 250 ballon", 
+            "SET 0 invisible ballon"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "L'enfant a l'air triste."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO quete1"
+          ], 
+          "txt": [
+            "\"Qu'est-ce qu'il t'arrive petit ?\""
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "sucess2": {
+      "txt": [
+        "\"Merci monsieur\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "quete1": {
+      "txt": [
+        "\"J'ai perdu mon ballon bleu !\"", 
+        "\"Je veux mon ballon !\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Je ne l'ai pas vu, d\u00e9sol\u00e9...\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO sucess1", 
+            "GIVE -1 ballon hero"
+          ], 
+          "txt": [
+            "\"Tiens je l'ai trouv\u00e9 regarde !\""
+          ]
+        }
+      ]
+    }, 
+    "quete2": {
+      "txt": [
+        "\"Monsieur ! monsieur ! s'il vous plait ! J'ai encore perdu mon ballon, aidez moi !\"", 
+        "L'enfant pleur parce qu\u2019il a encore perdu son ballon."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Je vais voir ce que je peux faire...\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO sucess2", 
+            "GIVE -1 ballon hero"
+          ], 
+          "txt": [
+            "\"Tiens, le voil\u00e0 !\""
+          ]
+        }
+      ]
+    }
+  }
+}

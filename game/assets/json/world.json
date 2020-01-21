@@ -396,6 +396,16 @@
       "y": 106, 
       "x": 177, 
       "extra_data": "entities/z2/grand_troll"
+    }, 
+    {
+      "y": 40, 
+      "x": 89, 
+      "extra_data": "entities/z1/enfant"
+    }, 
+    {
+      "y": 52, 
+      "x": 83, 
+      "extra_data": "entities/z1/ballon"
     }
   ]
 }

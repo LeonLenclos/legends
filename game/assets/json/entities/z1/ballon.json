@@ -1,0 +1,34 @@
+{
+  "attacks": [], 
+  "title": "Un ballon", 
+  "id": "ballon", 
+  "img": "entities/obj/ballon", 
+  "script": {
+    "start": {
+      "txt": [
+        "C'est un ballon bleu."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GIVE 1 ballon hero", 
+            "SET 1 invisible"
+          ], 
+          "txt": [
+            "Le ramasser."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }
+  }
+}
