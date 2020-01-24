@@ -1,0 +1,28 @@
+{
+  "attacks": [], 
+  "script": {
+    "start": {
+      "txt": [
+        "Le macaque vous lance un cailloux. -2pv"
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "GIVE -2 pv hero"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "aie"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "attacks": [
+    {
+      "do": [], 
+      "txt": [
+        "Vomit"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 4"
+          ], 
+          "txt": [
+            "Il vous vomit dessus. -4pv"
+          ], 
+          "prob": 0.5
+        }, 
+        {
+          "do": [
+            "HIT 6"
+          ], 
+          "txt": [
+            "Il vous vomit beaucoup dessus. -6pv"
+          ], 
+          "prob": 0.2
+        }, 
+        {
+          "do": [], 
+          "txt": [
+            "Il se vomit dessus."
+          ], 
+          "prob": 1
+        }
+      ]
+    }
+  ], 
+  "pv": 14, 
+  "img": "entities/sblurg", 
+  "script": {
+    "start": {
+      "txt": [
+        "C'est un sblurg."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "FIGHT"
+          ], 
+          "txt": [
+            "Se battre"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "dead": {
+      "txt": [
+        "Le Sblurg est mort."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SET 1 invisible"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }
+  }
+}

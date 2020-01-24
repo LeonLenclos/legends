@@ -1,0 +1,13 @@
+{
+  "attacks": [], 
+  "img": "entities/macaque", 
+  "script": {
+    "moment_id": {
+      "txt": [
+        "\"Ouh ha ha!\""
+      ], 
+      "auto_actions": [], 
+      "actions": []
+    }
+  }
+}

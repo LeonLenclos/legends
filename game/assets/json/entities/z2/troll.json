@@ -1,171 +1,185 @@
 {
-  "pv": 12,
-  "img": "entities/troll2",
-  "title": "Un Troll blessé",
+  "pv": 12, 
+  "img": "entities/troll2", 
+  "title": "Un Troll bless\u00e9", 
   "attacks": [
     {
-      "do": [],
+      "do": [], 
       "txt": [
         "Griffe"
-      ],
+      ], 
       "effect": [
         {
           "do": [
             "HIT 3"
-          ],
+          ], 
           "txt": [
             "Le troll vous donne un coup de griffe. -3pv"
-          ],
+          ], 
           "prob": 0.5
-        },
+        }, 
         {
           "do": [
             "HIT 5"
-          ],
+          ], 
           "txt": [
             "Le troll vous donne un bon gros coup de griffe. -5pv"
-          ],
+          ], 
           "prob": 0.2
-        },
+        }, 
         {
-          "do": [],
+          "do": [], 
           "txt": [
             "Le troll rate son coup."
-          ],
+          ], 
           "prob": 1
         }
       ]
     }
-  ],
+  ], 
   "script": {
     "start": {
       "txt": [
         "\"Bork beur bar dork garb!\""
-      ],
+      ], 
       "auto_actions": [
         {
           "do": [
-            "COMPARE livre_troll hero > 0",
+            "COMPARE livre_troll hero > 0", 
             "GOTO help"
-          ],
+          ], 
           "txt": []
         }
-      ],
+      ], 
       "actions": [
         {
           "do": [
             "FIGHT"
-          ],
+          ], 
           "txt": [
             "Attaquer le Troll."
           ]
-        },
+        }, 
         {
           "do": [
             "EXIT"
-          ],
+          ], 
           "txt": [
             "Partir."
           ]
         }
       ]
-    },
-    "help": {
-      "txt": [
-        "\"Aide moi! J'ai été gravement blessé par un policier. <br> Il existe un remède à base de graines de carottes, peux tu m'en ramener 10? \""
-      ],
-      "auto_actions": [
-        "COMPARE graines_carottes hero >= 1O","GOTO remede"
-      ],
-      "actions": [
-        {
-          "do": [
-            "FIGHT"
-          ],
-          "txt": [
-            "\"Tu n'es qu'un sale Troll, tu dois mourir\". Attaquer le Troll."
-          ]
-        },
-        {"do": [
-          "GIVE -10 graines_carottes hero","GOTO gueri"
-        ],
-        "txt": [
-          "\"J'ai ça! Tiens, cadeau.\""
-        ]  },
-        {
-          "do": [
-            "GOTO alors","EXIT"
-          ],
-          "txt": [
-            "\"Je vais voir ce que je peux faire.\""
-          ]
-        }
-      ]
-    },
-    "gueri": {
-      "txt": [
-        "\"Ah merci! Je vais beaucoup mieux! A bientôt peut être!\""
-      ],
-      "auto_actions": [],
-      "actions": [
-        {
-          "do": [
-            "SET 1 invisible","EXIT","GIVE +1 ami_des_trolls hero"
-          ],
-          "txt": [
-            "\"Ciao amigo.\""
-          ]
-        }
-      ]
-    },
+    }, 
     "alors": {
       "txt": [
-        "\"Tu as trouvé les graines de carottes?\""
-      ],
-      "auto_actions": [],
+        "\"Tu as trouv\u00e9 les graines de carottes?\""
+      ], 
+      "auto_actions": [], 
       "actions": [
         {
           "do": [
             "EXIT"
-          ],
+          ], 
           "txt": [
-            "Non désolé."
+            "Non d\u00e9sol\u00e9."
           ]
-        },
+        }, 
         {
           "do": [
-            "GIVE -10 graines_carottes hero","GOTO gueri"
-          ],
+            "GIVE -10 graines_carottes hero", 
+            "GOTO gueri"
+          ], 
           "txt": [
             "\"Oui tiens!\""
           ]
         }
       ]
-    },
+    }, 
+    "gueri": {
+      "txt": [
+        "\"Ah merci! Je vais beaucoup mieux! A bient\u00f4t peut \u00eatre!\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "SET 1 invisible", 
+            "EXIT", 
+            "GIVE +1 ami_des_trolls hero"
+          ], 
+          "txt": [
+            "\"Ciao amigo.\""
+          ]
+        }
+      ]
+    }, 
+    "help": {
+      "txt": [
+        "\"Aide moi! J'ai \u00e9t\u00e9 gravement bless\u00e9 par un policier. <br> Il existe un rem\u00e8de \u00e0 base de graines de carottes, peux tu m'en ramener 10? \""
+      ], 
+      "auto_actions": [
+        {
+          "do": [], 
+          "txt": []
+        }, 
+        {
+          "do": [], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "FIGHT"
+          ], 
+          "txt": [
+            "\"Tu n'es qu'un sale Troll, tu dois mourir\". Attaquer le Troll."
+          ]
+        }, 
+        {
+          "do": [
+            "GIVE -10 graines_carottes hero", 
+            "GOTO gueri"
+          ], 
+          "txt": [
+            "\"J'ai \u00e7a! Tiens, cadeau.\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO alors", 
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Je vais voir ce que je peux faire.\""
+          ]
+        }
+      ]
+    }, 
     "dead": {
       "txt": [
         "Le troll est mort."
-      ],
+      ], 
       "auto_actions": [
         {
           "do": [
-            "SET 1 invisible",
+            "SET 1 invisible", 
             "GOTO troll_mort z2_flic1"
-          ],
+          ], 
           "txt": []
         }
-      ],
+      ], 
       "actions": [
         {
           "do": [
             "EXIT"
-          ],
+          ], 
           "txt": [
             "Partir"
           ]
         }
       ]
     }
-  },
+  }, 
   "id": "troll_blesse"
 }

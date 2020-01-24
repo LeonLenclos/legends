@@ -318,16 +318,6 @@
       "extra_data": "entities/z1/enclos_cochon"
     }, 
     {
-      "y": 39, 
-      "x": 54, 
-      "extra_data": "entities/z0/portail_D3"
-    }, 
-    {
-      "y": 39, 
-      "x": 52, 
-      "extra_data": "entities/z0/portail_D2"
-    }, 
-    {
       "y": 113, 
       "x": 154, 
       "extra_data": "entities/z2/flic1"
@@ -406,6 +396,31 @@
       "y": 52, 
       "x": 83, 
       "extra_data": "entities/z1/ballon"
+    }, 
+    {
+      "y": 267, 
+      "x": 282, 
+      "extra_data": "entities/z4/sblurg"
+    }, 
+    {
+      "y": 212, 
+      "x": 210, 
+      "extra_data": "entities/z4/macaque"
+    }, 
+    {
+      "y": 211, 
+      "x": 210, 
+      "extra_data": "entities/atk_macaque"
+    }, 
+    {
+      "y": 211, 
+      "x": 211, 
+      "extra_data": "entities/atk_macaque"
+    }, 
+    {
+      "y": 212, 
+      "x": 211, 
+      "extra_data": "entities/atk_macaque"
     }
   ]
 }

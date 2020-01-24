@@ -1,30 +1,68 @@
 {
-  "attacks": [], 
-  "illu": "illu/portail", 
-  "title": "Portail dimensionnel.", 
-  "img": "entities/portail", 
+  "attacks": [],
+  "illu": "illu/portail",
+  "title": "Portail dimensionnel.",
+  "img": "entities/portail",
   "script": {
     "start": {
       "txt": [
-        "Cette porte m\u00e8ne au continent, voulez vous vraiment y aller?"
-      ], 
-      "auto_actions": [], 
+        "Où voulez vous aller?"
+      ],
+      "auto_actions": [],
       "actions": [
         {
           "do": [
-            "SETPOSITION 111 64 hero", 
+            "SETPOSITION 111 64 hero",
             "EXIT"
-          ], 
+          ],
           "txt": [
-            "Oui."
+            "Au continent."
           ]
-        }, 
+        },
+        {
+          "do": [
+            "SETPOSITION 132 229 hero",
+            "EXIT"
+          ],
+          "txt": [
+            "À la capitale."
+          ]
+        },
+        {
+          "do": [
+            "SETPOSITION 155 145 hero",
+            "EXIT",
+            "GIVE +1 hache hero"
+          ],
+          "txt": [
+            "Dans la forêt, mais avec un hache aussi."
+          ]
+        },
+        {
+          "do": [
+            "SETPOSITION 207 192 hero",
+            "EXIT"
+          ],
+          "txt": [
+            "À l'entrée du désert!!"
+          ]
+        },
+        {
+          "do": [
+            "SETPOSITION 305 245 hero",
+            "GIVE +1 hache hero",
+            "EXIT"
+          ],
+          "txt": [
+            "Au beau milieux du désert!! Avec une hache aussi."
+          ]
+        },
         {
           "do": [
             "EXIT"
-          ], 
+          ],
           "txt": [
-            "Non"
+            "Nulle part"
           ]
         }
       ]
