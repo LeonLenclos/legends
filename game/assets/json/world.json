@@ -408,19 +408,34 @@
       "extra_data": "entities/z4/macaque"
     }, 
     {
+      "y": 264, 
+      "x": 223, 
+      "extra_data": "entities/z4/macaque"
+    }, 
+    {
       "y": 211, 
       "x": 210, 
-      "extra_data": "entities/atk_macaque"
+      "extra_data": "entities/z4/atk_macaque"
     }, 
     {
       "y": 211, 
       "x": 211, 
-      "extra_data": "entities/atk_macaque"
+      "extra_data": "entities/z4/atk_macaque"
+    }, 
+    {
+      "y": 263, 
+      "x": 224, 
+      "extra_data": "entities/z4/atk_macaque"
     }, 
     {
       "y": 212, 
       "x": 211, 
-      "extra_data": "entities/atk_macaque"
+      "extra_data": "entities/z4/atk_macaque"
+    }, 
+    {
+      "y": 263, 
+      "x": 224, 
+      "extra_data": "entities/z4/atk_macaque"
     }
   ]
 }
