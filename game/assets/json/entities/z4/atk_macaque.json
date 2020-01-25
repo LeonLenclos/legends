@@ -8,7 +8,8 @@
       "auto_actions": [
         {
           "do": [
-            "GIVE -2 pv hero"
+            "GIVE -2 pv hero", 
+            "COPYPOSITION"
           ], 
           "txt": []
         }
@@ -19,7 +20,7 @@
             "EXIT"
           ], 
           "txt": [
-            "aie"
+            "\"A\u00efe\""
           ]
         }
       ]
