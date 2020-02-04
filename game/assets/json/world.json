@@ -436,6 +436,16 @@
       "y": 263, 
       "x": 224, 
       "extra_data": "entities/z4/atk_macaque"
+    }, 
+    {
+      "y": 150, 
+      "x": 136, 
+      "extra_data": "entities/z2/flic2"
+    }, 
+    {
+      "y": 151, 
+      "x": 136, 
+      "extra_data": "entities/z2/troll3"
     }
   ]
 }

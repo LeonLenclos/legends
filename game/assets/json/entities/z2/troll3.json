@@ -1,0 +1,201 @@
+{
+  "pv": 12, 
+  "img": "entities/troll2", 
+  "title": "Un Troll", 
+  "attacks": [
+    {
+      "do": [], 
+      "txt": [
+        "Griffe"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 3"
+          ], 
+          "txt": [
+            "Le troll vous donne un coup de griffe. -3pv"
+          ], 
+          "prob": 0.5
+        }, 
+        {
+          "do": [
+            "HIT 5"
+          ], 
+          "txt": [
+            "Le troll vous donne un bon gros coup de griffe. -5pv"
+          ], 
+          "prob": 0.2
+        }, 
+        {
+          "do": [], 
+          "txt": [
+            "Le troll rate son coup."
+          ], 
+          "prob": 1
+        }
+      ]
+    }
+  ], 
+  "script": {
+    "end": {
+      "txt": [
+        "\"Merci beaucoup jeune aventurier, tu m'as sauv\u00e9 la vie. Nous n'oublieront jamais ce que tu as fait pour nous.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "help": {
+      "txt": [
+        "\"Aide moi \u00e0 combattre ce garde !\""
+      ], 
+      "auto_actions": [
+        {
+          "do": [], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "FIGHT"
+          ], 
+          "txt": [
+            "\"C'est plut\u00f4t le garde que je vais aider \u00e0 te combattre !\". Attaquer le Troll."
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO pourquoi"
+          ], 
+          "txt": [
+            "\"Et pourquoi je t'aiderai ?\""
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Ok, je vais tuer ce garde. Si \u00e7a peut te faire plaisir...\""
+          ]
+        }
+      ]
+    }, 
+    "garde_mort": {
+      "txt": [
+        "\"Grobudok diouik\""
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE livre_troll hero > 0", 
+            "GOTO end"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "dead": {
+      "txt": [
+        "Le troll est mort."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SET 1 invisible", 
+            "GOTO troll_mort z2_flic2"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "\"Gobork brork arbeuk !\""
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE livre_troll hero > 0", 
+            "GOTO help"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "FIGHT"
+          ], 
+          "txt": [
+            "Attaquer le Troll."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "pourquoi": {
+      "txt": [
+        "\"Car ta destin\u00e9e c'est d'aider les oppress\u00e9s contre les oppresseurs\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO help"
+          ], 
+          "txt": [
+            "\"Ouais c'est vrai.\""
+          ]
+        }, 
+        {
+          "do": [
+            "FIGHT"
+          ], 
+          "txt": [
+            "\"Nan je pense que ma destin\u00e9e c'est de tuer des trolls\". Attaquer le Troll."
+          ]
+        }
+      ]
+    }
+  }, 
+  "id": "z2_troll3"
+}
