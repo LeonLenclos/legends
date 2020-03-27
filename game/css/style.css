@@ -1,155 +1,224 @@
 
+* {
+    font-family: 'entercommand';
+    font-size:24pt;
+    letter-spacing: 1pt;
+    line-height: 20pt;
+    box-sizing: border-box;
+}
+
 
 html, body {
    width: 100%;
    height: 100%;
    margin: 0;
-}    
-* {
-    box-sizing: border-box;
 }
+
+
 body {
-    font-family: sans-serif;
-    color:white;
+    color: white;
     background: black;
 }
 
-div {
-}
 
 #game{
-  height: 100%;
-  padding: 10px;
- display: flex;
- flex-direction: column;
- justify-content: space-between;
-}
-
-
-
-#title-bar {
-    width:auto;
-  padding: 10px;
-    text-align: center;
-    font-weight: bold;
-    color: gray;
-}
-
-/********** MAP ************/
-
-#interface-map{
-    height: 100%;
-    text-align: center;
-}
-
-#map {
+  width: 960px;
+  height: 600px;
+	position: absolute;
+	top:0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
     border: 2px solid white;
-    background: gray;
+    box-sizing: content-box;
+
 }
 
-#main-interface {
-  padding: 10px;
+#loading{
+    margin:20px;sz
+    
+}
+
+#infos{
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+#infos img{
+    
+}
+#infos> * {
+    margin: 10px;
+}
+#infos> *:first-child{
+    width:100%;
+}
+
+#illu img{
+    width: 100%;
     height: 100%;
-    
 }
+/***********MENU**********/
 
-/********** INTERACTION ************/
-
-#interface-interaction{
-    padding: 50px;
-   text-align: center;
-        width: 50%;
-    min-width: 400px;
-        margin:auto;
-}
-#interaction-illu-text {
+.menu{
+    height: 100%;
+    position: relative;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
-#interaction-illu img {
+
+
+.menu #illu {
+    position: absolute;
+    left: 0;
+    background: pink;
     image-rendering: crisp-edges;
-        width: 256px;
-}
-#interaction-illu  {
-    display: flex; 
-        margin:  5px;
-        padding: 0;
+  width: 480px;
+  height: 480px;
+      border-bottom: 2px solid white;
 
 }
-
-#interaction-title {
-    font-weight: bold;
-    color:#fff;
-    margin:5px;
-    padding: 5px;
-    text-align: 
-    
-}
-#interaction-text-container{
-            margin:  5px;
-
+.menu #menu_gui{
+        position: absolute;
+        text-align: center;
+    position: relative;
     display: flex;
-  flex-direction: column;
-  justify-content: center;    width: 100%; 
-        background: white;
+    flex-direction: column;
+    justify-content: space-between;
+    left: 480px;
 
-    
+    width:480px;
+      height: 480px;
+  border-bottom: 2px solid white;
+  border-left: 2px solid white;
+
 }
-#interaction-text {
-    padding: 10px;
-    color:black;
-        margin:  5px;
-    
+
+#title{
+    border-bottom:2px solid white;
+    padding: 2px;
+    font-size: 24pt;
+    font-weight: bold;
+    width: 100%;
+
+}
+
+#options {
+    margin: 20px;
 }
 
 .button {
     background: black;
     color: white;
-    padding: 5px;
-    margin:  5px;
-    border: 2px solid gray;
+    margin:  2px;
     min-width: 300px;
+    border: 2px solid white;    
 }
 
-.button:hover, .button.selected:hover {
-    background: gray;
-    border-color: gray;
+.button:hover, .button.selected {
+    background: white;
     color:black;
     
 }
+.button:disabled {
+}
+
 .button:disabled, .button:disabled:hover, .button.selected:disabled {
     color: gray;
-    background: black;
+    text-decoration-line: 3px;
+
+    text-decoration: line-through ;
 }
 
-.button.selected {
-    background: gray;
-    border-color:white;
-    color:black;
 
-}
-#interaction-actions {
+#options {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    flex-direction: column;s
+    flex-direction: column;
 }
 
+/********** MAP ************/
 
-/********* STATUS BAR **********/
-
-#status-bar{
-    background:  gray;
+#map{
     display: flex;
-        border: 2px solid gray;
+    height: 100%;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+#map_canvas {
+  border-bottom: 2px solid white;
+}
+
+
+
+
+
+
+/********* INVENTORY BAR **********/
+
+#inventory_bar, #status_bar{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 5px;
+}
+
+#inventory_bar {
+    justify-content: center;
+}
+#status_bar {
+    justify-content: space-between;
+    border-top: 2px solid white;
+    
+}
+
+.life_indicator{
+    color:black;
+}
+.progress_bar {
+    background: gray;
+    width:300px;
+    height: 12pt;
+    position: relative;
+    border: 2px solid white;
+}
+.progress_bar .inventory_element_value{
+    position: absolute;
+    top:50%;
+    line-height: 0;
+    width:100%;
+    text-align: center;
+    z-index: 3;
+}
+.progress_bar_fill {
+    position: relative;
+    width:100%;
+    height: 100%;
+    background:white;
+}
+.inventory_element > *, .life_indicator >  * {
+    margin: 0 5px;
+}
+.inventory_element, .life_indicator{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+        margin: 2px;
 
 }
 
-.status-info-title {
-    font-weight: bold;
+#menu_gui,  .life_indicator_title {
+    display: none;
 }
-.status-info{
-    margin-right: 2px;
-    padding: 2px;
-    background: #fff;
-    color:#000;
+
+
+#inventory_bar .inventory_element {
+    background: lightgray;
+    color:#000; 
 }

@@ -1,7 +1,7 @@
 {
-  "pv_max": 20, 
-  "pv": 25, 
-  "img": "entities/hero", 
+  "pv_max": 25, 
+  "pv": 20, 
+  "img": "entities/hero/down", 
   "script": {}, 
   "attacks": [
     {
@@ -133,9 +133,10 @@
     }
   ], 
   "info_enlevement": 0, 
-  "ouverture_fred": 0, 
+  "or": 0, 
   "cigarette": 0, 
   "drogue": 0, 
   "recompense": 0, 
+  "ouverture_fred": 0, 
   "id": "hero"
 }

@@ -10,44 +10,40 @@ const commands = {
     EXIT:{
         doc:"Ferme l'interaction",
         usage:'EXIT',
-        do:(g, e, a)=>{
-            g.open_map();
+        do:(e, a)=>{
+            game.interaction_entity=null;
+            // game.open('map');
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     GAMEOVER:{
         doc:"Game over...",
         usage:'GAMEOVER',
-        do:(g, e, a)=>{g.game_over();},
-        doable:(g, e, a)=>true
+        do:(e, a)=>{game.open('gameover')},
+        doable:(e, a)=>true
     },
     GOTO:{
         doc:"Aller à un autre moment de l'interaction",
         usage:'GOTO moment [entity]',
-        do:(g, e, a)=>{
-            let target = a[1] ? g.world.get_entity(a[1]) : e;
+        do:(e, a)=>{
+            let target = a[1] ? game.get_entity(a[1]) : e;
             target.interaction_state = a[0];
-            // if(!a[1] && target.read_script().auto_actions){
-            //     target.read_script().auto_actions.forEach((a)=>{
-            //         g.on_action(a.do, target)
-            //     })
-            // }
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     GIVE:{
         doc:"Additionner une valeur à un attribut",
         usage:'GIVE number attribute [entity]',
-        do:(g, e, a)=>{
+        do:(e, a)=>{
             let amount = Number(a[0]);
             let attr = a[1];
-            let target = a[2] ? g.world.get_entity(a[2]) : e;
+            let target = a[2] ? game.get_entity(a[2]) : e;
             target[attr] = target[attr] ? target[attr] + amount : amount;
         },
-        doable:(g, e, a)=>{
+        doable:(e, a)=>{
             let amount = Number(a[0]);
             let attr = a[1];
-            let target = a[2] ? g.world.get_entity(a[2]) : e;
+            let target = a[2] ? game.get_entity(a[2]) : e;
             result = target[attr] ? target[attr] + amount : amount;
             return result >= 0;
         }
@@ -55,92 +51,90 @@ const commands = {
     SET:{
         doc:"Changer la valeur d'un attribut",
         usage:'SET value attribute [entity]',
-        do:(g, e, a)=>{
+        do:(e, a)=>{
             let value = Number(a[0]);
             if(isNaN(value)) value = a[0];
             let attr = a[1];
-            let target = a[2] ? g.world.get_entity(a[2]) : e;
+            let target = a[2] ? game.get_entity(a[2]) : e;
             target[attr] = value;
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     SETIMAGE:{
         doc:"Changer l'image qui s'affiche sur la map",
         usage:'SETIMAGE entities/image [entity]',
-        do:(g, e, a)=>{
+        do:(e, a)=>{
             let value =  a[0];
-            let target = a[1] ? g.world.get_entity(a[1]) : e;
+            let target = a[1] ? game.get_entity(a[1]) : e;
             target.set_image(value);
-            target
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     SETILLU:{
         doc:"Changer l'image qui s'affiche dans l'interaction",
-        usage:'SETIMAGE entities/image [entity]',
-        do:(g, e, a)=>{
+        usage:'SETILLU illu/image [entity]',
+        do:(e, a)=>{
             let value =  a[0];
-            let target = a[1] ? g.world.get_entity(a[1]) : e;
+            let target = a[1] ? game.get_entity(a[1]) : e;
             target.set_illu(value);
             target
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     SETPOSITION:{
         doc:"Changer la position",
         usage:'SETPOSITION x y [entity]',
-        do:(g, e, a)=>{
+        do:(e, a)=>{
             let value_x =  Number(a[0]);
             let value_y =  Number(a[1]);
-            let target = a[2] ? g.world.get_entity(a[2]) : e;
+            let target = a[2] ? game.get_entity(a[2]) : e;
             target.x = value_x;
             target.y = value_y;
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     COPYPOSITION:{
         doc:"Donner au hero la position de l'entité",
         usage:'COPYPOSITION',
-        do:(g, e, a)=>{
-            g.world.hero.x = e.x;
-            g.world.hero.y = e.y;
+        do:(e, a)=>{
+            game.hero.x = e.x;
+            game.hero.y = e.y;
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     FIGHT:{
         doc:"Démarrer un combat",
         usage:'FIGHT',
-        do:(g, e, a)=>{
-            g.world.get_entity('hero').start_fight();
-            e.start_fight();
+        do:(e, a)=>{
+            game.fight_entity=e;
+            game.hero.last_effect=null;
+            e.last_effect=null;
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     FLEE:{
         doc:"(Combat uniquement) Fuir d'un combat.",
         usage:'FLEE',
-        do:(g, e, a)=>{
-            e.flee = true;
+        do:(e, a)=>{
+            game.fight_entity = null;
+            game.interaction_entity = null;
         },
-        doable:(g, e, a)=>true
-        },
+        doable:(e, a)=>true
+    },
     HIT:{
         doc:"(Combat uniquement) Retirer des pv à l'adversaire",
         usage:'HIT number',
-        do:(g, e, a)=>{
+        do:(e, a)=>{
             let hit = Number(a[0]); 
-            e.target.pv -= hit;
-            if(e.target.pv <= 0){
-                e.target.kill();
-            }
+            e.set_pv(-hit);
         },
-        doable:(g, e, a)=>true
+        doable:(e, a)=>true
     },
     COMPARE:{
         doc:"Comparer les valeurs de deux attributs (opérateurs disponnibles : < > = <= >= != )",
         usage:'COMPARE attribut [entity] operator attribut [entity]',
-        do:(g, e, a)=>{return;},
-        doable:(g, e, a)=>{
+        do:(e, a)=>{return;},
+        doable:(e, a)=>{
             let operators = ['<', '>', '=', '<=', '>=', '!=']
             let i = 0;
             let value_a, value_b;
@@ -153,7 +147,7 @@ const commands = {
                 i++;
                 let target = e;
                 if(!operators.includes(a[i])){
-                    target = g.world.get_entity(a[i])
+                    target = game.get_entity(a[i])
                     i++;
                 }
                 value_a = target[attr];
@@ -168,11 +162,10 @@ const commands = {
             } else {
                 let attr = a[i];
                 i++;
-                let target = a[i] ? g.world.get_entity(a[i]) : e;
+                let target = a[i] ? game.get_entity(a[i]) : e;
                 value_b = target[attr];
             }
             // compare
-            console.log('compare : ', value_a, operator, value_b, '?');
             if (operator == '<') return value_a < value_b;
             if (operator == '<=') return value_a <= value_b;
             if (operator == '>') return value_a > value_b;
@@ -185,22 +178,31 @@ const commands = {
 
 function split_command(c) {
     let splited = c.split(" ");
-    let command_name = splited[0];
-    let args = splited.slice(1);
-    return {name:command_name, args:args};
+    return {name:splited[0], args:splited.slice(1)};
 }
 
-function do_command(g, e, c) {
-    console.log('do : ' + c)
-    let command = commands[split_command(c).name];
-    let args = split_command(c).args;
-    if(command.doable(g, e, args)){
-        command.do(g, e, args);
+function do_commands(e, commands) {
+    if(commands && commands.every((c)=>doable_command(e, c))){
+        commands.forEach((c)=>{do_command(e, c)});
     }
 }
 
-function doable_command(g, e, c) {
+function do_command(e, c) {
     let command = commands[split_command(c).name];
     let args = split_command(c).args;
-    return command.doable(g, e, args);
+    if(command.doable(e, args)){
+        command.do(e, args);
+    }
+}
+
+function doable_commands(e, commands) {
+    if(commands){
+        return commands.every((c)=>doable_command(e, c));
+    }
+}
+
+function doable_command(e, c) {
+    let command = commands[split_command(c).name];
+    let args = split_command(c).args;
+    return command.doable(e, args);
 }

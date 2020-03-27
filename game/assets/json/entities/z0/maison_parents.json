@@ -1,30 +1,97 @@
 {
-    "id":"maison_parents",
-    "img":"entities/porte",
-    "illu":"illu/maison",
-    "title":"La maison de tes parents.",
-    "script" : {
-        "start":{
-            "txt" : "C'est chalereux et familier. Il y a un frigo.",
-            "actions":[
-                {"txt":"Sortir.", "do":["EXIT"]},
-                {"txt":"Regarder dans le frigo.", "do":["GOTO frigo"]}
-            ]
-        },
-        "frigo":{
-            "txt" : "Le frigo est vide...",
-            "actions":[
-                {"txt":"Sortir.", "do":["EXIT", "GOTO start"]},
-                {"txt":"Mettre du bois dans le frigo et sortir.", "do":["EXIT", "GOTO bois", "GIVE -1 bois hero"]}
-
-            ]
-        },
-        "bois":{
-            "txt" : "Il y a un mot de ta maman sur la table \"Chéri, est-ce que tu pourrai arrêter de mettre du bois dans le frigo stp ? Bisous.\"",
-            "actions":[
-                {"txt":"Ok.", "do":["GOTO start"]}
-            ]
+  "img": "entities/porte", 
+  "title": "La maison de tes parents.", 
+  "attacks": [], 
+  "illu": "illu/maison_parents", 
+  "script": {
+    "start": {
+      "txt": [
+        "C'est chalereux et familier. Il y a un frigo."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SETILLU illu/maison_parents"
+          ], 
+          "txt": []
         }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Sortir."
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO frigo"
+          ], 
+          "txt": [
+            "Regarder dans le frigo."
+          ]
+        }
+      ]
+    }, 
+    "frigo": {
+      "txt": [
+        "Le frigo est vide..."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SETILLU illu/frigo"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Sortir."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO bois", 
+            "GIVE -1 bois hero"
+          ], 
+          "txt": [
+            "Mettre du bois dans le frigo et sortir."
+          ]
+        }
+      ]
+    }, 
+    "bois": {
+      "txt": [
+        "Il y a un mot de ta maman sur la table \"Ch\u00e9ri, est-ce que tu pourrai arr\u00eater de mettre du bois dans le frigo stp ? Bisous.\""
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SETILLU illu/mot_maman"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GOTO start"
+          ], 
+          "txt": [
+            "Ok."
+          ]
+        }
+      ]
     }
-
+  }, 
+  "id": "maison_parents"
 }

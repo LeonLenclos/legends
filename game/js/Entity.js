@@ -1,34 +1,27 @@
 class Entity {
 
-    constructor(data, game){
-        // Position and direction of the Hero in the map
-        this.game = game;
-        this.world = game.world;
-        this.assets = game.assets;
+    constructor(data){
+        
+        Object.assign(this, assets.json[data.extra_data], data)
 
-        let extra_data = this.assets.json[data.extra_data];
-        for(let attr in extra_data){
-            this[attr] = extra_data[attr];
-        }
-        for(let attr in data){
-            this[attr] = data[attr];
-        }
         this.set_image(this.img)
         this.set_illu(this.illu)
+        this.pv_max = this.pv_max || this.pv;
 
         if(this.script){
             for(let moment in this.script){
                 this.script[moment].txt = new ScriptText(this.script[moment].txt)
-                this.script[moment].actions.forEach((action, i, a)=>{
-                    a[i].txt = new ScriptText(a[i].txt)
-                })
+                this.script[moment].actions.map(action=>{
+                    Object.assign(action, {txt:new ScriptText(action.txt)})
+                });
             }
         }
+
     }
 
     set_image(img){
         if(img){
-            this.img = this.assets.png[img];
+            this.img = assets.png[img];
         } else {
             this.img = undefined;
         }
@@ -36,12 +29,17 @@ class Entity {
 
     set_illu(illu){
         if(illu){
-            this.illu = [
-                this.assets.png[illu+1],
-                this.assets.png[illu+2],
-            ];
+            this.illu = assets.png[illu]
         } else {
             this.illu = undefined;
+        }
+    }
+
+    set_pv(v){
+        this.pv = constrain(this.pv+v, 0, this.pv_max);
+        if(this.pv==0){
+            this.interaction_state = 'dead';
+            this.dead = true;
         }
     }
 
@@ -50,41 +48,23 @@ class Entity {
     }
 
 
-    start_fight(target){
-        this.fighting = true;
-        this.next_attack = undefined;
-        this.flee = false;
+    fight(target, attack){
+        attack = attack || this.random_attack();
+        let effect = this.random_effect(attack);
+        this.last_effect = effect;
+        do_commands(target, effect.do)
     }
 
-    stop_fight(target){
-        this.fighting = false;
-        this.next_attack = undefined;
-        this.flee = false;
+    random_attack(){
+        return this.attacks[random(0,this.attacks.length)]
     }
 
-    choose_attack(){
-        this.next_attack = this.attacks[random(0,this.attacks.length)]
-    }
-
-    execute_attack(target){
-        this.target = target;
-        if(this.dead) return;
-        if(!this.next_attack) this.choose_attack();
-        for (var i = 0; i < this.next_attack.effect.length; i++) {
-            let effect = this.next_attack.effect[i]
-            let dice = Math.random() 
-            if (dice < effect.prob) {
-                effect.do.forEach((c)=>do_command(this.game, this, c))
-                this.next_attack = undefined;
-                return effect.txt;
-            }
-        }
-    }
-
-    kill(){
-        this.pv = 0;
-        this.dead = true;
-        this.fighting = false;
+    random_effect(attack){
+        let dice = random(0, attack.effect.reduce((a, e)=>a+e.prob, 0));
+        return attack.effect.find((e)=>{
+            dice -= e.prob;
+            return dice <= 0;
+        })
     }
 
     read_script(){

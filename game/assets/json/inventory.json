@@ -1,0 +1,46 @@
+[
+    {
+        "title":"Bois",
+        "name":"bois"
+    },
+    {
+        "title":"Hache",
+        "name":"hache"
+    },
+    {
+        "title":"Carottes",
+        "name":"carottes"
+    },
+    {
+        "title":"Graines de carottes",
+        "name":"graines_carottes"
+    },
+    {
+        "title":"Arosoir",
+        "name":"arosoir"
+    },
+    {
+        "title":"Bêche",
+        "name":"beche"
+    },
+    {
+        "title":"Cigarette",
+        "name":"cigarette"
+    },
+    {
+        "title":"Drogue",
+        "name":"drogue"
+    },
+    {
+        "title":"Livre Troll",
+        "name":"livre_troll"
+    },
+    {
+        "title":"Épée",
+        "name":"epee"
+    },
+    {
+        "title":"Dague",
+        "name":"dague"
+    }
+]

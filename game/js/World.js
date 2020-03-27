@@ -1,70 +1,36 @@
 
-class World {
+// class World {
 
-    constructor(game){
-        this.game = game;
-        this.assets = game.assets;
-        this.walls = [];
-        this.entities = [];
-        this.player = undefined;
-    }
+//     constructor(){
+//         this.walls = assets.json.map.layers.find(l=>l.name == 'walls').data;
+//         this.entities = assets.json.world.entities.map(data=>new Entity(data))
+//         this.hero = this.get_entity('hero')
+//     }
 
-
-    setup(){
-        let world_data = this.assets.json.world;
-        let map_data = this.assets.json.map;
-
-        world_data.entities.forEach((entity_data)=>{
-            this.entities.push(new Entity(entity_data, this.game));
-        });
-        this.hero = this.get_entity('hero');
-        this.width = map_data.width;
-        this.height = map_data.height;
-        for (var i = 0; i < map_data.layers.length; i++) {
-            if (map_data.layers[i].name == "walls") {
-                this.walls = map_data.layers[i].data;
-                break;
-            }
-        }
-    }
-
-    get_entity(id){
-        for (var i = 0; i < this.entities.length; i++) {
-            if(this.entities[i].id == id){
-                return this.entities[i];
-            }
-        }
-    }
+//     get_entity(id){
+//         return this.entities.find(e=>e.id == id);
+//     }
     
-    get_hero(){
-        return this.get_entity('hero')
-    }
+//     move_hero(x, y) {
+//         let dest_x = this.hero.x + x;
+//         let dest_y = this.hero.y + y;
 
-    move_hero(action) {
-        let dest_x = this.hero.x;
-        let dest_y = this.hero.y;
-        this.hero.set_image('entities/hero/'+action);
-        this.hero.direction = action;
+//         if(this.entity_at(x,y)){
+//             game.interaction = this.entity_at(x,y);
+//             game.open('interaction');
+//         }
+//         else if (!this.wall_at(x,y)){
+//             this.hero.x = dest_x;
+//             this.hero.y = dest_y;
+//         }
+//     }
 
-        // set destination
-        if (action === NORTH) dest_y --;
-        else if (action === SOUTH) dest_y ++;
-        else if (action === EAST) dest_x ++;
-        else if (action === WEST) dest_x --;
-        else return;
-        // look for an entity at dest and return it
-        for(let key in this.entities){
-            let entity = this.entities[key]
-            if(entity.x == dest_x && entity.y == dest_y && !entity.invisible){
-                return entity;
-            }
-        }
-        // look for wall at dest
-        if(this.walls[dest_y*this.width+dest_x]>0){
-            return;
-        }
-        // move hero
-        this.hero.x = dest_x;
-        this.hero.y = dest_y;
-    }
-}
+//     entity_at(x,y){
+//         let e = this.entities.find((e)=>e.x==x && e.y==y)
+//         return e.invisible ? null : e;
+//     }
+
+//     wall_at(x,y){
+//         return this.walls[pos_to_index(dest_x, dest_y, assets.json.map.width)];
+//     }
+// }

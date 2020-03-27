@@ -1,88 +1,201 @@
 {
-    "id":"bucheron",
-    "img":"entities/humain4",
-        "illu":"illu/bucheron",
-
-    "title":"Bûcheron",
-    "pv":50,
-    "script" : {
-        "start":{
-            "auto_actions" : [
-              {"do":["COMPARE bois hero >= 10", "GOTO bois"]}
-            ],
-            "txt" : "Bonjour bonhomme ! Tu veux de l'or ?",
-            "actions":[
-                {"txt":"Oh oui !", "do":["GOTO travail"]},
-                {"txt":"Non merci.", "do":["GOTO non"]}            ]
-          },
-          "non":{
-            "txt" : "Tu veux te battre ?",
-            "actions":[
-                {"txt":"Ouais !", "do":["FIGHT"]},
-                {"txt":"Non merci.", "do":["EXIT", "GOTO start"]}
-            ]
-          },
-          "travail":{
-            "txt" : "Va me chercher du bois et je te donnerai de l'or en échange !",
-            "actions":[
-                {"txt":"D'accord !", "do":["EXIT", "GOTO start"]}
-            ]
-          },
-           "bois":{
-            "txt" : "Alors bonhomme, je vois que tu as du bois ! Je t'échange 10 bûches contre une pièce d'or.",
-            "actions":[
-                {"txt":"Marché conclu !", "do":["GIVE -10 bois hero", "GIVE +1 or hero"]},
-                {"txt":"Non merci !", "do":["EXIT", "GOTO start"]}
-            ]
-          },
-           "dead":{
-            "auto_actions" : [
-              {"do":["SET 1 invisible"]}
-            ],
-            "txt" : "Le bûcheron est mort.",
-            "actions":[
-                {"txt":"Piller le cadavre", "do":["GIVE +100 or hero", "GIVE +1 hache hero", "EXIT"]},
-                {"txt":"Partir", "do":["EXIT"]}
-            ]
-          }
-    },
-    "attacks":[
-
+  "pv": 50, 
+  "img": "entities/humain4", 
+  "title": "B\u00fbcheron", 
+  "attacks": [
+    {
+      "do": [], 
+      "txt": [
+        "\u00c9trangler"
+      ], 
+      "effect": [
         {
-            "txt":"Étrangler",
-            "types":[],
-            "do":[],
-            "effect":[
-                {
-                    "prob":0.5,
-                    "txt":"Le bûcheron vous étrangle : -3pv",
-                    "do":["HIT 3"]
-
-                },
-                {
-                    "prob":1,
-                    "txt":"Le bûcheron ne parviens pas à vous étrangler.",
-                    "do":[]
-                }
-            ]
-        },
+          "do": [
+            "HIT 3"
+          ], 
+          "txt": [
+            "Le b\u00fbcheron vous \u00e9trangle : -3pv"
+          ], 
+          "prob": 0.5
+        }, 
         {
-            "txt":"Donner un coup de hache",
-            "types":[],
-            "do":[],
-            "effect":[
-                {
-                    "prob":0.6,
-                    "txt":"Le bucheron vous donne un coup de hache : -10pv",
-                    "do":["HIT 10"]
-                },
-                {
-                    "prob":1,
-                    "txt":"Le bucheron rate son coup de hache.",
-                    "do":[]
-                }
-
-            ]
+          "do": [], 
+          "txt": [
+            "Le b\u00fbcheron ne parviens pas \u00e0 vous \u00e9trangler."
+          ], 
+          "prob": 1
         }
-    ]
+      ]
+    }, 
+    {
+      "do": [], 
+      "txt": [
+        "Donner un coup de hache"
+      ], 
+      "effect": [
+        {
+          "do": [
+            "HIT 10"
+          ], 
+          "txt": [
+            "Le bucheron vous donne un coup de hache : -10pv"
+          ], 
+          "prob": 0.6
+        }, 
+        {
+          "do": [], 
+          "txt": [
+            "Le bucheron rate son coup de hache."
+          ], 
+          "prob": 1
+        }
+      ]
+    }
+  ], 
+  "illu": "illu/bucheron", 
+  "script": {
+    "start": {
+      "txt": [
+        "Bonjour bonhomme ! Tu veux de l'or ?"
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE bois hero >= 10", 
+            "GOTO bois"
+          ], 
+          "txt": []
+        }, 
+        {
+          "do": [
+            "SETILLU illu/bucheron"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GOTO travail"
+          ], 
+          "txt": [
+            "Oh oui !"
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO non", 
+            "SETILLU illu/bucheron_enerve"
+          ], 
+          "txt": [
+            "Non merci."
+          ]
+        }
+      ]
+    }, 
+    "non": {
+      "txt": [
+        "Tu veux te battre ?"
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "SETILLU illu/bucheron_fight", 
+            "FIGHT"
+          ], 
+          "txt": [
+            "Ouais !"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Non merci."
+          ]
+        }
+      ]
+    }, 
+    "travail": {
+      "txt": [
+        "Va me chercher du bois et je te donnerai de l'or en \u00e9change !"
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "D'accord !"
+          ]
+        }
+      ]
+    }, 
+    "dead": {
+      "txt": [
+        "Le b\u00fbcheron est mort."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SET 1 invisible", 
+            "SETILLU illu/bucheron_dead"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +100 or hero", 
+            "GIVE +1 hache hero", 
+            "EXIT"
+          ], 
+          "txt": [
+            "Piller le cadavre"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "bois": {
+      "txt": [
+        "Alors bonhomme, je vois que tu as du bois ! Je t'\u00e9change 10 b\u00fbches contre une pi\u00e8ce d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE -10 bois hero", 
+            "GIVE +1 or hero"
+          ], 
+          "txt": [
+            "March\u00e9 conclu !"
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Non merci !"
+          ]
+        }
+      ]
+    }
+  }, 
+  "id": "bucheron"
 }

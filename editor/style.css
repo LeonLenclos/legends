@@ -182,7 +182,3 @@ button.plus {
   background: white;
   transform: scale(4);
 }
-#galery_illu li:hover img{
-  background: white;
-  transform: scale(2);
-}

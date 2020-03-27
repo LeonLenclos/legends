@@ -9,17 +9,21 @@ const PATH = {
 
 // Utils
 const [NORTH,EAST,SOUTH,WEST] = [0,1,2,3];
-const MAP_KEYS = {
-    'z':NORTH,
-    'w':NORTH,
-    'q':WEST,
-    'a':WEST,
-    's':SOUTH,
-    'd':EAST,
-    'ArrowDown':SOUTH,
-    'ArrowUp':NORTH,
-    'ArrowLeft':WEST,
-    'ArrowRight':EAST,
+
+const KEYS = {
+    'z':'up',
+    'w':'down',
+    'q':'left',
+    'a':'left',
+    's':'down',
+    'd':'right',
+    'ArrowDown':'down',
+    'ArrowUp':'up',
+    'ArrowLeft':'left',
+    'ArrowRight':'right',
+    ' ':'ok',
+    'Enter':'ok',
+
 };
 
 
@@ -41,11 +45,15 @@ const INTERACTION_KEYS = {
 };
 
 // TIME
-const TICK_PER_SEC = 50;
-const TURN_PER_SEC = 10;
+const TICK_PER_SEC = 60;
+const TURN_PER_SEC = 6;
 
 
 // SIZE
-const MAP_WIDTH = 40;
-const MAP_HEIGHT = 20;
+const VIEW_TILE_WIDTH = 40;
+const VIEW_TILE_HEIGHT = 20
+
 const TILE_SIZE = 8;
+
+const VIEW_PX_WIDTH = VIEW_TILE_WIDTH * TILE_SIZE;
+const VIEW_PX_HEIGHT = VIEW_TILE_HEIGHT * TILE_SIZE;

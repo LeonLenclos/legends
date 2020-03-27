@@ -145,8 +145,8 @@ $(document).ready(()=>{
                         .click(()=>{code.selectText();})
                     )
                 }
-                else if(k.startsWith('illu') && k.endsWith('1')){
-                    let code = $('<code>').text(k.slice(0, -1));
+                else if(k.startsWith('illu')){
+                    let code = $('<code>').text(k);
                     $('#galery_illu').append($('<li>')
                         .append(v)
                         .append(code)

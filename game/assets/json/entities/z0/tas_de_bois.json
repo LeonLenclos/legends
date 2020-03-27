@@ -1,18 +1,45 @@
 {
-    "img":"entities/tas_de_bois",
-    "title":"Un tas de bois.",
-    "illu":"illu/bois",
-    "bois":100,
-    "script" : {
-        "start":{
-          "auto_actions": [
-          {"do":["COMPARE bois < 1", "SET 1 invisible","EXIT"]}
-        ],
-            "txt" : "C'est le tas de bois du bucheron.",
-            "actions":[
-                {"txt":["Voler quelques bûches.", "Voler encore quelques bûches."], "do":["GOTO", "GIVE -10 bois","GIVE +10 bois hero"]},
-                {"txt":"Partir.", "do":["EXIT"]}
-            ]
+  "bois": 100, 
+  "img": "entities/tas_de_bois", 
+  "title": "Un tas de bois.", 
+  "attacks": [], 
+  "illu": "illu/tas_de_bois", 
+  "script": {
+    "start": {
+      "txt": [
+        "C'est le tas de bois du bucheron."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE bois < 1", 
+            "SET 1 invisible", 
+            "EXIT"
+          ], 
+          "txt": []
         }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GOTO", 
+            "GIVE -10 bois", 
+            "GIVE +10 bois hero"
+          ], 
+          "txt": [
+            "Voler quelques b\u00fbches.", 
+            "Voler encore quelques b\u00fbches."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
     }
+  }
 }

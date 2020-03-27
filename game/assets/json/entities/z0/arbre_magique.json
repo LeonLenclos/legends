@@ -1,85 +1,274 @@
 {
-    "id":"arbre_magique",
-    "img":"entities/arbre2",
-        "illu":"illu/arbre_magique",
-
-    "title":"Un arbre magique",
-    "or":15,
-    "script" : {
-        "start":{
-            "txt" : "C'est un arbre magique.",
-            "actions":[
-                {"txt":"Secouer l'arbre.", "do":["GOTO secousse", "GIVE +1 or hero"]},
-                {"txt":"Partir.", "do":["EXIT"]}
-            ]
-        },
-        "secousse":{
-            "txt" : "L'arbre dit qu'il a mal et donne une pièce d'or.",
-            "actions":[
-                {"txt":"Secouer encore l'arbre.", "do":["GOTO souffrance", "GIVE +3 or hero"]},
-                {"txt":"Rendre la pièce, s'excuser et partir.", "do":["GIVE -1 or hero", "EXIT", "GOTO start"]},
-                {"txt":"Partir.", "do":["EXIT", "GOTO secousse2"]}
-            ]
-        },
-        "secousses2":{
-            "txt" : "C'est un arbre magique qui a mal.",
-            "actions":[
-                {"txt":"Secouer l'arbre assez fort.", "do":["GOTO supplication", "GIVE +6 or hero"]},
-                {"txt":"Partir.", "do":["EXIT"]}
-            ]
-        },
-        "souffrance":{
-            "txt" : "L'arbre souffre, il donne trois autre pièces d'or.",
-            "actions":[
-                {"txt":"Secouer l'arbre encore plus fort.", "do":["GOTO supplication", "GIVE +6 or hero"]},
-                {"txt":"Partir.", "do":["EXIT", "GOTO souffrance2"]}
-            ]
-        },
-        "souffrance2":{
-          "txt" : "C'est un arbre magique qui souffre.",
-          "actions":[
-              {"txt":"Secouer l'arbre très fort.", "do":["GOTO supplication", "GIVE +6 or hero"]},
-              {"txt":"Laisser l'arbre tranquille.", "do":["EXIT"]}
-            ]
-        },
-        "supplication":{
-            "txt" : "L'arbre vous supplie d'arrêter... et donne six pièces d'or.",
-            "actions":[
-                {"txt":"Ne pas tenir compte de sa requête et le secouer encore et encore.", "do":["GOTO aïe", "GIVE +10 or hero"]},
-                {"txt":"Laisser l'arbre tranquille.", "do":["EXIT", "GOTO supplication2"]}
-            ]
-          },
-          "supplication2":{
-              "txt" : "C'est un arbre magique qui a trèès mal.",
-              "actions":[
-                  {"txt":"Le secouer trèès fort.", "do":["GOTO aïe", "GIVE +10 or hero"]},
-                  {"txt":"Laisser l'arbre tranquille.", "do":["EXIT"]}
-              ]
-            },
-          "aïe":{
-              "txt" : ["L'arbre hurle de douleur et donne dix pièces d'or."],
-              "actions":[
-                  {"txt":["Secouer l'arbre trèèèès fort."], "do":[
-                "SETIMAGE entities/arbre_mort", "GOTO mort"
-                  ]},
-                  {"txt":["Laisser l'arbre tranquille."],"do":["EXIT","GOTO aïe2"]}
-            ]
-        },
-        "aïe2":{
-            "txt" : ["C'est un arbre magique qui a trèèèès mal."],
-            "actions":[
-                {"txt":["Secouer l'arbre trèèèès fort."], "do":[
-              "SETIMAGE entities/arbre_mort", "GOTO mort"
-                ]},
-                {"txt":["Laisser l'arbre tranquille."],"do":["EXIT"]}
+  "img": "entities/arbre2", 
+  "title": "Un arbre magique", 
+  "attacks": [], 
+  "illu": "illu/arbre_magique", 
+  "script": {
+    "secousse": {
+      "txt": [
+        "L'arbre dit qu'il a mal et donne une pi\u00e8ce d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO souffrance", 
+            "GIVE +3 or hero"
+          ], 
+          "txt": [
+            "Secouer encore l'arbre."
           ]
-      },
-        "mort":{
-            "txt" : "L'arbre magique est mort.",
-            "actions":[
-                {"txt":"Partir.", "do":["EXIT"]}
-            ]
+        }, 
+        {
+          "do": [
+            "GIVE -1 or hero", 
+            "EXIT", 
+            "GOTO start", 
+            "SETILLU illu/arbre_magique"
+          ], 
+          "txt": [
+            "Rendre la pi\u00e8ce, s'excuser et partir."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO secousse2"
+          ], 
+          "txt": [
+            "Partir."
+          ]
         }
+      ]
+    }, 
+    "a\u00efe": {
+      "txt": [
+        "L'arbre hurle de douleur et donne dix pi\u00e8ces d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "SETIMAGE entities/arbre_mort", 
+            "GOTO mort"
+          ], 
+          "txt": [
+            "Secouer l'arbre tr\u00e8\u00e8\u00e8\u00e8s fort."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO a\u00efe2"
+          ], 
+          "txt": [
+            "Laisser l'arbre tranquille."
+          ]
+        }
+      ]
+    }, 
+    "souffrance": {
+      "txt": [
+        "L'arbre souffre, il donne trois autre pi\u00e8ces d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO supplication", 
+            "GIVE +6 or hero"
+          ], 
+          "txt": [
+            "Secouer l'arbre encore plus fort."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO souffrance2"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "supplication2": {
+      "txt": [
+        "C'est un arbre magique qui a tr\u00e8\u00e8s mal."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO a\u00efe", 
+            "GIVE +10 or hero"
+          ], 
+          "txt": [
+            "Le secouer tr\u00e8\u00e8s fort."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Laisser l'arbre tranquille."
+          ]
+        }
+      ]
+    }, 
+    "mort": {
+      "txt": [
+        "L'arbre magique est mort."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SETILLU illu/arbre_mort"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "C'est un arbre magique."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO secousse", 
+            "GIVE +1 or hero", 
+            "SETILLU illu/arbre_magique_triste"
+          ], 
+          "txt": [
+            "Secouer l'arbre."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "supplication": {
+      "txt": [
+        "L'arbre vous supplie d'arr\u00eater... et donne six pi\u00e8ces d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO a\u00efe", 
+            "GIVE +10 or hero"
+          ], 
+          "txt": [
+            "Ne pas tenir compte de sa requ\u00eate et le secouer encore et encore."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO supplication2"
+          ], 
+          "txt": [
+            "Laisser l'arbre tranquille."
+          ]
+        }
+      ]
+    }, 
+    "a\u00efe2": {
+      "txt": [
+        "C'est un arbre magique qui a tr\u00e8\u00e8\u00e8\u00e8s mal."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "SETIMAGE entities/arbre_mort", 
+            "GOTO mort"
+          ], 
+          "txt": [
+            "Secouer l'arbre tr\u00e8\u00e8\u00e8\u00e8s fort."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Laisser l'arbre tranquille."
+          ]
+        }
+      ]
+    }, 
+    "secousses2": {
+      "txt": [
+        "C'est un arbre magique qui a mal."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO supplication", 
+            "GIVE +6 or hero"
+          ], 
+          "txt": [
+            "Secouer l'arbre assez fort."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "souffrance2": {
+      "txt": [
+        "C'est un arbre magique qui souffre."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO supplication", 
+            "GIVE +6 or hero"
+          ], 
+          "txt": [
+            "Secouer l'arbre tr\u00e8s fort."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Laisser l'arbre tranquille."
+          ]
+        }
+      ]
     }
-
+  }, 
+  "or": 15, 
+  "id": "arbre_magique"
 }

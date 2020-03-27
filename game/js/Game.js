@@ -1,112 +1,135 @@
 class Game {
 
     constructor(){
+        this.walls = assets.json.map.layers.find(l=>l.name=='walls').data;
+        this.entities = assets.json.world.entities.map(data=>new Entity(data))
+        this.hero = this.get_entity('hero');
+        this.achievments = [];
+        this.turn = 0;
+        this.interaction_entity = null;
+        this.fight_entity = null;
+
+        this.interfaces = {
+            'start' : new StartMenuInterface(),
+            'gameover' : new StartMenuInterface(),
+            //     'inventory' : new InventoryInterface(),
+            'map' : new MapInterface(),
+            'interaction' : new InteractionInterface(),
+            'fight' : new FightInterface(),
+        };
+
+        this.status_bar = new StatusBar();
+        this.inventory_bar = new InventoryBar();
+
+        this.open('start');
+
+        setInterval(()=>this.update(), 1000/TICK_PER_SEC);
+        this.pressed = [];
+        $(document).keydown((e)=>{this.onkey(e)});
+        $(document).keyup((e)=>{this.onkey(e, true)});
+    }
+
+    onkey(ev, keyup) {
+        if (ev.key in KEYS) {
+            if(keyup) this.pressed = this.pressed.filter(k=>k!=KEYS[ev.key]);
+            else if(!this.pressed.includes(KEYS[ev.key])){
+                this.pressed.unshift(KEYS[ev.key]);
+                this.get_interface().input(KEYS[ev.key]);
+            }
+            ev.preventDefault();
+        }
+    }
+
+    update() {
+        this.get_interface().input(this.pressed[0]);
+        this.get_interface().update();
+
+    }
+
+    get_entity(id){
+        return this.entities.find(e=>e.id == id);
+    }
+    
+    entity_at(x,y){
+        let e = this.entities.find((e)=>e.x==x && e.y==y)
+        return (e && !e.invisible) ? e : null;
+    }
+
+    wall_at(x,y){
+        return this.walls[pos_to_index(x, y, assets.json.map.width)];
+    }
+
+    get_interface(){
+        return this.interfaces[this.active_interface];
+    }
+    
+    open(interface_id){
+        this.active_interface = interface_id;
+        this.get_interface().create();
+    }
+
+    move_hero(x, y) {
+        let dest_x = this.hero.x + x;
+        let dest_y = this.hero.y + y;
+        this.hero.set_image('entities/hero/'+move_to_direction(x, y))
+
+        if(this.entity_at(dest_x, dest_y)){
+            this.interact(this.entity_at(dest_x, dest_y));
+        }
+        else if (!this.wall_at(dest_x, dest_y)){
+            this.turn ++;
+            this.hero.set_image('entities/hero/walk/'+this.turn%2+'/'+move_to_direction(x, y))
+            setTimeout(()=>{this.hero.set_image('entities/hero/'+move_to_direction(x, y))}, 1000/TURN_PER_SEC)
+            this.hero.x = dest_x;
+            this.hero.y = dest_y;
+        }
+    }
+
+    interact(entity){
+        this.turn ++;
+        if(entity){
+            this.interaction_entity = entity;
+        }
+
+        if(this.interaction_entity && this.interaction_entity.read_script().auto_actions){
+            this.interaction_entity.read_script().auto_actions.forEach(
+                (a)=>do_commands(this.interaction_entity, a.do));
+        }
+
+        if(this.fight_entity){
+            this.open('fight');
+        }else if(this.hero.dead){
+            this.open('gameover');
+        }else if(this.interaction_entity){
+            this.open('interaction');
+        }else{
+            this.open('map')
+        }
+    }
+}
+
+
+
+/***************************************
+****************************************
+****************************************
+****************************************
+****************************************
+****************************************
+****************************************
+****************************************
+***************************************/
+
+
+class Game_ {
+
+    constructor(){
         this.assets = new Assets(()=>{this.setup()});
         this.world = new World(this);
         this.map_interface = new MapInterface(this, 'interface-map');
         this.interaction_interface = new InteractionInterface(this, 'interface-interaction');
         this.status_bar_interface = new StatusBarInterface(this, 'status-bar');
     }
-
-    debug(command){
-        let hero = this.world.get_entity('hero');
-        if(command){
-            this.on_action([command], hero);
-        }
-        else{
-            console.log('DEBUG !');
-            console.log('-------');
-            console.log('The hero : ', hero);
-            console.log('The world : ', this.world)
-            console.log('type `debug("COMMAND")` to run a command (default entity is the hero)')    
-        }
-        
-    }
-    setup(){
-        this.world.setup();
-        this.map_interface.setup();
-        this.interaction_interface.setup();
-        this.status_bar_interface.setup();
-        this.setup_keys();
-        this.open_map();
-    }
-
-    setup_keys(){
-        this.input = {};
-        for(let k in MAP_KEYS) this.input[MAP_KEYS[k]] = false;
-        $(document).keydown((e)=>{this.onkey(e, true)});
-        $(document).keyup((e)=>{this.onkey(e, false)});
-    }
-
-    onkey(ev, pressed) {
-        if (ev.key in MAP_KEYS){
-            this.input[MAP_KEYS[ev.key]] = pressed
-            ev.preventDefault();
-        }
-            if(this.interaction_interface.visible && !pressed){
-            if(INTERACTION_KEYS[ev.key] == NEXT){
-                this.interaction_interface.on_next();
-            } else if(INTERACTION_KEYS[ev.key] == PREV){
-                this.interaction_interface.on_prev();
-            } else if(INTERACTION_KEYS[ev.key] == SUBMIT){
-                this.interaction_interface.on_submit();
-            }
-       }
-    }
-
-    on_tick(){
-
-        let now = Date.now();
-        let turn_moment = (now-this.last_turn)/(1000/TURN_PER_SEC)
-        this.action = undefined;
-        for(let act in this.input){
-            if (this.input[act]) this.last_input_action = this.action = Number(act);
-        }
-        if(turn_moment>1){
-            this.last_turn = now;
-            if (this.action === undefined && this.last_action_played !== this.last_input_action){
-                this.action = this.last_input_action;
-            }
-            this.on_turn(this.action);
-            this.last_action_played = this.action;
-            this.last_input_action = undefined;
-        }
-        this.map_interface.update(turn_moment);
-        // console.log(Date.now()-now);
-    }
-
-    on_turn(action){
-        
-        if([NORTH,EAST,SOUTH,WEST].includes(action)){
-            let hero_move_on = this.world.move_hero(action);
-            if(hero_move_on){
-                this.open_interaction(hero_move_on);
-            }
-        }
-        this.status_bar_interface.update();
-    }
-
-    open_interaction(entity){
-                console.log('OPEN INTERACTION');
-
-        this.map_interface.hide();
-        this.interaction_interface.show();
-        clearInterval(this.tick_interval);
-        this.interaction_interface.open_interaction(entity, (action)=>{
-            console.log('ACTIONS');
-            this.on_action(action, entity);
-            this.on_interaction_turn(entity);
-        });
-        this.on_interaction_turn(entity);
-    }
-
-    open_map(){
-        this.map_interface.show();
-        this.interaction_interface.hide();
-        this.tick_interval = setInterval(()=>this.on_tick(), 1000/TICK_PER_SEC);
-        this.last_turn = Date.now();
-    }
-
 
     on_interaction_turn_fight(entity){
         let hero = this.world.hero;
@@ -164,15 +187,6 @@ class Game {
 
     }
 
-    on_interaction_turn_gameover(entity){
-        return {
-                title:'Game over..',
-                txt:'Vous avez perdu !',
-                actions:[]
-            }
-    }
-
-
     on_interaction_turn(entity){
         if(!this.interaction_interface.visible) return;
         let moment;
@@ -191,26 +205,5 @@ class Game {
         this.status_bar_interface.update();
     }
 
-    game_over(){
-        this.game_is_over = true;
-        console.log("game_over")
-        this.map_interface.hide();
-        this.interaction_interface.show();
-        clearInterval(this.tick_interval);
-    }
-    on_action(action, entity){
-        console.log('action:', action);
-        if(this.world.hero.fighting){
-            this.world.hero.next_attack=action;
-        }
-        let exit = false;
-        if(action.do.every((c)=>doable_command(this, entity, c))){
-            console.log('doable : TRUE')
-            action.do.forEach((todo)=>{
-                // if(todo.startsWith('EXIT')) this.open_map;
-                do_command(this, entity, todo);
-            });
-        }
-        else console.log('doable : FALSE')
-    }
+
 }
