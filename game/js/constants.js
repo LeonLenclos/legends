@@ -1,5 +1,7 @@
 const images_dir = "img/";
 
+const ALLOW_DEV_MODE = true;
+
 const PATH = {
     'world' : 'script/world.json',
     'script' : 'script/',

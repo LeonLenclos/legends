@@ -1,7 +1,8 @@
 {
     "misc":{
         "ok":"Ok.",
-        "infos":"<p>Legends est un jeu de Louis et Léon.</p><p>Coucou</p>"
+        "stories":"Retournez voir le vieil homme quand vous aurez 100 histoires à lui raconter.<br/> Histoires à raconter : %(stories)s/100",
+        "infos":"<p>Legends est un jeu créé par Louis Pezet et Léon Lenclos en 2020.</p><p>[En développement]</p>"
     },
     "fight":{
         "title": "Combat contre %(target)s",
@@ -12,12 +13,13 @@
     "status":{
         "pv": "PV",
         "or": "Or",
-        "achievments": "Histoires",
+        "stories": "Histoires",
         "turn": "Tour"
     },
     "startmenu":{
         "title": "Legends",
         "txt": "Devenez une légende !",
-        "play": "Jouer !"
+        "play": "Jouer !",
+        "devmode": "Dev mode"
     }
 }

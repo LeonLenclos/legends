@@ -18,18 +18,23 @@ html, body {
 body {
     color: white;
     background: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
-
 
 #game{
   width: 960px;
   height: 600px;
+  /*  
 	position: absolute;
 	top:0;
 	bottom: 0;
 	left: 0;
 	right: 0;
 	margin: auto;
+*/
     border: 2px solid white;
     box-sizing: content-box;
 
@@ -44,23 +49,47 @@ body {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: space-between;
-    align-items: flex-end;
-}
-
-#infos img{
+    justify-content: space-evenly;
+    height: 120px;
     
 }
+
+
 #infos> * {
-    margin: 10px;
-}
-#infos> *:first-child{
+    margin: auto;
+    padding: 0;
     width:100%;
+    
 }
 
 #illu img{
     width: 100%;
     height: 100%;
+}
+
+#stories_list {
+    height: 480px;
+    display: flex;
+    flex-direction: column;
+    margin:5px;
+}
+
+#stories_list_element{
+    
+    margin:5px;
+    
+}
+#stories_list_element_title{
+    background: white;
+    color:black;
+    padding: 0 4px;
+}
+
+#stories_text{
+    padding: 25px 15px;
+    text-align: center;
+        border-top: 2px solid white;
+
 }
 /***********MENU**********/
 
@@ -221,4 +250,29 @@ body {
 #inventory_bar .inventory_element {
     background: lightgray;
     color:#000; 
+}
+
+/************* DEV ************/
+
+
+#devbox, #inventorybox {
+    width: 960px;
+    border:2px solid white;
+    padding: 2px;
+    text-align: center;
+}
+
+input {
+    border: 2px solid white;
+    margin: 2px;
+    height: 28px;
+}
+
+select {
+    width: 14px;
+    height: 14px;
+    border: 7px solid black;
+    border-top: 7px solid white;
+    margin:0;
+    padding: 0;
 }

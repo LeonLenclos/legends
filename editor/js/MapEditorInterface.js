@@ -1,11 +1,9 @@
 
-class MapEditorInterface extends MapInterface {
+class MapEditorInterface extends MapCanvas {
 
     on_setup(){
         this.layers = [];
 
-        this.canvas = $('#map').get(0);
-        this.ctx = this.canvas.getContext("2d");
         this.data = this.assets.json.map
         this.tileset = this.assets.png.tileset;
         this.ready=true;
@@ -20,6 +18,13 @@ class MapEditorInterface extends MapInterface {
         // $('#map').addEventListener("mousedown", clicked, false);
     }
 
+    setup(){
+        return
+    }
+
+    show(){
+        this.render();
+    }
     on_resize(){
         return;
     }
@@ -42,19 +47,16 @@ class MapEditorInterface extends MapInterface {
 
     }
     resize(scale){
-        this.scale = scale;
-        this.on_resize();
-        this.canvas.width = this.display_width*TILE_SIZE*this.scale;
-        this.canvas.height = this.display_height*TILE_SIZE*this.scale;
-        this.update();
-
-
+        this.ctx.canvas.width = VIEW_PX_WIDTH*scale;
+        this.ctx.canvas.height = VIEW_PX_HEIGHT*scale;
+        this.ctx.imageSmoothingEnabled = false;        
     }
+
     is_visible(x, y){
         return true;
     }
 
-    update(turn_moment){
+    update(entities){
         this.offset_x = 0
         this.offset_y = 0
         let ctx_cache = this.ctx.canvas.cloneNode().getContext("2d");
@@ -64,9 +66,9 @@ class MapEditorInterface extends MapInterface {
             this.map_ctx = this.ctx.canvas.cloneNode().getContext("2d");
             this.render_layers(this.map_ctx);
         }
-        ctx_cache.drawImage(this.map_ctx.canvas, 0, 0, this.canvas.width, this.canvas.height);
+        ctx_cache.drawImage(this.map_ctx.canvas, 0, 0, this.element.width, this.element.height);
 
-        this.render_entities(this.world.entities, ctx_cache)
+        this.render_entities(entities, ctx_cache)
         ctx_cache.strokeStyle = "red";
         let s = TILE_SIZE*this.scale;
 

@@ -70,6 +70,8 @@ class Assets {
         })
     }
 }
+
+
 function base64Encode(str) {
         var CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
         var out = "", i = 0, len = str.length, c1, c2, c3;

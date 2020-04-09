@@ -1,6 +1,7 @@
 {
   "pv_max": 25, 
   "pv": 20, 
+  "direction":"down",
   "img": "entities/hero/down", 
   "script": {}, 
   "attacks": [

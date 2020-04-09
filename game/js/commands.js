@@ -130,6 +130,39 @@ const commands = {
         },
         doable:(e, a)=>true
     },
+    STORY:{
+        doc:"Ajoute une histoire à raconter à la liste",
+        usage:'STORY story_id',
+        do:(e, a)=>{
+            let id = a[0];
+            if(!game.strories.includes(a))
+                game.strories.push(a);
+        },
+        doable:(e, a)=>true
+    },
+    STORYDONE:{
+        doc:"Verifier si une histoire est réalisé",
+        usage:'STORYDONE story_id',
+        do:(e, a)=>{return;},
+        doable:(e, a)=>game.strories.includes(a)
+    },
+    COMPARESTORIES:{
+        doc:"Compare le nombre d'histoires réalisées à une valeur",
+        usage:'COMPARESTORIES operator value',
+        do:(e, a)=>{
+            let operator = a[0];
+            let v = a[1];
+
+            if (operator == '<') return game.strories.length < v;
+            if (operator == '<=') return game.strories.length <= v;
+            if (operator == '>') return game.strories.length > v;
+            if (operator == '>=') return game.strories.length >= v;
+            if (operator == '=') return game.strories.length == v;
+            if (operator == '!=') return game.strories.length != v;
+
+        },
+        doable:(e, a)=>true
+    },
     COMPARE:{
         doc:"Comparer les valeurs de deux attributs (opérateurs disponnibles : < > = <= >= != )",
         usage:'COMPARE attribut [entity] operator attribut [entity]',

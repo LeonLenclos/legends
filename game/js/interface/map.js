@@ -4,14 +4,13 @@ class MapInterface extends Interface {
 
     constructor(){
         super('map');
+
         this.map_canvas = new MapCanvas();
         this.map_canvas.resize(960,480);
-
 
         this.mouse_is_down = false;
         this.mouse_x = 0;
         this.mouse_y = 0;
-
     }
 
     create_content(){
@@ -33,10 +32,21 @@ class MapInterface extends Interface {
         if(this.mouse_is_down){
             this.input(pos_to_direction(this.mouse_x, this.mouse_y, this.map_canvas.ctx.canvas.width, this.map_canvas.ctx.canvas.height));
         }
+
+        let hero_image = 'entities/hero/'
+        if(game.hero.superman) hero_image += 'superman/';
+        else if (game.hero.walking) hero_image += 'walk/'+game.turn%2+'/';
+        hero_image += game.hero.direction;
+        game.hero.set_image(hero_image);
+
         this.map_canvas.render()
 
         game.inventory_bar.update();
         game.status_bar.update();
+    }
+
+    on_ok(){
+        game.open('stories');
     }
 
     on_up(){

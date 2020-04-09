@@ -3,7 +3,8 @@ class Entity {
     constructor(data){
         
         Object.assign(this, assets.json[data.extra_data], data)
-
+        this.native_data = data;
+        this.native_extra_data = data.extra_data;
         this.set_image(this.img)
         this.set_illu(this.illu)
         this.pv_max = this.pv_max || this.pv;
@@ -16,7 +17,6 @@ class Entity {
                 });
             }
         }
-
     }
 
     set_image(img){

@@ -13,7 +13,7 @@ class InventoryElement {
 
     update(new_value, animation){
         if (this.value.text() !== String(new_value)) {
-            this.value.html(new_value);
+            this.value.html(String(new_value));
             animation && animation(this.element);
         }
     }
@@ -95,8 +95,8 @@ class StatusBar {
         this.pv.element.appendTo(this.element);
         this.or = new InventoryElement('or', txt.or);
         this.or.element.appendTo(this.element);
-        this.achievments = new InventoryElement('achievments', txt.achievments);
-        this.achievments.element.appendTo(this.element);
+        this.stories = new InventoryElement('stories', txt.stories);
+        this.stories.element.appendTo(this.element);
         this.turn = new InventoryElement('turn', txt.turn);
         this.turn.element.appendTo(this.element);
     }
@@ -107,7 +107,7 @@ class StatusBar {
             element.animate({backgroundColor:'gray'}, Math.floor(1000/TURN_PER_SEC *0.2));
             element.animate({backgroundColor:'black'}, Math.floor(1000/TURN_PER_SEC *0.8));
         });
-        this.achievments.update(game.achievments.length + '/100', (element)=>{
+        this.stories.update(game.stories.length + '/100', (element)=>{
             element.animate({backgroundColor:'gray'}, Math.floor(1000/TURN_PER_SEC *0.2));
             element.animate({backgroundColor:'black'}, Math.floor(1000/TURN_PER_SEC *0.8));
         });
@@ -116,29 +116,3 @@ class StatusBar {
 }
 
 
-class InventoryInterface extends Interface {
-
-    on_setup(){
-        this.status_bar_infos = this.assets.json.status_bar_infos;
-    }
-
-    update(){
-        let html = ""
-        this.status_bar_infos.forEach((info)=>{
-            if(this.world.hero[info.name]){
-                html += this.create_info(info.title, this.world.hero[info.name])
-            }
-        });
-        this.set_status_bar(html);
-    }
-
-    create_info(title, value){
-        return '<div class="status-info"><span class="status-info-title">'+title+' : </span>'+value+'</div>';
-    }
-
-    set_status_bar(html){
-        if (this.container.html() != html) {
-            this.container.html(html)
-        }
-    }
-}

@@ -1,99 +1,34 @@
 {
   "entities": [
     {
-      "y": 33, 
-      "x": 50, 
-      "extra_data": "entities/hero"
+      "y": 20, 
+      "x": 116, 
+      "extra_data": "entities/z1/carotte"
     }, 
     {
-      "y": 35, 
-      "x": 57, 
-      "extra_data": "entities/z0/bucheron"
+      "y": 20, 
+      "x": 117, 
+      "extra_data": "entities/z1/carotte"
     }, 
     {
-      "y": 30, 
-      "x": 48, 
-      "extra_data": "entities/z0/maison_parents"
+      "y": 21, 
+      "x": 116, 
+      "extra_data": "entities/z1/carotte"
     }, 
     {
-      "y": 25, 
-      "x": 54, 
-      "extra_data": "entities/arbre", 
-      "img": "entities/arbre2"
+      "y": 21, 
+      "x": 117, 
+      "extra_data": "entities/z1/carotte"
     }, 
     {
-      "y": 227, 
-      "x": 107, 
-      "extra_data": "entities/arbre"
+      "y": 22, 
+      "x": 116, 
+      "extra_data": "entities/z1/carotte"
     }, 
     {
-      "y": 232, 
-      "x": 107, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 238, 
-      "x": 94, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 238, 
-      "x": 92, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 238, 
-      "x": 90, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 236, 
-      "x": 90, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 25, 
-      "x": 58, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 25, 
-      "x": 45, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 29, 
-      "x": 60, 
-      "extra_data": "entities/arbre", 
-      "img": "entities/arbre2"
-    }, 
-    {
-      "y": 27, 
-      "x": 57, 
-      "extra_data": "entities/arbre", 
-      "img": "entities/arbre2"
-    }, 
-    {
-      "y": 24, 
-      "x": 55, 
-      "extra_data": "entities/arbre"
-    }, 
-    {
-      "y": 37, 
-      "x": 58, 
-      "extra_data": "entities/z0/arbre_magique", 
-      "img": "entities/arbre2"
-    }, 
-    {
-      "y": 42, 
-      "x": 57, 
-      "extra_data": "entities/z0/bateau", 
-      "img": "entities/bateau"
-    }, 
-    {
-      "y": 31, 
-      "x": 57, 
-      "extra_data": "entities/z0/tas_de_bois"
+      "y": 22, 
+      "x": 117, 
+      "extra_data": "entities/z1/carotte"
     }, 
     {
       "y": 23, 
@@ -121,89 +56,109 @@
       "extra_data": "entities/z1/lola"
     }, 
     {
-      "y": 92, 
-      "x": 120, 
-      "extra_data": "entities/z1/cabanon_bucheron"
+      "y": 24, 
+      "x": 55, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 20, 
-      "x": 116, 
-      "extra_data": "entities/z1/carotte"
+      "y": 24, 
+      "x": 45, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 20, 
-      "x": 117, 
-      "extra_data": "entities/z1/carotte"
+      "y": 25, 
+      "x": 54, 
+      "extra_data": "entities/arbre", 
+      "img": "entities/arbre2"
     }, 
     {
-      "y": 21, 
-      "x": 116, 
-      "extra_data": "entities/z1/carotte"
+      "y": 25, 
+      "x": 58, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 21, 
-      "x": 117, 
-      "extra_data": "entities/z1/carotte"
+      "y": 25, 
+      "x": 104, 
+      "extra_data": "entities/z1/ne_pas_pietiner"
     }, 
     {
-      "y": 22, 
-      "x": 116, 
-      "extra_data": "entities/z1/carotte"
+      "y": 27, 
+      "x": 57, 
+      "extra_data": "entities/arbre", 
+      "img": "entities/arbre2"
     }, 
     {
-      "y": 22, 
-      "x": 117, 
-      "extra_data": "entities/z1/carotte"
+      "y": 29, 
+      "x": 60, 
+      "extra_data": "entities/arbre", 
+      "img": "entities/arbre2"
     }, 
     {
-      "y": 86, 
-      "x": 80, 
-      "extra_data": "entities/z1/hotel"
+      "y": 30, 
+      "x": 48, 
+      "extra_data": "entities/z0/maison_parents"
     }, 
     {
-      "y": 77, 
-      "x": 84, 
-      "extra_data": "entities/z1/hotel_de_luxe"
+      "y": 31, 
+      "x": 57, 
+      "extra_data": "entities/z0/tas_de_bois"
     }, 
     {
-      "y": 119, 
-      "x": 190, 
-      "extra_data": "entities/z2/troll"
+      "y": 35, 
+      "x": 57, 
+      "extra_data": "entities/z0/bucheron"
     }, 
     {
-      "y": 93, 
-      "x": 148, 
-      "extra_data": "entities/z2/troll"
+      "y": 37, 
+      "x": 58, 
+      "extra_data": "entities/z0/arbre_magique", 
+      "img": "entities/arbre2"
     }, 
     {
-      "y": 59, 
-      "x": 116, 
-      "extra_data": "entities/z1/diablo"
-    }, 
-    {
-      "y": 72, 
-      "x": 146, 
-      "extra_data": "entities/z1/policier"
+      "y": 33, 
+      "x": 50, 
+      "extra_data": "entities/hero"
     }, 
     {
       "y": 39, 
       "x": 50, 
-      "extra_data": "entities/z0/portail_D"
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 65, 
-      "x": 112, 
-      "extra_data": "entities/z1/tas_d_or"
+      "y": 40, 
+      "x": 89, 
+      "extra_data": "entities/z1/enfant"
     }, 
     {
-      "y": 66, 
-      "x": 97, 
-      "extra_data": "entities/z1/piece_or"
+      "y": 42, 
+      "x": 57, 
+      "extra_data": "entities/z0/bateau", 
+      "img": "entities/bateau"
     }, 
     {
-      "y": 55, 
-      "x": 107, 
+      "y": 46, 
+      "x": 102, 
+      "extra_data": "entities/z1/enclos_cochon"
+    }, 
+    {
+      "y": 46, 
+      "x": 101, 
+      "extra_data": "entities/z1/enclos_cochon"
+    }, 
+    {
+      "y": 50, 
+      "x": 105, 
       "extra_data": "entities/z1/cochon"
+    }, 
+    {
+      "y": 52, 
+      "x": 83, 
+      "extra_data": "entities/z1/ballon"
+    }, 
+    {
+      "y": 53, 
+      "x": 136, 
+      "extra_data": "entities/z1/richelieu"
     }, 
     {
       "y": 54, 
@@ -211,8 +166,8 @@
       "extra_data": "entities/z1/cochon2"
     }, 
     {
-      "y": 50, 
-      "x": 105, 
+      "y": 55, 
+      "x": 107, 
       "extra_data": "entities/z1/cochon"
     }, 
     {
@@ -226,6 +181,11 @@
       "extra_data": "entities/z1/enclos_cochon"
     }, 
     {
+      "y": 59, 
+      "x": 116, 
+      "extra_data": "entities/z1/diablo"
+    }, 
+    {
       "y": 60, 
       "x": 105, 
       "extra_data": "entities/z1/enclos_cochon"
@@ -236,9 +196,19 @@
       "extra_data": "entities/z1/enclos_cochon"
     }, 
     {
-      "y": 76, 
-      "x": 137, 
-      "extra_data": "entities/z2/panneau_entree_foret"
+      "y": 61, 
+      "x": 132, 
+      "extra_data": "entities/z1/entree_richelieu"
+    }, 
+    {
+      "y": 65, 
+      "x": 112, 
+      "extra_data": "entities/z1/tas_d_or"
+    }, 
+    {
+      "y": 66, 
+      "x": 97, 
+      "extra_data": "entities/z1/piece_or"
     }, 
     {
       "y": 67, 
@@ -246,9 +216,66 @@
       "extra_data": "entities/z1/panneau_d_info"
     }, 
     {
-      "y": 110, 
-      "x": 109, 
-      "extra_data": "entities/z1/diablo2"
+      "y": 67, 
+      "x": 129, 
+      "extra_data": "entities/z1/boutique_armement_fred"
+    }, 
+    {
+      "y": 69, 
+      "x": 22, 
+      "extra_data": "entities/z1/canap"
+    }, 
+    {
+      "y": 70, 
+      "x": 23, 
+      "extra_data": "entities/z1/fille_de_richelieu", 
+      "id": "fille_de_richelieu_bad_trip", 
+      "interaction_state": "bad_trip"
+    }, 
+    {
+      "y": 71, 
+      "x": 145, 
+      "extra_data": "entities/z1/commissariat"
+    }, 
+    {
+      "y": 72, 
+      "x": 146, 
+      "extra_data": "entities/z1/policier"
+    }, 
+    {
+      "y": 76, 
+      "x": 137, 
+      "extra_data": "entities/z2/panneau_entree_foret"
+    }, 
+    {
+      "y": 77, 
+      "x": 84, 
+      "extra_data": "entities/z1/hotel_de_luxe"
+    }, 
+    {
+      "y": 86, 
+      "x": 80, 
+      "extra_data": "entities/z1/hotel"
+    }, 
+    {
+      "y": 92, 
+      "x": 120, 
+      "extra_data": "entities/z1/cabanon_bucheron"
+    }, 
+    {
+      "y": 93, 
+      "x": 148, 
+      "extra_data": "entities/z2/troll"
+    }, 
+    {
+      "y": 106, 
+      "x": 177, 
+      "extra_data": "entities/z2/grand_troll"
+    }, 
+    {
+      "y": 107, 
+      "x": 104, 
+      "extra_data": "entities/z1/canap"
     }, 
     {
       "y": 108, 
@@ -261,61 +288,14 @@
       "extra_data": "entities/z1/diablo3"
     }, 
     {
-      "y": 107, 
-      "x": 104, 
-      "extra_data": "entities/z1/canap"
+      "y": 109, 
+      "x": 182, 
+      "extra_data": "entities/z2/baies"
     }, 
     {
-      "y": 70, 
-      "x": 23, 
-      "extra_data": "entities/z1/fille_de_richelieu", 
-      "id": "fille_de_richelieu_bad_trip", 
-      "interaction_state": "bad_trip"
-    }, 
-    {
-      "y": 69, 
-      "x": 22, 
-      "extra_data": "entities/z1/canap"
-    }, 
-    {
-      "y": 71, 
-      "x": 145, 
-      "extra_data": "entities/z1/commissariat"
-    }, 
-    {
-      "y": 61, 
-      "x": 132, 
-      "extra_data": "entities/z1/entree_richelieu"
-    }, 
-    {
-      "y": 53, 
-      "x": 136, 
-      "extra_data": "entities/z1/richelieu"
-    }, 
-    {
-      "y": 117, 
-      "x": 146, 
-      "extra_data": "entities/z1/demitour"
-    }, 
-    {
-      "y": 67, 
-      "x": 129, 
-      "extra_data": "entities/z1/boutique_armement_fred"
-    }, 
-    {
-      "y": 25, 
-      "x": 104, 
-      "extra_data": "entities/z1/ne_pas_pietiner"
-    }, 
-    {
-      "y": 46, 
-      "x": 102, 
-      "extra_data": "entities/z1/enclos_cochon"
-    }, 
-    {
-      "y": 46, 
-      "x": 101, 
-      "extra_data": "entities/z1/enclos_cochon"
+      "y": 110, 
+      "x": 109, 
+      "extra_data": "entities/z1/diablo2"
     }, 
     {
       "y": 113, 
@@ -323,9 +303,24 @@
       "extra_data": "entities/z2/flic1"
     }, 
     {
-      "y": 125, 
-      "x": 129, 
-      "extra_data": "entities/z2/sorciere"
+      "y": 114, 
+      "x": 176, 
+      "extra_data": "entities/z2/seau"
+    }, 
+    {
+      "y": 117, 
+      "x": 146, 
+      "extra_data": "entities/z1/demitour"
+    }, 
+    {
+      "y": 119, 
+      "x": 190, 
+      "extra_data": "entities/z2/troll"
+    }, 
+    {
+      "y": 119, 
+      "x": 181, 
+      "extra_data": "entities/z2/baies"
     }, 
     {
       "y": 122, 
@@ -334,12 +329,72 @@
     }, 
     {
       "y": 125, 
+      "x": 129, 
+      "extra_data": "entities/z2/sorciere"
+    }, 
+    {
+      "y": 125, 
       "x": 131, 
       "extra_data": "entities/z2/sorciere"
     }, 
     {
+      "y": 132, 
+      "x": 180, 
+      "extra_data": "entities/z2/baies"
+    }, 
+    {
+      "y": 134, 
+      "x": 187, 
+      "extra_data": "entities/z2/baies"
+    }, 
+    {
+      "y": 136, 
+      "x": 183, 
+      "extra_data": "entities/z2/baies"
+    }, 
+    {
       "y": 148, 
       "x": 159, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 150, 
+      "x": 136, 
+      "extra_data": "entities/z2/flic2"
+    }, 
+    {
+      "y": 151, 
+      "x": 136, 
+      "extra_data": "entities/z2/troll3"
+    }, 
+    {
+      "y": 211, 
+      "x": 210, 
+      "extra_data": "entities/z4/atk_macaque"
+    }, 
+    {
+      "y": 211, 
+      "x": 211, 
+      "extra_data": "entities/z4/atk_macaque"
+    }, 
+    {
+      "y": 212, 
+      "x": 210, 
+      "extra_data": "entities/z4/macaque"
+    }, 
+    {
+      "y": 212, 
+      "x": 211, 
+      "extra_data": "entities/z4/atk_macaque"
+    }, 
+    {
+      "y": 227, 
+      "x": 107, 
+      "extra_data": "entities/arbre"
+    }, 
+    {
+      "y": 232, 
+      "x": 107, 
       "extra_data": "entities/arbre"
     }, 
     {
@@ -353,59 +408,34 @@
       "extra_data": "entities/z0/bateau"
     }, 
     {
-      "y": 134, 
-      "x": 187, 
-      "extra_data": "entities/z2/baies"
+      "y": 236, 
+      "x": 90, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 109, 
-      "x": 182, 
-      "extra_data": "entities/z2/baies"
+      "y": 238, 
+      "x": 94, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 119, 
-      "x": 181, 
-      "extra_data": "entities/z2/baies"
+      "y": 238, 
+      "x": 92, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 136, 
-      "x": 183, 
-      "extra_data": "entities/z2/baies"
+      "y": 238, 
+      "x": 90, 
+      "extra_data": "entities/arbre"
     }, 
     {
-      "y": 132, 
-      "x": 180, 
-      "extra_data": "entities/z2/baies"
+      "y": 263, 
+      "x": 224, 
+      "extra_data": "entities/z4/atk_macaque"
     }, 
     {
-      "y": 114, 
-      "x": 176, 
-      "extra_data": "entities/z2/seau"
-    }, 
-    {
-      "y": 106, 
-      "x": 177, 
-      "extra_data": "entities/z2/grand_troll"
-    }, 
-    {
-      "y": 40, 
-      "x": 89, 
-      "extra_data": "entities/z1/enfant"
-    }, 
-    {
-      "y": 52, 
-      "x": 83, 
-      "extra_data": "entities/z1/ballon"
-    }, 
-    {
-      "y": 267, 
-      "x": 282, 
-      "extra_data": "entities/z4/sblurg"
-    }, 
-    {
-      "y": 212, 
-      "x": 210, 
-      "extra_data": "entities/z4/macaque"
+      "y": 263, 
+      "x": 224, 
+      "extra_data": "entities/z4/atk_macaque"
     }, 
     {
       "y": 264, 
@@ -413,39 +443,9 @@
       "extra_data": "entities/z4/macaque"
     }, 
     {
-      "y": 211, 
-      "x": 210, 
-      "extra_data": "entities/z4/atk_macaque"
-    }, 
-    {
-      "y": 211, 
-      "x": 211, 
-      "extra_data": "entities/z4/atk_macaque"
-    }, 
-    {
-      "y": 263, 
-      "x": 224, 
-      "extra_data": "entities/z4/atk_macaque"
-    }, 
-    {
-      "y": 212, 
-      "x": 211, 
-      "extra_data": "entities/z4/atk_macaque"
-    }, 
-    {
-      "y": 263, 
-      "x": 224, 
-      "extra_data": "entities/z4/atk_macaque"
-    }, 
-    {
-      "y": 150, 
-      "x": 136, 
-      "extra_data": "entities/z2/flic2"
-    }, 
-    {
-      "y": 151, 
-      "x": 136, 
-      "extra_data": "entities/z2/troll3"
+      "y": 267, 
+      "x": 282, 
+      "extra_data": "entities/z4/sblurg"
     }
   ]
 }

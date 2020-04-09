@@ -1,38 +1,7 @@
-class Interface {
-    constructor(interface_id){
-        this.id = interface_id;
-        this.busy = false;
-        $(window).resize(()=> this.on_resize && this.on_resize());
-    }
-
-    create(){
-            
-        $('#game').empty();
-        this.container = $('<div>');
-        this.container.attr('id', this.id);
-        this.container.addClass('interface');
-        this.container.appendTo($('#game'));
-        this.create_content();
-
-    }
-
-    input(action){
-        if(this['on_'+action] && !this.busy){
-            this.busy = true;
-            setTimeout(()=>{this.busy=false}, 1000/TURN_PER_SEC);
-            this['on_'+action]();
-        }
-    }
-
-    update(){
-        this.update_content && this.update_content();
-    }
-}
-
 class ButtonMenu {
-    constructor(text, on_click, disabled){
+    constructor(text, doo, disabled){
         this.disabled = disabled;
-        this.on_click = on_click;
+        this.do = doo;
         this.element = $('<button/>', {class:'button'})
         .html(text)
         .attr("disabled","disabled")
@@ -40,11 +9,19 @@ class ButtonMenu {
 
     }
 
+    // do(force){
+    //     if(game.request_turn() || force) this.on_click();
+    // }
+
     show(){
+        this.shown = true;
         this.element.css('visibility', 'visible');
         if(!this.disabled) {
             this.element.removeAttr('disabled');
-            this.element.click(this.on_click);
+            this.element.click(()=>{
+                if(game.request_turn()) this.do();
+            }
+            );
         }
     }
 
@@ -53,6 +30,7 @@ class ButtonMenu {
         else this.element.removeClass('selected');
     }
 }
+
 class InterfaceMenu extends Interface{
 
     constructor(interface_id){
@@ -131,7 +109,8 @@ class InterfaceMenu extends Interface{
     }
 
     on_ok(){
-        $('.button').eq(this.selected).trigger('click');
+        if(this.options[this.selected].shown && !this.options[this.selected].disabled)
+            this.options[this.selected].do();
     }
 
 }

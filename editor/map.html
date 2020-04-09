@@ -10,15 +10,13 @@
         <script type="text/javascript" src="/editor/js/editor.js"></script>
 
     <script type="text/javascript" src="/game/js/constants.js"></script>
+    <script type="text/javascript" src="/game/js/utils.js"></script>
     <script type="text/javascript" src="/game/js/commands.js"></script>
 
     <script type="text/javascript" src="/game/js/Assets.js"></script>
-    <script type="text/javascript" src="/game/js/Interface.js"></script>
-    <script type="text/javascript" src="/game/js/MapInterface.js"></script>
-    <script type="text/javascript" src="/game/js/InteractionInterface.js"></script>
-    <script type="text/javascript" src="/game/js/StatusBarInterface.js"></script>
+    <script type="text/javascript" src="/game/js/interface/interface.js"></script>
+    <script type="text/javascript" src="/game/js/interface/map.js"></script>
     <script type="text/javascript" src="/game/js/Entity.js"></script>
-    <script type="text/javascript" src="/game/js/World.js"></script>
     <script type="text/javascript" src="/game/js/Game.js"></script>
     <script type="text/javascript" src="/editor/js/MapEditorInterface.js"></script>
 
@@ -28,6 +26,8 @@
 
 "use strict";
 $.ajaxSetup({cache: false});
+let assets;
+
 $(document).ready(()=>{
     class MapEditor{
         constructor(){
@@ -45,17 +45,16 @@ $(document).ready(()=>{
             $('#save').click(()=>{this.save()});
             $('#delete').click(()=>{this.delete()});
 
-            this.load()
             this.selected_entity = undefined;
-        }
 
-        load(){
-            this.loading = true;
-            this.assets = new Assets(()=>{this.setup()});
-            this.world = new World(this);
             this.map_interface = new MapEditorInterface(this, 'interface-map');
             this.map_interface.on_select = (x,y)=>{this.on_select(x,y)};
             $('.zoom-button').click((e)=>{this.map_interface.resize(Number(e.target.dataset.zoom))});
+
+            this.world_data = assets.json.world.entities;
+            this.map_interface.update(this.world_data);
+            this.update_list();
+            this.loading = false;
 
         }
 
@@ -77,16 +76,6 @@ $(document).ready(()=>{
             this.map_interface.select(x,y);
         }
 
-        setup(){
-            this.world.setup();
-            this.map_interface.setup();
-            this.map_interface.show();
-            this.map_interface.update();
-            this.world_data = this.assets.json.world.entities;
-            this.update_list();
-            this.loading = false;
-
-        }
 
         update_editor_link(){
             console.log('yo ')
@@ -190,23 +179,7 @@ $(document).ready(()=>{
         }
 
         write(){
-            $.ajax({
-            type: "POST",
-            url: "/set_json",
-            data: JSON.stringify({
-                path:"game/assets/json/world.json",
-                data:{entities:this.world_data}
-            })  ,
-            // contentType: "application/json; charset=utf-8",
-            // dataType: "json",
-            success: (data)=>{
-                this.load();
-                alert(data);},
-            error: function(errMsg) {
-                console.log('error!', errMsg)
-                alert('Error!   ');
-            }
-            });
+
         }
 
 
@@ -285,8 +258,13 @@ $(document).ready(()=>{
             this.assets.world
         }
     }
+    
 
-    new MapEditor();
+    assets = new Assets(()=>{
+        new MapEditor();
+    });
+
+    
 });
 
 </script>

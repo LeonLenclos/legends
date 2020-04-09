@@ -5,6 +5,10 @@
 $.fn.typewrite = function(html, delay, callback) {
     let element = this;
     let parsed = $.parseHTML(html);
+
+    // let chars = parsed.reduce((acumulator, node)=>acumulator + node.textContent.length);
+    // let delay = duration/chars;
+
     let node_index = 0;
     let char_index = 0;
 
