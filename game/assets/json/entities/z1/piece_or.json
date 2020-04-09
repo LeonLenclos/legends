@@ -1,14 +1,34 @@
 {
-    "id":"piece",
-    "title":"Une pièce d'or",
-    "script" : {
-        "start":{
-
-           "txt" : "Une pièce d'or par terre.",
-            "actions":[
-              {"txt":"Ramasser la pièce.", "do":["GIVE +1 or hero","SET 1 invisible","EXIT"]},
-              {"txt":"Laisser la pièce par terre.", "do":["EXIT"]}
-            ]
-          }
+  "attacks": [], 
+  "illu": "illu/piece_or", 
+  "title": "Une pi\u00e8ce d'or", 
+  "id": "piece", 
+  "script": {
+    "start": {
+      "txt": [
+        "Une pi\u00e8ce d'or par terre."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +1 or hero", 
+            "SET 1 invisible", 
+            "EXIT"
+          ], 
+          "txt": [
+            "Ramasser la pi\u00e8ce."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Laisser la pi\u00e8ce par terre."
+          ]
         }
+      ]
     }
+  }
+}
