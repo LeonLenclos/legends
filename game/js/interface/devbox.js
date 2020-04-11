@@ -232,7 +232,7 @@ class InventoryBox {
 
         $('#inventorybox input').each((i, e)=>{
             console.log(e);
-            game.hero[$(e).data('inventory_element_id')]=$(e).val();
+            game.hero[$(e).data('inventory_element_id')]=Number($(e).val());
         })
         this.close();
     }
