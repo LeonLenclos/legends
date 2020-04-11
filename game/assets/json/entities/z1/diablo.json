@@ -1,75 +1,274 @@
 {
-    "id":"diablo",
-    "img":"entities/diablo2",
-    "title":"Un diablo.",
-    "script" : {
-        "start":{
-          "auto_actions":[
-            {"do":["COMPARE info_enlevement hero > 0","GOTO soupcons"]}
-          ],
-           "txt" : "\"Tu cherches quelque chose petit?\"",
-            "actions":[
-              {"txt":"Oui.", "do":["GOTO vente"]},
-              {"txt":"Non rien du tout.", "do":["EXIT"]}
-            ]
-          },
-        "vente":{
-                 "txt" : "\"J'ai quelques trucs sous le manteau si ça t'intéresse.\"",
-                  "actions":[
-                    {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO cigarette"]},
-                    {"txt":"Livre d'apprentissage de langue Trolle: 100 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -100 or hero","GOTO autre_chose"]},
-                    {"txt":"Vous n'avez pas ce que je cherche.", "do":["EXIT"]}
-                  ]
-                  },
-        "autre_chose":{
-               "txt" : ["\"Très bon choix. <br> Autre chose?\"","\"Excellent choix, je ne pouvais que vous le recommander. Autre chose?\"","\"Vous êtes un bon client. Autre chose?\"","\"Je vous remercie de votre fidélité. Autre chose?\""],
-               "actions":[
-                 {"txt":"Cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +1 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
-                 {"txt":"Livre d'apprentissage de langue Trolle: 100 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -100 or hero","GOTO autre_chose"]},
-                 {"txt":"C'est bon merci, bonne journée monsieur.", "do":["EXIT","GOTO start"]}
-            ]
-          },
-          "cigarette":{
-                 "txt" : ["\"Très bon choix. <br> D'ailleurs t'aurais pas une cigarette à dépanner?\""],
-                 "actions":[
-                   {"txt":"Si bien sûr avec plaisir.", "do":["GIVE -1 cigarette hero","GOTO cigarette2"]},
-                   {"txt":"Non désolé c'est ma dernière.", "do":["GOTO menteur"]}
-              ]
-            },
-            "cigarette2":{
-                   "txt" : ["\"Ah super, merci! <br>Tu cherches autre chose d'ailleurs?\""],
-                   "actions":[
-                     {"txt":"10 cigarettes de contrebande: 5 pièces d'or.", "do":["GIVE +10 cigarette hero","GIVE -1 or hero","GOTO autre_chose"]},
-                     {"txt":"Livre d'apprentissage de langue Trolle: 100 pièce d'or.", "do":["GIVE +1 livre_troll hero","GIVE -100 or hero","GOTO autre_chose"]},
-                     {"txt":"Non c'est bon merci, bonne journée.", "do":["EXIT","GOTO start"]}
-                   ]
-                 },
-            "menteur":{
-                    "txt" : ["\"Je crois me souvenir que je viens de t'en vendre 10.\""],
-                    "actions":[
-                      {"txt":"Euh... oui enfait c'est que je les fume 10 par 10...", "do":["GOTO menteur2"]},
-                      {"txt":"Je dois y aller on m'attends, bonne journée.", "do":["EXIT","GOTO start"]}
-                    ]
-                  },
-             "menteur2":{
-                     "txt" : ["\"Ouais bien sûr, c'est ce qu'ils disent tous.\""],
-                     "actions":[
-                       {"txt":"Euh ok.. Bon je dois y aller, bonne journée.", "do":["EXIT","GOTO start"]}
-                     ]
-                   },
-              "soupcons":{
-                      "txt" : ["\"Tu cherches à acheter quelque chose petit?\""],
-                      "actions":[
-                        {"txt":"Oui exactement.", "do":["GOTO vente"]},
-                        {"txt":"Non, je voudrais savoir si tu connais la fille des Richelieu.", "do":["GOTO soupçons2"]}
-                      ]
-                    },
-               "soupçons2":{
-                       "txt" : ["\"Pas du tout désolé. <br> Tu veux toujours pas acheter quelque chose petit?\""],
-                       "actions":[
-                         {"txt":"Euh oui je veux bien voir ce que tu as.", "do":["GOTO vente"]},
-                         {"txt":"Non ça va le diablo.", "do":["EXIT"]}
-                ]
-              }
+  "attacks": [], 
+  "title": "Un diablo.", 
+  "id": "diablo", 
+  "img": "entities/diablo2", 
+  "script": {
+    "soupcons": {
+      "txt": [
+        "\"Tu cherches \u00e0 acheter quelque chose petit?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO vente"
+          ], 
+          "txt": [
+            "Oui exactement."
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO soup\u00e7ons2"
+          ], 
+          "txt": [
+            "Non, je voudrais savoir si tu connais la fille des Richelieu."
+          ]
         }
+      ]
+    }, 
+    "cigarette": {
+      "txt": [
+        "\"Tr\u00e8s bon choix. <br> D'ailleurs t'aurais pas une cigarette \u00e0 d\u00e9panner?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE -1 cigarette hero", 
+            "GOTO cigarette2"
+          ], 
+          "txt": [
+            "Si bien s\u00fbr avec plaisir."
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO menteur"
+          ], 
+          "txt": [
+            "Non d\u00e9sol\u00e9 c'est ma derni\u00e8re."
+          ]
+        }
+      ]
+    }, 
+    "menteur2": {
+      "txt": [
+        "\"Ouais bien s\u00fbr, c'est ce qu'ils disent tous.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Euh ok.. Bon je dois y aller, bonne journ\u00e9e."
+          ]
+        }
+      ]
+    }, 
+    "autre_chose": {
+      "txt": [
+        "\"Tr\u00e8s bon choix. <br> Autre chose?\"", 
+        "\"Excellent choix, je ne pouvais que vous le recommander. Autre chose?\"", 
+        "\"Vous \u00eates un bon client. Autre chose?\"", 
+        "\"Je vous remercie de votre fid\u00e9lit\u00e9. Autre chose?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +1 cigarette hero", 
+            "GIVE -1 or hero", 
+            "GOTO autre_chose", 
+            "STROY marche_noir"
+          ], 
+          "txt": [
+            "Cigarettes de contrebande: 5 pi\u00e8ces d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "GIVE +1 livre_troll hero", 
+            "GIVE -100 or hero", 
+            "GOTO autre_chose", 
+            "STROY marche_noir"
+          ], 
+          "txt": [
+            "Livre d'apprentissage de langue Trolle: 100 pi\u00e8ce d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "C'est bon merci, bonne journ\u00e9e monsieur."
+          ]
+        }
+      ]
+    }, 
+    "vente": {
+      "txt": [
+        "\"J'ai quelques trucs sous le manteau si \u00e7a t'int\u00e9resse.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +10 cigarette hero", 
+            "GIVE -1 or hero", 
+            "GOTO cigarette", 
+            "STROY marche_noir"
+          ], 
+          "txt": [
+            "10 cigarettes de contrebande: 5 pi\u00e8ces d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "GIVE +1 livre_troll hero", 
+            "GIVE -100 or hero", 
+            "GOTO autre_chose", 
+            "STROY marche_noir"
+          ], 
+          "txt": [
+            "Livre d'apprentissage de langue Trolle: 100 pi\u00e8ce d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Vous n'avez pas ce que je cherche."
+          ]
+        }
+      ]
+    }, 
+    "cigarette2": {
+      "txt": [
+        "\"Ah super, merci! <br>Tu cherches autre chose d'ailleurs?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +10 cigarette hero", 
+            "GIVE -1 or hero", 
+            "GOTO autre_chose", 
+            "STROY marche_noir"
+          ], 
+          "txt": [
+            "10 cigarettes de contrebande: 5 pi\u00e8ces d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "GIVE +1 livre_troll hero", 
+            "GIVE -100 or hero", 
+            "GOTO autre_chose", 
+            "STROY marche_noir"
+          ], 
+          "txt": [
+            "Livre d'apprentissage de langue Trolle: 100 pi\u00e8ce d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Non c'est bon merci, bonne journ\u00e9e."
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "\"Tu cherches quelque chose petit?\""
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "COMPARE info_enlevement hero > 0", 
+            "GOTO soupcons"
+          ], 
+          "txt": []
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GOTO vente"
+          ], 
+          "txt": [
+            "Oui."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Non rien du tout."
+          ]
+        }
+      ]
+    }, 
+    "menteur": {
+      "txt": [
+        "\"Je crois me souvenir que je viens de t'en vendre 10.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO menteur2"
+          ], 
+          "txt": [
+            "Euh... oui enfait c'est que je les fume 10 par 10..."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Je dois y aller on m'attends, bonne journ\u00e9e."
+          ]
+        }
+      ]
+    }, 
+    "soup\u00e7ons2": {
+      "txt": [
+        "\"Pas du tout d\u00e9sol\u00e9. <br> Tu veux toujours pas acheter quelque chose petit?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO vente"
+          ], 
+          "txt": [
+            "Euh oui je veux bien voir ce que tu as."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Non \u00e7a va le diablo."
+          ]
+        }
+      ]
     }
+  }
+}

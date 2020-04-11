@@ -46,7 +46,7 @@ class MapInterface extends Interface {
     }
 
     on_ok(){
-        game.open('stories');
+        if(game.hero.partir_a_laventure) game.open('stories');
     }
 
     on_up(){

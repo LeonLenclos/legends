@@ -51,7 +51,6 @@ body {
     text-align: center;
     justify-content: space-evenly;
     height: 120px;
-    
 }
 
 
@@ -69,20 +68,29 @@ body {
 
 #stories_list {
     height: 480px;
+    overflow-y: scroll;
     display: flex;
     flex-direction: column;
     margin:5px;
 }
 
-#stories_list_element{
-    
+.stories_list_element{
     margin:5px;
-    
 }
-#stories_list_element_title{
-    background: white;
+.stories_list_element_title{
+    background: gray;
     color:black;
     padding: 0 4px;
+}
+.stories_list_element.achieved{
+    border: 2px solid white;
+}
+
+.stories_list_element_desc {
+    padding: 4px;sss
+}
+.stories_list_element.achieved .stories_list_element_title{
+    background: white;
 }
 
 #stories_text{
@@ -149,7 +157,7 @@ body {
     border: 2px solid white;    
 }
 
-.button:hover, .button.selected {
+.button.selected {
     background: white;
     color:black;
     

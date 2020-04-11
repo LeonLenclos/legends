@@ -1,40 +1,121 @@
 {
-    "id":"cabanon_bucheron",
-    "img":"entities/porte",
-    "or":1,
-    "hache":1,
-    "title":"Cabanon d'un bûcheron.",
-    "script" : {
-        "start":{
-            "txt" : "Il y a une hache et une pièce d'or.",
-            "actions":[
-                {"txt":"Voler la hache.", "do":["GIVE +1 hache hero","GIVE -1 hache","GOTO or"]},
-                {"txt":"Voler la pièce d'or.", "do":["GIVE -1 or","GIVE +1 or hero","GOTO hache"]},
-                {"txt":"Voler les deux.", "do":["GIVE +1 or hero","GIVE +1 hache hero","GIVE -1 or","GIVE -1 hache","GOTO vide"]}
-            ]
-        },
-            "vide":{
-                "txt" : "Le cabanon est vide.",
-                "actions":[
-                       {"txt":"Sortir.", "do":["EXIT"]}
-            ]
-          },
-              "hache":{
-                  "txt" : "Il y a une hache.",
-                  "actions":[
-                         {"txt":"Voler la hache.", "do":["GIVE +1 hache hero","GIVE -1 hache","GOTO vide"]},
-
-                         {"txt":"Sortir.", "do":["EXIT", "GOTO start"]}
-              ]
-            },
-                "or":{
-                    "txt" : "Il y a une pièce d'or.",
-                    "actions":[
-                           {"txt":"Voler une pièce d'or.", "do":["GIVE +1 or hero","GIVE -1 or","GOTO vide"]},
-        
-                           {"txt":"Sortir.", "do":["EXIT"]}
-                ]
+  "img": "entities/porte", 
+  "title": "Cabanon d'un b\u00fbcheron.", 
+  "attacks": [], 
+  "script": {
+    "hache": {
+      "txt": [
+        "Il y a une hache."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +1 hache hero", 
+            "GIVE -1 hache", 
+            "GOTO vide"
+          ], 
+          "txt": [
+            "Voler la hache."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT", 
+            "GOTO start"
+          ], 
+          "txt": [
+            "Sortir."
+          ]
         }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "Il y a une hache et une pi\u00e8ce d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +1 hache hero", 
+            "GIVE -1 hache", 
+            "GOTO or"
+          ], 
+          "txt": [
+            "Voler la hache."
+          ]
+        }, 
+        {
+          "do": [
+            "GIVE -1 or", 
+            "GIVE +1 or hero", 
+            "GOTO hache", 
+            "STORY voler"
+          ], 
+          "txt": [
+            "Voler la pi\u00e8ce d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "GIVE +1 or hero", 
+            "GIVE +1 hache hero", 
+            "GIVE -1 or", 
+            "GIVE -1 hache", 
+            "GOTO vide"
+          ], 
+          "txt": [
+            "Voler les deux."
+          ]
+        }
+      ]
+    }, 
+    "or": {
+      "txt": [
+        "Il y a une pi\u00e8ce d'or."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GIVE +1 or hero", 
+            "GIVE -1 or", 
+            "GOTO vide", 
+            "STORY voler"
+          ], 
+          "txt": [
+            "Voler une pi\u00e8ce d'or."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Sortir."
+          ]
+        }
+      ]
+    }, 
+    "vide": {
+      "txt": [
+        "Le cabanon est vide."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Sortir."
+          ]
+        }
+      ]
     }
-
+  }, 
+  "id": "cabanon_bucheron", 
+  "hache": 1, 
+  "or": 1
 }

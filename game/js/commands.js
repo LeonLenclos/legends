@@ -135,8 +135,8 @@ const commands = {
         usage:'STORY story_id',
         do:(e, a)=>{
             let id = a[0];
-            if(!game.strories.includes(a))
-                game.strories.push(a);
+            if(!game.stories.includes(id))
+                game.stories.push(id);
         },
         doable:(e, a)=>true
     },
@@ -144,7 +144,7 @@ const commands = {
         doc:"Verifier si une histoire est réalisé",
         usage:'STORYDONE story_id',
         do:(e, a)=>{return;},
-        doable:(e, a)=>game.strories.includes(a)
+        doable:(e, a)=>game.stories.includes(a[0])
     },
     COMPARESTORIES:{
         doc:"Compare le nombre d'histoires réalisées à une valeur",

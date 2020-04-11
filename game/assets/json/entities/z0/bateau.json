@@ -6,13 +6,13 @@
   "script": {
     "ilededepart": {
       "txt": [
-        "\"Tu veux rentrer chez toi? 70 pi\u00e8ce d'or.\""
+        "\"Tu veux rentrer chez toi ? 15 pi\u00e8ce d'or.\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "GIVE -70 or hero", 
+            "GIVE -15 or hero", 
             "SET 56 x hero", 
             "SET 42 y hero", 
             "SET 57 x", 
@@ -36,7 +36,7 @@
     }, 
     "nulle_part": {
       "txt": [
-        "C'est vrai qu'on est bien ici."
+        "\"C'est vrai qu'on est bien ici.\""
       ], 
       "auto_actions": [
         {
@@ -58,27 +58,27 @@
         }
       ]
     }, 
-    "ailleurs": {
+    "start": {
       "txt": [
-        "Y'a qu'un endroit o\u00f9 je vais: la mer."
+        "\"Salut petit, tu veux aller o\u00f9?\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "GOTO ailleurs2"
+            "GOTO ailleurs", 
+            "COMPARE partir_a_laventure hero = 1"
           ], 
           "txt": [
-            "J'aimerais aller voir ce qu'il a apr\u00e8s la mer."
+            "\"Je veux partir \u00e0 l'aventure !\""
           ]
         }, 
         {
           "do": [
-            "EXIT", 
-            "GOTO start"
+            "GOTO nulle_part"
           ], 
           "txt": [
-            "Sortir."
+            "\"Nulle part, je suis tr\u00e8s bien ici sur mon \u00eele, merci.\""
           ]
         }
       ]
@@ -109,7 +109,7 @@
     }, 
     "endroit_sympa": {
       "txt": [
-        "\"Si mais l\u00e0 \u00e7a va co\u00fbter 70 pi\u00e8ces d'or.\""
+        "\"Si mais l\u00e0 \u00e7a va co\u00fbter 15 pi\u00e8ces d'or.\""
       ], 
       "auto_actions": [
         {
@@ -120,16 +120,17 @@
       "actions": [
         {
           "do": [
-            "GIVE -70 or hero", 
+            "GIVE -15 or hero", 
             "SET 87 x hero", 
             "SET 40 y hero", 
             "SET 87 x", 
             "SET 39 y", 
             "EXIT", 
-            "GOTO ilededepart"
+            "GOTO ilededepart", 
+            "STORY bateau"
           ], 
           "txt": [
-            "\"J'ai \u00e7a! On y va.\""
+            "\"J'ai \u00e7a ! On y va.\""
           ]
         }, 
         {
@@ -142,14 +143,14 @@
             "GOTO continent"
           ], 
           "txt": [
-            "\"Je n'ai pas autant d'argent! Ramenez moi chez moi svp.\""
+            "\"Je n'ai pas autant d'argent ! Ramenez moi chez moi svp.\""
           ]
         }
       ]
     }, 
     "ailleurs2": {
       "txt": [
-        "Il est ambicieux le petit gars! Ben si t'as 5 pi\u00e8ce d'or, \u00e7a peut se n\u00e9gocier."
+        "Il est ambitieux le petit gars ! Ben si t'as 2 pi\u00e8ces d'or, \u00e7a peut se n\u00e9gocier."
       ], 
       "auto_actions": [
         {
@@ -162,7 +163,7 @@
       "actions": [
         {
           "do": [
-            "GIVE -5 or hero", 
+            "GIVE -2 or hero", 
             "SET 22 x hero", 
             "SET 38 y hero", 
             "SET 22 x", 
@@ -171,7 +172,7 @@
             "GOTO mini_ile"
           ], 
           "txt": [
-            "Je les ai! On peux y aller."
+            "\"Je les ai ! On peux y aller.\""
           ]
         }, 
         {
@@ -180,36 +181,29 @@
             "GOTO start"
           ], 
           "txt": [
-            "Je reviendrais plus tard peut \u00eatre."
+            "\"Je reviendrais plus tard peut \u00eatre.\""
           ]
         }
       ]
     }, 
-    "start": {
+    "ailleurs": {
       "txt": [
-        "Salut petit, tu veux aller o\u00f9?"
+        "\"Y'a qu'un endroit o\u00f9 je vais : la mer.\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "GOTO ailleurs"
+            "GOTO ailleurs2"
           ], 
           "txt": [
-            "Ailleurs qu'ici."
+            "\"J'aimerais aller voir ce qu'il a apr\u00e8s la mer.\""
           ]
         }, 
         {
           "do": [
-            "GOTO nulle_part"
-          ], 
-          "txt": [
-            "Nulle part, je suis tr\u00e8s bien ici sur mon \u00eele, merci."
-          ]
-        }, 
-        {
-          "do": [
-            "EXIT"
+            "EXIT", 
+            "GOTO start"
           ], 
           "txt": [
             "Sortir."
@@ -245,7 +239,7 @@
             "SET 57 x", 
             "SET 42 y", 
             "EXIT", 
-            "GOTO start"
+            "GOTO continent"
           ], 
           "txt": [
             "\"Je veux rentrer chez moi, je m'ennuie ici.\""
@@ -255,20 +249,21 @@
     }, 
     "continent": {
       "txt": [
-        "\"J'imagine que tu veux aller au continent? Bon tu connais le prix.\"", 
-        "\"Tu veux aller au continent? 70 pi\u00e8ce d'or.\""
+        "\"J'imagine que tu veux aller au continent ? C'est 15 pi\u00e8ces d'or.\"", 
+        "\"Tu veux aller au continent ? 15 pi\u00e8ces d'or.\""
       ], 
       "auto_actions": [], 
       "actions": [
         {
           "do": [
-            "GIVE -70 or hero", 
+            "GIVE -15 or hero", 
             "SET 87 x hero", 
             "SET 40 y hero", 
             "SET 87 x", 
             "SET 39 y", 
             "EXIT", 
-            "GOTO ilededepart"
+            "GOTO ilededepart", 
+            "STORY bateau"
           ], 
           "txt": [
             "\"Oui, c'est parti!\""

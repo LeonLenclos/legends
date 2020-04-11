@@ -1,0 +1,93 @@
+{
+  "img": "entities/pnj/papi", 
+  "title": "Un vieil aventurier", 
+  "attacks": [], 
+  "illu": "illu/papi", 
+  "script": {
+    "start": {
+      "txt": [
+        "\"Bonjour petit.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO histoire"
+          ], 
+          "txt": [
+            "\"Bonjour Papi.\""
+          ]
+        }
+      ]
+    }, 
+    "histoire": {
+      "txt": [
+        "\"Je t'ai d\u00e9j\u00e0 racont\u00e9 la fois ou j'ai chevauch\u00e9 un dragon ?\"", 
+        "\"Je t'ai d\u00e9j\u00e0 racont\u00e9 quand j'ai arr\u00eat\u00e9 un incendie qui allait ravager toute la for\u00eat interdite ?\"", 
+        "\"Je t'ai d\u00e9j\u00e0 racont\u00e9 la fois o\u00f9 j'ai remport\u00e9 un duel au sabre contre mon propre reflet ?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO histoire"
+          ], 
+          "txt": [
+            "\"Oui Papi.\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO beaucoup"
+          ], 
+          "txt": [
+            "\"Tu as vraiment v\u00e9cu beaucoup d'aventures !\""
+          ]
+        }
+      ]
+    }, 
+    "beaucoup": {
+      "txt": [
+        "\"J'en ai v\u00e9cu tr\u00e8s exactement 99 ! Mon r\u00eave c'est de rencontrer un jour quelqu'un qui aura plus d'histoires \u00e0 raconter que moi.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "GOTO histoire"
+          ], 
+          "txt": [
+            "\"\u00c7a risque pas d'arriver ah ah !\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO mission"
+          ], 
+          "txt": [
+            "\"Je vais partir \u00e0 l'aventure et je reviendrai avec assez d'histoires \u00e0 raconter pour r\u00e9aliser ton r\u00eave !\""
+          ]
+        }
+      ]
+    }, 
+    "mission": {
+      "txt": [
+        "\"C'est merveilleux, reviens me voir quand tu aura 100 histoires \u00e0 raconter. Je t'attendrai.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT", 
+            "SET 1 partir_a_laventure hero"
+          ], 
+          "txt": [
+            "Partir \u00e0 l'aventure."
+          ]
+        }
+      ]
+    }
+  }, 
+  "id": "papi"
+}

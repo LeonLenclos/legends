@@ -122,7 +122,7 @@ class ModifyBox {
         .html('cancel').click(()=>{this.close()})
 
         let open_editor = $('<button/>', {class:'button'})
-        .html('open entity editor').click(this.open_editor())
+        .html('open entity editor').click(()=>{this.open_editor()})
 
         this.element
         .append('x:')
@@ -143,15 +143,25 @@ class ModifyBox {
             this.y_input.val(this.look_entity.native_data.y)
             this.extra_data_input.val(this.look_entity.native_data.extra_data)
         } else {
-            this.x_input.val(game.hero.x + game.hero.dir_x)
-            this.y_input.val(game.hero.y + game.hero.dir_y)
-        }
+            this.x_input.val(game.hero.x + direction_to_move(game.hero.direction).x)
+            this.y_input.val(game.hero.y + direction_to_move(game.hero.direction).y)
+        }   
     }
 
     ok(){
-        this.look_entity.native_data.x = Number(this.x_input.val());
-        this.look_entity.native_data.y = Number(this.y_input.val());
-        this.look_entity.native_data.extra_data = this.extra_data_input.val();
+        if(this.look_entity === null){
+            this.look_entity = new Entity({
+                x:Number(this.x_input.val()),
+                y:Number(this.y_input.val()),
+                extra_data:this.extra_data_input.val()
+            })
+            game.entities.push(this.look_entity);
+        }
+        else {
+            this.look_entity.native_data.x = Number(this.x_input.val());
+            this.look_entity.native_data.y = Number(this.y_input.val());
+            this.look_entity.native_data.extra_data = this.extra_data_input.val();       
+        }
         
         let world_data = {
             entities:game.entities.map((e)=>e.native_data)

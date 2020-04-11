@@ -95,8 +95,6 @@ class StatusBar {
         this.pv.element.appendTo(this.element);
         this.or = new InventoryElement('or', txt.or);
         this.or.element.appendTo(this.element);
-        this.stories = new InventoryElement('stories', txt.stories);
-        this.stories.element.appendTo(this.element);
         this.turn = new InventoryElement('turn', txt.turn);
         this.turn.element.appendTo(this.element);
     }
@@ -107,10 +105,16 @@ class StatusBar {
             element.animate({backgroundColor:'gray'}, Math.floor(1000/TURN_PER_SEC *0.2));
             element.animate({backgroundColor:'black'}, Math.floor(1000/TURN_PER_SEC *0.8));
         });
-        this.stories.update(game.stories.length + '/100', (element)=>{
-            element.animate({backgroundColor:'gray'}, Math.floor(1000/TURN_PER_SEC *0.2));
-            element.animate({backgroundColor:'black'}, Math.floor(1000/TURN_PER_SEC *0.8));
-        });
+        if(game.hero.partir_a_laventure){
+            if(!this.stories){
+                this.stories = new InventoryElement('stories', assets.json.txt.status.stories);
+                this.stories.element.appendTo(this.element);
+            }
+            this.stories.update(game.stories.length + '/100', (element)=>{
+                element.animate({backgroundColor:'gray'}, Math.floor(1000/TURN_PER_SEC *0.2));
+                element.animate({backgroundColor:'black'}, Math.floor(1000/TURN_PER_SEC *0.8));
+            });            
+        }
         this.turn.update(game.turn);
     }
 }

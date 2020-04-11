@@ -3,13 +3,13 @@ class StoriesListElement{
         this.id = story.id;
         this.achieved = false;
 
-        this.element = $('<div>', {id:'stories_list_element'});
+        this.element = $('<div>', {class:'stories_list_element'});
         
-        this.title = $('<div>', {id:'stories_list_element_title'})
+        this.title = $('<div>', {class:'stories_list_element_title'})
         .text(story.title)
         .appendTo(this.element);
         
-        this.description = $('<div>', {id:'stories_list_element_desc'})
+        this.description = $('<div>', {class:'stories_list_element_desc'})
         .text(story.description);
    }
 

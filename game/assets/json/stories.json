@@ -2,11 +2,56 @@
     {
         "id":"ferme",
         "title":"Un vrai travail.",
-        "descriprion":"J'ai travaillé dans une vraie ferme !"
+        "description":"J'ai travaillé dans une vraie ferme !"
     },
     {
         "id":"bateau",
         "title":"Après la mer.",
-        "descriprion":"J'ai pris le bateau et je suis allé au-delà de l'horizon."
+        "description":"J'ai pris le bateau et je suis allé au-delà de l'horizon."
+    },
+    {
+        "id":"enfant",
+        "title":"Aider un enfant.",
+        "description":"J'ai trouvé le ballon qu'un enfant avait perdu."
+    },
+    {
+        "id":"enfant2",
+        "title":"Prendre un enfant au serieux.",
+        "description":"Je suis allé jusque dans le desert pour retrouver un ballon."
+    },
+    {
+        "id":"marche_noir",
+        "title":"Marché noir.",
+        "description":"J'ai acheté un objet au marché noir."
+    },
+    {
+        "id":"fumer",
+        "title":"Fumer.",
+        "description":"J'ai fumé une cigarette."
+    },
+    {
+        "id":"grand_troll",
+        "title":"Le grand troll.",
+        "description":"J'ai rencontré le grand troll !"
+    },
+    {
+        "id":"voler",
+        "title":"Voler de l'or.",
+        "description":"J'ai volé de l'or !"
+    },
+    {
+        "id":"parler",
+        "title":"Parler avec un inconnu.",
+        "description":"J'ai parlé avec quelqu'un que je ne connaissait même pas !"
+    },
+    {
+        "id":"animal",
+        "title":"Un animal qui parle.",
+        "description":"J'ai entendu un cochon parler humain !"
+    },
+    {
+        "id":"troll",
+        "title":"Bilingue.",
+        "description":"J'ai parlé avec un troll !"
     }
 ]

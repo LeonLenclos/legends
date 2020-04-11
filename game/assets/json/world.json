@@ -104,6 +104,11 @@
       "extra_data": "entities/z0/tas_de_bois"
     }, 
     {
+      "y": 31, 
+      "x": 42, 
+      "extra_data": "entities/z0/papi"
+    }, 
+    {
       "y": 35, 
       "x": 57, 
       "extra_data": "entities/z0/bucheron"
@@ -115,11 +120,6 @@
       "img": "entities/arbre2"
     }, 
     {
-      "y": 33, 
-      "x": 50, 
-      "extra_data": "entities/hero"
-    }, 
-    {
       "y": 39, 
       "x": 50, 
       "extra_data": "entities/arbre"
@@ -128,6 +128,11 @@
       "y": 40, 
       "x": 89, 
       "extra_data": "entities/z1/enfant"
+    }, 
+    {
+      "y": 33, 
+      "x": 50, 
+      "extra_data": "entities/hero"
     }, 
     {
       "y": 42, 
