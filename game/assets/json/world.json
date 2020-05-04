@@ -1,6 +1,11 @@
 {
   "entities": [
     {
+      "y": 17, 
+      "x": 113, 
+      "extra_data": "entities/z1/orchidee"
+    }, 
+    {
       "y": 20, 
       "x": 116, 
       "extra_data": "entities/z1/carotte"
@@ -130,11 +135,6 @@
       "extra_data": "entities/z1/enfant"
     }, 
     {
-      "y": 33, 
-      "x": 50, 
-      "extra_data": "entities/hero"
-    }, 
-    {
       "y": 42, 
       "x": 57, 
       "extra_data": "entities/z0/bateau", 
@@ -204,6 +204,11 @@
       "y": 61, 
       "x": 132, 
       "extra_data": "entities/z1/entree_richelieu"
+    }, 
+    {
+      "y": 33, 
+      "x": 50, 
+      "extra_data": "entities/hero"
     }, 
     {
       "y": 65, 
@@ -451,6 +456,11 @@
       "y": 267, 
       "x": 282, 
       "extra_data": "entities/z4/sblurg"
+    }, 
+    {
+      "y": 64, 
+      "x": 90, 
+      "extra_data": "entities/z1/sarah"
     }
   ]
 }

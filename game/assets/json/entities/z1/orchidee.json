@@ -1,0 +1,59 @@
+{
+  "attacks": [], 
+  "title": "Une orchid\u00e9e.", 
+  "id": "orchidee", 
+  "img": "entities/obj/orchidee", 
+  "script": {
+    "sarah": {
+      "txt": [
+        "L'orchid\u00e9e est encore plus belle quand Sarah la regarde."
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "Une magnifique orchid\u00e9e."
+      ], 
+      "auto_actions": [
+        {
+          "do": [
+            "SET 1 vu_orchidee hero"
+          ], 
+          "txt": [
+            ""
+          ]
+        }
+      ], 
+      "actions": [
+        {
+          "do": [
+            "GIVE 1 orchidee hero", 
+            "SET 1 invisible", 
+            "EXIT"
+          ], 
+          "txt": [
+            "La cueillir."
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir."
+          ]
+        }
+      ]
+    }
+  }
+}

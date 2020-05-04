@@ -1,0 +1,148 @@
+{
+  "attacks": [], 
+  "title": "Sarah", 
+  "id": "sarah", 
+  "img": "entities/pnj/sarah", 
+  "script": {
+    "orchidee": {
+      "txt": [
+        "\"C'est vraiment magnifique !\"", 
+        "\"Merci beaucoup !\"", 
+        "\"Quelle belle fleure...\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Je suis content que \u00e7a te plaise\""
+          ]
+        }
+      ]
+    }, 
+    "beau": {
+      "txt": [
+        "\"Ce sont des cyclamens...\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO reve"
+          ], 
+          "txt": [
+            "\"C'est tes fleurs pr\u00e9f\u00e9r\u00e9es ?\""
+          ]
+        }
+      ]
+    }, 
+    "reve": {
+      "txt": [
+        "\"Les cyclamens sont belle, on ne peut pas dire le contraire, mais elles sont tr\u00e8s communes dans cette r\u00e9gion. Mon r\u00eave, c'est de trouver une orchid\u00e9e.\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO cueilli", 
+            "COMPARE orchidee hero = 1"
+          ], 
+          "txt": [
+            "\"\u00c7a tombe bien regarde, j'en ai cueilli une !\""
+          ]
+        }, 
+        {
+          "do": [
+            "COMPARE vu_orchidee hero = 1", 
+            "COMPARE orchidee hero < 1", 
+            "GOTO orchidee", 
+            "SETPOSITION 113 16", 
+            "SETPOSITION 112 16 hero", 
+            "EXIT", 
+            "GOTO sarah orchidee"
+          ], 
+          "txt": [
+            "\"Justement j'ai vu une orchid\u00e9e par l\u00e0-bas. Viens je vais te montrer !\""
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Bon courage.\""
+          ]
+        }
+      ]
+    }, 
+    "cueilli": {
+      "txt": [
+        "\"Quoi !? Mais c'est horrible ! On ne cueille pas ces fleurs l\u00e0, qu'as-tu fait ?\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO oups", 
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Oups...\""
+          ]
+        }
+      ]
+    }, 
+    "start": {
+      "txt": [
+        "\"Ces petites fleurs sont vraiment jolies\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "GOTO beau"
+          ], 
+          "txt": [
+            "\"C'est vrai que c'est beau.\""
+          ]
+        }, 
+        {
+          "do": [
+            "GOTO reve"
+          ], 
+          "txt": [
+            "\"Bof...\""
+          ]
+        }, 
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "Partir"
+          ]
+        }
+      ]
+    }, 
+    "oups": {
+      "txt": [
+        "\"Tu as d\u00e9truit une orchid\u00e9e !\"", 
+        "\"C'\u00e9tait peut-\u00eatre la seule orchid\u00e9e de l'ann\u00e9e\"", 
+        "\"Tu es un monstre...\""
+      ], 
+      "auto_actions": [], 
+      "actions": [
+        {
+          "do": [
+            "EXIT"
+          ], 
+          "txt": [
+            "\"Oups...\""
+          ]
+        }
+      ]
+    }
+  }
+}
